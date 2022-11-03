@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <div className="text-center bg-orange-500 text-gray-800 dark:text-white">
-      <div className="text-center p-4 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-white">
+      <div className="text-center p-4 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white">
         Made with&nbsp;
         <span className="text-red-500">&#x2764;</span>
         &nbsp;by&nbsp;
