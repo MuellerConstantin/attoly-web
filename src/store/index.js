@@ -11,9 +11,10 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import themeSlice from "./slices/theme";
+import authSlice from "./slices/auth";
 
 const persistConfig = {
-  key: "taskcare",
+  key: "attoly",
   version: 1,
   storage,
   whitelist: ["theme", "auth"],
@@ -21,6 +22,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   theme: themeSlice.reducer,
+  auth: authSlice.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
