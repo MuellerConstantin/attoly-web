@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "../atoms/Link";
 
 import Wallpaper from "../../assets/images/wallpaper.svg";
 
@@ -36,9 +36,19 @@ export default function Jumbotron() {
                 <div className="rounded-md shadow">
                   <Link
                     to="/get-started"
-                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-sky-500 px-8 py-3 text-base font-medium text-white hover:brightness-110 md:py-4 md:px-10 md:text-lg"
+                    type="button"
+                    className="w-full px-8 py-3 md:py-4 md:px-10 md:text-lg"
                   >
                     Get started
+                  </Link>
+                </div>
+                <div className="mt-3 sm:mt-0 sm:ml-3">
+                  <Link
+                    to="/register"
+                    type="button"
+                    className="w-full px-8 py-3 md:py-4 md:px-10 md:text-lg bg-orange-500 focus:outline-orange-500"
+                  >
+                    Register now
                   </Link>
                 </div>
               </div>

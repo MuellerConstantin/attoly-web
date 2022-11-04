@@ -1,4 +1,5 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+import ExternalLink from "../atoms/ExternalLink";
+
 export default function InfoBanner() {
   return (
     <div className="bg-orange-500 text-white dark:text-gray-800">
@@ -15,14 +16,15 @@ export default function InfoBanner() {
         </div>
         <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
           <div className="ml-3 inline-flex rounded-md shadow">
-            <a
+            <ExternalLink
               href="https://github.com/0x1c1b"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-md border border-transparent bg-white dark:bg-gray-800 px-5 py-3 text-base font-medium text-sky-500 hover:brightness-110"
+              type="button"
+              className="px-5 py-3"
             >
               Learn more
-            </a>
+            </ExternalLink>
           </div>
         </div>
       </div>
