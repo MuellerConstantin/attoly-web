@@ -26,7 +26,7 @@ export default function Logout() {
               <img className="w-full h-full" src={LogoutImage} alt="Logout" />
             </div>
             <div className="flex flex-col text-center md:text-left">
-              <div className="text-4xl">Hope to see you soon</div>
+              <div className="text-3xl">Hope to see you soon</div>
               <div>
                 You have been logged out. To log in again click&nbsp;
                 <Link to="/login">here</Link>.

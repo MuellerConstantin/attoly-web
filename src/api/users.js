@@ -11,3 +11,11 @@ export const requestVerificationEmail = (email) => {
 export const verifyUser = (data) => {
   return api.post("/user/verify", data);
 };
+
+export const requestResetEmail = (email) => {
+  return api.get(`/user/reset?email=${encodeURIComponent(email)}`);
+};
+
+export const resetPassword = (data) => {
+  return api.post("/user/reset", data);
+};

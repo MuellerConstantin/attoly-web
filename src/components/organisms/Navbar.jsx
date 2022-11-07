@@ -124,7 +124,10 @@ export default function Navbar() {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 space-x-2">
                 {!principal && (
                   <div className="hidden md:flex space-x-4 items-center justify-between">
-                    <Link to="/login" className="text-white dark:text-gray-800">
+                    <Link
+                      to="/login"
+                      className="!text-white dark:text-gray-800"
+                    >
                       Login
                     </Link>
                     <Link to="/register" type="button">

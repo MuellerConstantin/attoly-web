@@ -22,7 +22,7 @@ export default function NotFound() {
               />
             </div>
             <div className="flex flex-col text-center md:text-left">
-              <div className="text-4xl">Oops! Page not found.</div>
+              <div className="text-3xl">Oops! Page not found.</div>
               <div>
                 The page you are looking for was not found. You may return
                 to&nbsp;
