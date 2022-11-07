@@ -141,7 +141,7 @@ export default function Login() {
             </div>
             <div className="hidden md:block">|</div>
             <div className="text-center">
-              <Link className="!text-sm" to="/register">
+              <Link className="!text-sm" to="/verify-user">
                 Activate your account?
               </Link>
             </div>
