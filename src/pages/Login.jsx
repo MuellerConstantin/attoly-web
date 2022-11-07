@@ -42,6 +42,7 @@ export default function Login() {
             accessExpiresIn: res.data.accessExpiresIn,
             refreshToken: res.data.refreshToken,
             refreshExpiresIn: res.data.refreshExpiresIn,
+            principal: res.data.principal,
           })
         );
 

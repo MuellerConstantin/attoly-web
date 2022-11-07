@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import Logout from "./pages/Logout";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
       <Route path="/home" element={<Home />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/logout" element={<Logout />} />
       <Route path="/not-found" element={<NotFound />} />
     </Routes>
   );
