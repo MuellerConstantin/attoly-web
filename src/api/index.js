@@ -8,7 +8,7 @@ export const injectStore = (_store) => {
 };
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_ATTOLY_REST_URI,
+  baseURL: process.env.REACT_APP_ATTOLY_API_URI,
   timeout: 10000,
   headers: {
     Accept: "application/json",

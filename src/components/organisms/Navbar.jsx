@@ -19,6 +19,7 @@ import LogoTextDark from "../../assets/images/logo-text-dark.svg";
 
 const navigation = [
   { name: "Home", path: "/home" },
+  { name: "Get Started", path: "/get-started" },
   { name: "About", path: "/about" },
 ];
 

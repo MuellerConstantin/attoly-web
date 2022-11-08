@@ -5,7 +5,6 @@ import StackTemplate from "../components/templates/StackTemplate";
 import TextField from "../components/atoms/TextField";
 import Button from "../components/atoms/Button";
 import Link from "../components/atoms/Link";
-
 import { createUser } from "../api/users";
 
 import Logo from "../assets/images/logo.svg";
@@ -75,16 +74,8 @@ export default function Register() {
               Create your new account
             </h1>
           </div>
-          {success && (
-            <div className="flex justify-center">
-              <p className="text-left text-green-500">{success}</p>
-            </div>
-          )}
-          {error && (
-            <div className="flex justify-center">
-              <p className="text-left text-red-500">{error}</p>
-            </div>
-          )}
+          {success && <p className="text-center text-green-500">{success}</p>}
+          {error && <p className="text-center text-red-500">{error}</p>}
           <Formik
             initialValues={{
               email: "",

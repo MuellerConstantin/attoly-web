@@ -76,11 +76,7 @@ export default function Login() {
               Sign in to your account
             </h1>
           </div>
-          {error && (
-            <div className="flex justify-center">
-              <p className="text-left text-red-500">{error}</p>
-            </div>
-          )}
+          {error && <p className="text-center text-red-500">{error}</p>}
           <Formik
             initialValues={{ email: "", password: "" }}
             validationSchema={schema}

@@ -229,16 +229,8 @@ function ResetPasswordRequest() {
           Have you forgotten your password and you can no longer log in? No
           problem. Get an email with a link to reset your password.
         </p>
-        {success && (
-          <div className="flex justify-center">
-            <p className="text-left text-green-500">{success}</p>
-          </div>
-        )}
-        {error && (
-          <div className="flex justify-center">
-            <p className="text-left text-red-500">{error}</p>
-          </div>
-        )}
+        {success && <p className="text-center text-green-500">{success}</p>}
+        {error && <p className="text-center text-red-500">{error}</p>}
         <Formik
           initialValues={{ email: "" }}
           validationSchema={schema}

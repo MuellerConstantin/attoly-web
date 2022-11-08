@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Logout from "./pages/Logout";
 import VerifyUser from "./pages/VerifyUser";
 import ResetPassword from "./pages/ResetPassword";
+import GetStarted from "./pages/GetStarted";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -30,6 +31,7 @@ export default function App() {
       <Route path="/logout" element={<Logout />} />
       <Route path="/verify-user" element={<VerifyUser />} />
       <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path="/get-started" element={<GetStarted />} />
       <Route path="/not-found" element={<NotFound />} />
     </Routes>
   );
