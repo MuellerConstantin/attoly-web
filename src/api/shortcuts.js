@@ -1,6 +1,9 @@
 import api from "./index";
 
-// eslint-disable-next-line import/prefer-default-export
 export const createShortcut = (data) => {
   return api.post("/shortcuts", data);
+};
+
+export const fetchShortcut = (tag) => {
+  return api.get(`/shortcuts/${tag}`);
 };

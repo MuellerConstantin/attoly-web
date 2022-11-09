@@ -31,6 +31,7 @@ export default function GetStarted() {
 
       try {
         const res = await createShortcut({ url: values.url });
+
         resetForm();
         setShortcut(res.data);
       } catch (err) {

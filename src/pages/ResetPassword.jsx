@@ -302,7 +302,7 @@ export default function ResetPassword() {
 
   return (
     <StackTemplate>
-      <div className="h-full bg-gray-50 dark:bg-gray-600">
+      <div className="h-full bg-gray-50 dark:bg-gray-600 text-gray-800 dark:text-white">
         {searchParams.get("token") ? (
           <ResetPasswordConfirmation />
         ) : (
