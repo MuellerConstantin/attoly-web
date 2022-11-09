@@ -8,6 +8,7 @@ import Link from "../components/atoms/Link";
 import { createUser } from "../api/users";
 
 import Logo from "../assets/images/logo.svg";
+import WallpaperImage from "../assets/images/wallpaper.svg";
 
 const schema = yup.object().shape({
   email: yup.string().email("Must be a valid email").required("Is required"),
@@ -62,8 +63,15 @@ export default function Register() {
 
   return (
     <StackTemplate>
-      <div className="h-full bg-gray-50 dark:bg-gray-600 text-gray-800 dark:text-white flex flex-col items-center justify-center px-4 py-12 space-y-4">
-        <div className="w-full max-w-lg bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-md rounded-md p-8 space-y-6">
+      <div
+        className="h-full bg-gray-50 dark:bg-gray-600 text-gray-800 dark:text-white flex flex-col items-center justify-center px-4 py-12 space-y-4"
+        style={{
+          backgroundImage: `url(${WallpaperImage})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="w-full max-w-xl bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-md rounded-md p-8 space-y-6">
           <div>
             <img
               className="mx-auto h-10 md:h-12 lg:h-14 w-auto"
@@ -157,7 +165,10 @@ export default function Register() {
           </Formik>
         </div>
         <div className="text-center">
-          <Link className="!text-sm" to="/login">
+          <Link
+            className="!text-sm !text-gray-800 !dark:text-white"
+            to="/login"
+          >
             Already have an account?
           </Link>
         </div>

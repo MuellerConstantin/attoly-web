@@ -10,6 +10,7 @@ import { createShortcut } from "../api/shortcuts";
 
 import LogoTextLight from "../assets/images/logo-text-light.svg";
 import LogoTextDark from "../assets/images/logo-text-dark.svg";
+import WallpaperImage from "../assets/images/wallpaper.svg";
 
 const schema = yup.object().shape({
   url: yup.string().url("Must be a valid URL").required("Is required"),
@@ -55,8 +56,15 @@ export default function GetStarted() {
 
   return (
     <StackTemplate>
-      <div className="h-full bg-gray-50 dark:bg-gray-600 text-gray-800 dark:text-white flex flex-col items-center justify-center px-4 py-12 space-y-4">
-        <div className="w-full max-w-xl bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-md rounded-md p-8 space-y-6">
+      <div
+        className="h-full bg-gray-50 dark:bg-gray-600 text-gray-800 dark:text-white flex flex-col items-center justify-center px-4 py-12 space-y-4"
+        style={{
+          backgroundImage: `url(${WallpaperImage})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="w-full max-w-2xl bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-md rounded-md p-8 space-y-6">
           <div>
             <img
               className="hidden dark:block mx-auto h-10 md:h-12 lg:h-14 w-auto"

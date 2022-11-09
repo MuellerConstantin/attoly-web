@@ -9,6 +9,7 @@ import Link from "../components/atoms/Link";
 import { requestResetEmail, resetPassword } from "../api/users";
 
 import Logo from "../assets/images/logo.svg";
+import WallpaperImage from "../assets/images/wallpaper.svg";
 import PasswordResetImage from "../assets/images/password-reset.svg";
 import ErrorImage from "../assets/images/error.svg";
 
@@ -60,9 +61,9 @@ function ResetPasswordConfirmation() {
   if (success) {
     return (
       <div className="h-full flex items-center justify-center px-4 py-12">
-        <div className="w-full max-w-4xl">
+        <div className="w-full md:max-w-2xl lg:max-w-4xl 2xl:max-w-6xl 2xl:max-w-[100rem]">
           <div className="flex flex-col md:flex-row md:space-x-8 space-y-6 md:space-y-0 justify-center items-center text-gray-800 dark:text-white">
-            <div className="w-1/2 sm:w-1/3 md:w-2/3">
+            <div className="w-1/2 sm:w-1/3 md:w-2/3 xl:w-1/2">
               <img
                 className="w-full h-full"
                 src={PasswordResetImage}
@@ -70,7 +71,9 @@ function ResetPasswordConfirmation() {
               />
             </div>
             <div className="flex flex-col text-center md:text-left">
-              <div className="text-4xl">Password reset.</div>
+              <div className="text-xl sm:text-2xl lg:text-4xl">
+                Password reset.
+              </div>
               <div>
                 The password has been reset successfully, to log in click&nbsp;
                 <Link to="/login">here</Link>.
@@ -85,13 +88,15 @@ function ResetPasswordConfirmation() {
   if (error) {
     return (
       <div className="h-full bg-white dark:bg-gray-600 flex items-center justify-center px-4 py-12">
-        <div className="w-full max-w-4xl">
+        <div className="w-full md:max-w-2xl lg:max-w-4xl 2xl:max-w-6xl 2xl:max-w-[100rem]">
           <div className="flex flex-col md:flex-row md:space-x-8 space-y-6 md:space-y-0 justify-center items-center text-gray-800 dark:text-white">
-            <div className="w-1/2 sm:w-1/3 md:w-2/3">
+            <div className="w-1/2 sm:w-1/3 md:w-2/3 xl:w-1/2">
               <img className="w-full h-full" src={ErrorImage} alt="Error" />
             </div>
             <div className="flex flex-col text-center md:text-left">
-              <div className="text-3xl">Oops! Something get wrong</div>
+              <div className="text-xl sm:text-2xl lg:text-4xl">
+                Oops! Something get wrong
+              </div>
               <div>
                 {error}&nbsp;To try again click&nbsp;
                 <Link to="/reset-password">here</Link>.
@@ -104,8 +109,15 @@ function ResetPasswordConfirmation() {
   }
 
   return (
-    <div className="h-full text-gray-800 dark:text-white flex flex-col items-center justify-center px-4 py-12 space-y-4">
-      <div className="w-full max-w-lg bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-md rounded-md p-8 space-y-6">
+    <div
+      className="h-full text-gray-800 dark:text-white flex flex-col items-center justify-center px-4 py-12 space-y-4"
+      style={{
+        backgroundImage: `url(${WallpaperImage})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="w-full max-w-xl bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-md rounded-md p-8 space-y-6">
         <div>
           <img
             className="mx-auto h-10 md:h-12 lg:h-14 w-auto"
@@ -213,8 +225,15 @@ function ResetPasswordRequest() {
   }, []);
 
   return (
-    <div className="h-full text-gray-800 dark:text-white flex flex-col items-center justify-center px-4 py-12 space-y-4">
-      <div className="w-full max-w-lg bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-md rounded-md p-8 space-y-6">
+    <div
+      className="h-full text-gray-800 dark:text-white flex flex-col items-center justify-center px-4 py-12 space-y-4"
+      style={{
+        backgroundImage: `url(${WallpaperImage})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="w-full max-w-xl bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-md rounded-md p-8 space-y-6">
         <div>
           <img
             className="mx-auto h-10 md:h-12 lg:h-14 w-auto"

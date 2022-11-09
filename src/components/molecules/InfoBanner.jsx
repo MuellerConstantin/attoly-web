@@ -2,8 +2,8 @@ import ExternalLink from "../atoms/ExternalLink";
 
 export default function InfoBanner() {
   return (
-    <div className="bg-orange-500 text-white dark:text-gray-800">
-      <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:flex lg:items-center lg:justify-between lg:py-16 lg:px-8">
+    <div className="bg-sky-500 text-white dark:text-gray-800">
+      <div className="mx-auto max-w-[100rem] py-12 px-4 sm:px-6 lg:flex lg:items-center lg:justify-between lg:py-16 lg:px-8">
         <div>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             Attention, Excavators! &#128736;
@@ -21,7 +21,7 @@ export default function InfoBanner() {
               target="_blank"
               rel="noreferrer"
               type="button"
-              className="px-5 py-3"
+              className="px-5 py-3 !bg-orange-500 !focus:outline-orange-500"
             >
               Learn more
             </ExternalLink>

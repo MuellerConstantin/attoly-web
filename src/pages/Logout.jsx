@@ -20,13 +20,15 @@ export default function Logout() {
   return (
     <StackTemplate>
       <div className="h-full bg-gray-50 dark:bg-gray-600 flex items-center justify-center px-4 py-12">
-        <div className="w-full max-w-4xl">
+        <div className="w-full md:max-w-2xl lg:max-w-4xl 2xl:max-w-6xl 2xl:max-w-[100rem]">
           <div className="flex flex-col md:flex-row md:space-x-8 space-y-6 md:space-y-0 justify-center items-center text-gray-800 dark:text-white">
-            <div className="w-1/2 sm:w-1/3 md:w-2/3">
+            <div className="w-1/2 sm:w-1/3 md:w-2/3 xl:w-1/2">
               <img className="w-full h-full" src={LogoutImage} alt="Logout" />
             </div>
             <div className="flex flex-col text-center md:text-left">
-              <div className="text-3xl">Hope to see you soon</div>
+              <div className="text-xl sm:text-2xl lg:text-4xl">
+                Hope to see you soon
+              </div>
               <div>
                 You have been logged out. To log in again click&nbsp;
                 <Link to="/login">here</Link>.
