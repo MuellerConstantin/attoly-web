@@ -2,6 +2,18 @@ import { useEffect, useState, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { Formik } from "formik";
 import * as yup from "yup";
+import {
+  EmailShareButton,
+  EmailIcon,
+  FacebookShareButton,
+  FacebookIcon,
+  TelegramShareButton,
+  TelegramIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+} from "react-share";
 import StackTemplate from "../components/templates/StackTemplate";
 import TextField from "../components/atoms/TextField";
 import Button from "../components/atoms/Button";
@@ -138,7 +150,7 @@ export default function GetStarted() {
           </Formik>
         </div>
         {shortcut && (
-          <div className="w-full max-w-xl bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-md rounded-md p-8 space-y-6">
+          <div className="w-full max-w-2xl bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-md rounded-md p-8 space-y-6">
             <h1 className="mt-4 text-center text-2xl font-bold mt-0">
               Your shortened URL
             </h1>
@@ -157,6 +169,37 @@ export default function GetStarted() {
               >
                 Copy
               </Button>
+            </div>
+            <div className="space-y-2">
+              <h2 className="text-lg font-bold mt-0">Share URL</h2>
+              <div className="space-x-2">
+                <EmailShareButton
+                  url={`${window.location.origin}/redirect/${shortcut.tag}`}
+                  subject="Check out this URL"
+                >
+                  <EmailIcon size={32} round />
+                </EmailShareButton>
+                <FacebookShareButton
+                  url={`${window.location.origin}/redirect/${shortcut.tag}`}
+                >
+                  <FacebookIcon size={32} round />
+                </FacebookShareButton>
+                <WhatsappShareButton
+                  url={`${window.location.origin}/redirect/${shortcut.tag}`}
+                >
+                  <WhatsappIcon size={32} round />
+                </WhatsappShareButton>
+                <TwitterShareButton
+                  url={`${window.location.origin}/redirect/${shortcut.tag}`}
+                >
+                  <TwitterIcon size={32} round />
+                </TwitterShareButton>
+                <TelegramShareButton
+                  url={`${window.location.origin}/redirect/${shortcut.tag}`}
+                >
+                  <TelegramIcon size={32} round />
+                </TelegramShareButton>
+              </div>
             </div>
           </div>
         )}
