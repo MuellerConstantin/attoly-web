@@ -158,7 +158,7 @@ export default function Navbar() {
                       </Popover.Button>
                       <Popover.Panel
                         ref={setPopupDialogElement}
-                        className="shadow-md border dark:border-gray-900 rounded-md z-10 w-screen max-w-xs sm:max-w-sm bg-white dark:bg-gray-600 text-gray-800 dark:text-white"
+                        className="shadow-md border dark:border-gray-900 rounded-md z-50 w-screen max-w-xs sm:max-w-sm bg-white dark:bg-gray-600 text-gray-800 dark:text-white"
                         style={styles.popper}
                         {...attributes.popper}
                       >
