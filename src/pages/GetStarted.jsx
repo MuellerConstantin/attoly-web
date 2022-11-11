@@ -14,6 +14,7 @@ import {
   WhatsappShareButton,
   WhatsappIcon,
 } from "react-share";
+import { QRCodeCanvas } from "qrcode.react";
 import StackTemplate from "../components/templates/StackTemplate";
 import TextField from "../components/atoms/TextField";
 import Button from "../components/atoms/Button";
@@ -170,7 +171,7 @@ export default function GetStarted() {
                 Copy
               </Button>
             </div>
-            <div className="space-y-2">
+            <div className="space-y-2 text-center">
               <h2 className="text-lg font-bold mt-0">Share URL</h2>
               <div className="space-x-2">
                 <EmailShareButton
@@ -200,6 +201,31 @@ export default function GetStarted() {
                   <TelegramIcon size={32} round />
                 </TelegramShareButton>
               </div>
+            </div>
+            <div className="space-y-2 text-center flex flex-col items-center">
+              <h2 className="text-lg font-bold mt-0">Share QR-Code</h2>
+              <div className="w-fit p-2 bg-white">
+                <QRCodeCanvas
+                  id="qrcode"
+                  size="194"
+                  value={`${window.location.origin}/redirect/${shortcut.tag}`}
+                />
+              </div>
+              <Button
+                onClick={() => {
+                  const qrCodeURL = document
+                    .getElementById("qrcode")
+                    .toDataURL("image/png")
+                    .replace("image/png", "image/octet-stream");
+
+                  const link = document.createElement("a");
+                  link.href = qrCodeURL;
+                  link.download = "QR-Code.png";
+                  link.click();
+                }}
+              >
+                Download QR-Code
+              </Button>
             </div>
           </div>
         )}
