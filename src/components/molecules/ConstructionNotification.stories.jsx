@@ -1,16 +1,16 @@
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
-import InfoBanner from "./InfoBanner";
+import ConstructionNotification from "./ConstructionNotification";
 
 export default {
-  title: "Molecules/InfoBanner",
-  component: InfoBanner,
+  title: "Molecules/ConstructionNotification",
+  component: ConstructionNotification,
 };
 
 function Template(args) {
   return (
     <MemoryRouter>
-      <InfoBanner {...args} />
+      <ConstructionNotification {...args} />
     </MemoryRouter>
   );
 }

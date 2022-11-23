@@ -1,8 +1,11 @@
+import { useTranslation } from "react-i18next";
 import Link from "../atoms/Link";
 
 import JumbotronImage from "../../assets/images/jumbotron.svg";
 
 export default function Jumbotron() {
+  const { t } = useTranslation();
+
   return (
     <div className="relative bg-white dark:bg-gray-800">
       <div className="max-w-[100rem] z-10 mx-auto relative overflow-hidden flex flex-col">
@@ -24,14 +27,13 @@ export default function Jumbotron() {
             <div className="mx-auto p-4 sm:p-6">
               <div className="sm:text-center lg:text-left">
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-                  Possibility to simplify your&nbsp;
-                  <span className="text-sky-500">URL sharing</span>
+                  {t("components.jumbotron.title.odd")}&nbsp;
+                  <span className="text-sky-500">
+                    {t("components.jumbotron.title.even")}
+                  </span>
                 </h1>
                 <p className="mt-3 text-base text-gray-500 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-xl lg:mx-0">
-                  Attoly allows creating short links as aliases for long URLs,
-                  which are easier to embed in websites, chats and documents.
-                  Stop using URLs that are far too long and prone to errors and
-                  get your personal Attoly Shortcut now.
+                  {t("components.jumbotron.description")}
                 </p>
                 <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                   <div className="rounded-md shadow">
@@ -40,7 +42,7 @@ export default function Jumbotron() {
                       type="button"
                       className="w-full px-8 py-3 md:py-4 md:px-10 md:text-lg"
                     >
-                      Get started
+                      {t("components.jumbotron.get-started")}
                     </Link>
                   </div>
                   <div className="mt-3 sm:mt-0 sm:ml-3">
@@ -49,7 +51,7 @@ export default function Jumbotron() {
                       type="button"
                       className="w-full px-8 py-3 md:py-4 md:px-10 md:text-lg !bg-orange-500 !focus:outline-orange-500"
                     >
-                      Register now
+                      {t("components.jumbotron.register-now")}
                     </Link>
                   </div>
                 </div>

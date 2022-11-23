@@ -1,5 +1,6 @@
 import axios from "axios";
 import authSlice from "../store/slices/auth";
+import i18n from "../i18n";
 
 let store;
 
@@ -22,6 +23,9 @@ api.interceptors.request.use((config) => {
     // eslint-disable-next-line no-param-reassign
     config.headers.Authorization = `Bearer ${state.auth.accessToken}`;
   }
+
+  // eslint-disable-next-line no-param-reassign
+  config.headers["Accept-Language"] = i18n.resolvedLanguage;
 
   return config;
 });

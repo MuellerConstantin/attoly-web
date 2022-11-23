@@ -1,0 +1,60 @@
+{
+  "components": {
+    "navbar": {
+      "navigation": {
+        "home": "Home",
+        "get-started": "Get Started",
+        "about": "About",
+        "login": "Login",
+        "register": "Register"
+      },
+      "menu": {
+        "open-menu": "Open Main Menu",
+        "toggle-dark-mode": "Toggle Dark Mode",
+        "dark-mode": "Dark Mode"
+      }
+    },
+    "footer": {
+      "creation-notice": {
+        "odd": "Made with ❤️ by",
+        "even": "0x1C1B"
+      }
+    },
+    "jumbotron": {
+      "title": {
+        "odd": "Possibility to simplify your",
+        "even": "URL sharing"
+      },
+      "description": "Attoly allows creating short links as aliases for long URLs, which are easier to embed in websites, chats and documents. Stop using URLs that are far too long and prone to errors and get your personal Attoly Shortcut now.",
+      "get-started": "Get Started",
+      "register-now": "Register now"
+    },
+    "construction-notification": {
+      "title": "Attention, Excavators! 🚧",
+      "description": "This site and the associated services are originally a pure learning project. The construction of our platform is therefore not yet final and is progressing steadily.",
+      "learn-more": "Learn more"
+    },
+    "feature-show": {
+      "title": "A better way to short links",
+      "description": "Create short links in seconds and share them across all the platforms you use. See what we offer you:",
+      "features": {
+        "managament": {
+          "title": "Easy Link Management",
+          "description": "An easy-to-use application to manage all your shortcuts and content. You are in control of everything down to the smallest detail."
+        },
+        "qrcode": {
+          "title": "Generate QR-Codes",
+          "description": "In addition to a short link, you can also conveniently generate a QR code that can be shared around the world and linked directly to your content."
+        },
+        "compatibility": {
+          "title": "Device Compatibility",
+          "description": "Our service works across devices. Thanks to our responsive-first approach, this applies in particular to our management portal and our website."
+        },
+        "prices": {
+          "title": "Fair prices",
+          "description": "Thanks to our open source approach, we can achieve extremely cheap and fair prices. A large part of our services even remains completely free."
+        }
+      }
+    }
+  }
+}

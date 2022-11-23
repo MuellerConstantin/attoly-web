@@ -8,6 +8,7 @@ import { injectStore } from "./api";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+import "./i18n";
 import "./styles/globals.css";
 
 injectStore(store);

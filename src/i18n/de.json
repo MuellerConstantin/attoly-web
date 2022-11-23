@@ -1,0 +1,60 @@
+{
+  "components": {
+    "navbar": {
+      "navigation": {
+        "home": "Home",
+        "get-started": "Jetzt loslegen",
+        "about": "Über uns",
+        "login": "Login",
+        "register": "Registrieren"
+      },
+      "menu": {
+        "open-menu": "Öffne Hauptmenü",
+        "toggle-dark-mode": "Ein/Aus Dunkelmodus",
+        "dark-mode": "Dunkelmodus"
+      }
+    },
+    "footer": {
+      "creation-notice": {
+        "odd": "Mit ❤️ erstellt von",
+        "even": "0x1C1B"
+      }
+    },
+    "jumbotron": {
+      "title": {
+        "odd": "Verkürze dein",
+        "even": "URL sharing"
+      },
+      "description": "Attoly ermöglicht das Erstellen kurzer Links als Aliase für lange URLs, die sich einfacher in Websites, Chats und Dokumente einbetten lassen. Verzichten Sie auf viel zu lange und fehleranfällige URLs und holen Sie sich jetzt Ihren persönlichen Attoly Shortcut.",
+      "get-started": "Jetzt loslegen",
+      "register-now": "Registriere dich jetzt"
+    },
+    "construction-notification": {
+      "title": "Achtung, Bagger! 🚧",
+      "description": "Diese Seite und die dazugehörigen Dienste sind ursprünglich ein reines Lernprojekt. Der Aufbau unserer Plattform ist daher noch nicht final und schreitet stetig voran.",
+      "learn-more": "Lerne mehr"
+    },
+    "feature-show": {
+      "title": "Ein besserer Weg Links kurzzuhalten",
+      "description": "Erstellen Sie kurze Links in Sekunden und teilen Sie sie auf allen Plattformen, die Sie verwenden. Sehen Sie, was wir Ihnen bieten:",
+      "features": {
+        "managament": {
+          "title": "Einfaches Link Management",
+          "description": "Eine benutzerfreundliche Anwendung zum Verwalten all Ihrer Verknüpfungen und Inhalte. Sie haben alles bis ins kleinste Detail unter Kontrolle."
+        },
+        "qrcode": {
+          "title": "Generiere QR-Codes",
+          "description": "Neben einem Kurzlink können Sie auch bequem einen QR-Code generieren, der weltweit geteilt und direkt mit Ihren Inhalten verlinkt werden kann."
+        },
+        "compatibility": {
+          "title": "Geräte Kompatibilität",
+          "description": "Unser Service funktioniert geräteübergreifend. Dank unseres Responsive-First-Ansatzes gilt dies insbesondere für unser Verwaltungsportal und unsere Website."
+        },
+        "prices": {
+          "title": "Faire Preise",
+          "description": "Durch unseren Open-Source-Ansatz können wir extrem günstige und faire Preise erzielen. Ein Großteil unserer Services bleibt sogar komplett kostenlos."
+        }
+      }
+    }
+  }
+}
