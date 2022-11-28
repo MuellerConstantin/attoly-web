@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { Formik } from "formik";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import StackTemplate from "../components/templates/StackTemplate";
@@ -13,12 +14,17 @@ import { generateToken } from "../api/auth";
 import Logo from "../assets/images/logo.svg";
 import WallpaperImage from "../assets/images/wallpaper.svg";
 
-const schema = yup.object().shape({
-  email: yup.string().email("Must be a valid email").required("Is required"),
-  password: yup.string().required("Is required"),
-});
-
 export default function Login() {
+  const { t } = useTranslation();
+
+  const schema = yup.object().shape({
+    email: yup
+      .string()
+      .email(t("validation.email"))
+      .required(t("validation.required")),
+    password: yup.string().required(t("validation.required")),
+  });
+
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -26,8 +32,8 @@ export default function Login() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    document.title = "TaskCare | Login";
-  }, []);
+    document.title = `Attoly | ${t("pages.login.title")}`;
+  }, [t]);
 
   const onLogin = useCallback(
     async (values) => {
@@ -50,9 +56,9 @@ export default function Login() {
         navigate("/home");
       } catch (err) {
         if (err.response && err.response.status === 401) {
-          setError("Either username or password are wrong!");
+          setError(t("pages.login.credentials-error"));
         } else {
-          setError("An unexpected error occurred, please retry!");
+          setError(t("pages.login.error"));
         }
 
         throw err;
@@ -60,7 +66,7 @@ export default function Login() {
         setLoading(false);
       }
     },
-    [dispatch, navigate, setLoading, setError]
+    [dispatch, navigate, setLoading, setError, t]
   );
 
   return (
@@ -81,7 +87,7 @@ export default function Login() {
               alt="Logo"
             />
             <h1 className="mt-4 text-center lg:text-3xl text-2xl font-bold">
-              Sign in to your account
+              {t("pages.login.headline")}
             </h1>
           </div>
           {error && <p className="text-center text-red-500">{error}</p>}
@@ -100,8 +106,8 @@ export default function Login() {
                   <TextField
                     name="email"
                     type="email"
-                    placeholder="E-Mail"
-                    label="E-Mail"
+                    placeholder={t("pages.login.email-field")}
+                    label={t("pages.login.email-field")}
                     disabled={loading}
                     onChange={props.handleChange}
                     onBlur={props.handleBlur}
@@ -114,8 +120,8 @@ export default function Login() {
                   <TextField
                     name="password"
                     type="password"
-                    placeholder="Password"
-                    label="Password"
+                    placeholder={t("pages.login.password-field")}
+                    label={t("pages.login.password-field")}
                     disabled={loading}
                     onChange={props.handleChange}
                     onBlur={props.handleBlur}
@@ -129,7 +135,7 @@ export default function Login() {
                   disabled={!(props.isValid && props.dirty) || loading}
                   className="w-full flex justify-center"
                 >
-                  {!loading && <span>Login</span>}
+                  {!loading && <span>{t("pages.login.login")}</span>}
                   {loading && (
                     <div className="w-6 h-6 border-b-2 border-white rounded-full animate-spin" />
                   )}
@@ -137,16 +143,15 @@ export default function Login() {
               </form>
             )}
           </Formik>
-          <div className="flex flex-col md:flex-row justify-center md:space-x-2">
+          <div className="flex flex-col md:flex-row justify-between md:space-x-2">
             <div className="text-center">
               <Link className="!text-sm" to="/reset-password">
-                Forgot your password?
+                {t("pages.login.forgot-password")}
               </Link>
             </div>
-            <div className="hidden md:block">|</div>
             <div className="text-center">
               <Link className="!text-sm" to="/verify-user">
-                Activate your account?
+                {t("pages.login.verify-user")}
               </Link>
             </div>
           </div>
@@ -156,7 +161,7 @@ export default function Login() {
             className="!text-sm !text-gray-800 !dark:text-white"
             to="/register"
           >
-            Don&apos;t have an account?
+            {t("pages.login.no-account")}
           </Link>
         </div>
       </div>

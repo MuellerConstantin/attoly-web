@@ -1,19 +1,18 @@
 import { useEffect, useCallback, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Formik } from "formik";
+import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import StackTemplate from "../components/templates/StackTemplate";
 import TextField from "../components/atoms/TextField";
 import Button from "../components/atoms/Button";
-import Link from "../components/atoms/Link";
 import { requestResetEmail, resetPassword } from "../api/users";
 
 import Logo from "../assets/images/logo.svg";
 import WallpaperImage from "../assets/images/wallpaper.svg";
-import PasswordResetImage from "../assets/images/password-reset.svg";
-import ErrorImage from "../assets/images/error.svg";
 
 function ResetPasswordConfirmation() {
+  const { t } = useTranslation();
   const [searchParams] = useSearchParams();
 
   const [error, setError] = useState(null);
@@ -29,7 +28,7 @@ function ResetPasswordConfirmation() {
   });
 
   const onResetPassword = useCallback(
-    async (values) => {
+    async (values, { setFieldError, resetForm }) => {
       setLoading(true);
       setSuccess(null);
       setError(null);
@@ -40,14 +39,17 @@ function ResetPasswordConfirmation() {
           password: values.password,
         });
 
-        setSuccess(true);
+        resetForm();
+        setSuccess(t("pages.reset-password.reset-success"));
       } catch (err) {
         if (err.response && err.response.status === 410) {
-          setError(
-            "The reset link is not valid. The token used may have expired."
+          setError(t("pages.reset-password.expiry-error"));
+        } else if (err.response && err.response.status === 422) {
+          err.response.data.details?.forEach((detail) =>
+            setFieldError(detail.field, detail.message)
           );
         } else {
-          setError("An unexpected error occurred, please retry!");
+          setError(t("pages.reset-password.error"));
         }
 
         throw err;
@@ -55,58 +57,8 @@ function ResetPasswordConfirmation() {
         setLoading(false);
       }
     },
-    [searchParams, setLoading, setSuccess, setError]
+    [searchParams, setLoading, setSuccess, setError, t]
   );
-
-  if (success) {
-    return (
-      <div className="h-full flex items-center justify-center px-4 py-12">
-        <div className="w-full md:max-w-2xl lg:max-w-4xl 2xl:max-w-6xl 2xl:max-w-[100rem]">
-          <div className="flex flex-col md:flex-row md:space-x-8 space-y-6 md:space-y-0 justify-center items-center text-gray-800 dark:text-white">
-            <div className="w-1/2 sm:w-1/3 md:w-2/3 xl:w-1/2">
-              <img
-                className="w-full h-full"
-                src={PasswordResetImage}
-                alt="Password Reset"
-              />
-            </div>
-            <div className="flex flex-col text-center md:text-left">
-              <div className="text-xl sm:text-2xl lg:text-4xl">
-                Password reset.
-              </div>
-              <div>
-                The password has been reset successfully, to log in click&nbsp;
-                <Link to="/login">here</Link>.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="h-full flex items-center justify-center px-4 py-12">
-        <div className="w-full md:max-w-2xl lg:max-w-4xl 2xl:max-w-6xl 2xl:max-w-[100rem]">
-          <div className="flex flex-col md:flex-row md:space-x-8 space-y-6 md:space-y-0 justify-center items-center text-gray-800 dark:text-white">
-            <div className="w-1/2 sm:w-1/3 md:w-2/3 xl:w-1/2">
-              <img className="w-full h-full" src={ErrorImage} alt="Error" />
-            </div>
-            <div className="flex flex-col text-center md:text-left">
-              <div className="text-xl sm:text-2xl lg:text-4xl">
-                Oops! Something get wrong
-              </div>
-              <div>
-                {error}&nbsp;To try again click&nbsp;
-                <Link to="/reset-password">here</Link>.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div
@@ -125,13 +77,12 @@ function ResetPasswordConfirmation() {
             alt="Logo"
           />
           <h1 className="mt-4 text-center lg:text-3xl text-2xl font-bold">
-            Reset your account password
+            {t("pages.reset-password.headline")}
           </h1>
         </div>
-        <p>
-          Have you forgotten your password and you can no longer log in? No
-          problem. Get an email with a link to reset your password.
-        </p>
+        <p>{t("pages.reset-password.description")}</p>
+        {success && <p className="text-center text-green-500">{success}</p>}
+        {error && <p className="text-center text-red-500">{error}</p>}
         <Formik
           initialValues={{ password: "", passwordConfirmation: "" }}
           validationSchema={schema}
@@ -147,8 +98,8 @@ function ResetPasswordConfirmation() {
                 <TextField
                   name="password"
                   type="password"
-                  placeholder="Password"
-                  label="Password"
+                  placeholder={t("pages.reset-password.password-field")}
+                  label={t("pages.reset-password.password-field")}
                   disabled={loading}
                   onChange={props.handleChange}
                   onBlur={props.handleBlur}
@@ -161,8 +112,8 @@ function ResetPasswordConfirmation() {
                 <TextField
                   name="passwordConfirmation"
                   type="password"
-                  placeholder="Confirm Password"
-                  label="Confirm Password"
+                  placeholder={t("pages.reset-password.confirm-password-field")}
+                  label={t("pages.reset-password.confirm-password-field")}
                   disabled={loading}
                   onChange={props.handleChange}
                   onBlur={props.handleBlur}
@@ -179,7 +130,9 @@ function ResetPasswordConfirmation() {
                 disabled={!(props.isValid && props.dirty) || loading}
                 className="w-full flex justify-center"
               >
-                {!loading && <span>Reset password</span>}
+                {!loading && (
+                  <span>{t("pages.reset-password.reset-password")}</span>
+                )}
                 {loading && (
                   <div className="w-6 h-6 border-b-2 border-white rounded-full animate-spin" />
                 )}
@@ -193,36 +146,44 @@ function ResetPasswordConfirmation() {
 }
 
 function ResetPasswordRequest() {
+  const { t } = useTranslation();
+
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const schema = yup.object().shape({
-    email: yup.string().email("Must be a valid email").required("Is required"),
+    email: yup
+      .string()
+      .email(t("validation.email"))
+      .required(t("validation.required")),
   });
 
-  const onSend = useCallback(async (values, { resetForm }) => {
-    setLoading(true);
-    setSuccess(null);
-    setError(null);
+  const onSend = useCallback(
+    async (values, { resetForm }) => {
+      setLoading(true);
+      setSuccess(null);
+      setError(null);
 
-    try {
-      await requestResetEmail(values.email);
+      try {
+        await requestResetEmail(values.email);
 
-      resetForm();
-      setSuccess("The email with the reset link was sent successfully.");
-    } catch (err) {
-      if (err.response && err.response.status === 404) {
-        setError("No account could be found with this email.");
-      } else {
-        setError("An unexpected error occurred, please retry!");
+        resetForm();
+        setSuccess(t("pages.reset-password.email-sent-success"));
+      } catch (err) {
+        if (err.response && err.response.status === 404) {
+          setError(t("pages.reset-password.unknown-email-error"));
+        } else {
+          setError(t("pages.reset-password.error"));
+        }
+
+        throw err;
+      } finally {
+        setLoading(false);
       }
-
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+    },
+    [t]
+  );
 
   return (
     <div
@@ -241,13 +202,10 @@ function ResetPasswordRequest() {
             alt="Logo"
           />
           <h1 className="mt-4 text-center lg:text-3xl text-2xl font-bold">
-            Reset your account password
+            {t("pages.reset-password.headline")}
           </h1>
         </div>
-        <p>
-          Have you forgotten your password and you can no longer log in? No
-          problem. Get an email with a link to reset your password.
-        </p>
+        <p>{t("pages.reset-password.description")}</p>
         {success && <p className="text-center text-green-500">{success}</p>}
         {error && <p className="text-center text-red-500">{error}</p>}
         <Formik
@@ -265,8 +223,8 @@ function ResetPasswordRequest() {
                 <TextField
                   name="email"
                   type="email"
-                  placeholder="E-Mail"
-                  label="E-Mail"
+                  placeholder={t("pages.reset-password.email-field")}
+                  label={t("pages.reset-password.email-field")}
                   disabled={loading}
                   onChange={props.handleChange}
                   onBlur={props.handleBlur}
@@ -280,7 +238,9 @@ function ResetPasswordRequest() {
                 disabled={!(props.isValid && props.dirty) || loading}
                 className="w-full flex justify-center"
               >
-                {!loading && <span>Send e-mail</span>}
+                {!loading && (
+                  <span>{t("pages.reset-password.send-email")}</span>
+                )}
                 {loading && (
                   <div className="w-6 h-6 border-b-2 border-white rounded-full animate-spin" />
                 )}
@@ -294,11 +254,12 @@ function ResetPasswordRequest() {
 }
 
 export default function ResetPassword() {
+  const { t } = useTranslation();
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    document.title = "Attoly | Reset Password";
-  }, []);
+    document.title = `Attoly | ${t("pages.reset-password.title")}`;
+  }, [t]);
 
   return (
     <StackTemplate>

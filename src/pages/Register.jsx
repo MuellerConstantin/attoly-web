@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { useTranslation, Trans } from "react-i18next";
 import { Formik } from "formik";
 import * as yup from "yup";
 import StackTemplate from "../components/templates/StackTemplate";
@@ -10,23 +11,28 @@ import { createUser } from "../api/users";
 import Logo from "../assets/images/logo.svg";
 import WallpaperImage from "../assets/images/wallpaper.svg";
 
-const schema = yup.object().shape({
-  email: yup.string().email("Must be a valid email").required("Is required"),
-  password: yup.string().required("Is required"),
-  passwordConfirmation: yup
-    .string()
-    .oneOf([yup.ref("password")], "Passwords must match")
-    .required("Is required"),
-});
-
 export default function Register() {
+  const { t } = useTranslation();
+
+  const schema = yup.object().shape({
+    email: yup
+      .string()
+      .email(t("validation.email"))
+      .required(t("validation.required")),
+    password: yup.string().required(t("validation.required")),
+    passwordConfirmation: yup
+      .string()
+      .oneOf([yup.ref("password")], t("validation.confirm-password"))
+      .required(t("validation.required")),
+  });
+
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    document.title = "TaskCare | Register";
-  }, []);
+    document.title = `Attoly | ${t("pages.register.title")}`;
+  }, [t]);
 
   const onCreate = useCallback(
     async (values, { setFieldError, resetForm }) => {
@@ -41,16 +47,14 @@ export default function Register() {
         });
 
         resetForm();
-        setSuccess(
-          "The user account has been created successfully. To activate the account, follow the instructions in the email that will be sent to you."
-        );
+        setSuccess(t("pages.register.success"));
       } catch (err) {
         if (err.response && err.response.status === 422) {
           err.response.data.details?.forEach((detail) =>
             setFieldError(detail.field, detail.message)
           );
         } else {
-          setError("An unexpected error occurred, please retry!");
+          setError(t("pages.register.error"));
         }
 
         throw err;
@@ -58,7 +62,7 @@ export default function Register() {
         setLoading(false);
       }
     },
-    [setLoading, setError, setSuccess]
+    [setLoading, setError, setSuccess, t]
   );
 
   return (
@@ -79,7 +83,7 @@ export default function Register() {
               alt="Logo"
             />
             <h1 className="mt-4 text-center lg:text-3xl text-2xl font-bold">
-              Create your new account
+              {t("pages.register.headline")}
             </h1>
           </div>
           {success && <p className="text-center text-green-500">{success}</p>}
@@ -103,8 +107,8 @@ export default function Register() {
                   <TextField
                     name="email"
                     type="email"
-                    placeholder="E-Mail"
-                    label="E-Mail"
+                    placeholder={t("pages.register.email-field")}
+                    label={t("pages.register.email-field")}
                     disabled={loading}
                     onChange={props.handleChange}
                     onBlur={props.handleBlur}
@@ -117,8 +121,8 @@ export default function Register() {
                   <TextField
                     name="password"
                     type="password"
-                    placeholder="Password"
-                    label="Password"
+                    placeholder={t("pages.register.password-field")}
+                    label={t("pages.register.password-field")}
                     disabled={loading}
                     onChange={props.handleChange}
                     onBlur={props.handleBlur}
@@ -131,8 +135,8 @@ export default function Register() {
                   <TextField
                     name="passwordConfirmation"
                     type="password"
-                    placeholder="Confirm Password"
-                    label="Confirm Password"
+                    placeholder={t("pages.register.confirm-password-field")}
+                    label={t("pages.register.confirm-password-field")}
                     disabled={loading}
                     onChange={props.handleChange}
                     onBlur={props.handleBlur}
@@ -149,16 +153,20 @@ export default function Register() {
                   disabled={!(props.isValid && props.dirty) || loading}
                   className="w-full flex justify-center"
                 >
-                  {!loading && <span>Register</span>}
+                  {!loading && <span>{t("pages.register.register")}</span>}
                   {loading && (
                     <div className="w-6 h-6 border-b-2 border-white rounded-full animate-spin" />
                   )}
                 </Button>
                 <p className="text-center text-xs">
-                  By clicking &quot;Register&quot; you agree to our&nbsp;
-                  <Link to="/terms-of-use">Terms of Use</Link>
-                  &nbsp;and our&nbsp;
-                  <Link to="/privacy-policy">Privacy Policy</Link>.
+                  <Trans
+                    t={t}
+                    i18nKey="pages.register.usage-terms-notice"
+                    components={{
+                      "terms-hyperlink": <Link to="/terms-of-use" />,
+                      "privacy-hyperlink": <Link to="/privacy-policy" />,
+                    }}
+                  />
                 </p>
               </form>
             )}
@@ -169,7 +177,7 @@ export default function Register() {
             className="!text-sm !text-gray-800 !dark:text-white"
             to="/login"
           >
-            Already have an account?
+            {t("pages.register.have-account")}
           </Link>
         </div>
       </div>

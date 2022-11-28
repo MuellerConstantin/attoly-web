@@ -98,7 +98,7 @@ export default function Navbar() {
                   <div className="hidden md:flex space-x-4 items-center justify-between">
                     <Link
                       to="/login"
-                      className="!text-white dark:text-gray-800"
+                      className="!text-white dark:!text-gray-800"
                     >
                       {t("components.navbar.navigation.login")}
                     </Link>

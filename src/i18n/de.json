@@ -2,10 +2,10 @@
   "components": {
     "navbar": {
       "navigation": {
-        "home": "Home",
+        "home": "Startseite",
         "get-started": "Jetzt loslegen",
         "about": "Über uns",
-        "login": "Login",
+        "login": "Anmeldung",
         "register": "Registrieren"
       },
       "menu": {
@@ -15,16 +15,10 @@
       }
     },
     "footer": {
-      "creation-notice": {
-        "odd": "Mit ❤️ erstellt von",
-        "even": "0x1C1B"
-      }
+      "creation-notice": "Mit ❤️ von <hyperlink>0x1C1B</hyperlink> erstellt"
     },
     "jumbotron": {
-      "title": {
-        "odd": "Verkürze dein",
-        "even": "URL sharing"
-      },
+      "title": "Verkürze dein <highlight>URL sharing</highlight>",
       "description": "Attoly ermöglicht das Erstellen kurzer Links als Aliase für lange URLs, die sich einfacher in Websites, Chats und Dokumente einbetten lassen. Verzichten Sie auf viel zu lange und fehleranfällige URLs und holen Sie sich jetzt Ihren persönlichen Attoly Shortcut.",
       "get-started": "Jetzt loslegen",
       "register-now": "Registriere dich jetzt"
@@ -55,6 +49,100 @@
           "description": "Durch unseren Open-Source-Ansatz können wir extrem günstige und faire Preise erzielen. Ein Großteil unserer Services bleibt sogar komplett kostenlos."
         }
       }
+    }
+  },
+  "validation": {
+    "url": "Muss eine gültige URL sein",
+    "required": "Muss ausgefüllt sein",
+    "email": "Muss eine gültige E-Mail sein",
+    "confirm-password": "Passwörter müssen übereinstimmen"
+  },
+  "pages": {
+    "home": {
+      "title": "Startseite"
+    },
+    "login": {
+      "title": "Anmeldung",
+      "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
+      "credentials-error": "Benutzername und/oder Passwort sind falsch!",
+      "headline": "Mit einem Account anmelden",
+      "email-field": "E-Mail",
+      "password-field": "Passwort",
+      "login": "Anmelden",
+      "forgot-password": "Passwort vergessen?",
+      "verify-user": "Account Aktivierung erforderlich?",
+      "no-account": "Du hast keinen Account?"
+    },
+    "register": {
+      "title": "Registrierung",
+      "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
+      "success": "Der Account wurde erfolgreich erstellt. Um diesen zu Aktivieren, folge den Anweisungen in der E-Mail.",
+      "headline": "Erstelle einen neuen Account",
+      "email-field": "E-Mail",
+      "password-field": "Passwort",
+      "confirm-password-field": "Passwort bestätigen",
+      "register": "Registrieren",
+      "usage-terms-notice": "Durch das Klicken auf \"Registrieren\" akzeptierst du unsere <terms-hyperlink>Allgemeine Geschäftsbedingungen</terms-hyperlink> und unsere <privacy-hyperlink>Privatsphäre-Einstellungen</privacy-hyperlink>.",
+      "have-account": "Du hast bereits einen Account?"
+    },
+    "logout": {
+      "title": "Abmeldung",
+      "headline": "Bis bald.",
+      "description": "Du wurdest abgemeldet. Um dich wieder anzumelden klicke <hyperlink>hier</hyperlink>."
+    },
+    "not-found": {
+      "title": "404",
+      "headline": "Upps! Die Seite wurde nicht gefunden.",
+      "description": "Die gesuchte Seite wurde nicht gefunden. Kehre zur <hyperlink>Startseite</hyperlink> zurück."
+    },
+    "redirect": {
+      "title": "Weiterleitung",
+      "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
+      "headline": "Weiterleitung erfolgt...",
+      "description": "Bitte beachten Sie, dass wir für die Inhalte Dritter keine Gewähr übernehmen können. Links können dich immer zu potenziell unerwünschten Inhalten führen. Wir versuchen, solche Links so gut wie möglich zu entfernen. Letztlich haftet aber der Ersteller des Links, dem du folgst, und nicht unsere Plattform.",
+      "redirect-me": "Leite mich weiter",
+      "advertising": "Hier könnte Ihre Werbung stehen."
+    },
+    "reset-password": {
+      "title": "Passwort zurücksetzen",
+      "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
+      "expiry-error": "Der Link zum Zurücksetzen des Passworts ist abgelaufen!",
+      "unknown-email-error": "Es konnte kein Account mit dieser E-Mail gefunden werden!",
+      "email-sent-success": "Die E-Mail wurde erfolgreich versandt.",
+      "reset-success": "Das Passwort wurde erfolgreich zurückgesetzt.",
+      "headline": "Setze dein Passwort zurück",
+      "description": "Du hast dein Passwort vergessen? Kein Problem. Empfangen Sie eine E-Mail und setzten Sie das Passwort per E-Mail zurück.",
+      "email-field": "E-Mail",
+      "password-field": "Passwort",
+      "confirm-password-field": "Passwort bestätigen",
+      "send-email": "E-Mail senden",
+      "reset-password": "Passwort zurücksetzen"
+    },
+    "verify-user": {
+      "title": "Benutzer verifizieren",
+      "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
+      "expiry-error": "Der Link zum Verifizieren des Benutzers ist abgelaufen!",
+      "unknown-email-error": "Es konnte kein Account mit dieser E-Mail gefunden werden!",
+      "email-sent-success": "Die E-Mail wurde erfolgreich versandt.",
+      "verify-success": "Der Benutzer wurde erfolgreich verifiziert und der Account aktiviert.",
+      "headline": "Aktiviere deinen account",
+      "description": "Falls die ursprüngliche E-Mail mit dem Link zur Verifizierung des Benutzers nicht angekommen ist oder der Link bereits abgelaufen ist, kann hier eine neue E-Mail versendet werden. Folgen Sie dann den Anweisungen in der E-Mail, um das Konto zu aktivieren.",
+      "email-field": "E-Mail",
+      "send-email": "E-Mail senden"
+    },
+    "get-started": {
+      "title": "Jetzt loslegen",
+      "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
+      "request-headline": "Füge die URL ein, die du verkürzen möchtest",
+      "url-field": "URL",
+      "generate-shortcut": "Erstelle Shortcut",
+      "usage-terms-notice": "Durch das Klicken auf \"Erstelle Shortcut\" akzeptierst du unsere <terms-hyperlink>Allgemeine Geschäftsbedingungen</terms-hyperlink> und unsere <privacy-hyperlink>Privatsphäre-Einstellungen</privacy-hyperlink>.",
+      "expiry-notice": "Du bist nicht angemeldet. Deine Shortcuts werden daher nach einiger Zeit automatisch wieder gelöscht. Um das zu ändern, <hyperlink>melde dich an</hyperlink>.",
+      "response-headline": "Deine abgekürzte URL",
+      "share-url": "URL teilen",
+      "copy-url": "Kopieren",
+      "share-qrcode": "QR-Code teilen",
+      "download-qrcode": "QR-Code herunterladen"
     }
   }
 }

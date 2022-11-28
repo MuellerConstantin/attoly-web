@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+import { useTranslation, Trans } from "react-i18next";
 import Link from "../atoms/Link";
 
 import JumbotronImage from "../../assets/images/jumbotron.svg";
@@ -27,10 +27,13 @@ export default function Jumbotron() {
             <div className="mx-auto p-4 sm:p-6">
               <div className="sm:text-center lg:text-left">
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-                  {t("components.jumbotron.title.odd")}&nbsp;
-                  <span className="text-sky-500">
-                    {t("components.jumbotron.title.even")}
-                  </span>
+                  <Trans
+                    t={t}
+                    i18nKey="components.jumbotron.title"
+                    components={{
+                      highlight: <span className="text-sky-500" />,
+                    }}
+                  />
                 </h1>
                 <p className="mt-3 text-base text-gray-500 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-xl lg:mx-0">
                   {t("components.jumbotron.description")}

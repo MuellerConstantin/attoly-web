@@ -15,16 +15,10 @@
       }
     },
     "footer": {
-      "creation-notice": {
-        "odd": "Made with ❤️ by",
-        "even": "0x1C1B"
-      }
+      "creation-notice": "Made with ❤️ by <hyperlink>0x1C1B</hyperlink>"
     },
     "jumbotron": {
-      "title": {
-        "odd": "Possibility to simplify your",
-        "even": "URL sharing"
-      },
+      "title": "Possibility to simplify your <highlight>URL sharing</highlight>",
       "description": "Attoly allows creating short links as aliases for long URLs, which are easier to embed in websites, chats and documents. Stop using URLs that are far too long and prone to errors and get your personal Attoly Shortcut now.",
       "get-started": "Get Started",
       "register-now": "Register now"
@@ -55,6 +49,100 @@
           "description": "Thanks to our open source approach, we can achieve extremely cheap and fair prices. A large part of our services even remains completely free."
         }
       }
+    }
+  },
+  "validation": {
+    "url": "Must be a valid URL",
+    "required": "Is required",
+    "email": "Must be a valid E-Mail",
+    "confirm-password": "Passwords must match"
+  },
+  "pages": {
+    "home": {
+      "title": "Home"
+    },
+    "login": {
+      "title": "Login",
+      "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
+      "credentials-error": "Either username or password are wrong!",
+      "headline": "Sign in into your account",
+      "email-field": "E-Mail",
+      "password-field": "Password",
+      "login": "Login",
+      "forgot-password": "Forgot your password?",
+      "verify-user": "Need to activate your account?",
+      "no-account": "Don't have an account?"
+    },
+    "register": {
+      "title": "Register",
+      "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
+      "success": "The user account has been created successfully. To activate the account, follow the instructions in the email that will be sent to you.",
+      "headline": "Create your new account",
+      "email-field": "E-Mail",
+      "password-field": "Password",
+      "confirm-password-field": "Confirm Password",
+      "register": "Register",
+      "usage-terms-notice": "By clicking \"Register\" you agree to our <terms-hyperlink>Terms of Use</terms-hyperlink> and our <privacy-hyperlink>Privacy Policy</privacy-hyperlink>.",
+      "have-account": "Already have an account?"
+    },
+    "logout": {
+      "title": "Logout",
+      "headline": "Hope to see you soon.",
+      "description": "You have been logged out. To log in again click <hyperlink>here</hyperlink>."
+    },
+    "not-found": {
+      "title": "404",
+      "headline": "Oops! Page not found.",
+      "description": "The page you are looking for was not found. You may return to <hyperlink>home page</hyperlink>."
+    },
+    "redirect": {
+      "title": "Redirect",
+      "error": "An unexpected error occurred, please retry!",
+      "headline": "Getting redirected...",
+      "description": "Please note that we cannot accept any liability for the content of third parties. Links can always lead you to potentially unwanted content. We try to remove such links as best we can. In the end, however, the creator of the link you follow is liable and not our platform.",
+      "redirect-me": "Redirect me",
+      "advertising": "Here could be your advertising."
+    },
+    "reset-password": {
+      "title": "Reset Password",
+      "error": "An unexpected error occurred, please retry!",
+      "expiry-error": "The reset password link has expired!",
+      "unknown-email-error": "No account could be found with this email.",
+      "email-sent-success": "The email with the reset link was sent successfully.",
+      "reset-success": "The password has been reset successfully.",
+      "headline": "Reset your account password",
+      "description": "Have you forgotten your password and you can no longer log in? No problem. Get an email with a link to reset your password.",
+      "email-field": "E-Mail",
+      "password-field": "Password",
+      "confirm-password-field": "Confirm Password",
+      "send-email": "Send E-mail",
+      "reset-password": "Reset Password"
+    },
+    "verify-user": {
+      "title": "Verify User",
+      "error": "An unexpected error occurred, please retry!",
+      "expiry-error": "The verification link has expired!",
+      "unknown-email-error": "No account could be found with this email.",
+      "email-sent-success": "The email with the verification link was sent successfully.",
+      "verify-success": "The user has been verified successfully.",
+      "headline": "Verify your account",
+      "description": "If the original e-mail with the link to verify the user did not arrive, or the link has already expired, a new e-mail can be sent here. Then follow the instructions in the email to activate the account.",
+      "email-field": "E-Mail",
+      "send-email": "Send E-mail"
+    },
+    "get-started": {
+      "title": "Get Started",
+      "error": "An unexpected error occurred, please retry!",
+      "request-headline": "Paste the URL to be shortened",
+      "url-field": "URL",
+      "generate-shortcut": "Generate Shortcut",
+      "usage-terms-notice": "By clicking \"Generate shortcut\" you agree to our <terms-hyperlink>Terms of Use</terms-hyperlink> and our <privacy-hyperlink>Privacy Policy</privacy-hyperlink>.",
+      "expiry-notice": "You are not logged in. Your shortcuts will therefore expire after some time and will be removed. To change this click <hyperlink>here</hyperlink>.",
+      "response-headline": "Your shortened URL",
+      "share-url": "Share URL",
+      "copy-url": "Copy",
+      "share-qrcode": "Share QR-Code",
+      "download-qrcode": "Download QR-Code"
     }
   }
 }

@@ -1,137 +1,52 @@
 import { useEffect, useCallback, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Formik } from "formik";
+import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import StackTemplate from "../components/templates/StackTemplate";
 import TextField from "../components/atoms/TextField";
 import Button from "../components/atoms/Button";
-import Link from "../components/atoms/Link";
 import { requestVerificationEmail, verifyUser } from "../api/users";
 
 import Logo from "../assets/images/logo.svg";
 import WallpaperImage from "../assets/images/wallpaper.svg";
-import UserVerifiedImage from "../assets/images/user-verified.svg";
-import ErrorImage from "../assets/images/error.svg";
-
-const schema = yup.object().shape({
-  email: yup.string().email("Must be a valid email").required("Is required"),
-});
 
 function VerifyUserConfirmation() {
+  const { t } = useTranslation();
   const [searchParams] = useSearchParams();
 
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
-  const onVerifyUser = useCallback(async (token) => {
-    setSuccess(null);
-    setError(null);
+  const onVerifyUser = useCallback(
+    async (token) => {
+      setSuccess(null);
+      setError(null);
+      setLoading(true);
 
-    try {
-      await verifyUser({ verificationToken: token });
+      try {
+        await verifyUser({ verificationToken: token });
 
-      setSuccess(true);
-    } catch (err) {
-      if (err.response && err.response.status === 410) {
-        setError(
-          "The verification link is not valid. The token used may have expired."
-        );
-      } else {
-        setError("An unexpected error occurred, please retry!");
+        setSuccess(t("pages.verify-user.verify-success"));
+      } catch (err) {
+        if (err.response && err.response.status === 410) {
+          setError(t("pages.verify-user.expiry-error"));
+        } else {
+          setError(t("pages.verify-user.error"));
+        }
+
+        throw err;
+      } finally {
+        setLoading(false);
       }
-
-      throw err;
-    }
-  }, []);
+    },
+    [t]
+  );
 
   useEffect(() => {
     onVerifyUser(searchParams.get("token"));
   }, [searchParams, onVerifyUser]);
-
-  if (success) {
-    return (
-      <div className="h-full flex items-center justify-center px-4 py-12">
-        <div className="w-full md:max-w-2xl lg:max-w-4xl 2xl:max-w-6xl 2xl:max-w-[100rem]">
-          <div className="flex flex-col md:flex-row md:space-x-8 space-y-6 md:space-y-0 justify-center items-center text-gray-800 dark:text-white">
-            <div className="w-1/2 sm:w-1/3 md:w-2/3 xl:w-1/2">
-              <img
-                className="w-full h-full"
-                src={UserVerifiedImage}
-                alt="User Verified"
-              />
-            </div>
-            <div className="flex flex-col text-center md:text-left">
-              <div className="text-xl sm:text-2xl lg:text-4xl">
-                E-Mail verified.
-              </div>
-              <div>
-                The account has been activated, to log in click&nbsp;
-                <Link to="/login">here</Link>.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="h-full flex items-center justify-center px-4 py-12">
-        <div className="w-full md:max-w-2xl lg:max-w-4xl 2xl:max-w-6xl 2xl:max-w-[100rem]">
-          <div className="flex flex-col md:flex-row md:space-x-8 space-y-6 md:space-y-0 justify-center items-center text-gray-800 dark:text-white">
-            <div className="w-1/2 sm:w-1/3 md:w-2/3 xl:w-1/2">
-              <img className="w-full h-full" src={ErrorImage} alt="Error" />
-            </div>
-            <div className="flex flex-col text-center md:text-left">
-              <div className="text-xl sm:text-2xl lg:text-4xl">
-                Oops! Something get wrong
-              </div>
-              <div>
-                {error}&nbsp;To try again click&nbsp;
-                <Link to="/verify-user">here</Link>.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="w-full flex justify-center p-2 pt-6">
-      <div className="w-10 h-10 border-b-2 border-sky-500 rounded-full animate-spin" />
-    </div>
-  );
-}
-
-function VerifyUserRequest() {
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  const onSend = useCallback(async (values, { resetForm }) => {
-    setLoading(true);
-    setSuccess(null);
-    setError(null);
-
-    try {
-      await requestVerificationEmail(values.email);
-
-      resetForm();
-      setSuccess("The email with the verification link was sent successfully.");
-    } catch (err) {
-      if (err.response && err.response.status === 404) {
-        setError("No account could be found with this email.");
-      } else {
-        setError("An unexpected error occurred, please retry!");
-      }
-
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  }, []);
 
   return (
     <div
@@ -150,15 +65,83 @@ function VerifyUserRequest() {
             alt="Logo"
           />
           <h1 className="mt-4 text-center lg:text-3xl text-2xl font-bold">
-            Resend user verification e-mail
+            {t("pages.verify-user.headline")}
           </h1>
         </div>
-        <p>
-          If the original e-mail with the link to verify the user did not
-          arrive, or the link has already expired, a new e-mail can be sent
-          here. Then follow the instructions in the email to activate the
-          account.
-        </p>
+        <p>{t("pages.verify-user.description")}</p>
+        {loading && (
+          <div className="w-full flex justify-center p-2 pt-6">
+            <div className="w-10 h-10 border-b-2 border-sky-500 rounded-full animate-spin" />
+          </div>
+        )}
+        {success && <p className="text-center text-green-500">{success}</p>}
+        {error && <p className="text-center text-red-500">{error}</p>}
+      </div>
+    </div>
+  );
+}
+
+function VerifyUserRequest() {
+  const { t } = useTranslation();
+
+  const schema = yup.object().shape({
+    email: yup
+      .string()
+      .email(t("validation.email"))
+      .required(t("validation.required")),
+  });
+
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const onSend = useCallback(
+    async (values, { resetForm }) => {
+      setLoading(true);
+      setSuccess(null);
+      setError(null);
+
+      try {
+        await requestVerificationEmail(values.email);
+
+        resetForm();
+        setSuccess(t("pages.verify-user.email-sent-success"));
+      } catch (err) {
+        if (err.response && err.response.status === 404) {
+          setError(t("pages.verify-user.unknown-email-error"));
+        } else {
+          setError(t("pages.verify-user.error"));
+        }
+
+        throw err;
+      } finally {
+        setLoading(false);
+      }
+    },
+    [t]
+  );
+
+  return (
+    <div
+      className="h-full text-gray-800 dark:text-white flex flex-col items-center justify-center px-4 py-12 space-y-4"
+      style={{
+        backgroundImage: `url(${WallpaperImage})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="w-full max-w-xl bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-md rounded-md p-8 space-y-6">
+        <div>
+          <img
+            className="mx-auto h-10 md:h-12 lg:h-14 w-auto"
+            src={Logo}
+            alt="Logo"
+          />
+          <h1 className="mt-4 text-center lg:text-3xl text-2xl font-bold">
+            {t("pages.verify-user.headline")}
+          </h1>
+        </div>
+        <p>{t("pages.verify-user.description")}</p>
         {success && <p className="text-center text-green-500">{success}</p>}
         {error && <p className="text-center text-red-500">{error}</p>}
         <Formik
@@ -176,8 +159,8 @@ function VerifyUserRequest() {
                 <TextField
                   name="email"
                   type="email"
-                  placeholder="E-Mail"
-                  label="E-Mail"
+                  placeholder={t("pages.verify-user.email-field")}
+                  label={t("pages.verify-user.email-field")}
                   disabled={loading}
                   onChange={props.handleChange}
                   onBlur={props.handleBlur}
@@ -191,7 +174,7 @@ function VerifyUserRequest() {
                 disabled={!(props.isValid && props.dirty) || loading}
                 className="w-full flex justify-center"
               >
-                {!loading && <span>Send e-mail</span>}
+                {!loading && <span>{t("pages.verify-user.send-email")}</span>}
                 {loading && (
                   <div className="w-6 h-6 border-b-2 border-white rounded-full animate-spin" />
                 )}
@@ -205,11 +188,12 @@ function VerifyUserRequest() {
 }
 
 export default function VerifyUser() {
+  const { t } = useTranslation();
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    document.title = "Attoly | Verify User";
-  }, []);
+    document.title = `Attoly | ${t("pages.reset-password.title")}`;
+  }, [t]);
 
   return (
     <StackTemplate>

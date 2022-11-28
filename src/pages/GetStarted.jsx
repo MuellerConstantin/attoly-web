@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { Formik } from "formik";
 import * as yup from "yup";
+import { useTranslation, Trans } from "react-i18next";
 import {
   EmailShareButton,
   EmailIcon,
@@ -25,11 +26,16 @@ import LogoTextLight from "../assets/images/logo-text-light.svg";
 import LogoTextDark from "../assets/images/logo-text-dark.svg";
 import WallpaperImage from "../assets/images/wallpaper.svg";
 
-const schema = yup.object().shape({
-  url: yup.string().url("Must be a valid URL").required("Is required"),
-});
-
 export default function GetStarted() {
+  const { t } = useTranslation();
+
+  const schema = yup.object().shape({
+    url: yup
+      .string()
+      .url(t("validation.url"))
+      .required(t("validation.required")),
+  });
+
   const [error, setError] = useState(null);
   const [shortcut, setShortcut] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -53,7 +59,7 @@ export default function GetStarted() {
             setFieldError(detail.field, detail.message)
           );
         } else {
-          setError("An unexpected error occurred, please retry!");
+          setError(t("pages.get-started.error"));
         }
 
         throw err;
@@ -61,12 +67,12 @@ export default function GetStarted() {
         setLoading(false);
       }
     },
-    [setLoading, setError, setShortcut]
+    [setLoading, setError, setShortcut, t]
   );
 
   useEffect(() => {
-    document.title = "Attoly | Get Started";
-  }, []);
+    document.title = `Attoly | ${t("pages.get-started.title")}`;
+  }, [t]);
 
   return (
     <StackTemplate>
@@ -91,7 +97,7 @@ export default function GetStarted() {
               alt="Attoly Logo"
             />
             <h1 className="mt-4 text-center text-2xl font-bold">
-              Paste the URL to be shortened
+              {t("pages.get-started.request-headline")}
             </h1>
           </div>
           {error && <p className="text-center text-red-500">{error}</p>}
@@ -110,7 +116,7 @@ export default function GetStarted() {
                   <TextField
                     name="url"
                     type="url"
-                    placeholder="URL"
+                    placeholder={t("pages.get-started.url-field")}
                     disabled={loading}
                     onChange={props.handleChange}
                     onBlur={props.handleBlur}
@@ -125,25 +131,35 @@ export default function GetStarted() {
                   className="w-full flex justify-center"
                 >
                   {!loading && (
-                    <span>Generate shortcut{!principal && "*"}</span>
+                    <span>
+                      {t("pages.get-started.generate-shortcut")}
+                      {!principal && "*"}
+                    </span>
                   )}
                   {loading && (
                     <div className="w-6 h-6 border-b-2 border-white rounded-full animate-spin" />
                   )}
                 </Button>
                 <p className="text-center text-xs">
-                  By clicking &quot;Generate shortcut&quot; you agree to
-                  our&nbsp;
-                  <Link to="/terms-of-use">Terms of Use</Link>
-                  &nbsp;and our&nbsp;
-                  <Link to="/privacy-policy">Privacy Policy</Link>.
+                  <Trans
+                    t={t}
+                    i18nKey="pages.get-started.usage-terms-notice"
+                    components={{
+                      "terms-hyperlink": <Link to="/terms-of-use" />,
+                      "privacy-hyperlink": <Link to="/privacy-policy" />,
+                    }}
+                  />
                 </p>
                 {!principal && (
                   <p className="text-center text-xs">
-                    *You are not logged in. Your shortcuts will therefore expire
-                    after some time and will be removed. To change this
-                    click&nbsp;
-                    <Link to="/login">here</Link>.
+                    *
+                    <Trans
+                      t={t}
+                      i18nKey="pages.get-started.expiry-notice"
+                      components={{
+                        hyperlink: <Link to="/login" />,
+                      }}
+                    />
                   </p>
                 )}
               </form>
@@ -153,7 +169,7 @@ export default function GetStarted() {
         {shortcut && (
           <div className="w-full max-w-2xl bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-md rounded-md p-8 space-y-6">
             <h1 className="mt-4 text-center text-2xl font-bold mt-0">
-              Your shortened URL
+              {t("pages.get-started.response-headline")}
             </h1>
             <div className="flex space-x-2 w-full">
               <div className="bg-white grow dark:bg-gray-700 text-gray-800 dark:text-white border border-gray-300 dark:border-gray-500 block w-full px-3 py-2 scroll-px-3 rounded-md focus:outline-none whitespace-nowrap overflow-x-auto">
@@ -168,11 +184,13 @@ export default function GetStarted() {
                   );
                 }}
               >
-                Copy
+                {t("pages.get-started.copy-url")}
               </Button>
             </div>
             <div className="space-y-2 text-center">
-              <h2 className="text-lg font-bold mt-0">Share URL</h2>
+              <h2 className="text-lg font-bold mt-0">
+                {t("pages.get-started.share-url")}
+              </h2>
               <div className="space-x-2">
                 <EmailShareButton
                   url={`${window.location.origin}/redirect/${shortcut.tag}`}
@@ -203,7 +221,9 @@ export default function GetStarted() {
               </div>
             </div>
             <div className="space-y-2 text-center flex flex-col items-center">
-              <h2 className="text-lg font-bold mt-0">Share QR-Code</h2>
+              <h2 className="text-lg font-bold mt-0">
+                {t("pages.get-started.share-qrcode")}
+              </h2>
               <div className="w-fit p-2 bg-white">
                 <QRCodeCanvas
                   id="qrcode"
@@ -224,7 +244,7 @@ export default function GetStarted() {
                   link.click();
                 }}
               >
-                Download QR-Code
+                {t("pages.get-started.download-qrcode")}
               </Button>
             </div>
           </div>
