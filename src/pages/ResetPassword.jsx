@@ -62,7 +62,7 @@ function ResetPasswordConfirmation() {
 
   return (
     <div
-      className="h-full text-gray-800 dark:text-white flex flex-col items-center justify-center px-4 py-12 space-y-4"
+      className="h-full text-gray-800 dark:text-white flex flex-col items-center justify-center px-4 py-32 space-y-4"
       style={{
         backgroundImage: `url(${WallpaperImage})`,
         backgroundSize: "cover",
@@ -187,7 +187,7 @@ function ResetPasswordRequest() {
 
   return (
     <div
-      className="h-full text-gray-800 dark:text-white flex flex-col items-center justify-center px-4 py-12 space-y-4"
+      className="h-full text-gray-800 dark:text-white flex flex-col items-center justify-center px-4 py-32 space-y-4"
       style={{
         backgroundImage: `url(${WallpaperImage})`,
         backgroundSize: "cover",

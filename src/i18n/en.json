@@ -15,6 +15,17 @@
       }
     },
     "footer": {
+      "description": "Attoly allows creating short links as aliases for long URLs, which are easier to embed in websites, chats and documents. Stop using URLs that are far too long and prone to errors and get your personal Attoly Shortcut now.",
+      "product": "Product",
+      "get-started": "Get Started",
+      "legal": "Legal",
+      "about-us": "About us",
+      "imprint": "Imprint",
+      "terms-of-use": "Terms of use",
+      "privacy-policy": "Privacy policy",
+      "contribution": "Contribution",
+      "donate": "Donate",
+      "api": "Attoly API",
       "creation-notice": "Made with ❤️ by <hyperlink>0x1C1B</hyperlink>"
     },
     "jumbotron": {
