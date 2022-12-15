@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
 import store, { persistor } from "./store";
 import { injectStore } from "./api";
 import App from "./App";
+import PrivacyCompliantPersistGate from "./components/organisms/PrivacyCompliantPersistGate";
 import reportWebVitals from "./reportWebVitals";
 
 import "./i18n";
@@ -17,11 +17,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter>
+      <BrowserRouter>
+        <PrivacyCompliantPersistGate loading={null} persistor={persistor}>
           <App />
-        </BrowserRouter>
-      </PersistGate>
+        </PrivacyCompliantPersistGate>
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );

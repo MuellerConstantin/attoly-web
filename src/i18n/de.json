@@ -60,6 +60,12 @@
           "description": "Durch unseren Open-Source-Ansatz können wir extrem günstige und faire Preise erzielen. Ein Großteil unserer Services bleibt sogar komplett kostenlos."
         }
       }
+    },
+    "cookie-banner": {
+      "title": "Cookies erlauben! 🍪",
+      "description": "Wir verwenden Cookies und den Browser-Speicher, um Ihnen die bestmögliche Erfahrung auf unserer Website zu bieten. Aktivieren Sie Cookies, um die Website zu nutzen. Für Details siehe <hyperlink>Datenschutzerklärung</hyperlink>.",
+      "allow": "Okay, ich bin einverstanden",
+      "deny": "Ich will den Dialog nicht mehr angezeigt bekommen"
     }
   },
   "validation": {

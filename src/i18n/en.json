@@ -60,6 +60,12 @@
           "description": "Thanks to our open source approach, we can achieve extremely cheap and fair prices. A large part of our services even remains completely free."
         }
       }
+    },
+    "cookie-banner": {
+      "title": "Allow cookies! 🍪",
+      "description": "We use cookies and browser memory to give you the best experience on our website. Enable cookies to use the website. For details see <hyperlink>privacy policy</hyperlink>.",
+      "allow": "Okay, I agree",
+      "deny": "I don't want to see this anymore"
     }
   },
   "validation": {
