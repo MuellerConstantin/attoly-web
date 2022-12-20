@@ -10,6 +10,7 @@
       },
       "menu": {
         "open-menu": "Öffne Hauptmenü",
+        "settings": "Einstellungen",
         "toggle-dark-mode": "Ein/Aus Dunkelmodus",
         "dark-mode": "Dunkelmodus"
       }
@@ -66,6 +67,15 @@
       "description": "Wir verwenden Cookies und den Browser-Speicher, um Ihnen die bestmögliche Erfahrung auf unserer Website zu bieten. Aktivieren Sie Cookies, um die Website zu nutzen. Für Details siehe <hyperlink>Datenschutzerklärung</hyperlink>.",
       "allow": "Okay, ich bin einverstanden",
       "deny": "Ich will den Dialog nicht mehr angezeigt bekommen"
+    },
+    "change-user-password-form": {
+      "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
+      "success": "Das Passwort wurde erfolgreich geändert.",
+      "title": "Passwort ändern",
+      "description": "Ändere dein Passwort. Die Änderung wird wirksam, wenn du dich das nächste mal anmeldest.",
+      "new-password": "Neues Passwort",
+      "confirm-password": "Passwort bestätigen",
+      "submit": "Ändern"
     }
   },
   "validation": {
@@ -160,6 +170,11 @@
       "copy-url": "Kopieren",
       "share-qrcode": "QR-Code teilen",
       "download-qrcode": "QR-Code herunterladen"
+    },
+    "settings": {
+      "title": "Einstellungen",
+      "personal-account": "Dein persönlicher Account",
+      "user": "Benutzer"
     }
   }
 }

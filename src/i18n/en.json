@@ -10,6 +10,7 @@
       },
       "menu": {
         "open-menu": "Open Main Menu",
+        "settings": "Settings",
         "toggle-dark-mode": "Toggle Dark Mode",
         "dark-mode": "Dark Mode"
       }
@@ -66,6 +67,15 @@
       "description": "We use cookies and browser memory to give you the best experience on our website. Enable cookies to use the website. For details see <hyperlink>privacy policy</hyperlink>.",
       "allow": "Okay, I agree",
       "deny": "I don't want to see this anymore"
+    },
+    "change-user-password-form": {
+      "error": "An unexpected error occurred, please retry!",
+      "success": "The password has been changed successfully.",
+      "title": "Change password",
+      "description": "Change your account password. The new password will take effect the next time you log in.",
+      "new-password": "New Password",
+      "confirm-password": "Confirm Password",
+      "submit": "Change"
     }
   },
   "validation": {
@@ -80,7 +90,7 @@
     },
     "login": {
       "title": "Login",
-      "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
+      "error": "An unexpected error occurred, please retry!",
       "credentials-error": "Either username or password are wrong!",
       "headline": "Sign in into your account",
       "email-field": "E-Mail",
@@ -92,7 +102,7 @@
     },
     "register": {
       "title": "Register",
-      "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
+      "error": "An unexpected error occurred, please retry!",
       "success": "The user account has been created successfully. To activate the account, follow the instructions in the email that will be sent to you.",
       "headline": "Create your new account",
       "email-field": "E-Mail",
@@ -160,6 +170,11 @@
       "copy-url": "Copy",
       "share-qrcode": "Share QR-Code",
       "download-qrcode": "Download QR-Code"
+    },
+    "settings": {
+      "title": "Settings",
+      "personal-account": "Your personal account",
+      "user": "User"
     }
   }
 }

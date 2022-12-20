@@ -66,12 +66,12 @@ export default function NavbarMenu() {
           </Popover.Button>
           <Popover.Panel
             ref={setPopupDialogElement}
-            className="shadow-md border dark:border-gray-900 rounded-md z-50 w-screen max-w-xs sm:max-w-sm bg-white dark:bg-gray-600 text-gray-800 dark:text-white"
+            className="shadow-md border dark:border-gray-900 rounded-md z-50 w-screen max-w-xs sm:max-w-sm bg-gray-100 dark:bg-gray-600 text-gray-800 dark:text-white"
             style={styles.popper}
             {...attributes.popper}
           >
             {principal ? (
-              <div className="p-4 bg-gray-100 dark:bg-gray-800 flex space-x-4 items-center justify-between">
+              <div className="p-4 bg-white dark:bg-gray-800 flex space-x-4 items-center justify-between">
                 <div className="flex space-x-4 items-center overflow-hidden">
                   <div className="bg-gray-200 text-gray-800 dark:bg-gray-600 dark:text-white p-2 rounded-full">
                     <div className="h-10 aspect-square rounded-md">
@@ -107,6 +107,16 @@ export default function NavbarMenu() {
               </div>
             )}
             <div className="p-2 text-gray-800 dark:text-white flex flex-col space-y-2">
+              {principal && (
+                <Link
+                  to="/settings"
+                  className="flex justify-left items-center p-2 hover:!no-underline !text-gray-800 dark:!text-white hover:!bg-gray-100 hover:dark:!bg-gray-700 hover:cursor-pointer rounded"
+                >
+                  <div className="text-sm">
+                    {t("components.navbar.menu.settings")}
+                  </div>
+                </Link>
+              )}
               <div className="flex justify-between items-center p-2 rounded">
                 <div className="text-sm">
                   {t("components.navbar.menu.dark-mode")}
@@ -116,7 +126,7 @@ export default function NavbarMenu() {
                     checked={darkMode}
                     onChange={onThemeToggle}
                     className={`relative inline-flex flex-shrink-0 h-[24px] w-[44px] border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75 ${
-                      darkMode ? "bg-green-500" : "bg-gray-100 dark:bg-gray-800"
+                      darkMode ? "bg-green-500" : "bg-gray-200 dark:bg-gray-800"
                     }`}
                   >
                     <span className="sr-only">

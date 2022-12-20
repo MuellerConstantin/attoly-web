@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import RouteProtector from "./components/organisms/RouteProtector";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
 import VerifyUser from "./pages/VerifyUser";
 import ResetPassword from "./pages/ResetPassword";
+import Settings from "./pages/Settings";
 import GetStarted from "./pages/GetStarted";
 import Redirect from "./pages/Redirect";
 import NotFound from "./pages/NotFound";
@@ -32,6 +34,14 @@ export default function App() {
       <Route path="/logout" element={<Logout />} />
       <Route path="/verify-user" element={<VerifyUser />} />
       <Route path="/reset-password" element={<ResetPassword />} />
+      <Route
+        path="/settings"
+        element={
+          <RouteProtector>
+            <Settings />
+          </RouteProtector>
+        }
+      />
       <Route path="/get-started" element={<GetStarted />} />
       <Route path="/redirect/:tag" element={<Redirect />} />
       <Route path="/not-found" element={<NotFound />} />

@@ -19,3 +19,7 @@ export const requestResetEmail = (email) => {
 export const resetPassword = (data) => {
   return api.post("/user/reset", data);
 };
+
+export const updateCurrentUser = (data) => {
+  return api.patch("/user/me", data);
+};
