@@ -23,3 +23,7 @@ export const resetPassword = (data) => {
 export const updateCurrentUser = (data) => {
   return api.patch("/user/me", data);
 };
+
+export const deleteCurrentUser = () => {
+  return api.delete("/user/me");
+};

@@ -76,6 +76,18 @@
       "new-password": "New Password",
       "confirm-password": "Confirm Password",
       "submit": "Change"
+    },
+    "delete-current-user-form": {
+      "title": "Delete account",
+      "description": "This will permanently delete your account. You will lose all your data and will no longer be able to access your account.",
+      "delete": "Delete your account"
+    },
+    "delete-current-user-dialog": {
+      "title": "Delete account",
+      "description": "Are you sure you want to delete your account? This action cannot be undone. Are you sure you want to continue?",
+      "error": "An unexpected error occurred, please retry!",
+      "yes": "Yes",
+      "no": "No"
     }
   },
   "validation": {

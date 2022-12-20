@@ -7,7 +7,7 @@ import TextField from "../../atoms/TextField";
 import Button from "../../atoms/Button";
 import { updateCurrentUser } from "../../../api/users";
 
-export default function ChangeUserPasswordForm({ onChange, disabled }) {
+export default function ChangeCurrentUserPasswordForm({ onChange, disabled }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
 

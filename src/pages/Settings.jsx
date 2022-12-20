@@ -6,13 +6,15 @@ import {
   UserIcon,
   ArrowLeftOnRectangleIcon,
 } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Avatar from "../components/atoms/Avatar";
-import ChangeUserPasswordForm from "../components/organisms/settings/ChangeUserPasswordForm";
+import ChangeCurrentUserPasswordForm from "../components/organisms/settings/ChangeCurrentUserPasswordForm";
+import DeleteCurrentUserForm from "../components/organisms/settings/DeleteCurrentUserForm";
 import StackTemplate from "../components/templates/StackTemplate";
 
 export default function Settings() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const principal = useSelector((state) => state.auth.principal);
 
@@ -23,7 +25,7 @@ export default function Settings() {
   return (
     <StackTemplate>
       <div className="h-full bg-white dark:bg-gray-600">
-        <div className="max-w-[100rem] mx-auto p-4">
+        <div className="max-w-[100rem] mx-auto px-4 py-8">
           <Tab.Group
             as="div"
             className="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8"
@@ -82,7 +84,8 @@ export default function Settings() {
             <Tab.Panels as="div" className="w-full md:w-2/3 lg:w-3/4 xl:w-4/5">
               <Tab.Panel>
                 <div className="space-y-8">
-                  <ChangeUserPasswordForm />
+                  <ChangeCurrentUserPasswordForm />
+                  <DeleteCurrentUserForm onChange={() => navigate("/logout")} />
                 </div>
               </Tab.Panel>
             </Tab.Panels>

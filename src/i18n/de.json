@@ -76,6 +76,18 @@
       "new-password": "Neues Passwort",
       "confirm-password": "Passwort bestätigen",
       "submit": "Ändern"
+    },
+    "delete-current-user-form": {
+      "title": "Account löschen",
+      "description": "Dies wird deinen Account unwiderruflich löschen. Alle deine Daten werden gelöscht und können nicht wiederhergestellt werden.",
+      "delete": "Lösche deinen Account"
+    },
+    "delete-current-user-dialog": {
+      "title": "Account löschen",
+      "description": "Bist du dir sicher, dass du deinen Account löschen möchtest? Dieser Vorgang kann nicht rückgängig gemacht werden. Bist du dir sicher, dass du fortfahren möchtest?",
+      "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
+      "yes": "Ja",
+      "no": "Nein"
     }
   },
   "validation": {
