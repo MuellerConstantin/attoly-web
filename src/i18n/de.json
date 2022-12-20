@@ -88,6 +88,12 @@
       "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
       "yes": "Ja",
       "no": "Nein"
+    },
+    "current-user-shortcut-list": {
+      "title": "Meine Shortcuts",
+      "description": "Die folgenden Shortcuts wurden von dir erstellt. Du kannst sie jederzeit bearbeiten oder löschen.",
+      "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
+      "no-shortcuts": "Du hast noch keine Shortcuts erstellt. Erstelle jetzt einen Shortcut!"
     }
   },
   "validation": {
@@ -186,7 +192,8 @@
     "settings": {
       "title": "Einstellungen",
       "personal-account": "Dein persönlicher Account",
-      "user": "Benutzer"
+      "user": "Benutzer",
+      "shortcuts": "Meine Shortcuts"
     }
   }
 }

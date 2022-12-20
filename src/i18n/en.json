@@ -88,6 +88,12 @@
       "error": "An unexpected error occurred, please retry!",
       "yes": "Yes",
       "no": "No"
+    },
+    "current-user-shortcut-list": {
+      "title": "My shortcuts",
+      "description": "The following shortcuts are currently available in your account. You can manage them here.",
+      "error": "An unexpected error occurred, please retry!",
+      "no-shortcuts": "You have not created any shortcuts yet. Create your first shortcut now."
     }
   },
   "validation": {
@@ -186,7 +192,8 @@
     "settings": {
       "title": "Settings",
       "personal-account": "Your personal account",
-      "user": "User"
+      "user": "Account",
+      "shortcuts": "My Shortcuts"
     }
   }
 }
