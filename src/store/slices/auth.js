@@ -6,13 +6,14 @@ const initialState = {
   accessExpiresAt: null,
   refreshExpiresAt: null,
   principal: null,
+  roles: [],
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setAuthentication: (state, action) => {
+    setToken: (state, action) => {
       return {
         ...state,
         accessToken: action.payload.accessToken,
@@ -23,17 +24,45 @@ const authSlice = createSlice({
         refreshExpiresAt: new Date(
           new Date().getTime() + action.payload.refreshExpiresIn
         ).getTime(),
-        principal: action.payload.principal,
       };
     },
-    clearAuthentication: (state) => {
+    clearToken: (state) => {
       return {
         ...state,
         accessToken: null,
         refreshToken: null,
         accessExpiresAt: null,
         refreshExpiresAt: null,
+      };
+    },
+    setPrincipal: (state, action) => {
+      return {
+        ...state,
+        principal: action.payload,
+      };
+    },
+    clearPrincipal: (state) => {
+      return {
+        ...state,
         principal: null,
+      };
+    },
+    setRoles: (state, action) => {
+      return {
+        ...state,
+        roles: action.payload,
+      };
+    },
+    clearRoles: (state) => {
+      return {
+        ...state,
+        roles: [],
+      };
+    },
+    clearAuthentication: (state) => {
+      return {
+        ...state,
+        ...initialState,
       };
     },
   },

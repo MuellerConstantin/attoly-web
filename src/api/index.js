@@ -49,12 +49,11 @@ api.interceptors.response.use(
             });
 
             store.dispatch(
-              authSlice.actions.setAuthentication({
+              authSlice.actions.setToken({
                 accessToken: refreshRes.data.accessToken,
                 accessExpiresIn: refreshRes.data.accessExpiresIn,
                 refreshToken: refreshRes.data.refreshToken,
                 refreshExpiresIn: refreshRes.data.refreshExpiresIn,
-                principal: refreshRes.data.principal,
               })
             );
 

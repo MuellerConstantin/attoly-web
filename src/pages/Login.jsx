@@ -10,6 +10,7 @@ import Button from "../components/atoms/Button";
 import Link from "../components/atoms/Link";
 import authSlice from "../store/slices/auth";
 import { generateToken } from "../api/auth";
+import { fetchCurrentUserRoles } from "../api/roles";
 
 import Logo from "../assets/images/logo.svg";
 import WallpaperImage from "../assets/images/wallpaper.svg";
@@ -41,17 +42,22 @@ export default function Login() {
       setError(null);
 
       try {
-        const res = await generateToken(values.email, values.password);
+        const tokenRes = await generateToken(values.email, values.password);
 
         dispatch(
-          authSlice.actions.setAuthentication({
-            accessToken: res.data.accessToken,
-            accessExpiresIn: res.data.accessExpiresIn,
-            refreshToken: res.data.refreshToken,
-            refreshExpiresIn: res.data.refreshExpiresIn,
-            principal: res.data.principal,
+          authSlice.actions.setToken({
+            accessToken: tokenRes.data.accessToken,
+            accessExpiresIn: tokenRes.data.accessExpiresIn,
+            refreshToken: tokenRes.data.refreshToken,
+            refreshExpiresIn: tokenRes.data.refreshExpiresIn,
           })
         );
+
+        dispatch(authSlice.actions.setPrincipal(tokenRes.data.principal));
+
+        const rolesRes = await fetchCurrentUserRoles();
+
+        dispatch(authSlice.actions.setRoles(rolesRes.data));
 
         navigate("/home");
       } catch (err) {
