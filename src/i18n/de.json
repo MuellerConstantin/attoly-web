@@ -10,7 +10,8 @@
       },
       "menu": {
         "open-menu": "Öffne Hauptmenü",
-        "settings": "Einstellungen",
+        "management": "Plattform Verwaltung",
+        "settings": "Benutzereinstellungen",
         "toggle-dark-mode": "Ein/Aus Dunkelmodus",
         "dark-mode": "Dunkelmodus"
       }
@@ -109,6 +110,12 @@
       "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
       "yes": "Ja",
       "no": "Nein"
+    },
+    "shortcut-list": {
+      "title": "Shortcuts",
+      "description": "Die folgenden Shortcuts wurden auf der Plattform erstellt. Du kannst sie jederzeit bearbeiten oder löschen.",
+      "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
+      "no-shortcuts": "Bisher wurden noch keine Shortcuts erstellt."
     }
   },
   "validation": {
@@ -209,6 +216,12 @@
       "personal-account": "Dein persönlicher Account",
       "user": "Benutzer",
       "shortcuts": "Meine Shortcuts"
+    },
+    "management": {
+      "title": "Verwaltung",
+      "headline": "Verwaltung & Administration",
+      "shortcuts": "Shortcuts",
+      "logged-in-as": "Angemeldet als {{role}}"
     }
   }
 }

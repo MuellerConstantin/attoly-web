@@ -16,6 +16,7 @@ export default function NavbarMenu() {
   const { t } = useTranslation();
 
   const principal = useSelector((state) => state.auth.principal);
+  const roles = useSelector((state) => state.auth.roles);
   const darkMode = useSelector((state) => state.theme.darkMode);
 
   const onThemeToggle = (value) => {
@@ -107,6 +108,20 @@ export default function NavbarMenu() {
               </div>
             )}
             <div className="p-2 text-gray-800 dark:text-white flex flex-col space-y-2">
+              {principal &&
+                roles.filter(
+                  (role) =>
+                    role.name === "ROLE_ADMIN" || role.name === "ROLE_MODERATOR"
+                ).length > 0 && (
+                  <Link
+                    to="/management"
+                    className="flex justify-left items-center p-2 hover:!no-underline !text-gray-800 dark:!text-white hover:!bg-gray-100 hover:dark:!bg-gray-700 hover:cursor-pointer rounded"
+                  >
+                    <div className="text-sm">
+                      {t("components.navbar.menu.management")}
+                    </div>
+                  </Link>
+                )}
               {principal && (
                 <Link
                   to="/settings"

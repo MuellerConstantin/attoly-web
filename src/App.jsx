@@ -9,6 +9,7 @@ import Logout from "./pages/Logout";
 import VerifyUser from "./pages/VerifyUser";
 import ResetPassword from "./pages/ResetPassword";
 import Settings from "./pages/Settings";
+import Management from "./pages/Management";
 import GetStarted from "./pages/GetStarted";
 import Redirect from "./pages/Redirect";
 import NotFound from "./pages/NotFound";
@@ -39,6 +40,14 @@ export default function App() {
         element={
           <RouteProtector>
             <Settings />
+          </RouteProtector>
+        }
+      />
+      <Route
+        path="/management"
+        element={
+          <RouteProtector>
+            <Management />
           </RouteProtector>
         }
       />

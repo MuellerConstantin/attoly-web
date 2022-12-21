@@ -5,10 +5,10 @@ import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import Pagination from "../../molecules/Pagination";
 import ShortcutListEntry, {
   ShortcutSkeletonListEntry,
-} from "./ShortcutListEntry";
-import { fetchCurrentUserShortcuts } from "../../../api/shortcuts";
+} from "../settings/ShortcutListEntry";
+import { fetchShortcuts } from "../../../api/shortcuts";
 
-export default function CurrentUserShortcutList() {
+export default function ShortcutList() {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ export default function CurrentUserShortcutList() {
       setLoading(true);
 
       try {
-        const res = await fetchCurrentUserShortcuts({
+        const res = await fetchShortcuts({
           page: _page,
           perPage: 10,
         });
@@ -33,7 +33,7 @@ export default function CurrentUserShortcutList() {
         if (err.response && err.response.status === 401) {
           navigate("/logout");
         } else {
-          setError(t("components.current-user-shortcut-list.error"));
+          setError(t("components.shortcut-list.error"));
         }
 
         throw err;
@@ -51,12 +51,10 @@ export default function CurrentUserShortcutList() {
   return (
     <div className="text-gray-800 dark:text-white space-y-4">
       <div>
-        <h2 className="text-2xl">
-          {t("components.current-user-shortcut-list.title")}
-        </h2>
+        <h2 className="text-2xl">{t("components.shortcut-list.title")}</h2>
         <hr className="border-gray-300 dark:border-gray-400 mt-2" />
       </div>
-      <p>{t("components.current-user-shortcut-list.description")}</p>
+      <p>{t("components.shortcut-list.description")}</p>
       <div className="flex flex-col space-y-4">
         {(loading || error) && (
           <div className="w-full relative">
@@ -93,7 +91,7 @@ export default function CurrentUserShortcutList() {
         )}
         {!loading && !error && page?.content?.length <= 0 && (
           <p className="text-center text-sm text-gray-800 dark:text-white">
-            {t("components.current-user-shortcut-list.no-shortcuts")}
+            {t("components.shortcut-list.no-shortcuts")}
           </p>
         )}
         {!loading && !error && page?.content?.length > 0 && (

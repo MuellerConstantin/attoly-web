@@ -10,7 +10,8 @@
       },
       "menu": {
         "open-menu": "Open Main Menu",
-        "settings": "Settings",
+        "management": "Platform Management",
+        "settings": "User Settings",
         "toggle-dark-mode": "Toggle Dark Mode",
         "dark-mode": "Dark Mode"
       }
@@ -109,6 +110,12 @@
       "error": "An unexpected error occurred, please retry!",
       "yes": "Yes",
       "no": "No"
+    },
+    "shortcut-list": {
+      "title": "Shortcuts",
+      "description": "The following shortcuts are currently available on the whole platform. You can manage them here.",
+      "error": "An unexpected error occurred, please retry!",
+      "no-shortcuts": "No shortcuts have been created yet."
     }
   },
   "validation": {
@@ -209,6 +216,12 @@
       "personal-account": "Your personal account",
       "user": "Account",
       "shortcuts": "My Shortcuts"
+    },
+    "management": {
+      "title": "Management",
+      "headline": "Management & Administration",
+      "shortcuts": "Shortcuts",
+      "logged-in-as": "Logged in as {{role}}"
     }
   }
 }
