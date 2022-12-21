@@ -54,6 +54,7 @@ api.interceptors.response.use(
                 accessExpiresIn: refreshRes.data.accessExpiresIn,
                 refreshToken: refreshRes.data.refreshToken,
                 refreshExpiresIn: refreshRes.data.refreshExpiresIn,
+                principal: refreshRes.data.principal,
               })
             );
 

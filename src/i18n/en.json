@@ -68,6 +68,14 @@
       "allow": "Okay, I agree",
       "deny": "I don't want to see this anymore"
     },
+    "pagination": {
+      "previous": "Prev",
+      "next": "Next",
+      "showing": "Showing",
+      "to": "to",
+      "elements": "Elements",
+      "of": "of"
+    },
     "change-user-password-form": {
       "error": "An unexpected error occurred, please retry!",
       "success": "The password has been changed successfully.",

@@ -5,9 +5,7 @@ export default function RouteProtector({ children }) {
   const principal = useSelector((state) => state.auth.principal);
   const refreshExpiresAt = useSelector((state) => state.auth.refreshExpiresAt);
 
-  return principal && Date.now() < refreshExpiresAt ? (
-    children
-  ) : (
-    <Navigate to="/logout" />
-  );
+  const isAuthenticated = principal && Date.now() < refreshExpiresAt;
+
+  return isAuthenticated ? children : <Navigate to="/logout" />;
 }

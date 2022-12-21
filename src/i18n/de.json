@@ -68,6 +68,14 @@
       "allow": "Okay, ich bin einverstanden",
       "deny": "Ich will den Dialog nicht mehr angezeigt bekommen"
     },
+    "pagination": {
+      "previous": "Zurück",
+      "next": "Weiter",
+      "showing": "Zeigt",
+      "to": "bis",
+      "elements": "Elemente",
+      "of": "von"
+    },
     "change-user-password-form": {
       "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
       "success": "Das Passwort wurde erfolgreich geändert.",
