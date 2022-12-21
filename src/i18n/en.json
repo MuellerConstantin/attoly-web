@@ -102,6 +102,13 @@
       "description": "The following shortcuts are currently available in your account. You can manage them here.",
       "error": "An unexpected error occurred, please retry!",
       "no-shortcuts": "You have not created any shortcuts yet. Create your first shortcut now."
+    },
+    "delete-shortcut-dialog": {
+      "title": "Delete shortcut",
+      "description": "Are you sure you want to delete this shortcut? This action cannot be undone. Are you sure you want to continue?",
+      "error": "An unexpected error occurred, please retry!",
+      "yes": "Yes",
+      "no": "No"
     }
   },
   "validation": {

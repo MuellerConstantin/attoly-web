@@ -5,11 +5,15 @@ import {
   ExclamationTriangleIcon,
   ClockIcon,
   ClipboardDocumentIcon,
+  TrashIcon,
 } from "@heroicons/react/24/outline";
 import Pagination from "../../molecules/Pagination";
+import DeleteShortcutDialog from "./DeleteShortcutDialog";
 import { fetchCurrentUserShortcuts } from "../../../api/shortcuts";
 
-function ShortcutListEntry({ shortcut }) {
+function ShortcutListEntry({ shortcut, onChange }) {
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+
   return (
     <div className="bg-white dark:bg-gray-700 relative flex rounded-lg p-3 shadow-md focus:outline-none text-gray-800 dark:text-white">
       <div className="flex w-full items-center justify-between space-x-2">
@@ -23,17 +27,35 @@ function ShortcutListEntry({ shortcut }) {
             </p>
           </div>
         </div>
-        <button
-          type="button"
-          className="p-1 rounded-full text-gray-600 dark:text-gray-200 hover:text-gray-800 dark:text-white focus:outline-none"
-          onClick={() => {
-            navigator.clipboard.writeText(
-              `${window.location.origin}/redirect/${shortcut.tag}`
-            );
-          }}
-        >
-          <ClipboardDocumentIcon className="h-6 w-6" aria-hidden="true" />
-        </button>
+        <div className="flex space-x-2">
+          <button
+            type="button"
+            className="p-1 rounded-full text-gray-600 dark:text-gray-200 hover:text-gray-800 dark:text-white focus:outline-none"
+            onClick={() => {
+              navigator.clipboard.writeText(
+                `${window.location.origin}/redirect/${shortcut.tag}`
+              );
+            }}
+          >
+            <ClipboardDocumentIcon className="h-6 w-6" aria-hidden="true" />
+          </button>
+          <DeleteShortcutDialog
+            onSubmit={() => {
+              setShowDeleteModal(false);
+              if (onChange) onChange();
+            }}
+            onClose={() => setShowDeleteModal(false)}
+            isOpen={showDeleteModal}
+            tag={shortcut.tag}
+          />
+          <button
+            type="button"
+            className="p-1 rounded-full text-gray-600 dark:text-gray-200 hover:text-gray-800 dark:text-white focus:outline-none"
+            onClick={() => setShowDeleteModal(true)}
+          >
+            <TrashIcon className="h-6 w-6" aria-hidden="true" />
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -93,7 +115,10 @@ export default function CurrentUserShortcutList() {
       setLoading(true);
 
       try {
-        const res = await fetchCurrentUserShortcuts({ page: _page });
+        const res = await fetchCurrentUserShortcuts({
+          page: _page,
+          perPage: 10,
+        });
 
         setPage(res.data);
       } catch (err) {
@@ -150,7 +175,11 @@ export default function CurrentUserShortcutList() {
         {!loading && !error && page?.content?.length > 0 && (
           <div className="space-y-2">
             {page?.content.map((shortcut) => (
-              <ShortcutListEntry key={shortcut.id} shortcut={shortcut} />
+              <ShortcutListEntry
+                key={shortcut.id}
+                shortcut={shortcut}
+                onChange={() => fetchCurrentUserShortcuts(0)}
+              />
             ))}
           </div>
         )}

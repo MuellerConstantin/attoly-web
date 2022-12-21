@@ -13,3 +13,7 @@ export const fetchCurrentUserShortcuts = ({ page, perPage }) => {
     params: { page, perPage },
   });
 };
+
+export const deleteShortcut = (tag) => {
+  return api.delete(`/shortcuts/${tag}`);
+};

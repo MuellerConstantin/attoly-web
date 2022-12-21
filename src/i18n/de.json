@@ -102,6 +102,13 @@
       "description": "Die folgenden Shortcuts wurden von dir erstellt. Du kannst sie jederzeit bearbeiten oder löschen.",
       "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
       "no-shortcuts": "Du hast noch keine Shortcuts erstellt. Erstelle jetzt einen Shortcut!"
+    },
+    "delete-shortcut-dialog": {
+      "title": "Shortcut löschen",
+      "description": "Bist du dir sicher, dass du diesen Shortcut löschen möchtest? Dieser Vorgang kann nicht rückgängig gemacht werden. Bist du dir sicher, dass du fortfahren möchtest?",
+      "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
+      "yes": "Ja",
+      "no": "Nein"
     }
   },
   "validation": {
