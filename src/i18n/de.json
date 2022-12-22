@@ -94,6 +94,7 @@
     "delete-current-user-dialog": {
       "title": "Account löschen",
       "description": "Bist du dir sicher, dass du deinen Account löschen möchtest? Dieser Vorgang kann nicht rückgängig gemacht werden. Bist du dir sicher, dass du fortfahren möchtest?",
+      "disclaimer": "Der Account wird zunächst lediglich deaktiviert, eine Anmeldung ist demnach nicht länger möglich. Dies geschieht augenblicklich. Binnen 30 Tagen wird der Account dann unwiederuflich mit allen Verknüpften Shortcuts und Bezahloptionen sowie Accountdetails gelöscht.",
       "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
       "yes": "Ja",
       "no": "Nein"
@@ -116,6 +117,13 @@
       "description": "Die folgenden Shortcuts wurden auf der Plattform erstellt. Du kannst sie jederzeit bearbeiten oder löschen.",
       "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
       "no-shortcuts": "Bisher wurden noch keine Shortcuts erstellt."
+    },
+    "user-list": {
+      "title": "Benutzer",
+      "description": "Die folgenden Benutzer wurden auf der Plattform registriert. Du kannst sie jederzeit bearbeiten oder löschen.",
+      "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
+      "no-users": "Es wurden noch keine Benutzer registriert.",
+      "disclaimer": "Hierbei handelt es sich um hochgradig personenbezogene Daten. Beachte unsere <privacy-policy-link>Datenschutzrichtlinien</privacy-policy-link> und interne Vorgaben."
     }
   },
   "validation": {
@@ -220,8 +228,9 @@
     "management": {
       "title": "Verwaltung",
       "headline": "Verwaltung & Administration",
+      "logged-in-as": "Angemeldet als {{role}}",
       "shortcuts": "Shortcuts",
-      "logged-in-as": "Angemeldet als {{role}}"
+      "users": "Benutzer"
     }
   }
 }

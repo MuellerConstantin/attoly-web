@@ -4,6 +4,12 @@ export const createUser = (data) => {
   return api.post("/users", data);
 };
 
+export const fetchUsers = ({ page, perPage }) => {
+  return api.get("/users", {
+    params: { page, perPage },
+  });
+};
+
 export const requestVerificationEmail = (email) => {
   return api.get(`/user/verify?email=${encodeURIComponent(email)}`);
 };

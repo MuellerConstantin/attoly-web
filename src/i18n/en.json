@@ -94,6 +94,7 @@
     "delete-current-user-dialog": {
       "title": "Delete account",
       "description": "Are you sure you want to delete your account? This action cannot be undone. Are you sure you want to continue?",
+      "disclaimer": "The account will initially only be deactivated, so it will no longer be possible to log in. This happens instantly. Within 30 days, the account will then be irrevocably deleted with all associated shortcuts and payment options as well as account details.",
       "error": "An unexpected error occurred, please retry!",
       "yes": "Yes",
       "no": "No"
@@ -116,6 +117,13 @@
       "description": "The following shortcuts are currently available on the whole platform. You can manage them here.",
       "error": "An unexpected error occurred, please retry!",
       "no-shortcuts": "No shortcuts have been created yet."
+    },
+    "user-list": {
+      "title": "Users",
+      "description": "The following users are registered on the whole platform. You can manage them here.",
+      "error": "An unexpected error occurred, please retry!",
+      "no-users": "No users have been registered yet.",
+      "disclaimer": "This is highly personal data. Note our <privacy-policy-link>privacy policy</privacy-policy-link> and internal guidelines."
     }
   },
   "validation": {
@@ -220,8 +228,9 @@
     "management": {
       "title": "Management",
       "headline": "Management & Administration",
+      "logged-in-as": "Logged in as {{role}}",
       "shortcuts": "Shortcuts",
-      "logged-in-as": "Logged in as {{role}}"
+      "users": "Users"
     }
   }
 }

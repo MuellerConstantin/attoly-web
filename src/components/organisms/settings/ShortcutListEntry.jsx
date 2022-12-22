@@ -58,7 +58,7 @@ export default function ShortcutListEntry({ shortcut, onChange }) {
 
 export function ShortcutSkeletonListEntry({ error }) {
   return (
-    <div className="bg-white dark:bg-gray-700 relative flex rounded-lg p-3 shadow-md focus:outline-none">
+    <div className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white relative flex rounded-lg p-3 shadow-md focus:outline-none">
       <div className="flex w-full items-center justify-between">
         <div
           className={`flex flex-col w-full space-y-1 ${

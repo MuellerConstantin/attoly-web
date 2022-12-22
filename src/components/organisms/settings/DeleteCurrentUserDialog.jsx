@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Dialog, Transition } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon, InformationCircleIcon } from "@heroicons/react/24/outline";
 import Button from "../../atoms/Button";
 import { deleteCurrentUser } from "../../../api/users";
 
@@ -90,8 +90,12 @@ export default function DeleteCurrentUserDialog({ onSubmit, onClose, isOpen }) {
                 </button>
               </div>
               {error && <p className="text-center text-red-500">{error}</p>}
-              <div>
-                {t("components.delete-current-user-dialog.description")}
+              <p>{t("components.delete-current-user-dialog.description")}</p>
+              <div className="flex space-x-1 items-start">
+                <InformationCircleIcon className="w-12" aria-hidden="true" />
+                <p className="text-xs">
+                  {t("components.delete-current-user-dialog.disclaimer")}
+                </p>
               </div>
               <div className="flex justify-between">
                 <Button
