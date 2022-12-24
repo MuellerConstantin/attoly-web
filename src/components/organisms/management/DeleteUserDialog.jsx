@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Button from "../../atoms/Button";
-import { deleteShortcut } from "../../../api/shortcuts";
+import { deleteUser } from "../../../api/users";
 
-export default function DeleteShortcutDialog({
+export default function DeleteUserDialog({
   onSubmit,
   onClose,
   isOpen,
-  tag,
+  userId,
 }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ export default function DeleteShortcutDialog({
     setError(null);
 
     try {
-      await deleteShortcut(tag);
+      await deleteUser(userId);
       onSubmit();
     } catch (err) {
       if (err.response && err.response.status === 401) {
@@ -31,14 +31,14 @@ export default function DeleteShortcutDialog({
       } else if (err.response && err.response.status === 409) {
         setError(err.response.data.message);
       } else {
-        setError(t("components.delete-shortcut-dialog.error"));
+        setError(t("components.delete-user-dialog.error"));
       }
 
       throw err;
     } finally {
       setLoading(false);
     }
-  }, [navigate, onSubmit, t, tag]);
+  }, [navigate, onSubmit, t, userId]);
 
   const onCloseModal = () => {
     if (!loading) {
@@ -83,7 +83,7 @@ export default function DeleteShortcutDialog({
             <Dialog.Panel className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl space-y-6 bg-white dark:bg-gray-800 text-gray-800 dark:text-white">
               <div className="flex justify-between items-center">
                 <Dialog.Title as="h3" className="text-lg font-medium leading-6">
-                  {t("components.delete-shortcut-dialog.title")}
+                  {t("components.delete-user-dialog.title")}
                 </Dialog.Title>
                 <button
                   type="button"
@@ -95,7 +95,7 @@ export default function DeleteShortcutDialog({
                 </button>
               </div>
               {error && <p className="text-center text-red-500">{error}</p>}
-              <div>{t("components.delete-shortcut-dialog.description")}</div>
+              <div>{t("components.delete-user-dialog.description")}</div>
               <div className="flex justify-between">
                 <Button
                   onClick={onSubmitModal}
@@ -103,7 +103,7 @@ export default function DeleteShortcutDialog({
                   className="!bg-green-500 focus:!outline-green-500 w-32 flex justify-center"
                 >
                   {!loading && (
-                    <span>{t("components.delete-shortcut-dialog.yes")}</span>
+                    <span>{t("components.delete-user-dialog.yes")}</span>
                   )}
                   {loading && (
                     <div className="w-6 h-6 border-b-2 border-white rounded-full animate-spin" />
@@ -114,7 +114,7 @@ export default function DeleteShortcutDialog({
                   disabled={loading}
                   className="!bg-red-500 focus:!outline-red-500 w-32"
                 >
-                  {t("components.delete-shortcut-dialog.no")}
+                  {t("components.delete-user-dialog.no")}
                 </Button>
               </div>
             </Dialog.Panel>

@@ -124,6 +124,20 @@
       "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
       "no-users": "Es wurden noch keine Benutzer registriert.",
       "disclaimer": "Hierbei handelt es sich um hochgradig personenbezogene Daten. Beachte unsere <privacy-policy-link>Datenschutzrichtlinien</privacy-policy-link> und interne Vorgaben."
+    },
+    "user-list-entry": {
+      "menu": {
+        "delete": "Löschen",
+        "lock": "Sperren",
+        "unlock": "Entsperren"
+      }
+    },
+    "delete-user-dialog": {
+      "title": "Benutzer löschen",
+      "description": "Bist du dir sicher, dass du diesen Benutzer löschen möchtest? Dieser Vorgang kann nicht rückgängig gemacht werden. Bist du dir sicher, dass du fortfahren möchtest?",
+      "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
+      "yes": "Ja",
+      "no": "Nein"
     }
   },
   "validation": {

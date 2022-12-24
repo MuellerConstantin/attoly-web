@@ -33,3 +33,11 @@ export const updateCurrentUser = (data) => {
 export const deleteCurrentUser = () => {
   return api.delete("/user/me");
 };
+
+export const deleteUser = (id) => {
+  return api.delete(`/users/${id}`);
+};
+
+export const updateUser = (id, data) => {
+  return api.patch(`/users/${id}`, data);
+};

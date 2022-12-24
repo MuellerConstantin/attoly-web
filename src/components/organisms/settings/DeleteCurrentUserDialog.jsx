@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Dialog, Transition } from "@headlessui/react";
@@ -13,7 +13,7 @@ export default function DeleteCurrentUserDialog({ onSubmit, onClose, isOpen }) {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const onSubmitModal = async () => {
+  const onSubmitModal = useCallback(async () => {
     setLoading(true);
     setError(null);
 
@@ -33,7 +33,7 @@ export default function DeleteCurrentUserDialog({ onSubmit, onClose, isOpen }) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [navigate, onSubmit, t]);
 
   const onCloseModal = () => {
     if (!loading) {
