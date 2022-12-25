@@ -8,9 +8,9 @@ export const fetchShortcut = (tag) => {
   return api.get(`/shortcuts/${tag}`);
 };
 
-export const fetchShortcuts = ({ page, perPage }) => {
+export const fetchShortcuts = ({ page, perPage, filter, sort }) => {
   return api.get("/shortcuts", {
-    params: { page, perPage },
+    params: { page, perPage, filter, sort },
   });
 };
 

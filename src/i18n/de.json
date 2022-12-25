@@ -116,13 +116,13 @@
       "title": "Shortcuts",
       "description": "Die folgenden Shortcuts wurden auf der Plattform erstellt. Du kannst sie jederzeit bearbeiten oder löschen.",
       "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
-      "no-shortcuts": "Bisher wurden noch keine Shortcuts erstellt."
+      "no-shortcuts": "Bisher wurden noch keine Shortcuts erstellt oder es wurden keine gefunden."
     },
     "user-list": {
       "title": "Benutzer",
       "description": "Die folgenden Benutzer wurden auf der Plattform registriert. Du kannst sie jederzeit bearbeiten oder löschen.",
       "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
-      "no-users": "Es wurden noch keine Benutzer registriert.",
+      "no-users": "Es wurden noch keine Benutzer registriert oder es wurden keine gefunden.",
       "disclaimer": "Hierbei handelt es sich um hochgradig personenbezogene Daten. Beachte unsere <privacy-policy-link>Datenschutzrichtlinien</privacy-policy-link> und interne Vorgaben."
     },
     "user-list-entry": {
@@ -138,6 +138,9 @@
       "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
       "yes": "Ja",
       "no": "Nein"
+    },
+    "filtering-and-sorting-form": {
+      "search": "Suche"
     }
   },
   "validation": {

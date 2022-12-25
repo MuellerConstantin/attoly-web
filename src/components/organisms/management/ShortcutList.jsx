@@ -6,6 +6,7 @@ import Pagination from "../../molecules/Pagination";
 import ShortcutListEntry, {
   ShortcutSkeletonListEntry,
 } from "../settings/ShortcutListEntry";
+import FilteringAndSortingForm from "../../molecules/FilteringAndSortingForm";
 import { fetchShortcuts } from "../../../api/shortcuts";
 
 export default function ShortcutList() {
@@ -15,10 +16,11 @@ export default function ShortcutList() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(null);
+  const [filter, setFilter] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
 
   const onFetchShortcuts = useCallback(
-    async (_page) => {
+    async (_page, _filter) => {
       setError(null);
       setLoading(true);
 
@@ -26,6 +28,7 @@ export default function ShortcutList() {
         const res = await fetchShortcuts({
           page: _page,
           perPage: 10,
+          filter: _filter && `tag=like=*${_filter}*`,
         });
 
         setPage(res.data);
@@ -45,8 +48,8 @@ export default function ShortcutList() {
   );
 
   useEffect(() => {
-    onFetchShortcuts(currentPage);
-  }, [onFetchShortcuts, currentPage]);
+    onFetchShortcuts(currentPage, filter);
+  }, [onFetchShortcuts, currentPage, filter]);
 
   return (
     <div className="text-gray-800 dark:text-white space-y-4">
@@ -55,6 +58,10 @@ export default function ShortcutList() {
         <hr className="border-gray-300 dark:border-gray-400 mt-2" />
       </div>
       <p>{t("components.shortcut-list.description")}</p>
+      <FilteringAndSortingForm
+        disabled={loading || error}
+        onFilter={(query) => setFilter(query)}
+      />
       <div className="flex flex-col space-y-4">
         {(loading || error) && (
           <div className="w-full relative">

@@ -4,9 +4,9 @@ export const createUser = (data) => {
   return api.post("/users", data);
 };
 
-export const fetchUsers = ({ page, perPage }) => {
+export const fetchUsers = ({ page, perPage, filter, sort }) => {
   return api.get("/users", {
-    params: { page, perPage },
+    params: { page, perPage, filter, sort },
   });
 };
 

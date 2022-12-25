@@ -116,13 +116,13 @@
       "title": "Shortcuts",
       "description": "The following shortcuts are currently available on the whole platform. You can manage them here.",
       "error": "An unexpected error occurred, please retry!",
-      "no-shortcuts": "No shortcuts have been created yet."
+      "no-shortcuts": "No shortcuts have been created yet or none are found."
     },
     "user-list": {
       "title": "Users",
       "description": "The following users are registered on the whole platform. You can manage them here.",
       "error": "An unexpected error occurred, please retry!",
-      "no-users": "No users have been registered yet.",
+      "no-users": "No users have been registered yet or none are found.",
       "disclaimer": "This is highly personal data. Note our <privacy-policy-link>privacy policy</privacy-policy-link> and internal guidelines."
     },
     "user-list-entry": {
@@ -138,6 +138,9 @@
       "error": "An unexpected error occurred, please retry!",
       "yes": "Yes",
       "no": "No"
+    },
+    "filtering-and-sorting-form": {
+      "search": "Search"
     }
   },
   "validation": {

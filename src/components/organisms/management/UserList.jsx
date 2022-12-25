@@ -7,6 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Pagination from "../../molecules/Pagination";
 import UserListEntry, { UserSkeletonListEntry } from "./UserListEntry";
+import FilteringAndSortingForm from "../../molecules/FilteringAndSortingForm";
 import Link from "../../atoms/Link";
 import { fetchUsers } from "../../../api/users";
 
@@ -17,10 +18,11 @@ export default function UserList() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(null);
+  const [filter, setFilter] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
 
   const onFetchUsers = useCallback(
-    async (_page) => {
+    async (_page, _filter) => {
       setError(null);
       setLoading(true);
 
@@ -28,6 +30,7 @@ export default function UserList() {
         const res = await fetchUsers({
           page: _page,
           perPage: 10,
+          filter: _filter && `email=like=*${_filter}*`,
         });
 
         setPage(res.data);
@@ -47,8 +50,8 @@ export default function UserList() {
   );
 
   useEffect(() => {
-    onFetchUsers(currentPage);
-  }, [onFetchUsers, currentPage]);
+    onFetchUsers(currentPage, filter);
+  }, [onFetchUsers, currentPage, filter]);
 
   return (
     <div className="text-gray-800 dark:text-white space-y-4">
@@ -71,6 +74,10 @@ export default function UserList() {
           />
         </p>
       </div>
+      <FilteringAndSortingForm
+        disabled={loading || error}
+        onFilter={(query) => setFilter(query)}
+      />
       <div className="flex flex-col space-y-4">
         {(loading || error) && (
           <div className="w-full relative">
