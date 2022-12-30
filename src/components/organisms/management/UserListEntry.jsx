@@ -7,6 +7,7 @@ import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 import Avatar from "../../atoms/Avatar";
 import Link from "../../atoms/Link";
 import DeleteUserDialog from "./DeleteUserDialog";
+import ManageUserRolesDialog from "./ManageUserRolesDialog";
 import { updateUser } from "../../../api/users";
 
 export default function EditableUserListEntry({ user, onChange }) {
@@ -64,6 +65,7 @@ export default function EditableUserListEntry({ user, onChange }) {
   );
 
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [showRolesDialog, setShowRolesDialog] = useState(false);
 
   return (
     <div className="flex w-full">
@@ -77,6 +79,13 @@ export default function EditableUserListEntry({ user, onChange }) {
         }}
         onClose={() => {
           setShowDeleteDialog(false);
+        }}
+      />
+      <ManageUserRolesDialog
+        userId={user.id}
+        isOpen={showRolesDialog}
+        onClose={() => {
+          setShowRolesDialog(false);
         }}
       />
       <Popover className="relative">
@@ -102,6 +111,15 @@ export default function EditableUserListEntry({ user, onChange }) {
                 >
                   <div className="text-sm">
                     {t("components.user-list-entry.menu.delete")}
+                  </div>
+                </button>
+                <button
+                  type="button"
+                  className="flex justify-left items-center p-2 hover:bg-gray-100 hover:cursor-pointer hover:dark:bg-gray-700 rounded"
+                  onClick={() => setShowRolesDialog(true)}
+                >
+                  <div className="text-sm">
+                    {t("components.user-list-entry.menu.roles")}
                   </div>
                 </button>
                 {user.locked ? (

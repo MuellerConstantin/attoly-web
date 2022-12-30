@@ -19,7 +19,8 @@ export default function Management() {
 
   const isModerator = useSelector(
     (state) =>
-      state.auth.roles.filter((role) => role.name === "ROLE_ADMIN").length > 0
+      state.auth.roles.filter((role) => role.name === "ROLE_MODERATOR").length >
+      0
   );
 
   const role = useMemo(() => {

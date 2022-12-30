@@ -128,6 +128,7 @@
     "user-list-entry": {
       "menu": {
         "delete": "Löschen",
+        "roles": "Rollen verwalten",
         "lock": "Sperren",
         "unlock": "Entsperren"
       }
@@ -138,6 +139,17 @@
       "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
       "yes": "Ja",
       "no": "Nein"
+    },
+    "manage-user-roles-dialog": {
+      "title": "Verwalte Benutzerrollen",
+      "description": "Hier kannst du Benutzerrollen verwalten. Du kannst Benutzerrollen hinzufügen oder entfernen.",
+      "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
+      "list-headline": "Aktuelle Benutzerrollen",
+      "assign-headline": "Rolle zuweisen",
+      "select": "Rolle auswählen",
+      "assign": "Rolle zuweisen",
+      "remove": "Entfernen",
+      "no-roles": "Dieser Benutzer hat noch keine Rollen zugewiesen bekommen."
     },
     "filtering-and-sorting-form": {
       "search": "Suche"

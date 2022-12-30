@@ -128,6 +128,7 @@
     "user-list-entry": {
       "menu": {
         "delete": "Delete",
+        "roles": "Manage roles",
         "lock": "Lock",
         "unlock": "Unlock"
       }
@@ -138,6 +139,17 @@
       "error": "An unexpected error occurred, please retry!",
       "yes": "Yes",
       "no": "No"
+    },
+    "manage-user-roles-dialog": {
+      "title": "Manage roles",
+      "description": "Here you can manage the roles of the user. The roles are used to grant the user access to certain areas of the application.",
+      "error": "An unexpected error occurred, please retry!",
+      "list-headline": "User's roles",
+      "assign-headline": "Assign role",
+      "select": "Select a role",
+      "assign": "Assign role",
+      "remove": "Remove",
+      "no-roles": "The user has no roles assigned yet."
     },
     "filtering-and-sorting-form": {
       "search": "Search"
