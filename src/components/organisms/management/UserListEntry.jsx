@@ -152,7 +152,7 @@ export default function EditableUserListEntry({ user, onChange }) {
   );
 }
 
-function UserListEntry({ user }) {
+export function UserListEntry({ user }) {
   return (
     <div
       className={`w-full rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white p-4 flex items-center space-x-4 ${

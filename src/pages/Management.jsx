@@ -83,29 +83,27 @@ export default function Management() {
                     </div>
                   )}
                 </Tab>
-                {isAdmin && (
-                  <Tab
-                    className={({ selected }) =>
-                      `w-full flex items-center space-x-2 text-sm leading-5 font-medium outline-none pl-1 border-l-4
+                <Tab
+                  className={({ selected }) =>
+                    `w-full flex items-center space-x-2 text-sm leading-5 font-medium outline-none pl-1 border-l-4
                       ${selected ? "border-l-sky-500" : "border-transparent"}`
-                    }
-                  >
-                    {({ selected }) => (
-                      <div
-                        className={`truncate w-full h-full flex items-center rounded-lg p-2 text-gray-800 dark:text-white ${
-                          selected
-                            ? "bg-gray-100 dark:bg-gray-700"
-                            : "hover:bg-gray-100 hover:dark:bg-gray-700"
-                        }`}
-                      >
-                        <UsersIcon className="h-4" />
-                        <div className="ml-2 truncate">
-                          {t("pages.management.users")}
-                        </div>
+                  }
+                >
+                  {({ selected }) => (
+                    <div
+                      className={`truncate w-full h-full flex items-center rounded-lg p-2 text-gray-800 dark:text-white ${
+                        selected
+                          ? "bg-gray-100 dark:bg-gray-700"
+                          : "hover:bg-gray-100 hover:dark:bg-gray-700"
+                      }`}
+                    >
+                      <UsersIcon className="h-4" />
+                      <div className="ml-2 truncate">
+                        {t("pages.management.users")}
                       </div>
-                    )}
-                  </Tab>
-                )}
+                    </div>
+                  )}
+                </Tab>
               </Tab.List>
             </div>
             <Tab.Panels as="div" className="w-full md:w-2/3 lg:w-3/4 xl:w-4/5">
@@ -114,13 +112,11 @@ export default function Management() {
                   <ShortcutList />
                 </div>
               </Tab.Panel>
-              {isAdmin && (
-                <Tab.Panel>
-                  <div className="space-y-8">
-                    <UserList />
-                  </div>
-                </Tab.Panel>
-              )}
+              <Tab.Panel>
+                <div className="space-y-8">
+                  <UserList />
+                </div>
+              </Tab.Panel>
             </Tab.Panels>
           </Tab.Group>
         </div>

@@ -15,11 +15,15 @@ export default function ShortcutListEntry({ shortcut, onChange }) {
         <div className="flex flex-col w-full space-y-1">
           <p className="font-medium">{shortcut.tag}</p>
           <p className="text-sm text-gray-400 truncate">{shortcut.url}</p>
-          <div className="flex items-center space-x-1">
+          <div className="flex items-center space-x-1 text-xs text-gray-400">
             <ClockIcon className="h-3" />
-            <p className="text-xs text-gray-400">
-              {new Date(shortcut.createdAt).toLocaleString()}
-            </p>
+            <p>{new Date(shortcut.createdAt).toLocaleString()}</p>
+            {shortcut.anonymous && (
+              <>
+                <span>&bull;</span>
+                <p>Anonymous</p>
+              </>
+            )}
           </div>
         </div>
         <div className="flex space-x-2">

@@ -1,12 +1,16 @@
 import { useState, useEffect, useCallback } from "react";
 import { useTranslation, Trans } from "react-i18next";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   ExclamationTriangleIcon,
   InformationCircleIcon,
 } from "@heroicons/react/24/outline";
 import Pagination from "../../molecules/Pagination";
-import UserListEntry, { UserSkeletonListEntry } from "./UserListEntry";
+import EditableUserListEntry, {
+  UserSkeletonListEntry,
+  UserListEntry as ReadOnlyUserListEntry,
+} from "./UserListEntry";
 import FilteringAndSortingForm from "../../molecules/FilteringAndSortingForm";
 import Link from "../../atoms/Link";
 import { fetchUsers } from "../../../api/users";
@@ -20,6 +24,11 @@ export default function UserList() {
   const [page, setPage] = useState(null);
   const [filter, setFilter] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
+
+  const isAdmin = useSelector(
+    (state) =>
+      state.auth.roles.filter((role) => role.name === "ROLE_ADMIN").length > 0
+  );
 
   const onFetchUsers = useCallback(
     async (_page, _filter) => {
@@ -103,13 +112,17 @@ export default function UserList() {
         )}
         {!loading && !error && page?.content?.length > 0 && (
           <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
-            {page?.content.map((user) => (
-              <UserListEntry
-                key={user.id}
-                user={user}
-                onChange={() => onFetchUsers(0)}
-              />
-            ))}
+            {page?.content.map((user) =>
+              isAdmin ? (
+                <EditableUserListEntry
+                  key={user.id}
+                  user={user}
+                  onChange={() => onFetchUsers(0)}
+                />
+              ) : (
+                <ReadOnlyUserListEntry key={user.id} user={user} />
+              )
+            )}
           </div>
         )}
         {!loading && !error && page?.content?.length <= 0 && (
