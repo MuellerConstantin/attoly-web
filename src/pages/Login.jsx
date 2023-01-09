@@ -4,10 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import StackTemplate from "../components/templates/StackTemplate";
 import TextField from "../components/atoms/TextField";
 import Button from "../components/atoms/Button";
 import Link from "../components/atoms/Link";
+import ExternalLink from "../components/atoms/ExternalLink";
 import authSlice from "../store/slices/auth";
 import { generateToken } from "../api/auth";
 import { fetchCurrentUserRoles } from "../api/roles";
@@ -149,6 +152,21 @@ export default function Login() {
               </form>
             )}
           </Formik>
+          <hr />
+          <div>
+            <ExternalLink
+              type="button"
+              className="w-full flex justify-center items-center space-x-2 !bg-gray-900"
+              href={`${
+                new URL(process.env.REACT_APP_ATTOLY_API_URI).origin
+              }/oauth2/authorization/github?redirect_uri=${encodeURIComponent(
+                `${window.location.origin}/oauth2/redirect`
+              )}`}
+            >
+              <FontAwesomeIcon icon={faGithub} className="h-4" />
+              <span>{t("pages.login.login-github")}</span>
+            </ExternalLink>
+          </div>
           <div className="flex flex-col md:flex-row justify-between md:space-x-2">
             <div className="text-center">
               <Link className="!text-sm" to="/reset-password">

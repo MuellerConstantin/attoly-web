@@ -13,6 +13,7 @@ import Management from "./pages/Management";
 import GetStarted from "./pages/GetStarted";
 import Redirect from "./pages/Redirect";
 import NotFound from "./pages/NotFound";
+import OAuth2Redirect from "./pages/OAuth2Redirect";
 
 export default function App() {
   const darkMode = useSelector((state) => state.theme.darkMode);
@@ -54,6 +55,7 @@ export default function App() {
       <Route path="/get-started" element={<GetStarted />} />
       <Route path="/redirect/:tag" element={<Redirect />} />
       <Route path="/not-found" element={<NotFound />} />
+      <Route path="/oauth2/redirect" element={<OAuth2Redirect />} />
     </Routes>
   );
 }

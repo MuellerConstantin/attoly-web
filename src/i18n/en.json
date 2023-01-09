@@ -173,6 +173,7 @@
       "email-field": "E-Mail",
       "password-field": "Password",
       "login": "Login",
+      "login-github": "Login with GitHub",
       "forgot-password": "Forgot your password?",
       "verify-user": "Need to activate your account?",
       "no-account": "Don't have an account?"
@@ -260,6 +261,11 @@
       "logged-in-as": "Logged in as {{role}}",
       "shortcuts": "Shortcuts",
       "users": "Users"
+    },
+    "oauth2-redirect": {
+      "title": "Login Redirect",
+      "error": "An unexpected error occurred, please retry!",
+      "authentication-error": "The authentication failed!"
     }
   }
 }
