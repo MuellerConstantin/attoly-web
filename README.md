@@ -17,12 +17,14 @@
 
 ## Introduction
 
-This is the 1st party web client of the attoly platform. Attoly allows creating short links as aliases for
-long URLs, which are easier to embed in websites, chats and documents. This React based single page
-application provides the user with a user-friendly interface to operate the platform. Originally, the Attoly
-Platform is a learning project to gain experience in distributed systems, user management, and cloud deployment.
-Therefore there are no claims to maintenance, freedom from errors or further development. Further development
-only occurs as part of the learning process.
+This is the 1st party web client of the [attoly platform](https://github.com/0x1C1B/attoly-api). Attoly allow
+creating short links as aliases for long URLs, which are easier to embed in websites, chats and documents. This
+React based single page application provides the user with a user-friendly interface to operate the platform.
+Originally, the Attoly Platform is a learning project to gain experience in distributed systems, user management,
+and cloud deployment. Therefore there are no claims to maintenance, freedom from errors or further development.
+Further development only occurs as part of the learning process.
+
+![User Interface](docs/img/ui.png)
 
 ## License
 
