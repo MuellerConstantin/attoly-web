@@ -53,11 +53,7 @@ export default function Redirect() {
     <StackTemplate>
       <div className="h-full bg-gray-50 dark:bg-gray-600 text-gray-800 dark:text-white">
         <div className="h-full flex flex-col">
-          <div
-            className={`${
-              error ? "bg-red-500" : "bg-sky-500"
-            } text-white dark:text-gray-800`}
-          >
+          <div className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white">
             <div className="mx-auto max-w-[100rem] py-10 px-4 sm:px-6 lg:flex lg:items-center lg:justify-between lg:py-12 lg:px-8">
               <div>
                 <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
@@ -85,7 +81,7 @@ export default function Redirect() {
                 </div>
               )}
               {error && (
-                <div className="mt-8 flex flex-col lg:mt-0 lg:flex-shrink-0">
+                <div className="mt-8 flex flex-col lg:mt-0 lg:flex-shrink-0 text-red-500">
                   <div className="flex justify-center">
                     <ExclamationTriangleIcon className="h-12 w-12" />
                   </div>
