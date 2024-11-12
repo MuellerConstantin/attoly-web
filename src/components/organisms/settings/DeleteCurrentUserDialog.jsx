@@ -101,7 +101,7 @@ export default function DeleteCurrentUserDialog({ onSubmit, onClose, isOpen }) {
                 <Button
                   onClick={onSubmitModal}
                   disabled={loading}
-                  className="!bg-green-500 focus:!outline-green-500 w-32 flex justify-center"
+                  className="!bg-gray-200 hover:!bg-gray-300 focus:!outline-green-500 !text-green-500 w-32 flex justify-center"
                 >
                   {!loading && (
                     <span>
@@ -115,7 +115,7 @@ export default function DeleteCurrentUserDialog({ onSubmit, onClose, isOpen }) {
                 <Button
                   onClick={onCloseModal}
                   disabled={loading}
-                  className="!bg-red-500 focus:!outline-red-500 w-32"
+                  className="!bg-gray-200 hover:!bg-gray-300 focus:!outline-red-500 !text-red-500 w-32"
                 >
                   {t("components.delete-current-user-dialog.no")}
                 </Button>
