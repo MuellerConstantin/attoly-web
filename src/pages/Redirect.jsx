@@ -106,7 +106,9 @@ export default function Redirect() {
                 <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
                   {t("pages.redirect.headline")}
                 </h2>
-                <p className="lg:w-1/2">{t("pages.redirect.description")}</p>
+                <p className="lg:w-1/2 mt-2 text-xs">
+                  {t("pages.redirect.description")}
+                </p>
               </div>
               {loading && (
                 <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
@@ -116,7 +118,9 @@ export default function Redirect() {
               {shortcut && (
                 <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
                   {timeLeft ? (
-                    <Spinner timeLeft={timeLeft} />
+                    <div className="flex justify-center items-center w-full">
+                      <Spinner timeLeft={timeLeft} />
+                    </div>
                   ) : (
                     <div className="inline-flex rounded-md shadow w-full lg:w-fit">
                       <ExternalLink
