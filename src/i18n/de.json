@@ -151,6 +151,18 @@
       "remove": "Entfernen",
       "no-roles": "Dieser Benutzer hat noch keine Rollen zugewiesen bekommen."
     },
+    "create-complaint-dialog": {
+      "title": "Beschwerde einreichen",
+      "description": "Hier hast du die möglichkeit unangebrachte Shortcuts zu melden. Die Beschwerde wird anschließend von einem Admin bearbeitet.",
+      "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
+      "comment": "Kommentar...",
+      "reason.DEFAULT": "Grund auswählen",
+      "reason.SPAM": "Spam",
+      "reason.PHISHING": "Phishing",
+      "reason.MALWARE": "Malware",
+      "reason.DEFACEMENT": "Manipulation",
+      "assign": "Beschwerde einreichen"
+    },
     "filtering-and-sorting-form": {
       "search": "Suche"
     }
@@ -159,7 +171,8 @@
     "url": "Muss eine gültige URL sein",
     "required": "Muss ausgefüllt sein",
     "email": "Muss eine gültige E-Mail sein",
-    "confirm-password": "Passwörter müssen übereinstimmen"
+    "confirm-password": "Passwörter müssen übereinstimmen",
+    "select": "Muss ausgewählt werden"
   },
   "pages": {
     "home": {

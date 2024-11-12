@@ -151,6 +151,18 @@
       "remove": "Remove",
       "no-roles": "The user has no roles assigned yet."
     },
+    "create-complaint-dialog": {
+      "title": "File a complaint",
+      "description": "Here you have the opportunity to report inappropriate shortcuts. The complaint will then be processed by an admin.",
+      "error": "An unexpected error occurred, please retry!",
+      "comment": "Comment...",
+      "reason.DEFAULT": "Choose reason",
+      "reason.SPAM": "Spam",
+      "reason.PHISHING": "Phishing",
+      "reason.MALWARE": "Malware",
+      "reason.DEFACEMENT": "Defacement",
+      "assign": "Send complaint"
+    },
     "filtering-and-sorting-form": {
       "search": "Search"
     }
@@ -159,7 +171,8 @@
     "url": "Must be a valid URL",
     "required": "Is required",
     "email": "Must be a valid E-Mail",
-    "confirm-password": "Passwords must match"
+    "confirm-password": "Passwords must match",
+    "select": "Must be selected"
   },
   "pages": {
     "home": {

@@ -4,6 +4,8 @@ import { useTranslation } from "react-i18next";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import StackTemplate from "../components/templates/StackTemplate";
 import ExternalLink from "../components/atoms/ExternalLink";
+import Link from "../components/atoms/Link";
+import CreateComplaintDialog from "../components/organisms/CreateComplaintDialog";
 import { fetchShortcut } from "../api/shortcuts";
 
 function Spinner({ timeLeft }) {
@@ -43,6 +45,7 @@ export default function Redirect() {
   const [error, setError] = useState(null);
   const [shortcut, setShortcut] = useState(null);
   const [timeLeft, setTimeLeft] = useState(null);
+  const [showComplaintModal, setShowComplaintModal] = useState(false);
 
   const onLoad = useCallback(
     async (_tag) => {
@@ -98,6 +101,11 @@ export default function Redirect() {
 
   return (
     <StackTemplate>
+      <CreateComplaintDialog
+        tag={tag}
+        onClose={() => setShowComplaintModal(false)}
+        isOpen={showComplaintModal}
+      />
       <div className="h-full bg-gray-50 dark:bg-gray-600 text-gray-800 dark:text-white">
         <div className="h-full flex flex-col">
           <div className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white">
@@ -109,6 +117,16 @@ export default function Redirect() {
                 <p className="lg:w-1/2 mt-2 text-xs">
                   {t("pages.redirect.description")}
                 </p>
+                <Link
+                  href="/"
+                  className="!text-xs"
+                  onClick={(element) => {
+                    element.preventDefault();
+                    setShowComplaintModal(true);
+                  }}
+                >
+                  File a complaint
+                </Link>
               </div>
               {loading && (
                 <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
