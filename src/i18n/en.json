@@ -182,6 +182,8 @@
       "title": "Login",
       "error": "An unexpected error occurred, please retry!",
       "credentials-error": "Either username or password are wrong!",
+      "disabled-error": "The account is disabled, please verify your E-Mail and activate your account.",
+      "locked-error": "The account is locked, you can't log in at the moment!",
       "headline": "Sign in into your account",
       "email-field": "E-Mail",
       "password-field": "Password",

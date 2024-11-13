@@ -182,6 +182,8 @@
       "title": "Anmeldung",
       "error": "Ein unerwarteter Fehler ist aufgetreten, bitte erneut versuchen!",
       "credentials-error": "Benutzername und/oder Passwort sind falsch!",
+      "disabled-error": "Der Account ist deaktiviert, bitte verifiziere zuerst deine E-Mail Adresse und aktiviere dein Konto.",
+      "locked-error": "Dein Account ist gesperrt, eine Anmeldung ist derzeit nicht möglich!",
       "headline": "Mit einem Account anmelden",
       "email-field": "E-Mail",
       "password-field": "Passwort",

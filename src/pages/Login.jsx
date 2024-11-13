@@ -65,7 +65,13 @@ export default function Login() {
         navigate("/home");
       } catch (err) {
         if (err.response && err.response.status === 401) {
-          setError(t("pages.login.credentials-error"));
+          if (err.response.data?.error === "AccountDisabledError") {
+            setError(t("pages.login.disabled-error"));
+          } else if (err.response.data?.error === "AccountLockedError") {
+            setError(t("pages.login.locked-error"));
+          } else {
+            setError(t("pages.login.credentials-error"));
+          }
         } else {
           setError(t("pages.login.error"));
         }
