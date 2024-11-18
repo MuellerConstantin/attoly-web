@@ -106,7 +106,7 @@ export default function Redirect() {
         onClose={() => setShowComplaintModal(false)}
         isOpen={showComplaintModal}
       />
-      <div className="h-full bg-gray-50 dark:bg-gray-600 text-gray-800 dark:text-white">
+      <div className="h-full bg-white dark:bg-gray-800 text-gray-800 dark:text-white">
         <div className="h-full flex flex-col">
           <div className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white">
             <div className="mx-auto max-w-[100rem] py-10 px-4 sm:px-6 lg:flex lg:items-center lg:justify-between lg:py-12 lg:px-8">
@@ -145,7 +145,7 @@ export default function Redirect() {
                         href={shortcut.url}
                         rel="noreferrer"
                         type="button"
-                        className="w-full px-8 py-3 md:py-4 md:px-10 md:text-lg !bg-orange-500 !focus:outline-orange-500"
+                        className="w-full px-8 py-3 !bg-orange-500 !focus:outline-orange-500"
                         onClick={(element) => {
                           if (timeLeft) {
                             element.preventDefault();
@@ -174,8 +174,8 @@ export default function Redirect() {
           </div>
           <div className="p-4 md:p-6 lg:p-8 xl:p-12 h-72 grow">
             <div className="h-full">
-              <div className="h-full rounded-lg border-4 border-dashed border-gray-200 dark:border-gray-800 flex justify-center items-center">
-                <h2 className="text-gray-200 dark:text-gray-800 font-bold text-2xl text-center">
+              <div className="h-full rounded-lg border-4 border-dashed border-gray-200 dark:border-gray-900 flex justify-center items-center">
+                <h2 className="text-gray-200 dark:text-gray-900 font-bold text-2xl text-center">
                   {t("pages.redirect.advertising")}
                 </h2>
               </div>

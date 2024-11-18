@@ -7,12 +7,13 @@ import {
   LinkIcon,
   ArrowLeftOnRectangleIcon,
 } from "@heroicons/react/24/outline";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Avatar from "../components/atoms/Avatar";
 import ChangeCurrentUserPasswordForm from "../components/organisms/settings/ChangeCurrentUserPasswordForm";
 import DeleteCurrentUserForm from "../components/organisms/settings/DeleteCurrentUserForm";
 import CurrentUserShortcutList from "../components/organisms/settings/CurrentUserShortcutList";
 import StackTemplate from "../components/templates/StackTemplate";
+import Link from "../components/atoms/Link";
 
 export default function Settings() {
   const { t } = useTranslation();
@@ -26,8 +27,8 @@ export default function Settings() {
 
   return (
     <StackTemplate>
-      <div className="h-full bg-gray-50 dark:bg-gray-600">
-        <div className="max-w-[100rem] mx-auto px-4 py-8">
+      <div className="h-full bg-white dark:bg-gray-800">
+        <div className="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <Tab.Group
             as="div"
             className="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8"
@@ -92,7 +93,8 @@ export default function Settings() {
                 <hr />
                 <Link
                   to="/logout"
-                  className="group relative py-2 px-3 text-sm font-medium rounded-md outline-none hover:brightness-110 disabled:opacity-50 w-full flex justify-center items-center space-x-2 bg-transparent border border-red-500 text-red-500 focus:outline-red-500"
+                  type="button"
+                  className="flex items-center justify-center space-x-2 !bg-gray-300 !text-gray-800 dark:!bg-gray-600 dark:!text-white"
                 >
                   <div>Logout</div>
                   <ArrowLeftOnRectangleIcon

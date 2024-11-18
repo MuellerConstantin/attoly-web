@@ -123,7 +123,7 @@ export default function ChangeCurrentUserPasswordForm({ onChange, disabled }) {
                 disabled={
                   !(props.isValid && props.dirty) || disabled || loading
                 }
-                className="max-w-fit bg-green-500 focus:outline-green-500"
+                className="max-w-fit !bg-gray-300 !text-gray-800 dark:!bg-gray-600 dark:!text-white"
               >
                 {t("components.change-user-password-form.submit")}
               </Button>

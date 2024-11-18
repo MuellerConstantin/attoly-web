@@ -80,7 +80,7 @@ export default function DeleteShortcutDialog({
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <Dialog.Panel className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl space-y-6 bg-white dark:bg-gray-800 text-gray-800 dark:text-white">
+            <Dialog.Panel className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl space-y-6 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white">
               <div className="flex justify-between items-center">
                 <Dialog.Title as="h3" className="text-lg font-medium leading-6">
                   {t("components.delete-shortcut-dialog.title")}
@@ -100,7 +100,7 @@ export default function DeleteShortcutDialog({
                 <Button
                   onClick={onSubmitModal}
                   disabled={loading}
-                  className="!bg-gray-200 hover:!bg-gray-300 focus:!outline-green-500 !text-green-500 w-32 flex justify-center"
+                  className="!bg-gray-300 !text-gray-800 dark:!bg-gray-600 dark:!text-white w-32 flex justify-center"
                 >
                   {!loading && (
                     <span>{t("components.delete-shortcut-dialog.yes")}</span>
@@ -112,7 +112,7 @@ export default function DeleteShortcutDialog({
                 <Button
                   onClick={onCloseModal}
                   disabled={loading}
-                  className="!bg-gray-200 hover:!bg-gray-300 focus:!outline-red-500 !text-red-500 w-32"
+                  className="!bg-gray-300 !text-gray-800 dark:!bg-gray-600 dark:!text-white w-32"
                 >
                   {t("components.delete-shortcut-dialog.no")}
                 </Button>

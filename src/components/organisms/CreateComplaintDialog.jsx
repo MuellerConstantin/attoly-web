@@ -44,7 +44,9 @@ export default function CreateComplaintDialog({ tag, onClose, isOpen }) {
 
         if (onClose) onClose();
       } catch (err) {
-        if (err.response && err.response.status === 422) {
+        if (err.response && err.response.status === 401) {
+          navigate("/logout");
+        } else if (err.response && err.response.status === 422) {
           err.response.data.details?.forEach((detail) =>
             setFieldError(detail.field, detail.message)
           );
@@ -57,7 +59,7 @@ export default function CreateComplaintDialog({ tag, onClose, isOpen }) {
         setLoading(false);
       }
     },
-    [navigate, t, tag]
+    [navigate, t, tag, onClose]
   );
 
   const onCloseModal = () => {
@@ -100,7 +102,7 @@ export default function CreateComplaintDialog({ tag, onClose, isOpen }) {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <Dialog.Panel className="inline-block w-full max-w-md p-6 my-8 text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl space-y-6 bg-white dark:bg-gray-800 text-gray-800 dark:text-white">
+            <Dialog.Panel className="inline-block w-full max-w-md p-6 my-8 text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl space-y-6 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white">
               <div className="flex justify-between items-center">
                 <Dialog.Title as="h3" className="text-lg font-medium leading-6">
                   {t("components.create-complaint-dialog.title")}

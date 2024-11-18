@@ -45,7 +45,7 @@ export default function LanguageSelector() {
       <div className="relative mt-1">
         <Listbox.Button
           ref={setPopupButtonElement}
-          className="p-1 rounded-full text-gray-200 dark:text-gray-600 hover:text-white dark:text-gray-800 focus:outline-none"
+          className="p-1 rounded-full text-gray-600 dark:text-gray-200 hover:text-gray-800 dark:hover:text-white focus:outline-none"
         >
           <LanguageIcon className="h-6 w-6" aria-hidden="true" />
         </Listbox.Button>

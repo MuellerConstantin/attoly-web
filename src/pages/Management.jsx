@@ -39,7 +39,7 @@ export default function Management() {
 
   return (
     <StackTemplate>
-      <div className="h-full bg-gray-50 dark:bg-gray-600">
+      <div className="h-full bg-white dark:bg-gray-800">
         <div className="max-w-[100rem] mx-auto px-4 py-8">
           <Tab.Group
             as="div"

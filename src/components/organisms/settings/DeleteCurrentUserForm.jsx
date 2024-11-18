@@ -28,7 +28,7 @@ export default function DeleteUserForm({ onChange, disabled }) {
         <Button
           type="button"
           disabled={disabled}
-          className="!bg-red-500 focus:!outline-red-500"
+          className="!bg-red-100 dark:!bg-red-400 !text-red-500 dark:!text-red-900 border-solid border border-red-500 dark:border-red-900"
           onClick={() => setShowDeleteModal(true)}
         >
           {t("components.delete-current-user-form.delete")}

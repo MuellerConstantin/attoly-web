@@ -5,7 +5,7 @@ export default function ConstructionNotification() {
   const { t } = useTranslation();
 
   return (
-    <div className="bg-sky-200 text-gray-800 dark:bg-sky-800 dark:text-white">
+    <div className="bg-sky-200 text-gray-800 dark:bg-sky-900 dark:text-white">
       <div className="mx-auto max-w-[100rem] py-12 px-4 sm:px-6 lg:flex lg:items-center lg:justify-between lg:py-16 lg:px-8">
         <div>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">

@@ -53,7 +53,7 @@ export default function NavbarMenu() {
         <>
           <Popover.Button
             ref={setPopupButtonElement}
-            className="p-1 rounded-full text-gray-200 dark:text-gray-600 hover:text-white dark:text-gray-800 focus:outline-none"
+            className="p-1 rounded-full text-gray-600 dark:text-gray-200 hover:text-gray-800 dark:hover:text-white focus:outline-none"
           >
             {principal ? (
               <div className="bg-gray-200 text-gray-800 dark:bg-gray-600 dark:text-white p-2 rounded-full">
@@ -67,12 +67,12 @@ export default function NavbarMenu() {
           </Popover.Button>
           <Popover.Panel
             ref={setPopupDialogElement}
-            className="shadow-md border dark:border-gray-900 rounded-md z-50 w-screen max-w-xs sm:max-w-sm bg-gray-100 dark:bg-gray-600 text-gray-800 dark:text-white"
+            className="shadow-md border dark:border-gray-900 rounded-md z-50 w-screen max-w-xs sm:max-w-sm bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-white"
             style={styles.popper}
             {...attributes.popper}
           >
             {principal ? (
-              <div className="p-4 bg-white dark:bg-gray-800 flex space-x-4 items-center justify-between">
+              <div className="p-4 bg-white dark:bg-gray-900 flex space-x-4 items-center justify-between">
                 <div className="flex space-x-4 items-center overflow-hidden">
                   <div className="bg-gray-200 text-gray-800 dark:bg-gray-600 dark:text-white p-2 rounded-full">
                     <div className="h-10 aspect-square rounded-md">

@@ -10,7 +10,7 @@ export default function Footer() {
   const { t } = useTranslation();
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white">
+    <div className="bg-gray-50 dark:bg-sky-900 text-gray-800 dark:text-white">
       <div className="max-w-[100rem] mx-auto text-center md:text-left">
         <div className="grid grid-1 md:grid-cols-2 lg:grid-cols-4 gap-10 p-10">
           <div className="flex flex-col items-center md:items-start">
@@ -117,7 +117,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="text-center p-4 bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-white">
+      <div className="text-center p-4 bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-white">
         <Trans
           t={t}
           i18nKey="components.footer.creation-notice"

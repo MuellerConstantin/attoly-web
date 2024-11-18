@@ -77,14 +77,14 @@ export default function GetStarted() {
   return (
     <StackTemplate>
       <div
-        className="h-full bg-gray-50 dark:bg-gray-600 text-gray-800 dark:text-white flex flex-col items-center justify-center px-4 py-32 space-y-4"
+        className="h-full bg-white dark:bg-gray-800 text-gray-800 dark:text-white flex flex-col items-center justify-center px-4 py-32 space-y-4"
         style={{
           backgroundImage: `url(${WallpaperImage})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="w-full max-w-2xl bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-md rounded-md p-8 space-y-6">
+        <div className="w-full max-w-2xl bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white shadow-md rounded-md p-8 space-y-6">
           <div>
             <img
               className="hidden dark:block mx-auto h-10 md:h-12 lg:h-14 w-auto"
@@ -167,7 +167,7 @@ export default function GetStarted() {
           </Formik>
         </div>
         {shortcut && (
-          <div className="w-full max-w-2xl bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-md rounded-md p-8 space-y-6">
+          <div className="w-full max-w-2xl bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white shadow-md rounded-md p-8 space-y-6">
             <h1 className="mt-4 text-center text-2xl font-bold mt-0">
               {t("pages.get-started.response-headline")}
             </h1>
@@ -228,6 +228,7 @@ export default function GetStarted() {
                 <QRCodeCanvas
                   id="qrcode"
                   size="194"
+                  className="w-full h-auto max-w-[20rem]"
                   value={`${window.location.origin}/redirect/${shortcut.tag}`}
                 />
               </div>

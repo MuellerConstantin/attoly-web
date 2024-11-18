@@ -8,69 +8,49 @@ export default function Jumbotron() {
 
   return (
     <div className="relative bg-white dark:bg-gray-800">
-      <div className="max-w-[100rem] z-10 mx-auto relative overflow-hidden flex flex-col">
-        <div className="w-full lg:w-1/2 order-2">
-          <div className="relative z-10 pb-8 sm:pb-16 md:pb-20 w-full lg:pb-28 xl:pb-32">
-            <svg
-              className="absolute hidden lg:block inset-y-0 right-0 h-full w-48 translate-x-1/2 transform text-white"
-              fill="currentColor"
-              viewBox="0 0 100 100"
-              preserveAspectRatio="none"
-              aria-hidden="true"
-            >
-              <polygon
-                points="50,0 100,0 50,100 0,100"
-                className="fill-white dark:fill-gray-800"
-              />
-            </svg>
-
-            <div className="mx-auto p-4 sm:p-6">
-              <div className="sm:text-center lg:text-left">
-                <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-                  <Trans
-                    t={t}
-                    i18nKey="components.jumbotron.title"
-                    components={{
-                      highlight: <span className="text-sky-500" />,
-                    }}
-                  />
-                </h1>
-                <p className="mt-3 text-base text-gray-500 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-xl lg:mx-0">
-                  {t("components.jumbotron.description")}
-                </p>
-                <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                  <div className="rounded-md shadow">
-                    <Link
-                      to="/get-started"
-                      type="button"
-                      className="w-full px-8 py-3 md:py-4 md:px-10 md:text-lg"
-                    >
-                      {t("components.jumbotron.get-started")}
-                    </Link>
-                  </div>
-                  <div className="mt-3 sm:mt-0 sm:ml-3">
-                    <Link
-                      to="/register"
-                      type="button"
-                      className="w-full px-8 py-3 md:py-4 md:px-10 md:text-lg !bg-orange-500 !focus:outline-orange-500"
-                    >
-                      {t("components.jumbotron.register-now")}
-                    </Link>
-                  </div>
-                </div>
-              </div>
+      <div className="max-w-[100rem] z-10 mx-auto relative overflow-hidden flex flex-col lg:flex-row px-4 sm:px-6 lg:px-8 py-10 lg:py-24">
+        <div className="order-2 lg:order-1 text-center lg:text-left lg:w-2/3">
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+            <Trans
+              t={t}
+              i18nKey="components.jumbotron.title"
+              components={{
+                highlight: <span className="text-sky-500" />,
+              }}
+            />
+          </h1>
+          <p className="mt-3 text-base text-gray-500 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-xl lg:mx-0">
+            {t("components.jumbotron.description")}
+          </p>
+          <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+            <div className="rounded-md shadow">
+              <Link
+                to="/get-started"
+                type="button"
+                className="w-full px-8 py-3"
+              >
+                {t("components.jumbotron.get-started")}
+              </Link>
+            </div>
+            <div className="mt-3 sm:mt-0 sm:ml-3">
+              <Link
+                to="/register"
+                type="button"
+                className="w-full px-8 py-3 !bg-orange-500 !focus:outline-orange-500"
+              >
+                {t("components.jumbotron.register-now")}
+              </Link>
             </div>
           </div>
         </div>
-        <div className="order-1 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+        <div className="order-1 lg:order-2 lg:w-1/3">
           <img
-            className="h-56 w-full object-cover sm:h-72 md:h-96 lg:h-full lg:w-full object-scale-down p-6 lg:p-12"
+            className="w-full h-auto max-h-[20rem] object-scale-down p-6"
             src={JumbotronImage}
             alt="Jumbotron"
           />
         </div>
       </div>
-      <div className="order-1 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-gray-100 dark:bg-gray-700" />
     </div>
   );
 }

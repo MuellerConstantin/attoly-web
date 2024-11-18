@@ -80,7 +80,7 @@ export default function DeleteUserDialog({
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <Dialog.Panel className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl space-y-6 bg-white dark:bg-gray-800 text-gray-800 dark:text-white">
+            <Dialog.Panel className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl space-y-6 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white">
               <div className="flex justify-between items-center">
                 <Dialog.Title as="h3" className="text-lg font-medium leading-6">
                   {t("components.delete-user-dialog.title")}
@@ -89,7 +89,7 @@ export default function DeleteUserDialog({
                   type="button"
                   onClick={onCloseModal}
                   disabled={loading}
-                  className="p-1 rounded-full text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white disabled:opacity-50"
+                  className="p-1 rounded-full text-gray-600 hover:text-gray-00 dark:text-gray-400 dark:hover:text-white disabled:opacity-50"
                 >
                   <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                 </button>

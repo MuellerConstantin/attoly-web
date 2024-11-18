@@ -130,7 +130,7 @@ function VerifyUserRequest() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="w-full max-w-xl bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-md rounded-md p-8 space-y-6">
+      <div className="w-full max-w-xl bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white shadow-md rounded-md p-8 space-y-6">
         <div>
           <img
             className="mx-auto h-10 md:h-12 lg:h-14 w-auto"
@@ -197,7 +197,7 @@ export default function VerifyUser() {
 
   return (
     <StackTemplate>
-      <div className="h-full bg-gray-50 dark:bg-gray-600 text-gray-800 dark:text-white">
+      <div className="h-full bg-white dark:bg-gray-800 text-gray-800 dark:text-white">
         {searchParams.get("token") ? (
           <VerifyUserConfirmation />
         ) : (

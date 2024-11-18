@@ -31,13 +31,13 @@ export default function Navbar() {
   ];
 
   return (
-    <Disclosure as="nav" className="bg-orange-500">
+    <Disclosure as="nav" className="bg-white dark:bg-gray-800">
       {({ open }) => (
         <>
           <div className="px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-200 dark:text-gray-600 hover:text-white hover:dark:text-gray-800 focus:outline-none">
+                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-600 dark:text-gray-200 hover:text-gray-800 dark:hover:text-white focus:outline-none">
                   <span className="sr-only">
                     {t("components.navbar.menu.open-menu")}
                   </span>
@@ -58,12 +58,12 @@ export default function Navbar() {
                     />
                     <img
                       className="hidden lg:block lg:dark:hidden h-8 w-auto"
-                      src={LogoTextLight}
+                      src={LogoTextDark}
                       alt="Attoly Logo"
                     />
                     <img
                       className="hidden lg:dark:block h-8 w-auto"
-                      src={LogoTextDark}
+                      src={LogoTextLight}
                       alt="Attoly Logo"
                     />
                   </Link>
@@ -77,8 +77,8 @@ export default function Navbar() {
                         className={({ isActive }) =>
                           classNames(
                             isActive
-                              ? "text-white dark:text-gray-800 bg-orange-600"
-                              : "text-gray-200 dark:text-gray-600 hover:text-white dark:text-gray-800 hover:bg-orange-400",
+                              ? "text-gray-800 dark:text-white"
+                              : "text-gray-500 hover:text-orange-500",
                             "px-3 py-2 font-bold rounded-md"
                           )
                         }
@@ -98,11 +98,11 @@ export default function Navbar() {
                   <div className="hidden md:flex space-x-4 items-center justify-between">
                     <Link
                       to="/login"
-                      className="!text-white dark:!text-gray-800"
+                      className="!text-gray-800 dark:!text-white"
                     >
                       {t("components.navbar.navigation.login")}
                     </Link>
-                    <Link to="/register" type="button">
+                    <Link to="/register" type="button" className="rounded-full">
                       {t("components.navbar.navigation.register")}
                     </Link>
                   </div>
