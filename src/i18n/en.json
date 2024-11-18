@@ -58,8 +58,8 @@
           "description": "Our service works across devices. Thanks to our responsive-first approach, this applies in particular to our management portal and our website."
         },
         "prices": {
-          "title": "Fair prices",
-          "description": "Thanks to our open source approach, we can achieve extremely cheap and fair prices. A large part of our services even remains completely free."
+          "title": "Free Usage",
+          "description": "Thanks to our open source commitment and funding through advertising, we can offer our service completely free of charge."
         }
       }
     },
@@ -262,7 +262,8 @@
       "share-url": "Share URL",
       "copy-url": "Copy",
       "share-qrcode": "Share QR-Code",
-      "download-qrcode": "Download QR-Code"
+      "download-qrcode": "Download QR-Code",
+      "short-another": "Short another URL?"
     },
     "settings": {
       "title": "Settings",

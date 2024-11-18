@@ -58,8 +58,8 @@
           "description": "Unser Service funktioniert geräteübergreifend. Dank unseres Responsive-First-Ansatzes gilt dies insbesondere für unser Verwaltungsportal und unsere Website."
         },
         "prices": {
-          "title": "Faire Preise",
-          "description": "Durch unseren Open-Source-Ansatz können wir extrem günstige und faire Preise erzielen. Ein Großteil unserer Services bleibt sogar komplett kostenlos."
+          "title": "Kostenlose Nutzung",
+          "description": "Dank unsere Open Source Ansatzes und der Finanzierung über Werberanzeigen können wir unseren Dienst vollkommen kostenlos anbieten."
         }
       }
     },
@@ -262,7 +262,8 @@
       "share-url": "URL teilen",
       "copy-url": "Kopieren",
       "share-qrcode": "QR-Code teilen",
-      "download-qrcode": "QR-Code herunterladen"
+      "download-qrcode": "QR-Code herunterladen",
+      "short-another": "Eine andere URL verkürzen?"
     },
     "settings": {
       "title": "Einstellungen",
