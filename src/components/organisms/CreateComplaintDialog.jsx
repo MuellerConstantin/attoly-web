@@ -11,6 +11,7 @@ import * as yup from "yup";
 import { Formik } from "formik";
 import { createComplaint } from "../../api/complaints";
 import Button from "../atoms/Button";
+import Spinner from "../atoms/Spinner";
 import TextArea from "../atoms/TextArea";
 
 export default function CreateComplaintDialog({ tag, onClose, isOpen }) {
@@ -226,7 +227,7 @@ export default function CreateComplaintDialog({ tag, onClose, isOpen }) {
                           </span>
                         )}
                         {loading && (
-                          <div className="w-6 h-6 border-b-2 border-white rounded-full animate-spin" />
+                          <Spinner className="h-6 w-6 !text-gray-600 !fill-orange-500" />
                         )}
                       </Button>
                     </form>

@@ -6,6 +6,7 @@ import * as yup from "yup";
 import StackTemplate from "../components/templates/StackTemplate";
 import TextField from "../components/atoms/TextField";
 import Button from "../components/atoms/Button";
+import Spinner from "../components/atoms/Spinner";
 import { requestVerificationEmail, verifyUser } from "../api/users";
 
 import Logo from "../assets/images/logo.svg";
@@ -71,7 +72,7 @@ function VerifyUserConfirmation() {
         <p>{t("pages.verify-user.description")}</p>
         {loading && (
           <div className="w-full flex justify-center p-2 pt-6">
-            <div className="w-10 h-10 border-b-2 border-sky-500 rounded-full animate-spin" />
+            <Spinner className="h-6 w-6 !text-gray-600 !fill-orange-500" />
           </div>
         )}
         {success && <p className="text-center text-green-500">{success}</p>}
@@ -176,7 +177,7 @@ function VerifyUserRequest() {
               >
                 {!loading && <span>{t("pages.verify-user.send-email")}</span>}
                 {loading && (
-                  <div className="w-6 h-6 border-b-2 border-white rounded-full animate-spin" />
+                  <Spinner className="h-6 w-6 !text-gray-600 !fill-orange-500" />
                 )}
               </Button>
             </form>

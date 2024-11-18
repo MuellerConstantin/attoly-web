@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Button from "../../atoms/Button";
+import Spinner from "../../atoms/Spinner";
 import { deleteUser } from "../../../api/users";
 
 export default function DeleteUserDialog({
@@ -106,7 +107,7 @@ export default function DeleteUserDialog({
                     <span>{t("components.delete-user-dialog.yes")}</span>
                   )}
                   {loading && (
-                    <div className="w-6 h-6 border-b-2 border-white rounded-full animate-spin" />
+                    <Spinner className="h-6 w-6 !text-gray-600 !fill-orange-500" />
                   )}
                 </Button>
                 <Button

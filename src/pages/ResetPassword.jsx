@@ -6,6 +6,7 @@ import * as yup from "yup";
 import StackTemplate from "../components/templates/StackTemplate";
 import TextField from "../components/atoms/TextField";
 import Button from "../components/atoms/Button";
+import Spinner from "../components/atoms/Spinner";
 import { requestResetEmail, resetPassword } from "../api/users";
 
 import Logo from "../assets/images/logo.svg";
@@ -134,7 +135,7 @@ function ResetPasswordConfirmation() {
                   <span>{t("pages.reset-password.reset-password")}</span>
                 )}
                 {loading && (
-                  <div className="w-6 h-6 border-b-2 border-white rounded-full animate-spin" />
+                  <Spinner className="h-6 w-6 !text-gray-600 !fill-orange-500" />
                 )}
               </Button>
             </form>
@@ -242,7 +243,7 @@ function ResetPasswordRequest() {
                   <span>{t("pages.reset-password.send-email")}</span>
                 )}
                 {loading && (
-                  <div className="w-6 h-6 border-b-2 border-white rounded-full animate-spin" />
+                  <Spinner className="h-6 w-6 !text-gray-600 !fill-orange-500" />
                 )}
               </Button>
             </form>

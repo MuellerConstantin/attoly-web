@@ -10,6 +10,7 @@ import StackTemplate from "../components/templates/StackTemplate";
 import TextField from "../components/atoms/TextField";
 import Button from "../components/atoms/Button";
 import Link from "../components/atoms/Link";
+import Spinner from "../components/atoms/Spinner";
 import ExternalLink from "../components/atoms/ExternalLink";
 import authSlice from "../store/slices/auth";
 import { generateToken } from "../api/auth";
@@ -152,7 +153,7 @@ export default function Login() {
                 >
                   {!loading && <span>{t("pages.login.login")}</span>}
                   {loading && (
-                    <div className="w-6 h-6 border-b-2 border-white rounded-full animate-spin" />
+                    <Spinner className="h-6 w-6 !text-gray-600 !fill-orange-500" />
                   )}
                 </Button>
               </form>
