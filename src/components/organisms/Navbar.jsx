@@ -112,28 +112,31 @@ export default function Navbar() {
             </div>
           </div>
           <Disclosure.Panel className="sm:hidden">
-            <div className="space-y-1 px-2 pt-2 pb-3">
-              {navigation.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as={NavLink}
-                  to={item.path}
-                  className={({ isActive }) =>
-                    classNames(
-                      isActive
-                        ? "text-white dark:text-gray-800 bg-orange-600"
-                        : "text-gray-200 dark:text-gray-600 hover:text-white dark:text-gray-800 hover:bg-orange-400",
-                      "block px-3 py-2 font-bold rounded-md"
-                    )
-                  }
-                  aria-current={
-                    location.pathname === item.path ? "page" : undefined
-                  }
-                >
-                  {item.name}
-                </Disclosure.Button>
-              ))}
-            </div>
+            {({ close }) => (
+              <div className="space-y-1 px-2 pt-2 pb-3">
+                {navigation.map((item) => (
+                  <NavLink
+                    key={item.name}
+                    as={NavLink}
+                    to={item.path}
+                    onClick={close}
+                    className={({ isActive }) =>
+                      classNames(
+                        isActive
+                          ? "text-gray-800 dark:text-white"
+                          : "text-gray-500 hover:text-orange-500",
+                        "block px-3 py-2 font-bold rounded-md"
+                      )
+                    }
+                    aria-current={
+                      location.pathname === item.path ? "page" : undefined
+                    }
+                  >
+                    {item.name}
+                  </NavLink>
+                ))}
+              </div>
+            )}
           </Disclosure.Panel>
         </>
       )}
