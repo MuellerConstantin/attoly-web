@@ -57,8 +57,12 @@ api.interceptors.response.use(
               })
             );
 
-            config.headers.Authorization = `Bearer ${refreshRes.data.accessToken}`;
-            return axios(config);
+            config.headers = {
+              ...config.headers,
+              Authorization: `Bearer ${refreshRes.data.accessToken}`,
+            };
+
+            return api(config);
           } catch (refeshError) {
             return Promise.reject(refeshError);
           }
