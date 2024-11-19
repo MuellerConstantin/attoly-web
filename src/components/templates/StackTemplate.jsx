@@ -3,7 +3,7 @@ import Footer from "../organisms/Footer";
 
 export default function StackTemplate({ children }) {
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full min-h-screen flex flex-col">
       <header className="sticky top-0 z-50">
         <Navbar />
       </header>
