@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <StackTemplate>
-      <div className="h-full bg-white dark:bg-gray-800 text-gray-800 dark:text-white">
+      <div className="grow">
         <Jumbotron />
         <ConstructionNotification />
         <FeatureShow />

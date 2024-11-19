@@ -88,7 +88,7 @@ export default function Login() {
   return (
     <StackTemplate>
       <div
-        className="h-full bg-white dark:bg-gray-800 text-gray-800 dark:text-white flex flex-col items-center justify-center px-4 py-12 space-y-4"
+        className="grow flex flex-col items-center justify-center px-4 py-32 space-y-4"
         style={{
           backgroundImage: `url(${WallpaperImage})`,
           backgroundSize: "cover",

@@ -7,7 +7,9 @@ export default function StackTemplate({ children }) {
       <header className="sticky top-0 z-50">
         <Navbar />
       </header>
-      <main className="grow">{children}</main>
+      <main className="grow flex dark:bg-gray-800 text-gray-800 dark:text-white">
+        {children}
+      </main>
       <footer>
         <Footer />
       </footer>

@@ -80,7 +80,7 @@ export default function Redirect() {
         onClose={() => setShowComplaintModal(false)}
         isOpen={showComplaintModal}
       />
-      <div className="h-full bg-white dark:bg-gray-800 text-gray-800 dark:text-white">
+      <div className="grow">
         <div className="h-full flex flex-col">
           <div className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white">
             <div className="mx-auto max-w-[100rem] py-10 px-4 sm:px-6 lg:flex lg:items-center lg:justify-between lg:py-12 lg:px-8">
