@@ -176,7 +176,7 @@ export default function ManageUserRolesDialog({ userId, onClose, isOpen }) {
                   </h2>
                   <hr className="mt-1" />
                 </div>
-                {!loading && !error && userRoles.length > 0 && (
+                {!loading && userRoles.length > 0 && (
                   <div className="flex flex-col space-y-2 overflow-y-auto max-h-48">
                     {userRoles.map((role) => (
                       <div

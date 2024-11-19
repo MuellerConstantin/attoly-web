@@ -273,7 +273,7 @@
     },
     "management": {
       "title": "Management",
-      "headline": "Management & Administration",
+      "headline": "Management",
       "logged-in-as": "Logged in as {{role}}",
       "shortcuts": "Shortcuts",
       "users": "Users"

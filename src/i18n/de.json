@@ -273,7 +273,7 @@
     },
     "management": {
       "title": "Verwaltung",
-      "headline": "Verwaltung & Administration",
+      "headline": "Verwaltung",
       "logged-in-as": "Angemeldet als {{role}}",
       "shortcuts": "Shortcuts",
       "users": "Benutzer"
