@@ -1,0 +1,24 @@
+{
+  "Seo": {
+    "title": "Attoly",
+    "description": "Attoly ermöglicht das Erstellen kurzer Links als Aliase für lange URLs, die sich einfacher in Websites, Chats und Dokumente einbetten lassen. Verzichten Sie auf viel zu lange und fehleranfällige URLs und holen Sie sich jetzt Ihren persönlichen Attoly Shortcut."
+  },
+  "HomePage": {
+    "meta": {
+      "title": "Startseite"
+    }
+  },
+  "Footer": {
+    "imprint": "Impressum",
+    "privacyPolicy": "Datenschutzerklärung",
+    "termsOfService": "Nutzungsbedingungen",
+    "allRightsReserved": "Alle Rechte vorbehalten."
+  },
+  "Navbar": {
+    "home": "Startseite",
+    "languages": {
+      "en": "Englisch",
+      "de": "Deutsch"
+    }
+  }
+}
