@@ -6,6 +6,13 @@
   "HomePage": {
     "meta": {
       "title": "Homepage"
+    },
+    "hero": {
+      "title": "Shorten links. Share smarter.",
+      "subtitle": "Create beautiful, reliable short URLs with analytics and custom aliases.",
+      "placeholder": "Paste URL",
+      "cta": "Shorten URL",
+      "note": "No sign-up required. Free to start."
     }
   },
   "NotFoundPage": {

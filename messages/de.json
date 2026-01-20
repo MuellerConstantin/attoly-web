@@ -6,6 +6,13 @@
   "HomePage": {
     "meta": {
       "title": "Startseite"
+    },
+    "hero": {
+      "title": "Links kürzen. Schlauer teilen.",
+      "subtitle": "Erstelle schöne, zuverlässige Kurz-URLs mit Analytics und eigenen Aliasen.",
+      "placeholder": "URL einfügen",
+      "cta": "URL kürzen",
+      "note": "Keine Anmeldung erforderlich. Kostenlos starten."
     }
   },
   "NotFoundPage": {
