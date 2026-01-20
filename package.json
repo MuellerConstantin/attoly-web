@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",
+    "formik": "^2.4.9",
     "lucide-react": "^0.562.0",
     "motion": "^12.27.1",
     "next": "^15.5.9",
@@ -23,7 +24,8 @@
     "react-redux": "^9.2.0",
     "redux-persist": "^6.0.0",
     "tailwind-variants": "^3.2.2",
-    "tailwindcss-react-aria-components": "^2.0.1"
+    "tailwindcss-react-aria-components": "^2.0.1",
+    "yup": "^1.7.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

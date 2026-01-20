@@ -64,6 +64,17 @@
     "backToHomepage": "Back to home",
     "retry": "Retry"
   },
+  "SignInPage": {
+    "meta": {
+      "title": "Sign In"
+    },
+    "title": "Sign In with your account",
+    "headline": "Sign in to your account",
+    "emailPlaceholder": "Email Address",
+    "passwordPlaceholder": "Password",
+    "noAccount": "Don't have an account?",
+    "signIn": "Sign In"
+  },
   "Footer": {
     "imprint": "Imprint",
     "privacyPolicy": "Privacy Policy",
@@ -76,5 +87,9 @@
       "en": "English",
       "de": "German"
     }
+  },
+  "ValidationMessages": {
+    "required": "This field is required.",
+    "invalidEmail": "Please enter a valid email address."
   }
 }

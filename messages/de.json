@@ -64,6 +64,16 @@
     "backToHomepage": "Zurück zur Startseite",
     "retry": "Erneut versuchen"
   },
+  "SignInPage": {
+    "meta": {
+      "title": "Anmelden"
+    },
+    "title": "Melde dich mit deinem Konto an",
+    "emailPlaceholder": "E-Mail-Adresse",
+    "passwordPlaceholder": "Passwort",
+    "noAccount": "Noch kein Konto?",
+    "signIn": "Anmelden"
+  },
   "Footer": {
     "imprint": "Impressum",
     "privacyPolicy": "Datenschutzerklärung",
@@ -76,5 +86,9 @@
       "en": "Englisch",
       "de": "Deutsch"
     }
+  },
+  "ValidationMessages": {
+    "required": "Dieses Feld ist erforderlich.",
+    "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein."
   }
 }
