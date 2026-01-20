@@ -15,7 +15,7 @@
     "@reduxjs/toolkit": "^2.11.2",
     "lucide-react": "^0.562.0",
     "motion": "^12.27.1",
-    "next": "^15.2.3",
+    "next": "^15.5.9",
     "next-intl": "^4.7.0",
     "react": "19.2.3",
     "react-aria-components": "^1.14.0",

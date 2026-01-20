@@ -8,6 +8,23 @@
       "title": "Startseite"
     }
   },
+  "NotFoundPage": {
+    "meta": {
+      "title": "Seite nicht gefunden"
+    },
+    "headline": "Seite nicht gefunden",
+    "description": "Die Seite, die du suchst, konnte nicht gefunden werden.",
+    "backToHomepage": "Zurück zur Startseite"
+  },
+  "ErrorPage": {
+    "meta": {
+      "title": "Fehler"
+    },
+    "headline": "Fehler",
+    "description": "Es ist ein unerwarteter Fehler aufgetreten.",
+    "backToHomepage": "Zurück zur Startseite",
+    "retry": "Erneut versuchen"
+  },
   "Footer": {
     "imprint": "Impressum",
     "privacyPolicy": "Datenschutzerklärung",
