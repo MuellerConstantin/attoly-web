@@ -4,6 +4,12 @@ import {
   Share2 as ShareIcon,
   QrCode as QrCodeIcon,
 } from "lucide-react";
+import {
+  Disclosure,
+  DisclosureGroup,
+  DisclosureHeader,
+  DisclosurePanel,
+} from "@/components/atoms/Disclosure";
 
 async function Hero() {
   const t = await getTranslations("HomePage.hero");
@@ -42,7 +48,7 @@ async function Hero() {
   );
 }
 
-async function HowItWorks() {
+async function HowItWorksSection() {
   const t = await getTranslations("HomePage.howItWorks");
 
   return (
@@ -114,6 +120,49 @@ async function HowItWorks() {
   );
 }
 
+async function FAQSection() {
+  const t = await getTranslations("HomePage.faq");
+
+  return (
+    <section className="relative w-full overflow-hidden">
+      <div className="mb-12 text-center">
+        <h2 className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl dark:text-white">
+          {t("title")}
+        </h2>
+        <p className="mt-3 text-slate-600 dark:text-slate-400">
+          {t("subtitle")}
+        </p>
+      </div>
+      <DisclosureGroup className="bg-white/80 backdrop-blur dark:bg-slate-900/70">
+        <Disclosure>
+          <DisclosureHeader>{t("q1.question")}</DisclosureHeader>
+          <DisclosurePanel>
+            <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+              {t("q1.answer")}
+            </p>
+          </DisclosurePanel>
+        </Disclosure>
+        <Disclosure>
+          <DisclosureHeader>{t("q2.question")}</DisclosureHeader>
+          <DisclosurePanel>
+            <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+              {t("q2.answer")}
+            </p>
+          </DisclosurePanel>
+        </Disclosure>
+        <Disclosure>
+          <DisclosureHeader>{t("q3.question")}</DisclosureHeader>
+          <DisclosurePanel>
+            <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+              {t("q3.answer")}
+            </p>
+          </DisclosurePanel>
+        </Disclosure>
+      </DisclosureGroup>
+    </section>
+  );
+}
+
 export default async function Home() {
   const t = await getTranslations("HomePage");
 
@@ -121,7 +170,10 @@ export default async function Home() {
     <div>
       <Hero />
       <div className="mx-auto my-8 flex max-w-[80rem] flex-col items-center gap-12 p-4">
-        <HowItWorks />
+        <HowItWorksSection />
+      </div>
+      <div className="mx-auto my-8 flex max-w-[80rem] flex-col items-center gap-12 p-4">
+        <FAQSection />
       </div>
     </div>
   );

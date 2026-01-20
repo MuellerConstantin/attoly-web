@@ -29,6 +29,22 @@
         "title": "Teilen & analysieren",
         "description": "Teile deinen Link und behalte Klicks & Statistiken im Blick."
       }
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "subtitle": "Alles, was du über unseren URL-Shortener wissen musst.",
+      "q1": {
+        "question": "Ist Attoly kostenlos?",
+        "answer": "Ja, Attoly bietet einen kostenlosen Plan mit grundlegenden Funktionen zum Kürzen von Links an. Es gibt auch Premium-Pläne mit erweiterten Funktionen."
+      },
+      "q2": {
+        "question": "Benötige ich ein Konto, um Links zu kürzen?",
+        "answer": "Nein, du kannst Links kürzen, ohne ein Konto zu erstellen. Ein Konto ist jedoch erforderlich, wenn du deine Links verwalten und Statistiken anzeigen möchtest."
+      },
+      "q3": {
+        "question": "Sind meine Daten sicher?",
+        "answer": "Sicherheit hat höchste Priorität. Alle Links werden verschlüsselt verarbeitet und wir speichern keine unnötigen personenbezogenen Daten. Darüber hinaus sind wir DSGVO-konform."
+      }
     }
   },
   "NotFoundPage": {

@@ -29,6 +29,22 @@
         "title": "Share & analyze",
         "description": "Share your link and keep track of clicks & statistics."
       }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Everything you need to know about our URL shortener.",
+      "q1": {
+        "question": "Is Attoly free?",
+        "answer": "Yes, Attoly offers a free plan with basic link shortening features. There are also premium plans with advanced features."
+      },
+      "q2": {
+        "question": "Do I need an account to shorten links?",
+        "answer": "No, you can shorten links without creating an account. However, an account is required if you want to manage your links and view statistics."
+      },
+      "q3": {
+        "question": "Is my data secure?",
+        "answer": "Security is a top priority. All links are processed securely, and we do not store unnecessary personal data. Additionally, we are GDPR compliant."
+      }
     }
   },
   "NotFoundPage": {
