@@ -1,4 +1,9 @@
 import { getTranslations } from "next-intl/server";
+import {
+  Link as LinkIcon,
+  Share2 as ShareIcon,
+  QrCode as QrCodeIcon,
+} from "lucide-react";
 
 async function Hero() {
   const t = await getTranslations("HomePage.hero");
@@ -37,11 +42,87 @@ async function Hero() {
   );
 }
 
-export default function Home() {
+async function HowItWorks() {
+  const t = await getTranslations("HomePage.howItWorks");
+
+  return (
+    <section className="relative w-full overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-br from-slate-50 via-white to-slate-100 p-8 shadow-xl dark:border-slate-700 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800">
+      <div className="pointer-events-none absolute -top-20 -right-20 h-72 w-72 rounded-full bg-orange-400/20 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-sky-400/20 blur-3xl" />
+      <div className="relative z-10 mx-auto max-w-6xl">
+        <div className="mb-14 text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl dark:text-white">
+            {t("title")}
+          </h2>
+          <p className="mt-3 text-slate-600 dark:text-slate-400">
+            {t("subtitle")}
+          </p>
+        </div>
+
+        {/* Steps */}
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          {/* Step 1 */}
+          <div className="group relative rounded-2xl border border-slate-200 bg-white/80 p-6 backdrop-blur transition hover:-translate-y-1 hover:shadow-2xl dark:border-slate-700 dark:bg-slate-900/70">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500/10 text-orange-500">
+              <LinkIcon className="h-6 w-6" />
+            </div>
+            <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">
+              {t("step1.title")}
+            </h3>
+            <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+              {t("step1.description")}
+            </p>
+            <span className="absolute top-4 right-4 text-5xl font-bold text-slate-100 dark:text-slate-800">
+              1
+            </span>
+          </div>
+
+          {/* Step 2 */}
+          <div className="group relative rounded-2xl border border-slate-200 bg-white/80 p-6 backdrop-blur transition hover:-translate-y-1 hover:shadow-2xl dark:border-slate-700 dark:bg-slate-900/70">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-sky-500/10 text-sky-500">
+              <QrCodeIcon className="h-6 w-6" />
+            </div>
+            <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">
+              {t("step2.title")}
+            </h3>
+            <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+              {t("step2.description")}
+            </p>
+            <span className="absolute top-4 right-4 text-5xl font-bold text-slate-100 dark:text-slate-800">
+              2
+            </span>
+          </div>
+
+          {/* Step 3 */}
+          <div className="group relative rounded-2xl border border-slate-200 bg-white/80 p-6 backdrop-blur transition hover:-translate-y-1 hover:shadow-2xl dark:border-slate-700 dark:bg-slate-900/70">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-teal-500/10 text-teal-500">
+              <ShareIcon className="h-6 w-6" />
+            </div>
+            <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">
+              {t("step3.title")}
+            </h3>
+            <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+              {t("step3.description")}
+            </p>
+            <span className="absolute top-4 right-4 text-5xl font-bold text-slate-100 dark:text-slate-800">
+              3
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default async function Home() {
+  const t = await getTranslations("HomePage");
+
   return (
     <div>
       <Hero />
-      <div className="h-[25rem] w-full"></div>
+      <div className="mx-auto my-8 flex max-w-[80rem] flex-col items-center gap-12 p-4">
+        <HowItWorks />
+      </div>
     </div>
   );
 }

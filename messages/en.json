@@ -13,6 +13,22 @@
       "placeholder": "Paste URL",
       "cta": "Shorten URL",
       "note": "No sign-up required. Free to start."
+    },
+    "howItWorks": {
+      "title": "How it works",
+      "subtitle": "Get short, shareable links in three easy steps.",
+      "step1": {
+        "title": "Paste URL",
+        "description": "Copy your long URL and simply paste it into the input field."
+      },
+      "step2": {
+        "title": "Create shortlink",
+        "description": "With one click, we generate a short, secure link."
+      },
+      "step3": {
+        "title": "Share & analyze",
+        "description": "Share your link and keep track of clicks & statistics."
+      }
     }
   },
   "NotFoundPage": {

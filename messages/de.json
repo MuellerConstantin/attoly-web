@@ -13,6 +13,22 @@
       "placeholder": "URL einfügen",
       "cta": "URL kürzen",
       "note": "Keine Anmeldung erforderlich. Kostenlos starten."
+    },
+    "howItWorks": {
+      "title": "So funktioniert’s",
+      "subtitle": "In drei einfachen Schritten zu kurzen, teilbaren Links.",
+      "step1": {
+        "title": "URL einfügen",
+        "description": "Kopiere deine lange URL und füge sie einfach in das Eingabefeld ein."
+      },
+      "step2": {
+        "title": "Kurzlink erstellen",
+        "description": "Mit einem Klick generieren wir einen kurzen, sicheren Link."
+      },
+      "step3": {
+        "title": "Teilen & analysieren",
+        "description": "Teile deinen Link und behalte Klicks & Statistiken im Blick."
+      }
     }
   },
   "NotFoundPage": {
