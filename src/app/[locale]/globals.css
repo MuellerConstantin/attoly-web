@@ -27,3 +27,127 @@ body {
   background: var(--background);
   font-family: var(--font-outfit), sans-serif;
 }
+
+.bg-isometric {
+  background-color: #e2e8f0;
+  opacity: 0.8;
+  background-image:
+    linear-gradient(
+      30deg,
+      #f97316 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #f97316 87.5%,
+      #f97316
+    ),
+    linear-gradient(
+      150deg,
+      #f97316 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #f97316 87.5%,
+      #f97316
+    ),
+    linear-gradient(
+      30deg,
+      #f97316 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #f97316 87.5%,
+      #f97316
+    ),
+    linear-gradient(
+      150deg,
+      #f97316 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #f97316 87.5%,
+      #f97316
+    ),
+    linear-gradient(
+      60deg,
+      #f9731677 25%,
+      transparent 25.5%,
+      transparent 75%,
+      #f9731677 75%,
+      #f9731677
+    ),
+    linear-gradient(
+      60deg,
+      #f9731677 25%,
+      transparent 25.5%,
+      transparent 75%,
+      #f9731677 75%,
+      #f9731677
+    );
+  background-size: 40px 70px;
+  background-position:
+    0 0,
+    0 0,
+    20px 35px,
+    20px 35px,
+    0 0,
+    20px 35px;
+}
+
+.dark .bg-isometric {
+  background-color: #1e293b;
+  opacity: 0.8;
+  background-image:
+    linear-gradient(
+      30deg,
+      #f97316 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #f97316 87.5%,
+      #f97316
+    ),
+    linear-gradient(
+      150deg,
+      #f97316 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #f97316 87.5%,
+      #f97316
+    ),
+    linear-gradient(
+      30deg,
+      #f97316 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #f97316 87.5%,
+      #f97316
+    ),
+    linear-gradient(
+      150deg,
+      #f97316 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #f97316 87.5%,
+      #f97316
+    ),
+    linear-gradient(
+      60deg,
+      #f9731677 25%,
+      transparent 25.5%,
+      transparent 75%,
+      #f9731677 75%,
+      #f9731677
+    ),
+    linear-gradient(
+      60deg,
+      #f9731677 25%,
+      transparent 25.5%,
+      transparent 75%,
+      #f9731677 75%,
+      #f9731677
+    );
+  background-size: 40px 70px;
+  background-position:
+    0 0,
+    0 0,
+    20px 35px,
+    20px 35px,
+    0 0,
+    20px 35px;
+}

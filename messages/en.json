@@ -75,6 +75,19 @@
     "noAccount": "Don't have an account?",
     "signIn": "Sign In"
   },
+  "SignUpPage": {
+    "meta": {
+      "title": "Sign Up"
+    },
+    "title": "Create your account",
+    "headline": "Create your account",
+    "emailPlaceholder": "Email Address",
+    "passwordPlaceholder": "Password",
+    "passwordConfirmationPlaceholder": "Repeat Password",
+    "haveAccount": "Already have an account?",
+    "signUp": "Sign Up",
+    "termsNotice": "By signing up, you agree to our <terms-hyperlink>Terms of Service</terms-hyperlink> and <privacy-hyperlink>Privacy Policy</privacy-hyperlink>."
+  },
   "Footer": {
     "imprint": "Imprint",
     "privacyPolicy": "Privacy Policy",
@@ -90,6 +103,7 @@
   },
   "ValidationMessages": {
     "required": "This field is required.",
-    "invalidEmail": "Please enter a valid email address."
+    "invalidEmail": "Please enter a valid email address.",
+    "confirmPassword": "Passwords do not match."
   }
 }

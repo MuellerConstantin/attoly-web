@@ -21,7 +21,7 @@ const styles = tv({
       primary:
         "text-orange-500 dark:text-orange-600 decoration-orange-500/60 hover:decoration-orange-500 dark:decoration-orange-600/60 dark:hover:decoration-orange-600",
       secondary:
-        "text-gray-700 dark:text-slate-300 decoration-gray-700/50 hover:decoration-gray-700 dark:decoration-slate-300/70 dark:hover:decoration-slate-300",
+        "text-slate-700 dark:text-slate-300 decoration-slate-700/50 hover:decoration-slate-700 dark:decoration-slate-300/70 dark:hover:decoration-slate-300",
     },
   },
   defaultVariants: {

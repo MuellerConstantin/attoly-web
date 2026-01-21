@@ -10,8 +10,8 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import * as yup from "yup";
 
-export default function SignIn() {
-  const t = useTranslations("SignInPage");
+export default function SignUp() {
+  const t = useTranslations("SignUpPage");
   const validationT = useTranslations("ValidationMessages");
 
   const schema = yup.object().shape({
@@ -20,6 +20,10 @@ export default function SignIn() {
       .email(validationT("invalidEmail"))
       .required(validationT("required")),
     password: yup.string().required(validationT("required")),
+    passwordConfirmation: yup
+      .string()
+      .oneOf([yup.ref("password")], validationT("confirmPassword"))
+      .required(validationT("required")),
   });
 
   return (
@@ -29,7 +33,6 @@ export default function SignIn() {
       <div className="absolute inset-0 bg-black/5" />
 
       <div className="relative z-10 flex w-fit items-center overflow-hidden rounded-3xl border border-slate-200 bg-white/70 shadow-xl backdrop-blur-md dark:border-slate-700 dark:bg-slate-800/70">
-        <div className="bg-isometric hidden aspect-square h-[30rem] lg:block" />
         <div className="flex w-full max-w-[25rem] shrink-0 flex-col gap-8 p-8 lg:w-[25rem]">
           <div className="flex flex-col items-center gap-4">
             <div className="relative flex w-fit items-center justify-center">
@@ -54,7 +57,11 @@ export default function SignIn() {
           </div>
           <Formik
             enableReinitialize
-            initialValues={{ email: "", password: "" }}
+            initialValues={{
+              email: "",
+              password: "",
+              passwordConfirmation: "",
+            }}
             validationSchema={schema}
             onSubmit={() => {}}
           >
@@ -90,6 +97,23 @@ export default function SignIn() {
                   errorMessage={props.errors.password}
                   isDisabled={props.isSubmitting}
                 />
+                <TextField
+                  type="password"
+                  className="grow"
+                  placeholder={t("passwordConfirmationPlaceholder")}
+                  value={props.values.passwordConfirmation}
+                  onBlur={props.handleBlur}
+                  onChange={(value) => {
+                    props.setFieldValue("passwordConfirmation", value);
+                    props.setFieldTouched("passwordConfirmation", true, false);
+                  }}
+                  isInvalid={
+                    !!props.touched.passwordConfirmation &&
+                    !!props.errors.passwordConfirmation
+                  }
+                  errorMessage={props.errors.passwordConfirmation}
+                  isDisabled={props.isSubmitting}
+                />
                 <Button
                   type="submit"
                   className="flex w-full justify-center"
@@ -97,21 +121,32 @@ export default function SignIn() {
                     !(props.isValid && props.dirty) || props.isSubmitting
                   }
                 >
-                  {!props.isSubmitting && <span>{t("signIn")}</span>}
+                  {!props.isSubmitting && <span>{t("signUp")}</span>}
                   {props.isSubmitting && <Spinner />}
                 </Button>
+                <p className="text-center text-xs">
+                  {t.rich("termsNotice", {
+                    "terms-hyperlink": (chunks) => (
+                      <Link href="/terms-of-use">{chunks}</Link>
+                    ),
+                    "privacy-hyperlink": (chunks) => (
+                      <Link href="/privacy-policy">{chunks}</Link>
+                    ),
+                  })}
+                </p>
               </Form>
             )}
           </Formik>
         </div>
+        <div className="bg-isometric hidden aspect-square h-[30rem] lg:block" />
       </div>
       <div className="relative z-10">
         <Link
           variant="secondary"
-          href="/signup"
+          href="/signin"
           className="text-sm text-white decoration-white hover:decoration-white dark:text-white dark:decoration-white dark:hover:decoration-white"
         >
-          {t("noAccount")}
+          {t("haveAccount")}
         </Link>
       </div>
     </div>
