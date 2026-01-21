@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useMemo, useState } from "react";
+import React, { use, useCallback, useMemo, useState } from "react";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import {
@@ -110,19 +110,37 @@ export function Navbar() {
 }
 
 function NavbarUnauthenticatedOptionsMenu() {
+  const t = useTranslations("Navbar");
   const dispatch = useAppDispatch();
   const darkMode = useAppSelector((state) => state.usability.darkMode);
 
   return (
     <Popover className="entering:animate-in entering:fade-in entering:placement-bottom:slide-in-from-top-1 entering:placement-top:slide-in-from-bottom-1 exiting:animate-out exiting:fade-out exiting:placement-bottom:slide-out-to-top-1 exiting:placement-top:slide-out-to-bottom-1 fill-mode-forwards origin-top-left overflow-auto rounded-lg bg-white p-2 shadow-lg ring-1 ring-black/10 outline-hidden dark:bg-slate-950 dark:ring-white/15">
-      <Switch
-        isSelected={darkMode}
-        onChange={(newDarkMode) =>
-          dispatch(usabilitySlice.actions.setDarkMode(newDarkMode))
-        }
-      >
-        Dark Mode
-      </Switch>
+      <div className="flex w-[15rem] flex-col gap-4 overflow-hidden p-2">
+        <div className="flex flex-col items-center gap-4 overflow-hidden">
+          <Link
+            href="/signin"
+            className="pressed:bg-orange-700 block w-full cursor-pointer rounded-lg border border-black/10 bg-orange-500 px-5 py-2 text-center text-sm text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] transition hover:bg-orange-600 dark:border-white/10 dark:text-white dark:shadow-none"
+          >
+            {t("signin")}
+          </Link>
+          <Link variant="secondary" className="text-sm" href="/signup">
+            {t.rich("noAccount", {
+              highlight: (chunks) => (
+                <span className="text-sky-500">{chunks}</span>
+              ),
+            })}
+          </Link>
+        </div>
+        <Switch
+          isSelected={darkMode}
+          onChange={(newDarkMode) =>
+            dispatch(usabilitySlice.actions.setDarkMode(newDarkMode))
+          }
+        >
+          Dark Mode
+        </Switch>
+      </div>
     </Popover>
   );
 }

@@ -103,7 +103,9 @@
     "languages": {
       "en": "English",
       "de": "German"
-    }
+    },
+    "signin": "Sign In",
+    "noAccount": "Don't have an account? Sign Up"
   },
   "ValidationMessages": {
     "required": "This field is required.",

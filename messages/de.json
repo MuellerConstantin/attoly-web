@@ -101,7 +101,9 @@
     "languages": {
       "en": "Englisch",
       "de": "Deutsch"
-    }
+    },
+    "signin": "Anmelden",
+    "noAccount": "Noch kein Konto? <highlight>Registrieren</highlight>"
   },
   "ValidationMessages": {
     "required": "Dieses Feld ist erforderlich.",
