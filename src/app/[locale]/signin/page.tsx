@@ -6,7 +6,7 @@ import { Link } from "@/components/atoms/Link";
 import { Spinner } from "@/components/atoms/Spinner";
 import { TextField } from "@/components/atoms/TextField";
 import { Formik } from "formik";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -16,7 +16,6 @@ import { useCallback, useState } from "react";
 export default function SignIn() {
   const t = useTranslations("SignInPage");
   const validationT = useTranslations("ValidationMessages");
-  const locale = useLocale();
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -66,7 +65,7 @@ export default function SignIn() {
       <div className="absolute inset-0 bg-black/5" />
 
       <div className="relative z-10 flex w-fit items-center overflow-hidden rounded-3xl border border-slate-200 bg-white/70 shadow-xl backdrop-blur-md dark:border-slate-700 dark:bg-slate-800/70">
-        <div className="bg-isometric hidden aspect-square h-[30rem] lg:block" />
+        <div className="bg-isometric hidden aspect-square h-[35rem] lg:block" />
         <div className="flex w-full max-w-[25rem] shrink-0 flex-col gap-8 p-8 lg:w-[25rem]">
           <div className="flex flex-col items-center gap-4">
             <div className="relative flex w-fit items-center justify-center">

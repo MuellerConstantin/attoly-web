@@ -5,10 +5,13 @@ import { Form } from "@/components/atoms/Form";
 import { Link } from "@/components/atoms/Link";
 import { Spinner } from "@/components/atoms/Spinner";
 import { TextField } from "@/components/atoms/TextField";
-import { Formik } from "formik";
+import { Formik, FormikHelpers } from "formik";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { useCallback, useState } from "react";
 import * as yup from "yup";
+import { api } from "@/api";
+import { AxiosError } from "axios";
 
 export default function SignUp() {
   const t = useTranslations("SignUpPage");
@@ -25,6 +28,51 @@ export default function SignUp() {
       .oneOf([yup.ref("password")], validationT("confirmPassword"))
       .required(validationT("required")),
   });
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<boolean>(false);
+
+  const signUp = useCallback(
+    async (
+      { email, password }: { email: string; password: string },
+      {
+        setFieldError,
+      }: FormikHelpers<{
+        email: string;
+        password: string;
+        passwordConfirmation: string;
+      }>,
+    ) => {
+      setIsLoading(true);
+      setError(null);
+      setSuccess(false);
+
+      try {
+        await api.post("/users", { email, password });
+        setSuccess(true);
+      } catch (err) {
+        if (err instanceof AxiosError) {
+          if (
+            err.response?.status === 422 &&
+            err.response.data.error === "ValidationError"
+          ) {
+            err.response.data.details?.forEach(
+              (detail: { field: string; message: string }) =>
+                setFieldError(detail.field, detail.message),
+            );
+          } else {
+            setError(t("error.unknownError"));
+          }
+        } else {
+          setError(t("error.unknownError"));
+        }
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [],
+  );
 
   return (
     <div className="relative flex w-full grow flex-col items-center justify-center gap-2 bg-gradient-to-br from-orange-500 via-orange-400 to-sky-500 px-4 py-20">
@@ -63,10 +111,16 @@ export default function SignUp() {
               passwordConfirmation: "",
             }}
             validationSchema={schema}
-            onSubmit={() => {}}
+            onSubmit={signUp}
           >
             {(props) => (
               <Form onSubmit={props.handleSubmit} validationBehavior="aria">
+                {error && <p className="text-center text-red-500">{error}</p>}
+                {success && (
+                  <p className="text-center text-green-500">
+                    {t("successMessage")}
+                  </p>
+                )}
                 <TextField
                   type="email"
                   className="grow"
@@ -79,7 +133,7 @@ export default function SignUp() {
                   }}
                   isInvalid={!!props.touched.email && !!props.errors.email}
                   errorMessage={props.errors.email}
-                  isDisabled={props.isSubmitting}
+                  isDisabled={isLoading}
                 />
                 <TextField
                   type="password"
@@ -95,7 +149,7 @@ export default function SignUp() {
                     !!props.touched.password && !!props.errors.password
                   }
                   errorMessage={props.errors.password}
-                  isDisabled={props.isSubmitting}
+                  isDisabled={isLoading}
                 />
                 <TextField
                   type="password"
@@ -112,17 +166,15 @@ export default function SignUp() {
                     !!props.errors.passwordConfirmation
                   }
                   errorMessage={props.errors.passwordConfirmation}
-                  isDisabled={props.isSubmitting}
+                  isDisabled={isLoading}
                 />
                 <Button
                   type="submit"
                   className="flex w-full justify-center"
-                  isDisabled={
-                    !(props.isValid && props.dirty) || props.isSubmitting
-                  }
+                  isDisabled={!(props.isValid && props.dirty) || isLoading}
                 >
-                  {!props.isSubmitting && <span>{t("signUp")}</span>}
-                  {props.isSubmitting && <Spinner />}
+                  {!isLoading && <span>{t("signUp")}</span>}
+                  {isLoading && <Spinner />}
                 </Button>
                 <p className="text-center text-xs">
                   {t.rich("termsNotice", {
@@ -138,7 +190,7 @@ export default function SignUp() {
             )}
           </Formik>
         </div>
-        <div className="bg-isometric hidden aspect-square h-[30rem] lg:block" />
+        <div className="bg-isometric hidden aspect-square h-[35rem] lg:block" />
       </div>
       <div className="relative z-10">
         <Link

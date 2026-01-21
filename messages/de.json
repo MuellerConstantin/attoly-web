@@ -88,7 +88,11 @@
     "passwordConfirmationPlaceholder": "Passwort wiederholen",
     "haveAccount": "Hast du bereits ein Konto?",
     "signUp": "Registrieren",
-    "termsNotice": "Durch das Klicken auf \"Registrieren\" akzeptierst du unsere <terms-hyperlink>Allgemeine Geschäftsbedingungen</terms-hyperlink> und unsere <privacy-hyperlink>Privatsphäre-Einstellungen</privacy-hyperlink>."
+    "termsNotice": "Durch das Klicken auf \"Registrieren\" akzeptierst du unsere <terms-hyperlink>Allgemeine Geschäftsbedingungen</terms-hyperlink> und unsere <privacy-hyperlink>Privatsphäre-Einstellungen</privacy-hyperlink>.",
+    "error": {
+      "unknownError": "Ein unbekannter Fehler ist aufgetreten"
+    },
+    "successMessage": "Dein Konto wurde erfolgreich erstellt. Bitte überprüfe dein E-Mail Postfach."
   },
   "Footer": {
     "imprint": "Impressum",

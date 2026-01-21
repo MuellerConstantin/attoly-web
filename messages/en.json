@@ -90,7 +90,11 @@
     "passwordConfirmationPlaceholder": "Repeat Password",
     "haveAccount": "Already have an account?",
     "signUp": "Sign Up",
-    "termsNotice": "By signing up, you agree to our <terms-hyperlink>Terms of Service</terms-hyperlink> and <privacy-hyperlink>Privacy Policy</privacy-hyperlink>."
+    "termsNotice": "By signing up, you agree to our <terms-hyperlink>Terms of Service</terms-hyperlink> and <privacy-hyperlink>Privacy Policy</privacy-hyperlink>.",
+    "error": {
+      "unknownError": "An unknown error occurred. Please try again."
+    },
+    "successMessage": "Your account has been created successfully. Please check your email inbox."
   },
   "Footer": {
     "imprint": "Imprint",
