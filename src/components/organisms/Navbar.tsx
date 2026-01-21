@@ -21,6 +21,11 @@ import usabilitySlice from "@/store/slices/usability";
 import { useRouter, usePathname } from "@/i18n/navigation";
 import { signOut, useSession } from "next-auth/react";
 import { ListBox, ListBoxItem } from "@/components/atoms/ListBox";
+import useSWR from "swr";
+import { api } from "@/api";
+import { AxiosError } from "axios";
+import { ApiError } from "@/lib/types/error";
+import { Me } from "@/lib/types/users";
 
 export function Navbar() {
   const t = useTranslations("Navbar");
@@ -128,15 +133,31 @@ function NavbarAuthenticatedOptionsMenu() {
 
   const darkMode = useAppSelector((state) => state.usability.darkMode);
 
+  const { data, error, isLoading } = useSWR<Me, AxiosError<ApiError>, string>(
+    "/user/me",
+    (url) => api.get(url).then((res) => res.data),
+    {
+      refreshInterval: 300000, // 5 minutes
+    },
+  );
+
   return (
     <Popover className="entering:animate-in entering:fade-in entering:placement-bottom:slide-in-from-top-1 entering:placement-top:slide-in-from-bottom-1 exiting:animate-out exiting:fade-out exiting:placement-bottom:slide-out-to-top-1 exiting:placement-top:slide-out-to-bottom-1 fill-mode-forwards origin-top-left overflow-auto rounded-lg bg-white p-2 shadow-lg ring-1 ring-black/10 outline-hidden dark:bg-zinc-950 dark:ring-white/15">
       <div className="flex w-[15rem] flex-col gap-4 overflow-hidden p-2">
         <div className="flex gap-4 overflow-hidden">
           <div className="flex flex-col gap-2 overflow-hidden">
             <div className="flex flex-col gap-1">
-              <div className="truncate text-[1rem] font-bold text-slate-900 dark:text-slate-100">
-                {session?.user?.id}
-              </div>
+              {isLoading ? (
+                <div className="h-5 w-32 animate-pulse truncate rounded-lg bg-slate-300 dark:bg-slate-700" />
+              ) : error ? (
+                <div className="h-5 w-32 truncate rounded-lg bg-red-300 dark:bg-red-800" />
+              ) : (
+                data && (
+                  <div className="truncate text-[1rem] font-bold text-slate-900 dark:text-slate-100">
+                    {session?.user?.id}
+                  </div>
+                )
+              )}
             </div>
           </div>
         </div>

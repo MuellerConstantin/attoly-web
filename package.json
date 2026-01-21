@@ -25,6 +25,7 @@
     "react-dom": "19.2.3",
     "react-redux": "^9.2.0",
     "redux-persist": "^6.0.0",
+    "swr": "^2.3.8",
     "tailwind-variants": "^3.2.2",
     "tailwindcss-react-aria-components": "^2.0.1",
     "yup": "^1.7.1"
