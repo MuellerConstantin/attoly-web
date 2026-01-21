@@ -6,13 +6,50 @@ import { Link } from "@/components/atoms/Link";
 import { Spinner } from "@/components/atoms/Spinner";
 import { TextField } from "@/components/atoms/TextField";
 import { Formik } from "formik";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import * as yup from "yup";
+import { useCallback, useState } from "react";
 
 export default function SignIn() {
   const t = useTranslations("SignInPage");
   const validationT = useTranslations("ValidationMessages");
+  const locale = useLocale();
+  const router = useRouter();
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const onSignIn = useCallback(
+    async ({ email, password }: { email: string; password: string }) => {
+      setIsLoading(true);
+      setError(null);
+
+      try {
+        const res = await signIn("credentials", {
+          email,
+          password,
+          redirect: false,
+          callbackUrl: "/",
+        });
+
+        if (res?.error) {
+          if (res.error === "InvalidCredentials") {
+            setError(t("error.invalidCredentials"));
+          } else {
+            setError(t("error.unknownError"));
+          }
+        } else {
+          router.push(res?.url ?? "/");
+        }
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [router],
+  );
 
   const schema = yup.object().shape({
     email: yup
@@ -56,13 +93,15 @@ export default function SignIn() {
             enableReinitialize
             initialValues={{ email: "", password: "" }}
             validationSchema={schema}
-            onSubmit={() => {}}
+            onSubmit={onSignIn}
           >
             {(props) => (
               <Form onSubmit={props.handleSubmit} validationBehavior="aria">
+                {error && <p className="text-center text-red-500">{error}</p>}
                 <TextField
                   type="email"
                   className="grow"
+                  isDisabled={isLoading}
                   placeholder={t("emailPlaceholder")}
                   value={props.values.email}
                   onBlur={props.handleBlur}
@@ -72,11 +111,11 @@ export default function SignIn() {
                   }}
                   isInvalid={!!props.touched.email && !!props.errors.email}
                   errorMessage={props.errors.email}
-                  isDisabled={props.isSubmitting}
                 />
                 <TextField
                   type="password"
                   className="grow"
+                  isDisabled={isLoading}
                   placeholder={t("passwordPlaceholder")}
                   value={props.values.password}
                   onBlur={props.handleBlur}
@@ -88,17 +127,14 @@ export default function SignIn() {
                     !!props.touched.password && !!props.errors.password
                   }
                   errorMessage={props.errors.password}
-                  isDisabled={props.isSubmitting}
                 />
                 <Button
                   type="submit"
                   className="flex w-full justify-center"
-                  isDisabled={
-                    !(props.isValid && props.dirty) || props.isSubmitting
-                  }
+                  isDisabled={!(props.isValid && props.dirty) || isLoading}
                 >
-                  {!props.isSubmitting && <span>{t("signIn")}</span>}
-                  {props.isSubmitting && <Spinner />}
+                  {!isLoading && <span>{t("signIn")}</span>}
+                  {isLoading && <Spinner />}
                 </Button>
               </Form>
             )}

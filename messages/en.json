@@ -73,7 +73,11 @@
     "emailPlaceholder": "Email Address",
     "passwordPlaceholder": "Password",
     "noAccount": "Don't have an account?",
-    "signIn": "Sign In"
+    "signIn": "Sign In",
+    "error": {
+      "invalidCredentials": "Username or password is incorrect",
+      "unknownError": "An unknown error occurred. Please try again."
+    }
   },
   "SignUpPage": {
     "meta": {

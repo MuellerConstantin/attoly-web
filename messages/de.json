@@ -72,7 +72,11 @@
     "emailPlaceholder": "E-Mail-Adresse",
     "passwordPlaceholder": "Passwort",
     "noAccount": "Noch kein Konto?",
-    "signIn": "Anmelden"
+    "signIn": "Anmelden",
+    "error": {
+      "invalidCredentials": "Benutzername oder Passwort sind falsch",
+      "unknownError": "Ein unbekannter Fehler ist aufgetreten"
+    }
   },
   "SignUpPage": {
     "meta": {

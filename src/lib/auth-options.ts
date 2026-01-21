@@ -1,0 +1,139 @@
+import type { AuthOptions } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+
+type TokenResponse = {
+  principal: string;
+  accessToken: string;
+  refreshToken: string;
+  accessExpiresIn: number;
+  refreshExpiresIn: number;
+};
+
+async function retrieveAccessToken(
+  email: string,
+  password: string,
+): Promise<TokenResponse> {
+  const baseUrl = process.env.ATTOLY_API_URL;
+
+  if (!baseUrl) throw new Error("ATTOLY_API_URL is not set");
+
+  const res = await fetch(`${baseUrl}/auth/token`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
+  });
+
+  if (!res.ok) {
+    throw new Error("InvalidCredentials");
+  }
+
+  return (await res.json()) as TokenResponse;
+}
+
+async function refreshAccessToken(
+  refreshToken: string,
+): Promise<TokenResponse> {
+  const baseUrl = process.env.ATTOLY_API_URL;
+  if (!baseUrl) throw new Error("ATTOLY_API_URL is not set");
+
+  const res = await fetch(`${baseUrl}/auth/refresh`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ refreshToken }),
+  });
+
+  if (!res.ok) {
+    throw new Error("RefreshTokenInvalid");
+  }
+
+  return (await res.json()) as TokenResponse;
+}
+
+export const authOptions: AuthOptions = {
+  session: { strategy: "jwt" },
+  providers: [
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials) {
+        const email = credentials?.email as string | undefined;
+        const password = credentials?.password as string | undefined;
+
+        if (!email || !password) return null;
+
+        const tokens = await retrieveAccessToken(email, password);
+
+        return {
+          id: tokens.principal,
+          email,
+          accessToken: tokens.accessToken,
+          refreshToken: tokens.refreshToken,
+          accessExpiresAt: Date.now() + tokens.accessExpiresIn,
+          refreshExpiresAt: Date.now() + tokens.refreshExpiresIn,
+        } as any;
+      },
+    }),
+  ],
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.sub = (user as any).id;
+        token.accessToken = (user as any).accessToken;
+        token.refreshToken = (user as any).refreshToken;
+        token.accessExpiresAt = (user as any).accessExpiresAt;
+        token.refreshExpiresAt = (user as any).refreshExpiresAt;
+        return token;
+      }
+
+      if (
+        token.accessExpiresAt &&
+        Date.now() < (token.accessExpiresAt as number) - 30_000
+      ) {
+        return token;
+      }
+
+      if (token.refreshToken) {
+        try {
+          const refreshed = await refreshAccessToken(
+            token.refreshToken as string,
+          );
+          token.accessToken = refreshed.accessToken;
+          token.refreshToken = refreshed.refreshToken;
+          token.accessExpiresAt = Date.now() + refreshed.accessExpiresIn;
+          token.refreshExpiresAt = Date.now() + refreshed.refreshExpiresIn;
+          return token;
+        } catch (e) {
+          (token as any).error = "RefreshTokenError";
+          return token;
+        }
+      }
+
+      return token;
+    },
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.id = token.sub as string | undefined;
+      }
+
+      (session as any).authenticated = Boolean(token.accessToken);
+      return session;
+    },
+  },
+  cookies: {
+    sessionToken: {
+      name: "next-auth.session-token",
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        secure: process.env.NODE_ENV === "production",
+      },
+    },
+  },
+  pages: {
+    signIn: "/signin",
+  },
+};
