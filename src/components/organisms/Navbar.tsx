@@ -3,7 +3,13 @@
 import React, { useCallback, useMemo, useState } from "react";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
-import { Menu as MenuIcon, EllipsisVertical, Languages } from "lucide-react";
+import {
+  Menu as MenuIcon,
+  EllipsisVertical as EllipsisVerticalIcon,
+  Languages as LanguagesIcon,
+  LogOut as LogOutIcon,
+  CircleUser as CircleUserIcon,
+} from "lucide-react";
 import { MenuTrigger } from "react-aria-components";
 import { Button } from "@/components/atoms/Button";
 import { Link } from "@/components/atoms/Link";
@@ -13,6 +19,8 @@ import { Popover } from "@/components/atoms/Popover";
 import { useAppSelector, useAppDispatch } from "@/store";
 import usabilitySlice from "@/store/slices/usability";
 import { useRouter, usePathname } from "@/i18n/navigation";
+import { signOut, useSession } from "next-auth/react";
+import { ListBox, ListBoxItem } from "@/components/atoms/ListBox";
 
 export function Navbar() {
   const t = useTranslations("Navbar");
@@ -84,7 +92,7 @@ export function Navbar() {
           <div className="flex">
             <MenuTrigger>
               <Button variant="icon">
-                <Languages className="h-6 w-6" />
+                <LanguagesIcon className="h-6 w-6" />
               </Button>
               <NavbarLanguagesMenu />
             </MenuTrigger>
@@ -96,30 +104,85 @@ export function Navbar() {
   );
 }
 
-export function NavbarOptionsMenu() {
+function NavbarUnauthenticatedOptionsMenu() {
   const dispatch = useAppDispatch();
   const darkMode = useAppSelector((state) => state.usability.darkMode);
 
   return (
-    <MenuTrigger>
-      <Button variant="icon">
-        <EllipsisVertical className="h-6 w-6" />
-      </Button>
-      <Popover className="entering:animate-in entering:fade-in entering:placement-bottom:slide-in-from-top-1 entering:placement-top:slide-in-from-bottom-1 exiting:animate-out exiting:fade-out exiting:placement-bottom:slide-out-to-top-1 exiting:placement-top:slide-out-to-bottom-1 fill-mode-forwards origin-top-left overflow-auto rounded-lg bg-white p-2 shadow-lg ring-1 ring-black/10 outline-hidden dark:bg-slate-950 dark:ring-white/15">
-        <div className="flex w-[15rem] flex-col gap-4 overflow-hidden p-2">
-          <div className="flex gap-4 overflow-hidden">
-            <Switch
-              isSelected={darkMode}
-              onChange={(newDarkMode) =>
-                dispatch(usabilitySlice.actions.setDarkMode(newDarkMode))
-              }
-              className="w-fit"
-            >
-              Dark Mode
-            </Switch>
+    <Popover className="entering:animate-in entering:fade-in entering:placement-bottom:slide-in-from-top-1 entering:placement-top:slide-in-from-bottom-1 exiting:animate-out exiting:fade-out exiting:placement-bottom:slide-out-to-top-1 exiting:placement-top:slide-out-to-bottom-1 fill-mode-forwards origin-top-left overflow-auto rounded-lg bg-white p-2 shadow-lg ring-1 ring-black/10 outline-hidden dark:bg-slate-950 dark:ring-white/15">
+      <Switch
+        isSelected={darkMode}
+        onChange={(newDarkMode) =>
+          dispatch(usabilitySlice.actions.setDarkMode(newDarkMode))
+        }
+      >
+        Dark Mode
+      </Switch>
+    </Popover>
+  );
+}
+
+function NavbarAuthenticatedOptionsMenu() {
+  const { data: session } = useSession();
+  const dispatch = useAppDispatch();
+
+  const darkMode = useAppSelector((state) => state.usability.darkMode);
+
+  return (
+    <Popover className="entering:animate-in entering:fade-in entering:placement-bottom:slide-in-from-top-1 entering:placement-top:slide-in-from-bottom-1 exiting:animate-out exiting:fade-out exiting:placement-bottom:slide-out-to-top-1 exiting:placement-top:slide-out-to-bottom-1 fill-mode-forwards origin-top-left overflow-auto rounded-lg bg-white p-2 shadow-lg ring-1 ring-black/10 outline-hidden dark:bg-zinc-950 dark:ring-white/15">
+      <div className="flex w-[15rem] flex-col gap-4 overflow-hidden p-2">
+        <div className="flex gap-4 overflow-hidden">
+          <div className="flex flex-col gap-2 overflow-hidden">
+            <div className="flex flex-col gap-1">
+              <div className="truncate text-[1rem] font-bold text-slate-900 dark:text-slate-100">
+                {session?.user?.id}
+              </div>
+            </div>
           </div>
         </div>
-      </Popover>
+        <Switch
+          isSelected={darkMode}
+          onChange={(newDarkMode) =>
+            dispatch(usabilitySlice.actions.setDarkMode(newDarkMode))
+          }
+        >
+          Dark Mode
+        </Switch>
+        <ListBox>
+          <ListBoxItem onAction={() => signOut({ callbackUrl: "/signin" })}>
+            <div className="flex w-full items-center gap-2">
+              <LogOutIcon className="h-4 w-4" />
+              <span>Logout</span>
+            </div>
+          </ListBoxItem>
+        </ListBox>
+      </div>
+    </Popover>
+  );
+}
+
+export function NavbarOptionsMenu() {
+  const { data: session, status } = useSession();
+
+  const isAuthenticated = useMemo(
+    () => status !== "loading" && session,
+    [session, status],
+  );
+
+  return (
+    <MenuTrigger>
+      <Button variant="icon">
+        {isAuthenticated ? (
+          <CircleUserIcon className="h-6 w-6" />
+        ) : (
+          <EllipsisVerticalIcon className="h-6 w-6" />
+        )}
+      </Button>
+      {isAuthenticated ? (
+        <NavbarAuthenticatedOptionsMenu />
+      ) : (
+        <NavbarUnauthenticatedOptionsMenu />
+      )}
     </MenuTrigger>
   );
 }

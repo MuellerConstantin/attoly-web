@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { StoreProvider } from "@/store";
+import { AuthProvider } from "@/components/organisms/AuthProvider";
 
 import "./globals.css";
 
@@ -83,7 +84,9 @@ export default async function RootLayout({
       </head>
       <body className={`${outfit.variable} bg-white dark:bg-slate-800`}>
         <NextIntlClientProvider>
-          <StoreProvider>{children}</StoreProvider>
+          <StoreProvider>
+            <AuthProvider>{children}</AuthProvider>
+          </StoreProvider>
         </NextIntlClientProvider>
       </body>
     </html>
