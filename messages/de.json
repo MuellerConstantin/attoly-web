@@ -73,6 +73,7 @@
     "passwordPlaceholder": "Passwort",
     "noAccount": "Noch kein Konto?",
     "signIn": "Anmelden",
+    "verificationNotice": "E-Mail erneut senden?",
     "error": {
       "invalidCredentials": "Benutzername oder Passwort sind falsch",
       "unknownError": "Ein unbekannter Fehler ist aufgetreten",
@@ -94,6 +95,30 @@
       "unknownError": "Ein unbekannter Fehler ist aufgetreten"
     },
     "successMessage": "Dein Konto wurde erfolgreich erstellt. Bitte überprüfe dein E-Mail Postfach."
+  },
+  "VerifyUserPage": {
+    "meta": {
+      "title": "Benutzer verifizieren"
+    },
+    "request": {
+      "title": "E-Mail zur Verifizierung erneut senden",
+      "emailPlaceholder": "E-Mail-Adresse",
+      "request": "Verifizierungs-E-Mail anfordern",
+      "successMessage": "Eine Verifizierungs-E-Mail wurde an deine E-Mail-Adresse gesendet. Bitte überprüfe dein Postfach.",
+      "error": {
+        "unknownError": "Ein unbekannter Fehler ist aufgetreten. Bitte versuche es erneut."
+      }
+    },
+    "confirmation": {
+      "title": "E-Mail verifizieren",
+      "backToSignin": "Zurück zur Anmeldung",
+      "verificationNotice": "E-Mail erneut senden?",
+      "successMessage": "Deine E-Mail wurde erfolgreich verifiziert. Du kannst dich jetzt anmelden.",
+      "error": {
+        "invalidToken": "Der Verifizierungslink ist ungültig oder abgelaufen.",
+        "unknownError": "Ein unbekannter Fehler ist aufgetreten. Bitte versuche es erneut."
+      }
+    }
   },
   "Footer": {
     "imprint": "Impressum",

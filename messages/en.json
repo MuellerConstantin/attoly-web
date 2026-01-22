@@ -74,6 +74,7 @@
     "passwordPlaceholder": "Password",
     "noAccount": "Don't have an account?",
     "signIn": "Sign In",
+    "verificationNotice": "Resend verification email?",
     "error": {
       "invalidCredentials": "Username or password is incorrect",
       "unknownError": "An unknown error occurred. Please try again.",
@@ -96,6 +97,31 @@
       "unknownError": "An unknown error occurred. Please try again."
     },
     "successMessage": "Your account has been created successfully. Please check your email inbox."
+  },
+  "VerifyUserPage": {
+    "meta": {
+      "title": "Verify User"
+    },
+    "request": {
+      "title": "Resend verification email",
+      "emailPlaceholder": "Email Address",
+      "verificationNotice": "Resend verification email?",
+      "request": "Request verification email",
+      "successMessage": "A verification email has been sent to your email address. Please check your inbox.",
+      "error": {
+        "unknownError": "An unknown error occurred. Please try again."
+      }
+    },
+    "confirmation": {
+      "title": "Verify your email",
+      "backToSignin": "Back to Sign In",
+      "verificationNotice": "Resend verification email?",
+      "successMessage": "Your email has been successfully verified. You can now sign in.",
+      "error": {
+        "invalidToken": "The verification link is invalid or has expired.",
+        "unknownError": "An unknown error occurred. Please try again."
+      }
+    }
   },
   "Footer": {
     "imprint": "Imprint",

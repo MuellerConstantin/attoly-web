@@ -20,6 +20,8 @@ export default function SignIn() {
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [showVerificationNotice, setShowVerificationNotice] =
+    useState<boolean>(false);
 
   const onSignIn = useCallback(
     async ({ email, password }: { email: string; password: string }) => {
@@ -38,6 +40,7 @@ export default function SignIn() {
           if (res.error === "InvalidCredentials") {
             setError(t("error.invalidCredentials"));
           } else if (res.error === "AccountDisabled") {
+            setShowVerificationNotice(true);
             setError(t("error.accountDisabled"));
           } else {
             setError(t("error.unknownError"));
@@ -99,6 +102,11 @@ export default function SignIn() {
             {(props) => (
               <Form onSubmit={props.handleSubmit} validationBehavior="aria">
                 {error && <p className="text-center text-red-500">{error}</p>}
+                {showVerificationNotice && (
+                  <p className="text-center">
+                    <Link href="/verify-user">{t("verificationNotice")}</Link>
+                  </p>
+                )}
                 <TextField
                   type="email"
                   className="grow"
