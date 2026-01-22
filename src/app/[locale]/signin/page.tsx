@@ -37,6 +37,8 @@ export default function SignIn() {
         if (res?.error) {
           if (res.error === "InvalidCredentials") {
             setError(t("error.invalidCredentials"));
+          } else if (res.error === "AccountDisabled") {
+            setError(t("error.accountDisabled"));
           } else {
             setError(t("error.unknownError"));
           }

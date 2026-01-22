@@ -24,7 +24,18 @@ async function retrieveAccessToken(
   });
 
   if (!res.ok) {
-    throw new Error("InvalidCredentials");
+    const body = await res.json();
+    const status = res.status;
+
+    if (status === 401 && body.error === "InvalidCredentialsError") {
+      throw new Error("InvalidCredentials");
+    }
+
+    if (status === 401 && body.error === "AccountDisabledError") {
+      throw new Error("AccountDisabled");
+    }
+
+    throw new Error("AuthenticationFailed");
   }
 
   return (await res.json()) as TokenResponse;
@@ -43,7 +54,7 @@ async function refreshAccessToken(
   });
 
   if (!res.ok) {
-    throw new Error("RefreshTokenInvalid");
+    throw new Error("AuthenticationRefreshFailed");
   }
 
   return (await res.json()) as TokenResponse;

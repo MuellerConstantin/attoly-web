@@ -75,7 +75,8 @@
     "signIn": "Anmelden",
     "error": {
       "invalidCredentials": "Benutzername oder Passwort sind falsch",
-      "unknownError": "Ein unbekannter Fehler ist aufgetreten"
+      "unknownError": "Ein unbekannter Fehler ist aufgetreten",
+      "accountDisabled": "Dein Konto ist deaktiviert. Bitte verifiziere deine E-Mail-Adresse."
     }
   },
   "SignUpPage": {

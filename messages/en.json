@@ -76,7 +76,8 @@
     "signIn": "Sign In",
     "error": {
       "invalidCredentials": "Username or password is incorrect",
-      "unknownError": "An unknown error occurred. Please try again."
+      "unknownError": "An unknown error occurred. Please try again.",
+      "accountDisabled": "Your account is disabled. Please verify your email address."
     }
   },
   "SignUpPage": {

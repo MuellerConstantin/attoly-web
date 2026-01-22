@@ -38,6 +38,7 @@ export default function SignUp() {
       { email, password }: { email: string; password: string },
       {
         setFieldError,
+        resetForm,
       }: FormikHelpers<{
         email: string;
         password: string;
@@ -51,6 +52,7 @@ export default function SignUp() {
       try {
         await api.post("/users", { email, password });
         setSuccess(true);
+        resetForm();
       } catch (err) {
         if (err instanceof AxiosError) {
           if (
