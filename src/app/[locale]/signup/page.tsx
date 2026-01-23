@@ -10,12 +10,13 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useCallback, useState } from "react";
 import * as yup from "yup";
-import { api } from "@/api";
 import { AxiosError } from "axios";
+import { useApi } from "@/hooks/useApi";
 
 export default function SignUp() {
   const t = useTranslations("SignUpPage");
   const validationT = useTranslations("ValidationMessages");
+  const api = useApi();
 
   const schema = yup.object().shape({
     email: yup

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { use, useCallback, useMemo, useState } from "react";
+import React, { useCallback, useMemo } from "react";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import {
@@ -22,10 +22,10 @@ import { useRouter, usePathname } from "@/i18n/navigation";
 import { signOut, useSession } from "next-auth/react";
 import { ListBox, ListBoxItem } from "@/components/atoms/ListBox";
 import useSWR from "swr";
-import { api } from "@/api";
 import { AxiosError } from "axios";
 import { ApiError } from "@/lib/types/error";
 import { Me } from "@/lib/types/users";
+import { useApi } from "@/hooks/useApi";
 
 export function Navbar() {
   const t = useTranslations("Navbar");
@@ -148,6 +148,7 @@ function NavbarUnauthenticatedOptionsMenu() {
 function NavbarAuthenticatedOptionsMenu() {
   const { data: session } = useSession();
   const dispatch = useAppDispatch();
+  const api = useApi();
 
   const darkMode = useAppSelector((state) => state.usability.darkMode);
 

@@ -8,11 +8,11 @@ import { Formik, FormikHelpers } from "formik";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import * as yup from "yup";
-import { api } from "@/api";
 import { AxiosError } from "axios";
 import { Link } from "@/components/atoms/Link";
+import { useApi } from "@/hooks/useApi";
 
 interface ResetPasswordConfirmationProps {
   token: string;
@@ -21,6 +21,7 @@ interface ResetPasswordConfirmationProps {
 function ResetPasswordConfirmation({ token }: ResetPasswordConfirmationProps) {
   const t = useTranslations("ResetPasswordPage.confirmation");
   const validationT = useTranslations("ValidationMessages");
+  const api = useApi();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -194,6 +195,7 @@ function ResetPasswordConfirmation({ token }: ResetPasswordConfirmationProps) {
 function ResetPasswordRequest() {
   const t = useTranslations("ResetPasswordPage.request");
   const validationT = useTranslations("ValidationMessages");
+  const api = useApi();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);

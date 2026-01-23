@@ -10,9 +10,9 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import * as yup from "yup";
-import { api } from "@/api";
 import { AxiosError } from "axios";
 import { Link } from "@/components/atoms/Link";
+import { useApi } from "@/hooks/useApi";
 
 interface VerifyUserConfirmationProps {
   token: string;
@@ -20,6 +20,7 @@ interface VerifyUserConfirmationProps {
 
 function VerifyUserConfirmation({ token }: VerifyUserConfirmationProps) {
   const t = useTranslations("VerifyUserPage.confirmation");
+  const api = useApi();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -129,6 +130,7 @@ function VerifyUserConfirmation({ token }: VerifyUserConfirmationProps) {
 function VerifyUserRequest() {
   const t = useTranslations("VerifyUserPage.request");
   const validationT = useTranslations("ValidationMessages");
+  const api = useApi();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);

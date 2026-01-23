@@ -6,7 +6,7 @@ import { Link } from "@/components/atoms/Link";
 import { Spinner } from "@/components/atoms/Spinner";
 import { TextField } from "@/components/atoms/TextField";
 import { Formik } from "formik";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -17,6 +17,7 @@ export default function SignIn() {
   const t = useTranslations("SignInPage");
   const validationT = useTranslations("ValidationMessages");
   const router = useRouter();
+  const locale = useLocale();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -34,6 +35,7 @@ export default function SignIn() {
           password,
           redirect: false,
           callbackUrl: "/",
+          locale,
         });
 
         if (res?.error) {
@@ -52,7 +54,7 @@ export default function SignIn() {
         setIsLoading(false);
       }
     },
-    [router],
+    [router, locale, t],
   );
 
   const schema = yup.object().shape({
