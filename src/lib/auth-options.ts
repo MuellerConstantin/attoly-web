@@ -13,7 +13,7 @@ async function retrieveAccessToken(
   email: string,
   password: string,
 ): Promise<TokenResponse> {
-  const baseUrl = process.env.ATTOLY_API_URL;
+  const baseUrl = `${process.env.ATTOLY_API_URL}${process.env.ATTOLY_API_PREFIX}`;
 
   if (!baseUrl) throw new Error("ATTOLY_API_URL is not set");
 
@@ -44,7 +44,8 @@ async function retrieveAccessToken(
 async function refreshAccessToken(
   refreshToken: string,
 ): Promise<TokenResponse> {
-  const baseUrl = process.env.ATTOLY_API_URL;
+  const baseUrl = `${process.env.ATTOLY_API_URL}${process.env.ATTOLY_API_PREFIX}`;
+
   if (!baseUrl) throw new Error("ATTOLY_API_URL is not set");
 
   const res = await fetch(`${baseUrl}/auth/refresh`, {
@@ -64,6 +65,7 @@ export const authOptions: AuthOptions = {
   session: { strategy: "jwt" },
   providers: [
     CredentialsProvider({
+      id: "credentials",
       name: "Credentials",
       credentials: {
         email: { label: "Email", type: "email" },
@@ -79,12 +81,37 @@ export const authOptions: AuthOptions = {
 
         return {
           id: tokens.principal,
-          email,
           accessToken: tokens.accessToken,
           refreshToken: tokens.refreshToken,
           accessExpiresAt: Date.now() + tokens.accessExpiresIn,
           refreshExpiresAt: Date.now() + tokens.refreshExpiresIn,
         } as any;
+      },
+    }),
+    CredentialsProvider({
+      id: "oauth2-exchange",
+      name: "OAuth2 Exchange",
+      credentials: {
+        refreshToken: { type: "text" },
+      },
+      async authorize(credentials) {
+        if (!credentials?.refreshToken) return null;
+
+        try {
+          const refreshed = await refreshAccessToken(
+            credentials.refreshToken as string,
+          );
+
+          return {
+            id: refreshed.principal,
+            accessToken: refreshed.accessToken,
+            refreshToken: refreshed.refreshToken,
+            accessExpiresAt: Date.now() + refreshed.accessExpiresIn,
+            refreshExpiresAt: Date.now() + refreshed.refreshExpiresIn,
+          };
+        } catch (err) {
+          throw new Error("OAuth2ExchangeFailed", { cause: err });
+        }
       },
     }),
   ],

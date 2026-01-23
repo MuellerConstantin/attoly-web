@@ -1,5 +1,4 @@
 import { type NextRequest } from "next/server";
-import { getToken } from "next-auth/jwt";
 
 export async function GET(
   req: NextRequest,
@@ -49,9 +48,9 @@ async function proxyRequest(
 ) {
   const { path } = await params;
 
-  const backendUrl = `${process.env.ATTOLY_API_URL}${process.env.ATTOLY_API_PREFIX}`;
+  const backendUrl = process.env.ATTOLY_API_URL;
   const cleanPath = path?.join("/") || "";
-  const targetUrl = new URL(`${backendUrl}/${cleanPath}`);
+  const targetUrl = new URL(`${backendUrl}/oauth2/${cleanPath}`);
 
   req.nextUrl.searchParams.forEach((value, key) => {
     targetUrl.searchParams.append(key, value);
@@ -75,15 +74,6 @@ async function proxyRequest(
   ].forEach((header) => requestHeaders.delete(header));
 
   const couldHaveBody = req.method !== "GET" && req.method !== "HEAD";
-
-  const token = await getToken({
-    req,
-    secret: process.env.NEXTAUTH_SECRET,
-  });
-
-  if (token?.accessToken) {
-    requestHeaders.set("Authorization", `Bearer ${token.accessToken}`);
-  }
 
   const fetchOptions: RequestInit = {
     method: req.method,
@@ -122,7 +112,7 @@ async function proxyRequest(
 
     return new Response(
       JSON.stringify({
-        code: "BFF_PROXY_ERROR",
+        code: "OAUTH2_PROXY_ERROR",
         timestamp: new Date().toISOString(),
         path: targetUrl.pathname,
         message: "Unexpected error while proxying request",

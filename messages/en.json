@@ -76,10 +76,12 @@
     "signIn": "Sign In",
     "verificationNotice": "Resend verification email?",
     "resetNotice": "Reset password?",
+    "or": "or",
     "error": {
       "invalidCredentials": "Username or password is incorrect",
       "unknownError": "An unknown error occurred. Please try again.",
-      "accountDisabled": "Your account is disabled. Please verify your email address."
+      "accountDisabled": "Your account is disabled. Please verify your email address.",
+      "oauth2Failed": "OAuth2 sign-in failed. Please try again."
     }
   },
   "SignUpPage": {

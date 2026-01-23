@@ -75,10 +75,12 @@
     "signIn": "Anmelden",
     "verificationNotice": "E-Mail erneut senden?",
     "resetNotice": "Passwort zurücksetzen?",
+    "or": "oder",
     "error": {
       "invalidCredentials": "Benutzername oder Passwort sind falsch",
       "unknownError": "Ein unbekannter Fehler ist aufgetreten",
-      "accountDisabled": "Dein Konto ist deaktiviert. Bitte verifiziere deine E-Mail-Adresse."
+      "accountDisabled": "Dein Konto ist deaktiviert. Bitte verifiziere deine E-Mail-Adresse.",
+      "oauth2Failed": "Die OAuth2-Anmeldung ist fehlgeschlagen. Bitte versuche es erneut."
     }
   },
   "SignUpPage": {
