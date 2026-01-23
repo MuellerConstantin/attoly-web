@@ -95,7 +95,8 @@
     "passwordConfirmationPlaceholder": "Repeat Password",
     "haveAccount": "Already have an account?",
     "signUp": "Sign Up",
-    "termsNotice": "By signing up, you agree to our <terms-hyperlink>Terms of Service</terms-hyperlink> and <privacy-hyperlink>Privacy Policy</privacy-hyperlink>.",
+    "or": "or",
+    "termsNotice": "By registering - either via a form or via a social login like GitHub - you accept our <terms-hyperlink>Terms and Conditions</terms-hyperlink> and our <privacy-hyperlink>Privacy Settings</privacy-hyperlink>.",
     "error": {
       "unknownError": "An unknown error occurred. Please try again."
     },

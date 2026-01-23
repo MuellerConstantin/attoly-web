@@ -80,8 +80,8 @@ export default function SignIn() {
       <div className="absolute inset-0 bg-gradient-to-bl from-teal-400/20 via-transparent to-sky-400/80" />
       <div className="absolute inset-0 bg-black/5" />
 
-      <div className="relative z-10 flex w-fit items-center overflow-hidden rounded-3xl border border-slate-200 bg-white/70 shadow-xl backdrop-blur-md dark:border-slate-700 dark:bg-slate-800/70">
-        <div className="bg-isometric hidden aspect-square h-[35rem] lg:block" />
+      <div className="relative z-10 flex w-fit items-center items-stretch overflow-hidden rounded-3xl border border-slate-200 bg-white/70 shadow-xl backdrop-blur-md dark:border-slate-700 dark:bg-slate-800/70">
+        <div className="bg-isometric hidden aspect-square lg:block" />
         <div className="flex w-full max-w-[25rem] shrink-0 flex-col gap-8 p-8 lg:w-[25rem]">
           <div className="flex flex-col items-center gap-4">
             <div className="relative flex w-fit items-center justify-center">
