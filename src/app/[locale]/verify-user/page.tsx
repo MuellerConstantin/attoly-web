@@ -8,7 +8,7 @@ import { Formik, FormikHelpers } from "formik";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import * as yup from "yup";
 import { AxiosError } from "axios";
 import { Link } from "@/components/atoms/Link";
@@ -21,6 +21,8 @@ interface VerifyUserConfirmationProps {
 function VerifyUserConfirmation({ token }: VerifyUserConfirmationProps) {
   const t = useTranslations("VerifyUserPage.confirmation");
   const api = useApi();
+
+  const hasVerifiedRef = useRef(false);
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -56,9 +58,11 @@ function VerifyUserConfirmation({ token }: VerifyUserConfirmationProps) {
   }, [token]);
 
   useEffect(() => {
-    if (token) {
-      onVerifyUser();
-    }
+    if (!token) return;
+    if (hasVerifiedRef.current) return;
+
+    hasVerifiedRef.current = true;
+    onVerifyUser();
   }, [token, onVerifyUser]);
 
   return (
