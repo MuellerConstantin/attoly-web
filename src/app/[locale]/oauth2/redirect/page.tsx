@@ -12,7 +12,7 @@ export default function OAuth2Redirect() {
     const refreshToken = params.get("refresh_token");
 
     if (!refreshToken) {
-      router.replace("/signin?error=OAuth2Failed");
+      router.push("/signin?error=OAuth2Failed");
       return;
     }
 
@@ -22,10 +22,13 @@ export default function OAuth2Redirect() {
       redirect: false,
     }).then((res) => {
       if (res?.error) {
-        router.replace("/signin?error=OAuth2Failed");
+        router.push("/signin?error=OAuth2Failed");
+        return;
       }
+
+      router.push(res?.url ?? "/");
     });
-  }, [params, router]);
+  }, [router, params]);
 
   return null;
 }
