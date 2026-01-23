@@ -75,6 +75,7 @@
     "noAccount": "Don't have an account?",
     "signIn": "Sign In",
     "verificationNotice": "Resend verification email?",
+    "resetNotice": "Reset password?",
     "error": {
       "invalidCredentials": "Username or password is incorrect",
       "unknownError": "An unknown error occurred. Please try again.",
@@ -119,6 +120,33 @@
       "successMessage": "Your email has been successfully verified. You can now sign in.",
       "error": {
         "invalidToken": "The verification link is invalid or has expired.",
+        "unknownError": "An unknown error occurred. Please try again."
+      }
+    }
+  },
+  "ResetPasswordPage": {
+    "meta": {
+      "title": "Reset Password"
+    },
+    "request": {
+      "title": "Request password reset",
+      "emailPlaceholder": "Email Address",
+      "request": "Request password reset",
+      "successMessage": "A password reset email has been sent to your email address. Please check your inbox.",
+      "error": {
+        "unknownError": "An unknown error occurred. Please try again."
+      }
+    },
+    "confirmation": {
+      "title": "Reset your password",
+      "passwordPlaceholder": "New Password",
+      "passwordConfirmationPlaceholder": "Repeat Password",
+      "backToSignin": "Back to Sign In",
+      "verificationNotice": "Resend reset email?",
+      "reset": "Reset Password",
+      "successMessage": "Your password has been successfully reset. You can now sign in with your new password.",
+      "error": {
+        "invalidToken": "The password reset link is invalid or has expired.",
         "unknownError": "An unknown error occurred. Please try again."
       }
     }

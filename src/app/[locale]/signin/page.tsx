@@ -145,6 +145,9 @@ export default function SignIn() {
                   {!isLoading && <span>{t("signIn")}</span>}
                   {isLoading && <Spinner />}
                 </Button>
+                <p className="text-sm">
+                  <Link href="/reset-password">{t("resetNotice")}</Link>
+                </p>
               </Form>
             )}
           </Formik>

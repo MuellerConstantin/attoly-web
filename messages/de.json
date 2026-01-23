@@ -74,6 +74,7 @@
     "noAccount": "Noch kein Konto?",
     "signIn": "Anmelden",
     "verificationNotice": "E-Mail erneut senden?",
+    "resetNotice": "Passwort zurücksetzen?",
     "error": {
       "invalidCredentials": "Benutzername oder Passwort sind falsch",
       "unknownError": "Ein unbekannter Fehler ist aufgetreten",
@@ -116,6 +117,33 @@
       "successMessage": "Deine E-Mail wurde erfolgreich verifiziert. Du kannst dich jetzt anmelden.",
       "error": {
         "invalidToken": "Der Verifizierungslink ist ungültig oder abgelaufen.",
+        "unknownError": "Ein unbekannter Fehler ist aufgetreten. Bitte versuche es erneut."
+      }
+    }
+  },
+  "ResetPasswordPage": {
+    "meta": {
+      "title": "Passwort zurücksetzen"
+    },
+    "request": {
+      "title": "Passwort zurücksetzen anfordern",
+      "emailPlaceholder": "E-Mail-Adresse",
+      "request": "Passwort zurücksetzen anfordern",
+      "successMessage": "Eine E-Mail zum Zurücksetzen des Passworts wurde an deine E-Mail-Adresse gesendet. Bitte überprüfe dein Postfach.",
+      "error": {
+        "unknownError": "Ein unbekannter Fehler ist aufgetreten. Bitte versuche es erneut."
+      }
+    },
+    "confirmation": {
+      "title": "Passwort zurücksetzen",
+      "passwordPlaceholder": "Neues Passwort",
+      "passwordConfirmationPlaceholder": "Passwort wiederholen",
+      "reset": "Passwort zurücksetzen",
+      "verificationNotice": "E-Mail erneut senden?",
+      "backToSignin": "Zurück zur Anmeldung",
+      "successMessage": "Dein Passwort wurde erfolgreich zurückgesetzt. Du kannst dich jetzt anmelden.",
+      "error": {
+        "invalidToken": "Der Link zum Zurücksetzen des Passworts ist ungültig oder abgelaufen.",
         "unknownError": "Ein unbekannter Fehler ist aufgetreten. Bitte versuche es erneut."
       }
     }
