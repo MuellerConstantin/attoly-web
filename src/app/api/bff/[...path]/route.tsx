@@ -80,8 +80,6 @@ async function proxyRequest(
   const session = await getServerSession(authOptions);
   const accessToken = (session as any)?.accessToken as string | undefined;
 
-  console.log(session);
-
   if (accessToken) {
     requestHeaders.set("Authorization", `Bearer ${accessToken}`);
   }

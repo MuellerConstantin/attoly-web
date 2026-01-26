@@ -133,21 +133,18 @@ export const authOptions: AuthOptions = {
         return token;
       }
 
-      console.log("test", token.refreshToken);
-
       if (token.refreshToken) {
         try {
           const refreshed = await refreshAccessToken(
             token.refreshToken as string,
           );
-          console.log("test2");
+
           token.accessToken = refreshed.accessToken;
           token.refreshToken = refreshed.refreshToken;
           token.accessExpiresAt = Date.now() + refreshed.accessExpiresIn;
           token.refreshExpiresAt = Date.now() + refreshed.refreshExpiresIn;
           return token;
         } catch (e) {
-          console.log("test3");
           (token as any).error = "RefreshTokenError";
           return token;
         }
