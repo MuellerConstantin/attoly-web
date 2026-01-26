@@ -10,6 +10,7 @@ import {
   DisclosureHeader,
   DisclosurePanel,
 } from "@/components/atoms/Disclosure";
+import Image from "next/image";
 
 async function Hero() {
   const t = await getTranslations("HomePage.hero");
@@ -21,6 +22,22 @@ async function Hero() {
       <div className="absolute inset-0 bg-black/5" />
 
       <div className="relative z-10 flex w-full grow flex-col items-center justify-center gap-8">
+        <div className="relative flex w-fit items-center justify-center">
+          <Image
+            src="/images/logo-text-light.svg"
+            width={42}
+            height={32}
+            className="h-16 w-auto lg:block dark:hidden"
+            alt="Attoly"
+          />
+          <Image
+            src="/images/logo-text-dark.svg"
+            width={42}
+            height={32}
+            className="hidden h-16 w-auto dark:block"
+            alt="Attoly"
+          />
+        </div>
         <div className="flex flex-col items-center gap-4 text-lg">
           <h1 className="text-center text-4xl font-bold text-white md:text-4xl lg:text-6xl dark:text-slate-900">
             {t("title")}
