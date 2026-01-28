@@ -1,7 +1,25 @@
-import axios from "axios";
-import { signIn, signOut } from "next-auth/react";
+import axios, { AxiosError, InternalAxiosRequestConfig } from "axios";
+import { getSession } from "next-auth/react";
 
-let isHandlingAuthError = false;
+type RetriableAxiosConfig = InternalAxiosRequestConfig & {
+  _retry?: boolean;
+};
+
+let sessionSyncPromise: Promise<void> | null = null;
+
+async function syncSession(): Promise<void> {
+  if (!sessionSyncPromise) {
+    sessionSyncPromise = (async () => {
+      try {
+        await getSession();
+      } finally {
+        sessionSyncPromise = null;
+      }
+    })();
+  }
+
+  return sessionSyncPromise;
+}
 
 export function createApi(locale: string) {
   const api = axios.create({
@@ -15,30 +33,23 @@ export function createApi(locale: string) {
   });
 
   api.interceptors.response.use(
-    (response) => response,
-    async (error) => {
-      const { response, config } = error;
-      const status = response?.status;
-      const code = response?.data?.error;
+    (res) => res,
+    async (error: AxiosError) => {
+      const response = error.response;
+      const config = error.config as RetriableAxiosConfig | undefined;
 
-      if (
-        status === 401 &&
-        code === "AuthenticationError" &&
-        typeof window !== "undefined" &&
-        !isHandlingAuthError &&
-        !config?._retry
-      ) {
-        const pathname = window.location.pathname;
+      if (!response || !config) {
+        return Promise.reject(error);
+      }
 
-        if (!pathname.includes("/signin")) {
-          isHandlingAuthError = true;
-          (config as any)._retry = true;
+      if (response.status === 401 && !config._retry) {
+        config._retry = true;
 
-          await signOut({ redirect: false });
-
-          signIn(undefined, {
-            callbackUrl: window.location.href,
-          });
+        try {
+          await syncSession();
+          return api(config);
+        } catch {
+          return Promise.reject(error);
         }
       }
 

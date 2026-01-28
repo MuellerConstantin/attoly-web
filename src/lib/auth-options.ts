@@ -1,5 +1,31 @@
-import type { AuthOptions } from "next-auth";
+import type { AuthOptions, DefaultSession } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+
+declare module "next-auth" {
+  interface Session {
+    accessToken?: string;
+    user: {
+      id?: string;
+    } & DefaultSession["user"];
+  }
+
+  interface User {
+    id: string;
+    accessToken: string;
+    refreshToken: string;
+    accessExpiresAt: number;
+    refreshExpiresAt: number;
+  }
+}
+
+declare module "next-auth/jwt" {
+  interface JWT {
+    accessToken?: string;
+    refreshToken?: string;
+    accessExpiresAt?: number;
+    refreshExpiresAt?: number;
+  }
+}
 
 type TokenResponse = {
   principal: string;
@@ -85,7 +111,7 @@ export const authOptions: AuthOptions = {
           refreshToken: tokens.refreshToken,
           accessExpiresAt: Date.now() + tokens.accessExpiresIn,
           refreshExpiresAt: Date.now() + tokens.refreshExpiresIn,
-        } as any;
+        };
       },
     }),
     CredentialsProvider({
@@ -123,31 +149,32 @@ export const authOptions: AuthOptions = {
         token.refreshToken = (user as any).refreshToken;
         token.accessExpiresAt = (user as any).accessExpiresAt;
         token.refreshExpiresAt = (user as any).refreshExpiresAt;
+
         return token;
       }
 
       if (
         token.accessExpiresAt &&
-        Date.now() < (token.accessExpiresAt as number) - 30_000
+        Date.now() < token.accessExpiresAt - 10_000
       ) {
         return token;
       }
 
-      if (token.refreshToken) {
-        try {
-          const refreshed = await refreshAccessToken(
-            token.refreshToken as string,
-          );
+      if (token.refreshExpiresAt && Date.now() > token.refreshExpiresAt) {
+        throw new Error("RefreshTokenExpired");
+      }
 
-          token.accessToken = refreshed.accessToken;
-          token.refreshToken = refreshed.refreshToken;
-          token.accessExpiresAt = Date.now() + refreshed.accessExpiresIn;
-          token.refreshExpiresAt = Date.now() + refreshed.refreshExpiresIn;
-          return token;
-        } catch (e) {
-          (token as any).error = "RefreshTokenError";
-          return token;
-        }
+      try {
+        const refreshed = await refreshAccessToken(
+          token.refreshToken as string,
+        );
+
+        token.accessToken = refreshed.accessToken;
+        token.refreshToken = refreshed.refreshToken;
+        token.accessExpiresAt = Date.now() + refreshed.accessExpiresIn;
+        token.refreshExpiresAt = Date.now() + refreshed.refreshExpiresIn;
+      } catch (error) {
+        throw new Error("TokenRefreshFailed", { cause: error });
       }
 
       return token;
@@ -157,8 +184,8 @@ export const authOptions: AuthOptions = {
         session.user.id = token.sub as string | undefined;
       }
 
-      (session as any).authenticated = Boolean(token.accessToken);
-      (session as any).accessToken = token.accessToken;
+      session.accessToken = token.accessToken;
+
       return session;
     },
   },

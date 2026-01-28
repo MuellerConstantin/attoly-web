@@ -146,7 +146,6 @@ function NavbarUnauthenticatedOptionsMenu() {
 }
 
 function NavbarAuthenticatedOptionsMenu() {
-  const { data: session } = useSession();
   const dispatch = useAppDispatch();
   const api = useApi();
 
@@ -173,7 +172,7 @@ function NavbarAuthenticatedOptionsMenu() {
               ) : (
                 data && (
                   <div className="truncate text-[1rem] font-bold text-slate-900 dark:text-slate-100">
-                    {session?.user?.id}
+                    {data.email}
                   </div>
                 )
               )}
@@ -202,23 +201,18 @@ function NavbarAuthenticatedOptionsMenu() {
 }
 
 export function NavbarOptionsMenu() {
-  const { data: session, status } = useSession();
-
-  const isAuthenticated = useMemo(
-    () => status !== "loading" && session,
-    [session, status],
-  );
+  const { status } = useSession();
 
   return (
     <MenuTrigger>
       <Button variant="icon">
-        {isAuthenticated ? (
+        {status === "authenticated" ? (
           <CircleUserIcon className="h-6 w-6" />
         ) : (
           <EllipsisVerticalIcon className="h-6 w-6" />
         )}
       </Button>
-      {isAuthenticated ? (
+      {status === "authenticated" ? (
         <NavbarAuthenticatedOptionsMenu />
       ) : (
         <NavbarUnauthenticatedOptionsMenu />

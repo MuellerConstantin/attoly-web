@@ -1,6 +1,5 @@
 import { type NextRequest } from "next/server";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth-options";
+import { getToken } from "next-auth/jwt";
 
 export async function GET(
   req: NextRequest,
@@ -77,11 +76,10 @@ async function proxyRequest(
 
   const couldHaveBody = req.method !== "GET" && req.method !== "HEAD";
 
-  const session = await getServerSession(authOptions);
-  const accessToken = (session as any)?.accessToken as string | undefined;
+  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
 
-  if (accessToken) {
-    requestHeaders.set("Authorization", `Bearer ${accessToken}`);
+  if (token) {
+    requestHeaders.set("Authorization", `Bearer ${token.accessToken}`);
   }
 
   const fetchOptions: RequestInit = {
