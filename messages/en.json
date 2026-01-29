@@ -195,6 +195,14 @@
     "title": "Create a shortlink",
     "note": "No sign-up required. Free to start."
   },
+  "GettingStartedGenerateShortcut": {
+    "title": "Your shortlink is ready!",
+    "originalUrlLabel": "Original URL",
+    "shortUrlLabel": "Short URL",
+    "error": {
+      "unknownError": "An unknown error occurred. Please try again."
+    }
+  },
   "ValidationMessages": {
     "required": "This field is required.",
     "invalidEmail": "Please enter a valid email address.",
