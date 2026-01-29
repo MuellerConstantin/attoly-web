@@ -231,7 +231,7 @@
   },
   "GettingStartedRequestShortcut": {
     "title": "Erstelle einen Kurzlink",
-    "note": "Keine Anmeldung erforderlich. Kostenlos starten."
+    "anonymousNotice": "Melde dich jetzt an um deine Kurzlinks dauerhaft zu speichern und zu verwalten. Oder entdecke den für dich passenden <link>Premium-Plan</link>."
   },
   "GettingStartedGenerateShortcut": {
     "title": "Dein Kurzlink ist bereit!",

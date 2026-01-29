@@ -185,6 +185,7 @@ export const authOptions: AuthOptions = {
       }
 
       session.accessToken = token.accessToken;
+      session.authenticated = !!token.accessToken;
 
       return session;
     },

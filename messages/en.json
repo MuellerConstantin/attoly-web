@@ -234,7 +234,7 @@
   },
   "GettingStartedRequestShortcut": {
     "title": "Create a shortlink",
-    "note": "No sign-up required. Free to start."
+    "anonymousNotice": "Sign up now to permanently save and manage your short links. Or discover the <link>Premium plan</link> that’s right for you."
   },
   "GettingStartedGenerateShortcut": {
     "title": "Your shortlink is ready!",

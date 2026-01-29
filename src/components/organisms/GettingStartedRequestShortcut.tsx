@@ -1,9 +1,13 @@
 import Image from "next/image";
 import { HeroGettingStartedForm } from "../molecules/HeroGettingStartedForm";
 import { getTranslations } from "next-intl/server";
+import { getServerSession } from "next-auth";
+import { Link } from "@/components/atoms/Link";
+import { authOptions } from "@/lib/auth-options";
 
 export async function GettingStartedRequestShortcut() {
   const t = await getTranslations("GettingStartedRequestShortcut");
+  const session = await getServerSession(authOptions);
 
   return (
     <div className="relative z-10 flex w-full max-w-2xl flex-col items-center items-stretch gap-8 overflow-hidden rounded-3xl border border-slate-200 bg-white/70 px-4 py-8 text-slate-800 shadow-xl backdrop-blur-md md:p-8 md:px-8 dark:border-slate-700 dark:bg-slate-800/70 dark:text-white">
@@ -32,9 +36,13 @@ export async function GettingStartedRequestShortcut() {
         <div className="w-full">
           <HeroGettingStartedForm />
         </div>
-        <div className="text-sm text-slate-600 dark:text-slate-400">
-          {t("note")}
-        </div>
+        {!session?.authenticated && (
+          <div className="max-w-2/3 text-center text-xs">
+            {t.rich("anonymousNotice", {
+              link: (chunks) => <Link href="/pricing">{chunks}</Link>,
+            })}
+          </div>
+        )}
       </div>
     </div>
   );
