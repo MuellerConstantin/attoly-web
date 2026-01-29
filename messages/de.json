@@ -177,6 +177,36 @@
   "PricingPage": {
     "meta": {
       "title": "Preise"
+    },
+    "title": "Der richtige Plan – abgestimmt auf deine Bedürfnisse",
+    "subtitle": "Einfache Preise. Flexible Pläne. Keine versteckten Kosten.",
+    "plans": {
+      "recommended": "Empfohlen",
+      "month": "Monat",
+      "anonymous": {
+        "name": "Anonym",
+        "cta": "Jetzt loslegen",
+        "price": "0€",
+        "headline": "Anonym loslegen",
+        "features": [
+          "Unbegrenzte Kurzlinks (bis zu 30 Tage gültig)",
+          "QR-Code-Generierung",
+          "Werbefreie Weiterleitungen",
+          "Unbegrenzte Klicks & QR-Code-Scans"
+        ]
+      },
+      "free": {
+        "name": "Kostenlos",
+        "cta": "Jetzt registrieren",
+        "price": "0€",
+        "headline": "Kostenlos nutzen",
+        "plus": "Alle Anonym-Funktionen plus:",
+        "features": [
+          "Bis zu 25 dauerhafte, persönliche Kurzlinks",
+          "Einfache Statistik-Insights zu Aufrufen",
+          "QR-Code-Personalisierungen"
+        ]
+      }
     }
   },
   "Footer": {

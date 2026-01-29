@@ -180,6 +180,36 @@
   "PricingPage": {
     "meta": {
       "title": "Pricing"
+    },
+    "title": "The right plan, made to fit your needs",
+    "subtitle": "Simple pricing. Flexible plans. No hidden fees.",
+    "plans": {
+      "recommended": "Recommended",
+      "month": "Month",
+      "anonymous": {
+        "name": "Anonymous",
+        "cta": "Getting Started",
+        "price": "0€",
+        "headline": "Start anonymously",
+        "features": [
+          "Unlimited short links (up to 30 days validity)",
+          "QR code generation",
+          "Ad-free redirects",
+          "Unlimited clicks & QR code scans"
+        ]
+      },
+      "free": {
+        "name": "Free",
+        "cta": "Sign Up",
+        "price": "0€",
+        "headline": "Use it for free",
+        "plus": "All features of Anonymous, plus:",
+        "features": [
+          "Up to 25 permanent custom short links",
+          "Basic click analytics & insights",
+          "QR code customization"
+        ]
+      }
     }
   },
   "Footer": {
