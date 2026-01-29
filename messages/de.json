@@ -10,8 +10,6 @@
     "hero": {
       "title": "Links kürzen. Schlauer teilen.",
       "subtitle": "Erstelle schöne, zuverlässige Kurz-URLs mit Analytics und eigenen Aliasen.",
-      "placeholder": "URL einfügen",
-      "cta": "URL kürzen",
       "note": "Keine Anmeldung erforderlich. Kostenlos starten."
     },
     "howItWorks": {
@@ -151,6 +149,26 @@
       }
     }
   },
+  "GettingStartedPage": {
+    "meta": {
+      "title": "Kurzlink erstellen"
+    }
+  },
+  "ImprintPage": {
+    "meta": {
+      "title": "Impressum"
+    }
+  },
+  "PrivacyPolicyPage": {
+    "meta": {
+      "title": "Datenschutzerklärung"
+    }
+  },
+  "TermsOfServicePage": {
+    "meta": {
+      "title": "Nutzungsbedingungen"
+    }
+  },
   "Footer": {
     "imprint": "Impressum",
     "privacyPolicy": "Datenschutzerklärung",
@@ -166,9 +184,14 @@
     "signin": "Anmelden",
     "noAccount": "Noch kein Konto? <highlight>Registrieren</highlight>"
   },
+  "HeroGettingStartedForm": {
+    "placeholder": "URL einfügen",
+    "cta": "URL kürzen"
+  },
   "ValidationMessages": {
     "required": "Dieses Feld ist erforderlich.",
     "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
-    "confirmPassword": "Die Passwörter stimmen nicht überein."
+    "confirmPassword": "Die Passwörter stimmen nicht überein.",
+    "invalidUrl": "Bitte geben Sie eine gültige URL ein."
   }
 }

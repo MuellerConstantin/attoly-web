@@ -11,6 +11,7 @@ import {
   DisclosurePanel,
 } from "@/components/atoms/Disclosure";
 import Image from "next/image";
+import { HeroGettingStartedForm } from "@/components/molecules/HeroGettingStartedForm";
 
 async function Hero() {
   const t = await getTranslations("HomePage.hero");
@@ -48,13 +49,7 @@ async function Hero() {
         </div>
         <div className="flex w-full flex-col items-center gap-4">
           <div className="relative mx-auto w-full max-w-[40rem]">
-            <input
-              placeholder={t("placeholder")}
-              className="w-full rounded-full border border-slate-300 bg-white/95 px-6 py-4 pr-32 text-slate-900 placeholder-slate-400 shadow-lg ring-0 transition outline-none focus:ring-4 focus:ring-white/40 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:focus:ring-white/20"
-            />
-            <button className="absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer rounded-full bg-orange-500 px-6 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-orange-600 focus:ring-2 focus:ring-orange-400 focus:outline-none">
-              {t("cta")}
-            </button>
+            <HeroGettingStartedForm />
           </div>
           <div className="text-sm text-slate-200 dark:text-slate-600">
             {t("note")}

@@ -10,8 +10,6 @@
     "hero": {
       "title": "Shorten links. Share smarter.",
       "subtitle": "Create beautiful, reliable short URLs with analytics and custom aliases.",
-      "placeholder": "Paste URL",
-      "cta": "Shorten URL",
       "note": "No sign-up required. Free to start."
     },
     "howItWorks": {
@@ -154,6 +152,26 @@
       }
     }
   },
+  "GettingStartedPage": {
+    "meta": {
+      "title": "Create Shortlink"
+    }
+  },
+  "ImprintPage": {
+    "meta": {
+      "title": "Imprint"
+    }
+  },
+  "PrivacyPolicyPage": {
+    "meta": {
+      "title": "Privacy Policy"
+    }
+  },
+  "TermsOfServicePage": {
+    "meta": {
+      "title": "Terms of Service"
+    }
+  },
   "Footer": {
     "imprint": "Imprint",
     "privacyPolicy": "Privacy Policy",
@@ -169,9 +187,14 @@
     "signin": "Sign In",
     "noAccount": "Don't have an account? Sign Up"
   },
+  "HeroGettingStartedForm": {
+    "placeholder": "Paste URL",
+    "cta": "Shorten URL"
+  },
   "ValidationMessages": {
     "required": "This field is required.",
     "invalidEmail": "Please enter a valid email address.",
-    "confirmPassword": "Passwords do not match."
+    "confirmPassword": "Passwords do not match.",
+    "invalidUrl": "Please enter a valid URL."
   }
 }
