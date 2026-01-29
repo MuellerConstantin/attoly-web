@@ -172,6 +172,11 @@
       "title": "Terms of Service"
     }
   },
+  "RedirectPage": {
+    "meta": {
+      "title": "Redirect"
+    }
+  },
   "Footer": {
     "imprint": "Imprint",
     "privacyPolicy": "Privacy Policy",

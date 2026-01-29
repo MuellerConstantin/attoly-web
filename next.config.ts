@@ -2,7 +2,16 @@ import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: "/:locale/r/:token",
+          destination: "/:locale/redirect/:token",
+        },
+      ],
+    };
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();

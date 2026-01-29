@@ -169,6 +169,11 @@
       "title": "Nutzungsbedingungen"
     }
   },
+  "RedirectPage": {
+    "meta": {
+      "title": "Weiterleitung"
+    }
+  },
   "Footer": {
     "imprint": "Impressum",
     "privacyPolicy": "Datenschutzerklärung",

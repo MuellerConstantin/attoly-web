@@ -102,7 +102,7 @@ export function GettingStartedGenerateShortcut({
               <TextField
                 label={t("shortUrlLabel")}
                 isReadOnly
-                value={`${window.location.origin}/redirect/${shortcut!.tag}`}
+                value={`${window.location.origin}/r/${shortcut!.tag}`}
               />
             </div>
           </div>
