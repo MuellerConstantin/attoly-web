@@ -31,7 +31,10 @@ export function Navbar() {
   const t = useTranslations("Navbar");
 
   const navigation = useMemo(() => {
-    return [{ name: t("home"), href: "/home" }];
+    return [
+      { name: t("home"), href: "/home" },
+      { name: t("pricing"), href: "/pricing" },
+    ];
   }, [t]);
 
   return (

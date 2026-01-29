@@ -177,6 +177,11 @@
       "title": "Redirect"
     }
   },
+  "PricingPage": {
+    "meta": {
+      "title": "Pricing"
+    }
+  },
   "Footer": {
     "imprint": "Imprint",
     "privacyPolicy": "Privacy Policy",
@@ -185,6 +190,7 @@
   },
   "Navbar": {
     "home": "Homepage",
+    "pricing": "Pricing",
     "languages": {
       "en": "English",
       "de": "German"
