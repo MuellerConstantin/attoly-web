@@ -48,7 +48,7 @@ async function Hero() {
           </h4>
         </div>
         <div className="flex w-full flex-col items-center gap-4">
-          <div className="relative mx-auto w-full max-w-[40rem]">
+          <div className="mx-auto w-full max-w-[40rem]">
             <HeroGettingStartedForm />
           </div>
           <div className="text-sm text-slate-200 dark:text-slate-600">

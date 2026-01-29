@@ -191,6 +191,10 @@
     "placeholder": "Paste URL",
     "cta": "Shorten URL"
   },
+  "GettingStartedCreateShortcut": {
+    "title": "Create a shortlink",
+    "note": "No sign-up required. Free to start."
+  },
   "ValidationMessages": {
     "required": "This field is required.",
     "invalidEmail": "Please enter a valid email address.",

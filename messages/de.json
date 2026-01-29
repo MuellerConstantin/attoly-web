@@ -188,6 +188,10 @@
     "placeholder": "URL einfügen",
     "cta": "URL kürzen"
   },
+  "GettingStartedCreateShortcut": {
+    "title": "Erstelle einen Kurzlink",
+    "note": "Keine Anmeldung erforderlich. Kostenlos starten."
+  },
   "ValidationMessages": {
     "required": "Dieses Feld ist erforderlich.",
     "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
