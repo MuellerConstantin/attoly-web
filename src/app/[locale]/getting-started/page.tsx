@@ -1,5 +1,5 @@
-import { GettingStartedCreateShortcut } from "@/components/organisms/GettingStartedCreateShortcut";
-import { GettingStartedViewShortcut } from "@/components/organisms/GettingStartedViewShortcut";
+import { GettingStartedRequestShortcut } from "@/components/organisms/GettingStartedRequestShortcut";
+import { GettingStartedGenerateShortcut } from "@/components/organisms/GettingStartedGenerateShortcut";
 import { Metadata } from "next";
 
 type Props = {
@@ -29,9 +29,9 @@ export default async function GettingStarted({ searchParams }: Props) {
       <div className="absolute inset-0 bg-black/5" />
 
       {url ? (
-        <GettingStartedViewShortcut url={url} />
+        <GettingStartedGenerateShortcut url={url} />
       ) : (
-        <GettingStartedCreateShortcut />
+        <GettingStartedRequestShortcut />
       )}
     </div>
   );

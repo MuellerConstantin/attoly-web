@@ -2,8 +2,8 @@ import Image from "next/image";
 import { HeroGettingStartedForm } from "../molecules/HeroGettingStartedForm";
 import { getTranslations } from "next-intl/server";
 
-export async function GettingStartedCreateShortcut() {
-  const t = await getTranslations("GettingStartedCreateShortcut");
+export async function GettingStartedRequestShortcut() {
+  const t = await getTranslations("GettingStartedRequestShortcut");
 
   return (
     <div className="relative z-10 flex w-full max-w-2xl flex-col items-center items-stretch gap-8 overflow-hidden rounded-3xl border border-slate-200 bg-white/70 px-4 py-8 text-slate-800 shadow-xl backdrop-blur-md md:p-8 md:px-8 dark:border-slate-700 dark:bg-slate-800/70 dark:text-white">

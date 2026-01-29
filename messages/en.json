@@ -191,7 +191,7 @@
     "placeholder": "Paste URL",
     "cta": "Shorten URL"
   },
-  "GettingStartedCreateShortcut": {
+  "GettingStartedRequestShortcut": {
     "title": "Create a shortlink",
     "note": "No sign-up required. Free to start."
   },
