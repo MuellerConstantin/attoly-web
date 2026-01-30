@@ -277,7 +277,8 @@
       "unknownError": "An unknown error occurred. Please try again."
     },
     "success": {
-      "headline": "Your shortlink"
+      "headline": "Your shortlink",
+      "share": "Share"
     }
   },
   "ValidationMessages": {

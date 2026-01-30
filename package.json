@@ -24,6 +24,7 @@
     "react-aria-components": "^1.14.0",
     "react-dom": "19.2.3",
     "react-redux": "^9.2.0",
+    "react-share": "^5.2.2",
     "redux-persist": "^6.0.0",
     "swr": "^2.3.8",
     "tailwind-variants": "^3.2.2",

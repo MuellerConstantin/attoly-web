@@ -12,7 +12,44 @@ import { Spinner } from "@/components/atoms/Spinner";
 import { useRouter } from "next/navigation";
 import { TextField } from "@/components/atoms/TextField";
 import { Button } from "@/components/atoms/Button";
-import { Check, Copy } from "lucide-react";
+import { Check, Copy, Share } from "lucide-react";
+import {
+  EmailShareButton,
+  EmailIcon,
+  FacebookShareButton,
+  FacebookIcon,
+  TelegramShareButton,
+  TelegramIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+} from "react-share";
+
+interface ShareButtonProps {
+  text: string;
+}
+
+function ShareButton({ text }: ShareButtonProps) {
+  if (!navigator.share) {
+    return null;
+  }
+
+  const onShare = useCallback(async () => {
+    await navigator.share({
+      url: window.location.href,
+    });
+  }, [text]);
+
+  return (
+    <button
+      onClick={onShare}
+      className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-slate-500 p-2 text-white hover:bg-slate-600 dark:bg-slate-400 dark:hover:bg-slate-300"
+    >
+      <Share className="h-full w-full" />
+    </button>
+  );
+}
 
 interface CopyButtonProps {
   text: string;
@@ -38,6 +75,68 @@ function CopyButton(props: CopyButtonProps) {
         {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
       </div>
     </Button>
+  );
+}
+
+interface SuccessSectionProps {
+  shortcut: Shortcut;
+}
+
+function SuccessSection({ shortcut }: SuccessSectionProps) {
+  const t = useTranslations("GettingStartedGenerateShortcut");
+
+  return (
+    <div className="z-10 flex w-full max-w-2xl flex-col gap-4">
+      <h2 className="text-center text-2xl font-bold text-white">
+        {t("success.headline")}
+      </h2>
+      <div className="flex w-full flex-col items-center gap-8 overflow-hidden rounded-3xl border border-slate-200 bg-white/70 px-4 py-8 text-slate-800 shadow-xl backdrop-blur-md md:p-8 md:px-8 dark:border-slate-700 dark:bg-slate-800/70 dark:text-white">
+        <div className="flex w-full items-center gap-2">
+          <TextField
+            className="grow"
+            isReadOnly
+            value={`${window.location.origin}/r/${shortcut!.tag}`}
+          />
+          <div className="w-fit shrink-0">
+            <CopyButton text={`${window.location.origin}/r/${shortcut!.tag}`} />
+          </div>
+        </div>
+        <div className="space-y-2 text-center">
+          <h3 className="text-lg font-bold">{t("success.share")}</h3>
+          <div className="flex items-center gap-2">
+            <EmailShareButton
+              url={`${window.location.origin}/redirect/${shortcut.tag}`}
+              subject="Check out this URL"
+            >
+              <EmailIcon size={32} round />
+            </EmailShareButton>
+            <FacebookShareButton
+              url={`${window.location.origin}/redirect/${shortcut.tag}`}
+            >
+              <FacebookIcon size={32} round />
+            </FacebookShareButton>
+            <WhatsappShareButton
+              url={`${window.location.origin}/redirect/${shortcut.tag}`}
+            >
+              <WhatsappIcon size={32} round />
+            </WhatsappShareButton>
+            <TwitterShareButton
+              url={`${window.location.origin}/redirect/${shortcut.tag}`}
+            >
+              <TwitterIcon size={32} round />
+            </TwitterShareButton>
+            <TelegramShareButton
+              url={`${window.location.origin}/redirect/${shortcut.tag}`}
+            >
+              <TelegramIcon size={32} round />
+            </TelegramShareButton>
+            <ShareButton
+              text={`${window.location.origin}/redirect/${shortcut.tag}`}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -134,25 +233,7 @@ export function GettingStartedGenerateShortcut({
           )}
         </div>
       </div>
-      {!!shortcut && (
-        <div className="z-10 flex w-full max-w-2xl flex-col gap-4">
-          <h2 className="text-center text-2xl font-bold text-white">
-            {t("success.headline")}
-          </h2>
-          <div className="flex w-full items-center gap-2 overflow-hidden rounded-3xl border border-slate-200 bg-white/70 px-4 py-8 text-slate-800 shadow-xl backdrop-blur-md md:p-8 md:px-8 dark:border-slate-700 dark:bg-slate-800/70 dark:text-white">
-            <TextField
-              className="grow"
-              isReadOnly
-              value={`${window.location.origin}/r/${shortcut!.tag}`}
-            />
-            <div className="w-fit shrink-0">
-              <CopyButton
-                text={`${window.location.origin}/r/${shortcut!.tag}`}
-              />
-            </div>
-          </div>
-        </div>
-      )}
+      {!!shortcut && <SuccessSection shortcut={shortcut} />}
     </>
   );
 }

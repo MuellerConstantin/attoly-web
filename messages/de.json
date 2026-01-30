@@ -274,7 +274,8 @@
       "unknownError": "Ein unbekannter Fehler ist aufgetreten. Bitte versuche es erneut."
     },
     "success": {
-      "headline": "Dein Kurzlink"
+      "headline": "Dein Kurzlink",
+      "share": "Teilen"
     }
   },
   "ValidationMessages": {
