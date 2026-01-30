@@ -267,16 +267,14 @@
     "placeholder": "URL einfügen",
     "cta": "URL kürzen"
   },
-  "GettingStartedRequestShortcut": {
-    "title": "Erstelle einen Kurzlink",
-    "anonymousNotice": "Melde dich jetzt an um deine Kurzlinks dauerhaft zu speichern und zu verwalten. Oder entdecke den für dich passenden <link>Premium-Plan</link>."
-  },
   "GettingStartedGenerateShortcut": {
-    "title": "Dein Kurzlink ist bereit!",
-    "originalUrlLabel": "Ursprüngliche URL",
-    "shortUrlLabel": "Dein Kurzlink",
+    "title": "Erstelle einen Kurzlink",
+    "anonymousNotice": "Melde dich jetzt an um deine Kurzlinks dauerhaft zu speichern und zu verwalten. Oder entdecke den für dich passenden <link>Premium-Plan</link>.",
     "error": {
       "unknownError": "Ein unbekannter Fehler ist aufgetreten. Bitte versuche es erneut."
+    },
+    "success": {
+      "headline": "Dein Kurzlink"
     }
   },
   "ValidationMessages": {

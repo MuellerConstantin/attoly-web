@@ -1,4 +1,3 @@
-import { GettingStartedRequestShortcut } from "@/components/organisms/GettingStartedRequestShortcut";
 import { GettingStartedGenerateShortcut } from "@/components/organisms/GettingStartedGenerateShortcut";
 import { Metadata } from "next";
 
@@ -23,16 +22,12 @@ export default async function GettingStarted({ searchParams }: Props) {
   const { url } = await searchParams;
 
   return (
-    <div className="relative flex w-full grow flex-col items-center justify-center gap-2 bg-gradient-to-br from-orange-500 via-orange-400 to-sky-500 px-4 py-20">
+    <div className="relative flex w-full grow flex-col items-center justify-center gap-4 bg-gradient-to-br from-orange-500 via-orange-400 to-sky-500 px-4 py-20">
       <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/20 via-transparent to-red-500/80" />
       <div className="absolute inset-0 bg-gradient-to-bl from-teal-400/20 via-transparent to-sky-400/80" />
       <div className="absolute inset-0 bg-black/5" />
 
-      {url ? (
-        <GettingStartedGenerateShortcut url={url} />
-      ) : (
-        <GettingStartedRequestShortcut />
-      )}
+      <GettingStartedGenerateShortcut url={url} />
     </div>
   );
 }

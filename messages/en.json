@@ -270,16 +270,14 @@
     "placeholder": "Paste URL",
     "cta": "Shorten URL"
   },
-  "GettingStartedRequestShortcut": {
-    "title": "Create a shortlink",
-    "anonymousNotice": "Sign up now to permanently save and manage your short links. Or discover the <link>Premium plan</link> that’s right for you."
-  },
   "GettingStartedGenerateShortcut": {
-    "title": "Your shortlink is ready!",
-    "originalUrlLabel": "Original URL",
-    "shortUrlLabel": "Short URL",
+    "title": "Create a shortlink",
+    "anonymousNotice": "Sign up now to permanently save and manage your short links. Or discover the <link>Premium plan</link> that’s right for you.",
     "error": {
       "unknownError": "An unknown error occurred. Please try again."
+    },
+    "success": {
+      "headline": "Your shortlink"
     }
   },
   "ValidationMessages": {

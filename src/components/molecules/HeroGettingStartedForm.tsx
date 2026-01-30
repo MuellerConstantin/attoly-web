@@ -6,7 +6,17 @@ import * as yup from "yup";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 
-export function HeroGettingStartedForm() {
+export interface HeroGettingStartedFormProps {
+  onSubmit?: (url: string) => void;
+  isDisabled?: boolean;
+  defaultValue?: string;
+}
+
+export function HeroGettingStartedForm({
+  onSubmit,
+  isDisabled,
+  defaultValue,
+}: HeroGettingStartedFormProps) {
   const router = useRouter();
   const t = useTranslations("HeroGettingStartedForm");
   const validationT = useTranslations("ValidationMessages");
@@ -22,11 +32,15 @@ export function HeroGettingStartedForm() {
     <div className="relative">
       <Formik
         enableReinitialize
-        initialValues={{ url: "" }}
+        initialValues={{ url: defaultValue || "" }}
         validationSchema={schema}
-        onSubmit={(values) => {
-          router.push(`/getting-started?url=${encodeURIComponent(values.url)}`);
-        }}
+        onSubmit={(values) =>
+          onSubmit
+            ? onSubmit(values.url)
+            : router.push(
+                `/getting-started?url=${encodeURIComponent(values.url)}`,
+              )
+        }
       >
         {(props) => (
           <Form onSubmit={props.handleSubmit} validationBehavior="aria">
@@ -37,6 +51,7 @@ export function HeroGettingStartedForm() {
               value={props.values.url}
               onBlur={props.handleBlur}
               onChange={props.handleChange}
+              disabled={isDisabled}
             />
             <button
               type="submit"
