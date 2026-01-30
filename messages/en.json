@@ -181,9 +181,9 @@
     "meta": {
       "title": "Pricing"
     },
-    "title": "The right plan, made to fit your needs",
-    "subtitle": "Simple pricing. Flexible plans. No hidden fees.",
     "plans": {
+      "title": "The right plan, made to fit your needs",
+      "subtitle": "Simple pricing. Flexible plans. No hidden fees.",
       "recommended": "Recommended",
       "month": "Month",
       "anonymous": {
@@ -205,10 +205,48 @@
         "headline": "Use it for free",
         "plus": "All features of Anonymous, plus:",
         "features": [
-          "Up to 25 permanent custom short links",
+          "Up to 10 permanent custom short links",
           "Basic click analytics & insights",
           "QR code customization"
         ]
+      }
+    },
+    "features": {
+      "title": "All features at a glance",
+      "subtitle": "Decide based on what you need",
+      "table": {
+        "headline": "Compare offers",
+        "description": "Choose the plan that suits you.",
+        "month": "Month",
+        "statistics": "Statistics",
+        "generalFeatures": {
+          "price": "Price",
+          "temporaryLinks": "Temporary Short Links",
+          "permanentLinks": "Permanent Custom Short Links",
+          "qrCodes": "QR Code Generation",
+          "adFreeRedirects": "Ad-free Redirects",
+          "linkManagement": "Link Management",
+          "clicksAndScans": "Manage and organize your shortcut links in a dashboard."
+        },
+        "statisticsFeatures": {
+          "clickAnalytics": "Click Analytics",
+          "clickAnalyticsTooltip": "Detailed insights into the click numbers of your short links. When and how often your links were clicked?"
+        }
+      },
+      "plans": {
+        "anonymous": {
+          "name": "Anonymous",
+          "price": "0€",
+          "cta": "Getting Started",
+          "temporaryLinks": "Unlimited (up to 30 days validity)"
+        },
+        "free": {
+          "name": "Free",
+          "price": "0€",
+          "cta": "Sign Up",
+          "temporaryLinks": "Unlimited (up to 30 days validity)",
+          "permanentLinks": "Up to 10"
+        }
       }
     }
   },

@@ -178,9 +178,9 @@
     "meta": {
       "title": "Preise"
     },
-    "title": "Der richtige Plan – abgestimmt auf deine Bedürfnisse",
-    "subtitle": "Einfache Preise. Flexible Pläne. Keine versteckten Kosten.",
     "plans": {
+      "title": "Der richtige Plan – abgestimmt auf deine Bedürfnisse",
+      "subtitle": "Einfache Preise. Flexible Pläne. Keine versteckten Kosten.",
       "recommended": "Empfohlen",
       "month": "Monat",
       "anonymous": {
@@ -202,10 +202,48 @@
         "headline": "Kostenlos nutzen",
         "plus": "Alle Anonym-Funktionen plus:",
         "features": [
-          "Bis zu 25 dauerhafte, persönliche Kurzlinks",
+          "Bis zu 10 dauerhafte, persönliche Kurzlinks",
           "Einfache Statistik-Insights zu Aufrufen",
           "QR-Code-Personalisierungen"
         ]
+      }
+    },
+    "features": {
+      "title": "Alle Funktionen im Überblick",
+      "subtitle": "Entscheide anhand davon was du brauchst",
+      "table": {
+        "headline": "Angebote vergleichen",
+        "description": "Wählen das für dich passende Angebot.",
+        "month": "Monat",
+        "statistics": "Statistiken",
+        "generalFeatures": {
+          "price": "Preis",
+          "temporaryLinks": "Temporäre Kurzlinks",
+          "permanentLinks": "Dauerhafte Kurzlinks",
+          "qrCodes": "QR-Code-Generierung",
+          "adFreeRedirects": "Werbefreie Weiterleitungen",
+          "linkManagement": "Link-Verwaltung",
+          "linkManagementTooltip": "Verwalte und organisiere deine Kurzlinks in einem Dashboard."
+        },
+        "statisticsFeatures": {
+          "clickAnalytics": "Klick-Analysen",
+          "clickAnalyticsTooltip": "Detaillierte Einblicke in die Klick-Zahlen deiner Kurzlinks. Wann wurden deine Links wie oft angeklickt?"
+        }
+      },
+      "plans": {
+        "anonymous": {
+          "name": "Anonym",
+          "price": "0€",
+          "cta": "Jetzt loslegen",
+          "temporaryLinks": "Unbegrenzt (bis zu 30 Tage gültig)"
+        },
+        "free": {
+          "name": "Kostenlos",
+          "price": "0€",
+          "cta": "Jetzt registrieren",
+          "temporaryLinks": "Unbegrenzt (bis zu 30 Tage gültig)",
+          "permanentLinks": "Bis zu 10"
+        }
       }
     }
   },
