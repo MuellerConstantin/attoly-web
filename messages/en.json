@@ -259,6 +259,7 @@
   "Navbar": {
     "home": "Homepage",
     "pricing": "Pricing",
+    "gettingStarted": "Create Shortlink",
     "languages": {
       "en": "English",
       "de": "German"

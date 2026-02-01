@@ -33,6 +33,7 @@ export function Navbar() {
   const navigation = useMemo(() => {
     return [
       { name: t("home"), href: "/home" },
+      //{ name: t("gettingStarted"), href: "/getting-started" },
       { name: t("pricing"), href: "/pricing" },
     ];
   }, [t]);
@@ -55,6 +56,9 @@ export function Navbar() {
                   {item.name}
                 </MenuItem>
               ))}
+              <MenuItem id="nav-getting-started" href="/getting-started">
+                {t("gettingStarted")}
+              </MenuItem>
             </Menu>
           </MenuTrigger>
         </div>
@@ -97,6 +101,12 @@ export function Navbar() {
               </Link>
             ))}
           </div>
+          <Link
+            href="/getting-started"
+            className="pressed:bg-orange-700 hidden cursor-pointer rounded-lg border border-black/10 bg-orange-500 px-5 py-2 text-center text-sm text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] transition hover:bg-orange-600 hover:no-underline md:block dark:border-white/10 dark:text-white dark:shadow-none"
+          >
+            {t("gettingStarted")}
+          </Link>
           <div className="flex">
             <MenuTrigger>
               <Button variant="icon">

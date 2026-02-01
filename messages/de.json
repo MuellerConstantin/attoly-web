@@ -255,6 +255,7 @@
   },
   "Navbar": {
     "home": "Startseite",
+    "gettingStarted": "Kurzlink erstellen",
     "pricing": "Preise",
     "languages": {
       "en": "Englisch",
