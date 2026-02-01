@@ -261,7 +261,8 @@
   "AccountSettingsPage": {
     "meta": {
       "title": "Account Settings"
-    }
+    },
+    "changePassword": "Change Password"
   },
   "BillingSettingsPage": {
     "meta": {
@@ -271,6 +272,16 @@
   "ShortcutSettingsPage": {
     "meta": {
       "title": "Short Links Settings"
+    }
+  },
+  "ChangePasswordForm": {
+    "currentPasswordPlaceholder": "Current Password",
+    "newPasswordPlaceholder": "New Password",
+    "newPasswordConfirmationPlaceholder": "Repeat New Password",
+    "changePassword": "Change Password",
+    "successMessage": "Your password has been changed successfully.",
+    "error": {
+      "unknownError": "An unknown error occurred. Please try again."
     }
   },
   "Footer": {

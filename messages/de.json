@@ -258,7 +258,8 @@
   "AccountSettingsPage": {
     "meta": {
       "title": "Kontoeinstellungen"
-    }
+    },
+    "changePassword": "Passwort ändern"
   },
   "BillingSettingsPage": {
     "meta": {
@@ -268,6 +269,16 @@
   "ShortcutSettingsPage": {
     "meta": {
       "title": "Kurzlink-Einstellungen"
+    }
+  },
+  "ChangePasswordForm": {
+    "currentPasswordPlaceholder": "Aktuelles Passwort",
+    "newPasswordPlaceholder": "Neues Passwort",
+    "newPasswordConfirmationPlaceholder": "Neues Passwort wiederholen",
+    "changePassword": "Passwort ändern",
+    "successMessage": "Dein Passwort wurde erfolgreich geändert.",
+    "error": {
+      "unknownError": "Ein unbekannter Fehler ist aufgetreten. Bitte versuche es erneut."
     }
   },
   "Footer": {
