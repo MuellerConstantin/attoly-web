@@ -16,7 +16,7 @@ export function AnonymousCreatorBadge() {
           <Info className="h-3 w-3" />
           {t("label")}
         </Button>
-        <Popover className="max-w-xs p-4" showArrow>
+        <Popover className="w-fit max-w-xs p-4 text-sm" showArrow>
           {t.rich("anonymousNotice", {
             link: (chunks) => <Link href="/pricing">{chunks}</Link>,
           })}

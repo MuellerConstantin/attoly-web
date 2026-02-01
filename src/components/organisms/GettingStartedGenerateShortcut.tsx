@@ -4,7 +4,7 @@ import { useApi } from "@/hooks/useApi";
 import { Shortcut } from "@/lib/types/shortcuts";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { HeroGettingStartedForm } from "../molecules/HeroGettingStartedForm";
 import { useSession } from "next-auth/react";
 import { Link } from "@/components/atoms/Link";
@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import { TextField } from "@/components/atoms/TextField";
 import { Button } from "@/components/atoms/Button";
 import { Check, Copy, Share } from "lucide-react";
+import { ReactQRCode, ReactQRCodeRef } from "@lglab/react-qr-code";
 import {
   EmailShareButton,
   EmailIcon,
@@ -86,6 +87,19 @@ interface SuccessSectionProps {
 function SuccessSection({ shortcut }: SuccessSectionProps) {
   const t = useTranslations("GettingStartedGenerateShortcut");
 
+  const qrCodeRef = useRef<ReactQRCodeRef>(null);
+
+  const onDownload = useCallback(
+    (format: "png" | "svg") => {
+      qrCodeRef.current?.download({
+        name: `attoly-shortcut-${shortcut.tag}`,
+        format,
+        size: 1000,
+      });
+    },
+    [shortcut],
+  );
+
   return (
     <div className="z-10 flex w-full max-w-2xl flex-col gap-4">
       <h2 className="text-center text-2xl font-bold text-white">
@@ -102,7 +116,7 @@ function SuccessSection({ shortcut }: SuccessSectionProps) {
             <CopyButton text={`${window.location.origin}/r/${shortcut!.tag}`} />
           </div>
         </div>
-        <div className="space-y-2 text-center">
+        <div className="space-y-4 text-center">
           <h3 className="text-lg font-bold">{t("success.share")}</h3>
           <div className="flex items-center gap-2">
             <EmailShareButton
@@ -134,6 +148,35 @@ function SuccessSection({ shortcut }: SuccessSectionProps) {
             <ShareButton
               text={`${window.location.origin}/redirect/${shortcut.tag}`}
             />
+          </div>
+        </div>
+        <div className="w-full space-y-4 text-center">
+          <h3 className="text-center text-lg font-bold">
+            {t("success.qrCode")}
+          </h3>
+          <div className="flex w-full flex-col items-center gap-8 md:flex-row md:justify-center">
+            <div className="flex aspect-square h-[192px] shrink-0 justify-center overflow-hidden rounded-3xl border border-slate-400">
+              <ReactQRCode
+                ref={qrCodeRef}
+                value={`${window.location.origin}/redirect/${shortcut.tag}`}
+                size={192}
+                background="#ffffff"
+                imageSettings={{
+                  src: "/images/logo.svg",
+                  width: 32,
+                  height: 32,
+                  excavate: true,
+                }}
+              />
+            </div>
+            <div className="flex max-w-[15rem] grow flex-col gap-4">
+              <Button className="w-full" onClick={() => onDownload("png")}>
+                Download PNG
+              </Button>
+              <Button className="w-full" onClick={() => onDownload("svg")}>
+                Download SVG
+              </Button>
+            </div>
           </div>
         </div>
       </div>

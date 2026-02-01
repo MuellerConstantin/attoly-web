@@ -275,7 +275,8 @@
     },
     "success": {
       "headline": "Dein Kurzlink",
-      "share": "Teilen"
+      "share": "Teilen",
+      "qrCode": "QR-Code"
     }
   },
   "AnonymousCreatorBadge": {

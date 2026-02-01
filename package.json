@@ -12,6 +12,7 @@
     "format:fix": "prettier --write ."
   },
   "dependencies": {
+    "@lglab/react-qr-code": "^1.4.9",
     "@reduxjs/toolkit": "^2.11.2",
     "axios": "^1.13.2",
     "formik": "^2.4.9",
