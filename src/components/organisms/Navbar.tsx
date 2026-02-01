@@ -9,6 +9,7 @@ import {
   Languages as LanguagesIcon,
   LogOut as LogOutIcon,
   CircleUser as CircleUserIcon,
+  Settings,
 } from "lucide-react";
 import { MenuTrigger } from "react-aria-components";
 import { Button } from "@/components/atoms/Button";
@@ -159,6 +160,7 @@ function NavbarUnauthenticatedOptionsMenu() {
 }
 
 function NavbarAuthenticatedOptionsMenu() {
+  const t = useTranslations("Navbar");
   const dispatch = useAppDispatch();
   const api = useApi();
 
@@ -201,10 +203,16 @@ function NavbarAuthenticatedOptionsMenu() {
           Dark Mode
         </Switch>
         <ListBox>
+          <ListBoxItem href="/settings">
+            <div className="flex w-full items-center gap-2">
+              <Settings className="h-4 w-4" />
+              <span>{t("settings")}</span>
+            </div>
+          </ListBoxItem>
           <ListBoxItem onAction={() => signOut({ callbackUrl: "/signin" })}>
             <div className="flex w-full items-center gap-2">
               <LogOutIcon className="h-4 w-4" />
-              <span>Logout</span>
+              <span>{t("signout")}</span>
             </div>
           </ListBoxItem>
         </ListBox>

@@ -247,6 +247,11 @@
       }
     }
   },
+  "SettingsPage": {
+    "meta": {
+      "title": "Einstellungen"
+    }
+  },
   "Footer": {
     "imprint": "Impressum",
     "privacyPolicy": "Datenschutzerklärung",
@@ -262,6 +267,8 @@
       "de": "Deutsch"
     },
     "signin": "Anmelden",
+    "signout": "Abmelden",
+    "settings": "Einstellungen",
     "noAccount": "Noch kein Konto? <highlight>Registrieren</highlight>"
   },
   "HeroGettingStartedForm": {

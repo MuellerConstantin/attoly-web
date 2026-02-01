@@ -250,6 +250,11 @@
       }
     }
   },
+  "SettingsPage": {
+    "meta": {
+      "title": "Settings"
+    }
+  },
   "Footer": {
     "imprint": "Imprint",
     "privacyPolicy": "Privacy Policy",
@@ -265,6 +270,8 @@
       "de": "German"
     },
     "signin": "Sign In",
+    "signout": "Sign Out",
+    "settings": "Settings",
     "noAccount": "Don't have an account? Sign Up"
   },
   "HeroGettingStartedForm": {
