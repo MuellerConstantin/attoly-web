@@ -250,6 +250,24 @@
   "SettingsPage": {
     "meta": {
       "title": "Einstellungen"
+    },
+    "account": "Konto",
+    "billing": "Abrechnung",
+    "shortLinks": "Kurzlinks"
+  },
+  "AccountSettingsPage": {
+    "meta": {
+      "title": "Kontoeinstellungen"
+    }
+  },
+  "BillingSettingsPage": {
+    "meta": {
+      "title": "Abrechnungseinstellungen"
+    }
+  },
+  "ShortcutSettingsPage": {
+    "meta": {
+      "title": "Kurzlink-Einstellungen"
     }
   },
   "Footer": {

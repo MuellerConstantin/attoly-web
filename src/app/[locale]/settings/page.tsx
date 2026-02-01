@@ -1,3 +1,5 @@
+import { redirect } from "next/navigation";
+
 export default async function Settings() {
-  return <div />;
+  redirect("/settings/account");
 }

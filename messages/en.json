@@ -253,6 +253,24 @@
   "SettingsPage": {
     "meta": {
       "title": "Settings"
+    },
+    "account": "Account",
+    "billing": "Billing",
+    "shortLinks": "Short Links"
+  },
+  "AccountSettingsPage": {
+    "meta": {
+      "title": "Account Settings"
+    }
+  },
+  "BillingSettingsPage": {
+    "meta": {
+      "title": "Billing Settings"
+    }
+  },
+  "ShortcutSettingsPage": {
+    "meta": {
+      "title": "Short Links Settings"
     }
   },
   "Footer": {
