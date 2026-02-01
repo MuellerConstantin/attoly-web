@@ -269,7 +269,7 @@
   },
   "GettingStartedGenerateShortcut": {
     "title": "Erstelle einen Kurzlink",
-    "anonymousNotice": "Melde dich jetzt an um deine Kurzlinks dauerhaft zu speichern und zu verwalten. Oder entdecke den für dich passenden <link>Premium-Plan</link>.",
+    "termsNotice": "Mit der Erstellung des Kurzlinks akzeptierst du unsere <terms-hyperlink>Allgemeinen Geschäftsbedingungen</terms-hyperlink> und unsere <privacy-hyperlink>Privatsphäre-Einstellungen</privacy-hyperlink>.",
     "error": {
       "unknownError": "Ein unbekannter Fehler ist aufgetreten. Bitte versuche es erneut."
     },
@@ -277,6 +277,10 @@
       "headline": "Dein Kurzlink",
       "share": "Teilen"
     }
+  },
+  "AnonymousCreatorBadge": {
+    "label": "Anonymer Ersteller",
+    "anonymousNotice": "Melde dich jetzt an um deine Kurzlinks dauerhaft zu speichern und zu verwalten. Oder entdecke den für dich passenden <link>Premium-Plan</link>."
   },
   "ValidationMessages": {
     "required": "Dieses Feld ist erforderlich.",

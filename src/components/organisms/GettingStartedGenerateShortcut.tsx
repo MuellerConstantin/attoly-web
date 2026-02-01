@@ -25,6 +25,7 @@ import {
   WhatsappShareButton,
   WhatsappIcon,
 } from "react-share";
+import { AnonymousCreatorBadge } from "@/components/molecules/AnonymousCreatorBadge";
 
 interface ShareButtonProps {
   text: string;
@@ -147,7 +148,6 @@ interface GettingStartedGenerateShortcutProps {
 export function GettingStartedGenerateShortcut({
   url,
 }: GettingStartedGenerateShortcutProps) {
-  const session = useSession();
   const router = useRouter();
   const api = useApi();
   const t = useTranslations("GettingStartedGenerateShortcut");
@@ -216,13 +216,16 @@ export function GettingStartedGenerateShortcut({
               defaultValue={url}
             />
           </div>
-          {session.status !== "authenticated" && (
-            <div className="max-w-full text-center text-xs md:max-w-2/3">
-              {t.rich("anonymousNotice", {
-                link: (chunks) => <Link href="/pricing">{chunks}</Link>,
-              })}
-            </div>
-          )}
+          <div className="max-w-full text-center text-xs md:max-w-2/3">
+            {t.rich("termsNotice", {
+              "terms-hyperlink": (chunks) => (
+                <Link href="/terms-of-service">{chunks}</Link>
+              ),
+              "privacy-hyperlink": (chunks) => (
+                <Link href="/privacy-policy">{chunks}</Link>
+              ),
+            })}
+          </div>
           {isLoading && (
             <div className="flex justify-center">
               <Spinner size={32} />

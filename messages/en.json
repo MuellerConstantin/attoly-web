@@ -272,7 +272,7 @@
   },
   "GettingStartedGenerateShortcut": {
     "title": "Create a shortlink",
-    "anonymousNotice": "Sign up now to permanently save and manage your short links. Or discover the <link>Premium plan</link> that’s right for you.",
+    "termsNotice": "By creating the short link, you accept our <terms-hyperlink>Terms and Conditions</terms-hyperlink> and our <privacy-hyperlink>Privacy Settings</privacy-hyperlink>.",
     "error": {
       "unknownError": "An unknown error occurred. Please try again."
     },
@@ -280,6 +280,10 @@
       "headline": "Your shortlink",
       "share": "Share"
     }
+  },
+  "AnonymousCreatorBadge": {
+    "label": "Anonymous Creator",
+    "anonymousNotice": "Sign up now to permanently save and manage your short links. Or discover the <link>Premium plan</link> that’s right for you."
   },
   "ValidationMessages": {
     "required": "This field is required.",

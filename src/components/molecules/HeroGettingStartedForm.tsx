@@ -55,7 +55,7 @@ export function HeroGettingStartedForm({
             />
             <button
               type="submit"
-              disabled={!(props.isValid && props.dirty)}
+              disabled={!(props.isValid && props.dirty) || isDisabled}
               className="cursor-pointer rounded-full bg-orange-500 px-4 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-orange-600 focus:ring-2 focus:ring-orange-400 focus:outline-none disabled:cursor-not-allowed disabled:bg-orange-300 md:absolute md:top-1/2 md:right-2 md:-translate-y-1/2"
             >
               {t("cta")}
