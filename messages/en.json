@@ -256,7 +256,7 @@
     },
     "account": "Account",
     "billing": "Billing",
-    "shortLinks": "Short Links"
+    "shortLinks": "My Short Links"
   },
   "AccountSettingsPage": {
     "meta": {
@@ -273,7 +273,11 @@
   "ShortcutSettingsPage": {
     "meta": {
       "title": "Short Links Settings"
-    }
+    },
+    "myShortcuts": "My Short Links"
+  },
+  "MyShortcutsList": {
+    "createdAt": "Created at"
   },
   "ChangePasswordForm": {
     "currentPasswordPlaceholder": "Current Password",
