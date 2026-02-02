@@ -259,7 +259,8 @@
     "meta": {
       "title": "Kontoeinstellungen"
     },
-    "changePassword": "Passwort ändern"
+    "changePassword": "Passwort ändern",
+    "deleteAccount": "Konto löschen"
   },
   "BillingSettingsPage": {
     "meta": {
@@ -280,6 +281,19 @@
     "error": {
       "unknownError": "Ein unbekannter Fehler ist aufgetreten. Bitte versuche es erneut."
     }
+  },
+  "DeleteAccountForm": {
+    "description": "Das Löschen deines Kontos ist endgültig und kann nicht rückgängig gemacht werden. Alle deine Kurzlinks und Daten werden dauerhaft entfernt. Bitte stelle vor der Löschung sicher, dass du abgeschlossene Abonnements kündigst und alle wichtigen Daten sicherst.",
+    "delete": "Konto löschen",
+    "error": {
+      "unknownError": "Ein unbekannter Fehler ist aufgetreten. Bitte versuche es erneut."
+    }
+  },
+  "ConfirmAccountDeletionDialog": {
+    "title": "Konto löschen",
+    "description": "Möchtest du dein Konto wirklich löschen? Dieser Vorgang ist dauerhaft und kann nicht rückgängig gemacht werden.",
+    "cancel": "Abbrechen",
+    "delete": "Konto löschen"
   },
   "Footer": {
     "imprint": "Impressum",
