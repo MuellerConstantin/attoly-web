@@ -55,9 +55,49 @@ export function MyShortcutsList() {
   return (
     <div>
       {isLoading ? (
-        <div>Loading...</div>
+        <div className="flex flex-col gap-4">
+          <ul
+            role="list"
+            className="divide-y divide-gray-100 dark:divide-gray-700"
+          >
+            {Array.from(Array(10).keys()).map((key) => (
+              <li key={key} className="flex justify-between gap-x-6 p-2 py-5">
+                <div className="flex min-w-0 items-center gap-x-4">
+                  <div className="relative flex h-10 w-10 shrink-0 animate-pulse items-center justify-center overflow-hidden rounded-full border border-slate-100 bg-gray-200 dark:border-slate-700 dark:bg-gray-700" />
+                  <div className="min-w-0 flex-auto truncate">
+                    <div className="h-4 w-64 animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
+                    <div className="mt-1 h-3 w-3/4 animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
+                  </div>
+                </div>
+                <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                  <div className="h-3 w-32 animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       ) : error ? (
-        <div>Error loading shortcuts.</div>
+        <div className="flex flex-col gap-4">
+          <ul
+            role="list"
+            className="divide-y divide-gray-100 dark:divide-gray-700"
+          >
+            {Array.from(Array(10).keys()).map((key) => (
+              <li key={key} className="flex justify-between gap-x-6 p-2 py-5">
+                <div className="flex min-w-0 items-center gap-x-4">
+                  <div className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-100 bg-red-300 dark:border-slate-700 dark:bg-red-800" />
+                  <div className="min-w-0 flex-auto truncate">
+                    <div className="h-4 w-64 rounded bg-red-300 dark:bg-red-800" />
+                    <div className="mt-1 h-3 w-3/4 rounded bg-red-300 dark:bg-red-800" />
+                  </div>
+                </div>
+                <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                  <div className="h-3 w-32 rounded bg-red-300 dark:bg-red-800" />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       ) : (
         <div className="flex flex-col gap-4">
           <ul
