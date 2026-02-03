@@ -209,6 +209,19 @@
           "Basic click analytics & insights",
           "QR code customization"
         ]
+      },
+      "pro": {
+        "name": "Pro",
+        "cta": "Upgrade Now",
+        "price": "2.99€",
+        "headline": "For professionals",
+        "plus": "All features of Free, plus:",
+        "features": [
+          "Up to 100 permanent, personal short links",
+          "Detailed view statistics",
+          "Password protection for short links",
+          "Short links with expiration date & one-time links"
+        ]
       }
     },
     "features": {
@@ -226,11 +239,17 @@
           "qrCodes": "QR Code Generation",
           "adFreeRedirects": "Ad-free Redirects",
           "linkManagement": "Link Management",
-          "clicksAndScans": "Manage and organize your shortcut links in a dashboard."
+          "linkManagementTooltip": "Manage and organize your shortcut links in a dashboard.",
+          "expiryLinks": "Short links with expiration date",
+          "oneTimeLinks": "One-time links",
+          "passwordProtection": "Password protection for short links",
+          "passwordProtectionTooltip": "Protect your short links with a password to restrict access. Your short links are also stored encrypted."
         },
         "statisticsFeatures": {
           "clickAnalytics": "Click Analytics",
-          "clickAnalyticsTooltip": "Detailed insights into the click numbers of your short links. When and how often your links were clicked?"
+          "clickAnalyticsTooltip": "Detailed insights into the click numbers of your short links. When and how often your links were clicked?",
+          "activityOverTime": "Activity Over Time",
+          "activityOverTimeTooltip": "Track the activity of your short links over a specific period."
         }
       },
       "plans": {
@@ -246,6 +265,13 @@
           "cta": "Sign Up",
           "temporaryLinks": "Unlimited (up to 30 days validity)",
           "permanentLinks": "Up to 10"
+        },
+        "pro": {
+          "name": "Pro",
+          "price": "2.99€",
+          "cta": "Upgrade Now",
+          "temporaryLinks": "Unlimited (up to 365 days validity)",
+          "permanentLinks": "Up to 100"
         }
       }
     }

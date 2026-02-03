@@ -206,6 +206,19 @@
           "Einfache Statistik-Insights zu Aufrufen",
           "QR-Code-Personalisierungen"
         ]
+      },
+      "pro": {
+        "name": "Pro",
+        "cta": "Jetzt upgraden",
+        "price": "2,99€",
+        "headline": "Für Profis & Power-User",
+        "plus": "Alle Kostenlos-Funktionen plus:",
+        "features": [
+          "Bis zu 100 dauerhafte, persönliche Kurzlinks",
+          "Detaillierte Statistiken zu Aufrufen",
+          "Passwortschutz für Kurzlinks",
+          "Kurzlinks mit Ablaufdatum & Einmal-Links"
+        ]
       }
     },
     "features": {
@@ -223,11 +236,17 @@
           "qrCodes": "QR-Code-Generierung",
           "adFreeRedirects": "Werbefreie Weiterleitungen",
           "linkManagement": "Link-Verwaltung",
-          "linkManagementTooltip": "Verwalte und organisiere deine Kurzlinks in einem Dashboard."
+          "linkManagementTooltip": "Verwalte und organisiere deine Kurzlinks in einem Dashboard.",
+          "expiryLinks": "Kurzlinks mit Ablaufdatum",
+          "oneTimeLinks": "Einmal-Links",
+          "passwordProtection": "Passwortschutz für Kurzlinks",
+          "passwordProtectionTooltip": "Schütze deine Kurzlinks mit einem Passwort, um den Zugriff zu kontrollieren. Deine Kurzlinks werden außerdem verschlüsselt gespeichert."
         },
         "statisticsFeatures": {
           "clickAnalytics": "Klick-Analysen",
-          "clickAnalyticsTooltip": "Detaillierte Einblicke in die Klick-Zahlen deiner Kurzlinks. Wann wurden deine Links wie oft angeklickt?"
+          "clickAnalyticsTooltip": "Detaillierte Einblicke in die Klick-Zahlen deiner Kurzlinks. Wie oft wurden deine Links angeklickt?",
+          "activityOverTime": "Aktivitätsverlauf",
+          "activityOverTimeTooltip": "Verfolge die Aktivität deiner Kurzlinks über einen bestimmten Zeitraum."
         }
       },
       "plans": {
@@ -243,6 +262,13 @@
           "cta": "Jetzt registrieren",
           "temporaryLinks": "Unbegrenzt (bis zu 30 Tage gültig)",
           "permanentLinks": "Bis zu 10"
+        },
+        "pro": {
+          "name": "Pro",
+          "price": "2,99€",
+          "cta": "Jetzt upgraden",
+          "temporaryLinks": "Unbegrenzt (bis zu 30 Tage gültig)",
+          "permanentLinks": "Bis zu 100"
         }
       }
     }

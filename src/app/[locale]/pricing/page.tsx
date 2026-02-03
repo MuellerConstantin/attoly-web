@@ -16,7 +16,11 @@ async function FeatureSection() {
     {
       key: "price",
       label: t("table.generalFeatures.price"),
-      values: [t("plans.anonymous.price"), t("plans.free.price")],
+      values: [
+        t("plans.anonymous.price"),
+        t("plans.free.price"),
+        t("plans.pro.price"),
+      ],
       render: (value) => (
         <div className="flex grow items-end justify-center gap-2">
           <div className="text-lg font-bold">{value}</div>
@@ -32,13 +36,18 @@ async function FeatureSection() {
       values: [
         t("plans.anonymous.temporaryLinks"),
         t("plans.free.temporaryLinks"),
+        t("plans.pro.temporaryLinks"),
       ],
       render: (value) => <span>{value}</span>,
     },
     {
       key: "permanentLinks",
       label: t("table.generalFeatures.permanentLinks"),
-      values: [false, t("plans.free.permanentLinks")],
+      values: [
+        false,
+        t("plans.free.permanentLinks"),
+        t("plans.pro.permanentLinks"),
+      ],
       render: (value) => (
         <span>
           {typeof value === "boolean" ? (
@@ -56,18 +65,34 @@ async function FeatureSection() {
     {
       key: "qrCodes",
       label: t("table.generalFeatures.qrCodes"),
-      values: [true, true],
+      values: [true, true, true],
     },
     {
       key: "adFreeRedirects",
       label: t("table.generalFeatures.adFreeRedirects"),
-      values: [true, true],
+      values: [true, true, true],
     },
     {
       key: "linkManagement",
       label: t("table.generalFeatures.linkManagement"),
       tooltip: t("table.generalFeatures.linkManagementTooltip"),
-      values: [false, true],
+      values: [false, true, true],
+    },
+    {
+      key: "expiryLinks",
+      label: t("table.generalFeatures.expiryLinks"),
+      values: [false, false, true],
+    },
+    {
+      key: "oneTimeLinks",
+      label: t("table.generalFeatures.oneTimeLinks"),
+      values: [false, false, true],
+    },
+    {
+      key: "passwordProtection",
+      label: t("table.generalFeatures.passwordProtection"),
+      tooltip: t("table.generalFeatures.passwordProtectionTooltip"),
+      values: [false, false, true],
     },
   ];
 
@@ -82,7 +107,13 @@ async function FeatureSection() {
       key: "clickAnalytics",
       label: t("table.statisticsFeatures.clickAnalytics"),
       tooltip: t("table.statisticsFeatures.clickAnalyticsTooltip"),
-      values: [false, true],
+      values: [false, true, true],
+    },
+    {
+      key: "activityOverTime",
+      label: t("table.statisticsFeatures.activityOverTime"),
+      tooltip: t("table.statisticsFeatures.activityOverTimeTooltip"),
+      values: [false, false, true],
     },
   ];
 
@@ -120,7 +151,7 @@ async function FeatureSection() {
                     {t("plans.anonymous.cta")}
                   </Link>
                 </th>
-                <th className="max-w-[150px] space-y-4 rounded-tr-3xl border border-slate-300 p-4 text-center whitespace-nowrap dark:border-slate-400">
+                <th className="max-w-[150px] space-y-4 border border-slate-300 p-4 text-center whitespace-nowrap dark:border-slate-400">
                   <h3 className="text-xl font-semibold text-slate-900 dark:text-white">
                     {t("plans.free.name")}
                   </h3>
@@ -129,6 +160,17 @@ async function FeatureSection() {
                     href="/signup"
                   >
                     {t("plans.free.cta")}
+                  </Link>
+                </th>
+                <th className="max-w-[150px] space-y-4 rounded-tr-3xl border border-slate-300 p-4 text-center whitespace-nowrap dark:border-slate-400">
+                  <h3 className="text-xl font-semibold text-slate-900 dark:text-white">
+                    {t("plans.pro.name")}
+                  </h3>
+                  <Link
+                    className="pressed:bg-slate-300 dark:pressed:bg-slate-400 block w-full cursor-pointer rounded-lg border border-black/10 bg-slate-100 px-5 py-2 text-center text-sm text-slate-800 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] transition hover:bg-slate-200 hover:no-underline dark:border-white/10 dark:bg-slate-600 dark:text-slate-100 dark:shadow-none dark:hover:bg-slate-500"
+                    href="/settings/billing"
+                  >
+                    {t("plans.pro.cta")}
                   </Link>
                 </th>
               </tr>
@@ -162,7 +204,7 @@ async function FeatureSection() {
               ))}
               <tr>
                 <td
-                  colSpan={3}
+                  colSpan={4}
                   className="border border-slate-300 bg-slate-100 px-4 py-3 text-sm font-semibold tracking-wide text-slate-700 uppercase dark:border-slate-400 dark:bg-slate-800 dark:text-slate-300"
                 >
                   {t("table.statistics")}
@@ -231,6 +273,20 @@ async function PlansSection() {
         t("free.features.0"),
         t("free.features.1"),
         t("free.features.2"),
+      ],
+      recommended: false,
+    },
+    {
+      href: "/settings/billing",
+      name: t("pro.name"),
+      price: t("pro.price"),
+      cta: t("pro.cta"),
+      headline: t("pro.headline"),
+      features: [
+        t("pro.features.0"),
+        t("pro.features.1"),
+        t("pro.features.2"),
+        t("pro.features.3"),
       ],
       recommended: true,
     },
