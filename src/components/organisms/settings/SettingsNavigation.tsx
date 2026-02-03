@@ -37,10 +37,10 @@ export function SettingsNavigation() {
           </Link>
         )}
       </ListBoxItem>
-      <ListBoxItem id="/settings/billing">
+      <ListBoxItem id="/settings/plan">
         {({ isSelected }) => (
           <Link
-            href="/settings/billing"
+            href="/settings/plan"
             className={`flex w-full items-center gap-2 hover:no-underline focus:ring-0 focus:outline-none ${
               isSelected
                 ? "bg-orange-500 text-white"
@@ -48,7 +48,7 @@ export function SettingsNavigation() {
             }`}
           >
             <CreditCard className="h-5 w-5" />
-            <span>{t("billing")}</span>
+            <span>{t("plan")}</span>
           </Link>
         )}
       </ListBoxItem>

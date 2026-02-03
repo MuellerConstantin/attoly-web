@@ -278,7 +278,7 @@
       "title": "Einstellungen"
     },
     "account": "Konto",
-    "billing": "Abrechnung",
+    "plan": "Abonnement",
     "shortLinks": "Meine Kurzlinks"
   },
   "AccountSettingsPage": {
@@ -288,9 +288,9 @@
     "changePassword": "Passwort ändern",
     "deleteAccount": "Konto löschen"
   },
-  "BillingSettingsPage": {
+  "PlanSettingsPage": {
     "meta": {
-      "title": "Abrechnungseinstellungen"
+      "title": "Abonnement-Einstellungen"
     }
   },
   "ShortcutSettingsPage": {

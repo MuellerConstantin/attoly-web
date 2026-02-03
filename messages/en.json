@@ -281,7 +281,7 @@
       "title": "Settings"
     },
     "account": "Account",
-    "billing": "Billing",
+    "plan": "Plan",
     "shortLinks": "My Short Links"
   },
   "AccountSettingsPage": {
@@ -291,9 +291,9 @@
     "changePassword": "Change Password",
     "deleteAccount": "Delete Account"
   },
-  "BillingSettingsPage": {
+  "PlanSettingsPage": {
     "meta": {
-      "title": "Billing Settings"
+      "title": "Plan Settings"
     }
   },
   "ShortcutSettingsPage": {

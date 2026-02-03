@@ -168,7 +168,7 @@ async function FeatureSection() {
                   </h3>
                   <Link
                     className="pressed:bg-slate-300 dark:pressed:bg-slate-400 block w-full cursor-pointer rounded-lg border border-black/10 bg-slate-100 px-5 py-2 text-center text-sm text-slate-800 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] transition hover:bg-slate-200 hover:no-underline dark:border-white/10 dark:bg-slate-600 dark:text-slate-100 dark:shadow-none dark:hover:bg-slate-500"
-                    href="/settings/billing"
+                    href="/settings/plan"
                   >
                     {t("plans.pro.cta")}
                   </Link>
@@ -277,7 +277,7 @@ async function PlansSection() {
       recommended: false,
     },
     {
-      href: "/settings/billing",
+      href: "/settings/plan",
       name: t("pro.name"),
       price: t("pro.price"),
       cta: t("pro.cta"),

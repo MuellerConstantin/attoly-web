@@ -7,7 +7,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "BillingSettingsPage" });
+  const t = await getTranslations({ locale, namespace: "PlanSettingsPage" });
 
   return {
     title: t("meta.title"),
@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function BillingSettingsLayout({
+export default async function PlanSettingsLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
