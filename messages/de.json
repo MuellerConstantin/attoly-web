@@ -291,6 +291,14 @@
   "PlanSettingsPage": {
     "meta": {
       "title": "Abonnement-Einstellungen"
+    },
+    "myPlan": "Mein Attoly Abonnement",
+    "myPlanDescription": "Hier verwaltest du dein Abo: Rechnungen ansehen, Zahlungsdaten ändern, Tarif oder Zahlungszeitraum wechseln oder kündigen.",
+    "managePlan": "Abonnement verwalten",
+    "discoverPlans": "Andere Abonnements entdecken",
+    "freePlan": {
+      "title": "Du hast das kostenlose Attoly Abonnement",
+      "description": "Dir stehen die grundlegenden Funktionen kostenlos zur Verfügung. Du kannst jederzeit auf einen Premium-Plan upgraden, um erweiterte Funktionen zu nutzen."
     }
   },
   "ShortcutSettingsPage": {

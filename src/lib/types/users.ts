@@ -3,4 +3,5 @@ export interface Me {
   email: string;
   createdAt: string;
   identityProvider: "LOCAL" | "GITHUB";
+  plan: "FREE" | "PRO";
 }
