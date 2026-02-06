@@ -98,6 +98,12 @@ export function MyShortcutsList() {
             ))}
           </ul>
         </div>
+      ) : data?.content.length === 0 ? (
+        <p className="w-full text-center text-slate-800 dark:text-white">
+          {t.rich("empty", {
+            link: (chunks) => <Link href="/getting-started">{chunks}</Link>,
+          })}
+        </p>
       ) : (
         <div className="flex flex-col gap-4">
           <ul
