@@ -52,9 +52,37 @@ export default function PlanSettings() {
           {t("myPlanDescription")}
         </p>
         {isLoading ? (
-          <div />
+          <div className="flex flex-col gap-6 rounded-md border border-slate-200 bg-white p-4 text-slate-800 dark:border-slate-700 dark:bg-slate-900 dark:text-white">
+            <div className="h-6 w-16 animate-pulse rounded-md bg-slate-200 dark:bg-slate-700" />
+            <div>
+              <div className="h-6 w-32 animate-pulse rounded-md bg-slate-200 dark:bg-slate-700" />
+              <div className="mt-2 h-4 w-full animate-pulse rounded-md bg-slate-200 dark:bg-slate-700" />
+              <div className="mt-1 h-4 w-5/6 animate-pulse rounded-md bg-slate-200 dark:bg-slate-700" />
+            </div>
+            <Button isDisabled className="w-fit">
+              {t("managePlan")}
+            </Button>
+            <hr className="border border-slate-200 dark:border-slate-700" />
+            <Link href="/pricing" className="w-fit">
+              {t("discoverPlans")}
+            </Link>
+          </div>
         ) : error ? (
-          <div />
+          <div className="flex flex-col gap-6 rounded-md border border-slate-200 bg-white p-4 text-slate-800 dark:border-slate-700 dark:bg-slate-900 dark:text-white">
+            <div className="h-6 w-16 rounded-md bg-red-300 dark:bg-red-800" />
+            <div>
+              <div className="h-6 w-32 rounded-md bg-red-300 dark:bg-red-800" />
+              <div className="mt-2 h-4 w-full rounded-md bg-red-300 dark:bg-red-800" />
+              <div className="mt-1 h-4 w-5/6 rounded-md bg-red-300 dark:bg-red-800" />
+            </div>
+            <Button isDisabled className="w-fit">
+              {t("managePlan")}
+            </Button>
+            <hr className="border border-slate-200 dark:border-slate-700" />
+            <Link href="/pricing" className="w-fit">
+              {t("discoverPlans")}
+            </Link>
+          </div>
         ) : (
           <div className="flex flex-col gap-6 rounded-md border border-slate-200 bg-white p-4 text-slate-800 dark:border-slate-700 dark:bg-slate-900 dark:text-white">
             <div className="w-fit rounded-md bg-orange-500/10 px-2 py-0.5 font-mono text-xs font-medium font-semibold text-orange-500">
