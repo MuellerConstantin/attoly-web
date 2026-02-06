@@ -297,7 +297,7 @@ function PlansSection() {
       if (plan === "pro") {
         if (status === "authenticated") {
           const res = await api.post<{ url: string }>(
-            "/payment/session?priceId=price_1SxlotBjJa6XZrDgt8NwggO7",
+            "/payment/session?priceId=price_1Sxy0Y43QEC8b8prmAVfYRO5",
           );
           router.push(res.data.url);
         } else {
