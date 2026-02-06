@@ -298,10 +298,15 @@
     "myPlan": "My Attoly Plan",
     "myPlanDescription": "Here you can manage your subscription: view invoices, change payment details, switch tariffs or payment periods, or cancel.",
     "managePlan": "Manage Plan",
+    "upgradePlan": "Upgrade Plan",
     "discoverPlans": "Discover other Plans",
     "freePlan": {
       "title": "You have the free Attoly subscription",
       "description": "The basic features are available to you for free. You can upgrade to a premium plan at any time to access advanced features."
+    },
+    "proPlan": {
+      "title": "You have the Attoly Pro subscription",
+      "description": "Thank you for being a Pro user! You have access to all features. You can manage your subscription or switch to another plan at any time."
     }
   },
   "ShortcutSettingsPage": {

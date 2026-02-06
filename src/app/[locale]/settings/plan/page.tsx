@@ -1,15 +1,19 @@
 "use client";
 
+import { Button } from "@/components/atoms/Button";
 import { Link } from "@/components/atoms/Link";
 import { useApi } from "@/hooks/useApi";
 import { ApiError } from "@/lib/types/error";
 import { Me } from "@/lib/types/users";
 import { AxiosError } from "axios";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
+import { useCallback, useMemo } from "react";
 import useSWR from "swr";
 
 export default function PlanSettings() {
   const api = useApi();
+  const router = useRouter();
   const t = useTranslations("PlanSettingsPage");
 
   const { data, isLoading, error } = useSWR<Me, AxiosError<ApiError>, string>(
@@ -19,6 +23,21 @@ export default function PlanSettings() {
       refreshInterval: 300000, // 5 minutes
     },
   );
+
+  const onManagePlan = useCallback(async () => {
+    if (!data) return;
+
+    const res = await api.post<{ url: string }>("/payment/portal");
+    router.push(res.data.url);
+  }, [data, api, router]);
+
+  const onUpgradePlan = useCallback(() => {
+    router.push("/pricing");
+  }, [router]);
+
+  const hasActiveSubscription = useMemo(() => {
+    return data?.customerId && data.plan === "PRO";
+  }, [data]);
 
   return (
     <div className="flex flex-col gap-8">
@@ -42,12 +61,23 @@ export default function PlanSettings() {
               {data!.plan}
             </div>
             <div>
-              <h4 className="text-lg font-bold">{t(`freePlan.title`)}</h4>
-              <p>{t(`freePlan.description`)}</p>
+              <h4 className="text-lg font-bold">
+                {data!.plan === "PRO"
+                  ? t(`proPlan.title`)
+                  : t(`freePlan.title`)}
+              </h4>
+              <p>
+                {data!.plan === "PRO"
+                  ? t(`proPlan.description`)
+                  : t(`freePlan.description`)}
+              </p>
             </div>
-            <Link className="pressed:bg-orange-700 w-fit cursor-pointer rounded-lg border border-black/10 bg-orange-500 px-5 py-2 text-center text-sm text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] transition hover:bg-orange-600 hover:no-underline dark:border-white/10 dark:text-white dark:shadow-none">
-              {t("managePlan")}
-            </Link>
+            <Button
+              onPress={hasActiveSubscription ? onManagePlan : onUpgradePlan}
+              className="w-fit"
+            >
+              {hasActiveSubscription ? t("managePlan") : t("upgradePlan")}
+            </Button>
             <hr className="border border-slate-200 dark:border-slate-700" />
             <Link href="/pricing" className="w-fit">
               {t("discoverPlans")}

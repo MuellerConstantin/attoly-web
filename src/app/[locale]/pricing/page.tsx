@@ -1,10 +1,16 @@
-import { Link } from "@/components/atoms/Link";
-import { InfoTooltip } from "@/components/molecules/InfoTooltip";
-import { Check, X } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+"use client";
 
-async function FeatureSection() {
-  const t = await getTranslations("PricingPage.features");
+import { Button } from "@/components/atoms/Button";
+import { InfoTooltip } from "@/components/molecules/InfoTooltip";
+import { useApi } from "@/hooks/useApi";
+import { Check, X } from "lucide-react";
+import { useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
+import { useCallback, useMemo } from "react";
+
+function FeatureSection() {
+  const t = useTranslations("PricingPage.features");
 
   const generalFeatures: {
     key: string;
@@ -12,89 +18,92 @@ async function FeatureSection() {
     tooltip?: string;
     values: (string | boolean)[];
     render?: (value: string | boolean) => React.ReactNode;
-  }[] = [
-    {
-      key: "price",
-      label: t("table.generalFeatures.price"),
-      values: [
-        t("plans.anonymous.price"),
-        t("plans.free.price"),
-        t("plans.pro.price"),
-      ],
-      render: (value) => (
-        <div className="flex grow items-end justify-center gap-2">
-          <div className="text-lg font-bold">{value}</div>
-          <div className="text-sm text-slate-600 dark:text-slate-400">
-            /{t("table.month")}
+  }[] = useMemo(
+    () => [
+      {
+        key: "price",
+        label: t("table.generalFeatures.price"),
+        values: [
+          t("plans.anonymous.price"),
+          t("plans.free.price"),
+          t("plans.pro.price"),
+        ],
+        render: (value) => (
+          <div className="flex grow items-end justify-center gap-2">
+            <div className="text-lg font-bold">{value}</div>
+            <div className="text-sm text-slate-600 dark:text-slate-400">
+              /{t("table.month")}
+            </div>
           </div>
-        </div>
-      ),
-    },
-    {
-      key: "temporaryLinks",
-      label: t("table.generalFeatures.temporaryLinks"),
-      values: [
-        t("plans.anonymous.temporaryLinks"),
-        t("plans.free.temporaryLinks"),
-        t("plans.pro.temporaryLinks"),
-      ],
-      render: (value) => <span>{value}</span>,
-    },
-    {
-      key: "permanentLinks",
-      label: t("table.generalFeatures.permanentLinks"),
-      values: [
-        false,
-        t("plans.free.permanentLinks"),
-        t("plans.pro.permanentLinks"),
-      ],
-      render: (value) => (
-        <span>
-          {typeof value === "boolean" ? (
-            value ? (
-              <Check className="mx-auto h-5 w-5 text-green-500" />
+        ),
+      },
+      {
+        key: "temporaryLinks",
+        label: t("table.generalFeatures.temporaryLinks"),
+        values: [
+          t("plans.anonymous.temporaryLinks"),
+          t("plans.free.temporaryLinks"),
+          t("plans.pro.temporaryLinks"),
+        ],
+        render: (value) => <span>{value}</span>,
+      },
+      {
+        key: "permanentLinks",
+        label: t("table.generalFeatures.permanentLinks"),
+        values: [
+          false,
+          t("plans.free.permanentLinks"),
+          t("plans.pro.permanentLinks"),
+        ],
+        render: (value) => (
+          <span>
+            {typeof value === "boolean" ? (
+              value ? (
+                <Check className="mx-auto h-5 w-5 text-green-500" />
+              ) : (
+                <X className="mx-auto h-5 w-5 text-red-500" />
+              )
             ) : (
-              <X className="mx-auto h-5 w-5 text-red-500" />
-            )
-          ) : (
-            value
-          )}
-        </span>
-      ),
-    },
-    {
-      key: "qrCodes",
-      label: t("table.generalFeatures.qrCodes"),
-      values: [true, true, true],
-    },
-    {
-      key: "adFreeRedirects",
-      label: t("table.generalFeatures.adFreeRedirects"),
-      values: [true, true, true],
-    },
-    {
-      key: "linkManagement",
-      label: t("table.generalFeatures.linkManagement"),
-      tooltip: t("table.generalFeatures.linkManagementTooltip"),
-      values: [false, true, true],
-    },
-    {
-      key: "expiryLinks",
-      label: t("table.generalFeatures.expiryLinks"),
-      values: [false, false, true],
-    },
-    {
-      key: "oneTimeLinks",
-      label: t("table.generalFeatures.oneTimeLinks"),
-      values: [false, false, true],
-    },
-    {
-      key: "passwordProtection",
-      label: t("table.generalFeatures.passwordProtection"),
-      tooltip: t("table.generalFeatures.passwordProtectionTooltip"),
-      values: [false, false, true],
-    },
-  ];
+              value
+            )}
+          </span>
+        ),
+      },
+      {
+        key: "qrCodes",
+        label: t("table.generalFeatures.qrCodes"),
+        values: [true, true, true],
+      },
+      {
+        key: "adFreeRedirects",
+        label: t("table.generalFeatures.adFreeRedirects"),
+        values: [true, true, true],
+      },
+      {
+        key: "linkManagement",
+        label: t("table.generalFeatures.linkManagement"),
+        tooltip: t("table.generalFeatures.linkManagementTooltip"),
+        values: [false, true, true],
+      },
+      {
+        key: "expiryLinks",
+        label: t("table.generalFeatures.expiryLinks"),
+        values: [false, false, true],
+      },
+      {
+        key: "oneTimeLinks",
+        label: t("table.generalFeatures.oneTimeLinks"),
+        values: [false, false, true],
+      },
+      {
+        key: "passwordProtection",
+        label: t("table.generalFeatures.passwordProtection"),
+        tooltip: t("table.generalFeatures.passwordProtectionTooltip"),
+        values: [false, false, true],
+      },
+    ],
+    [t],
+  );
 
   const statisticFeatures: {
     key: string;
@@ -102,20 +111,23 @@ async function FeatureSection() {
     values: (string | boolean)[];
     tooltip?: string;
     render?: (value: string | boolean) => React.ReactNode;
-  }[] = [
-    {
-      key: "clickAnalytics",
-      label: t("table.statisticsFeatures.clickAnalytics"),
-      tooltip: t("table.statisticsFeatures.clickAnalyticsTooltip"),
-      values: [false, true, true],
-    },
-    {
-      key: "activityOverTime",
-      label: t("table.statisticsFeatures.activityOverTime"),
-      tooltip: t("table.statisticsFeatures.activityOverTimeTooltip"),
-      values: [false, false, true],
-    },
-  ];
+  }[] = useMemo(
+    () => [
+      {
+        key: "clickAnalytics",
+        label: t("table.statisticsFeatures.clickAnalytics"),
+        tooltip: t("table.statisticsFeatures.clickAnalyticsTooltip"),
+        values: [false, true, true],
+      },
+      {
+        key: "activityOverTime",
+        label: t("table.statisticsFeatures.activityOverTime"),
+        tooltip: t("table.statisticsFeatures.activityOverTimeTooltip"),
+        values: [false, false, true],
+      },
+    ],
+    [t],
+  );
 
   return (
     <section className="mx-auto my-8 flex w-full max-w-[80rem] flex-col items-center gap-12 p-4">
@@ -144,34 +156,16 @@ async function FeatureSection() {
                   <h3 className="text-xl font-semibold text-slate-900 dark:text-white">
                     {t("plans.anonymous.name")}
                   </h3>
-                  <Link
-                    className="pressed:bg-slate-300 dark:pressed:bg-slate-400 block w-full cursor-pointer rounded-lg border border-black/10 bg-slate-100 px-5 py-2 text-center text-sm text-slate-800 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] transition hover:bg-slate-200 hover:no-underline dark:border-white/10 dark:bg-slate-600 dark:text-slate-100 dark:shadow-none dark:hover:bg-slate-500"
-                    href="/getting-started"
-                  >
-                    {t("plans.anonymous.cta")}
-                  </Link>
                 </th>
                 <th className="max-w-[150px] space-y-4 border border-slate-300 p-4 text-center whitespace-nowrap dark:border-slate-400">
                   <h3 className="text-xl font-semibold text-slate-900 dark:text-white">
                     {t("plans.free.name")}
                   </h3>
-                  <Link
-                    className="pressed:bg-slate-300 dark:pressed:bg-slate-400 block w-full cursor-pointer rounded-lg border border-black/10 bg-slate-100 px-5 py-2 text-center text-sm text-slate-800 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] transition hover:bg-slate-200 hover:no-underline dark:border-white/10 dark:bg-slate-600 dark:text-slate-100 dark:shadow-none dark:hover:bg-slate-500"
-                    href="/signup"
-                  >
-                    {t("plans.free.cta")}
-                  </Link>
                 </th>
                 <th className="max-w-[150px] space-y-4 rounded-tr-3xl border border-slate-300 p-4 text-center whitespace-nowrap dark:border-slate-400">
                   <h3 className="text-xl font-semibold text-slate-900 dark:text-white">
                     {t("plans.pro.name")}
                   </h3>
-                  <Link
-                    className="pressed:bg-slate-300 dark:pressed:bg-slate-400 block w-full cursor-pointer rounded-lg border border-black/10 bg-slate-100 px-5 py-2 text-center text-sm text-slate-800 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] transition hover:bg-slate-200 hover:no-underline dark:border-white/10 dark:bg-slate-600 dark:text-slate-100 dark:shadow-none dark:hover:bg-slate-500"
-                    href="/settings/plan"
-                  >
-                    {t("plans.pro.cta")}
-                  </Link>
                 </th>
               </tr>
             </thead>
@@ -244,53 +238,83 @@ async function FeatureSection() {
   );
 }
 
-async function PlansSection() {
-  const t = await getTranslations("PricingPage.plans");
+function PlansSection() {
+  const api = useApi();
+  const router = useRouter();
+  const t = useTranslations("PricingPage.plans");
+  const { status } = useSession();
 
-  const plans = [
-    {
-      href: "/getting-started",
-      name: t("anonymous.name"),
-      price: t("anonymous.price"),
-      cta: t("anonymous.cta"),
-      headline: t("anonymous.headline"),
-      features: [
-        t("anonymous.features.0"),
-        t("anonymous.features.1"),
-        t("anonymous.features.2"),
-        t("anonymous.features.3"),
-      ],
-      recommended: false,
+  const plans = useMemo(
+    () => [
+      {
+        id: "anonymous",
+        name: t("anonymous.name"),
+        price: t("anonymous.price"),
+        cta: t("anonymous.cta"),
+        headline: t("anonymous.headline"),
+        features: [
+          t("anonymous.features.0"),
+          t("anonymous.features.1"),
+          t("anonymous.features.2"),
+          t("anonymous.features.3"),
+        ],
+        recommended: false,
+      },
+      {
+        id: "free",
+        name: t("free.name"),
+        price: t("free.price"),
+        cta: t("free.cta"),
+        headline: t("free.headline"),
+        plus: t("free.plus"),
+        features: [
+          t("free.features.0"),
+          t("free.features.1"),
+          t("free.features.2"),
+        ],
+        recommended: false,
+      },
+      {
+        id: "pro",
+        name: t("pro.name"),
+        price: t("pro.price"),
+        cta: t("pro.cta"),
+        headline: t("pro.headline"),
+        features: [
+          t("pro.features.0"),
+          t("pro.features.1"),
+          t("pro.features.2"),
+          t("pro.features.3"),
+        ],
+        recommended: true,
+      },
+    ],
+    [status, t],
+  );
+
+  const onChoosePlan = useCallback(
+    async (plan: "anonymous" | "free" | "pro") => {
+      if (plan === "pro") {
+        if (status === "authenticated") {
+          const res = await api.post<{ url: string }>(
+            "/payment/session?priceId=price_1SxlotBjJa6XZrDgt8NwggO7",
+          );
+          router.push(res.data.url);
+        } else {
+          router.push("/signin");
+        }
+      } else if (plan === "free") {
+        if (status === "authenticated") {
+          router.push("/getting-started");
+        } else {
+          router.push("/signin");
+        }
+      } else {
+        router.push("/getting-started");
+      }
     },
-    {
-      href: "/signup",
-      name: t("free.name"),
-      price: t("free.price"),
-      cta: t("free.cta"),
-      headline: t("free.headline"),
-      plus: t("free.plus"),
-      features: [
-        t("free.features.0"),
-        t("free.features.1"),
-        t("free.features.2"),
-      ],
-      recommended: false,
-    },
-    {
-      href: "/settings/plan",
-      name: t("pro.name"),
-      price: t("pro.price"),
-      cta: t("pro.cta"),
-      headline: t("pro.headline"),
-      features: [
-        t("pro.features.0"),
-        t("pro.features.1"),
-        t("pro.features.2"),
-        t("pro.features.3"),
-      ],
-      recommended: true,
-    },
-  ];
+    [status, router, api],
+  );
 
   return (
     <section className="mx-auto my-8 flex w-full max-w-[80rem] flex-col items-center gap-12 p-4">
@@ -326,12 +350,15 @@ async function PlansSection() {
                 </div>
               </div>
               <div>
-                <Link
-                  className={`block w-full cursor-pointer rounded-lg border border-black/10 px-5 py-2 text-center text-sm shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] transition hover:no-underline dark:border-white/10 dark:shadow-none ${plan.recommended ? "pressed:bg-orange-700 bg-orange-500 text-white hover:bg-orange-600 dark:text-white" : "pressed:bg-slate-300 dark:pressed:bg-slate-400 bg-slate-100 text-slate-800 hover:bg-slate-200 dark:bg-slate-600 dark:text-slate-100 dark:hover:bg-slate-500"}`}
-                  href={plan.href}
+                <Button
+                  variant={plan.recommended ? "primary" : "secondary"}
+                  onPress={() =>
+                    onChoosePlan(plan.id as "anonymous" | "free" | "pro")
+                  }
+                  className="w-full"
                 >
                   {plan.cta}
-                </Link>
+                </Button>
               </div>
               <div className="flex flex-col gap-4">
                 <div>
@@ -358,7 +385,7 @@ async function PlansSection() {
   );
 }
 
-export default async function Pricing() {
+export default function Pricing() {
   return (
     <div>
       <PlansSection />
