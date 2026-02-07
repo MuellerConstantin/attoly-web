@@ -5,7 +5,6 @@ import { Shortcut } from "@/lib/types/shortcuts";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { HeroGettingStartedForm } from "../molecules/HeroGettingStartedForm";
 import { useSession } from "next-auth/react";
 import { Link } from "@/components/atoms/Link";
 import { Spinner } from "@/components/atoms/Spinner";
@@ -28,6 +27,9 @@ import {
 } from "react-share";
 import { Switch } from "@/components/atoms/Switch";
 import { AxiosError } from "axios";
+import { Formik } from "formik";
+import { Form } from "@/components/atoms/Form";
+import * as yup from "yup";
 
 interface ShareButtonProps {
   text: string;
@@ -195,24 +197,31 @@ export function GettingStartedGenerateShortcut({
   const router = useRouter();
   const api = useApi();
   const t = useTranslations("GettingStartedGenerateShortcut");
+  const validationT = useTranslations("ValidationMessages");
   const { status } = useSession();
+
+  const schema = yup.object().shape({
+    url: yup
+      .string()
+      .url(validationT("invalidUrl"))
+      .required(validationT("required")),
+    permanent: yup.boolean(),
+  });
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [shortcut, setShortcut] = useState<Shortcut | null>(null);
-
   const [moreOptionsVisible, setMoreOptionsVisible] = useState(false);
-  const [permanentLink, setPermanentLink] = useState(false);
 
   const onCreate = useCallback(
-    async (url: string) => {
+    async (values: { url: string; permanent: boolean }) => {
       setIsLoading(true);
       setError(null);
 
       try {
         const res = await api.post<Shortcut>("/shortcuts", {
-          url,
-          permanent: permanentLink,
+          url: values.url,
+          permanent: values.permanent,
         });
         setShortcut(res.data);
       } catch (err) {
@@ -232,14 +241,14 @@ export function GettingStartedGenerateShortcut({
         setIsLoading(false);
       }
     },
-    [api, t, router, permanentLink],
+    [api, t, router],
   );
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       if (url) {
         setIsLoading(true);
-        onCreate(url);
+        onCreate({ url, permanent: false });
       }
     }, 300);
 
@@ -270,53 +279,83 @@ export function GettingStartedGenerateShortcut({
             {t("title")}
           </h1>
         </div>
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-full">
-            <HeroGettingStartedForm
-              onSubmit={onCreate}
-              isDisabled={isLoading || !!shortcut}
-              defaultValue={url}
-            />
-          </div>
-          <div className="max-w-full text-center text-xs md:max-w-2/3">
-            {t.rich("termsNotice", {
-              "terms-hyperlink": (chunks) => (
-                <Link href="/terms-of-service">{chunks}</Link>
-              ),
-              "privacy-hyperlink": (chunks) => (
-                <Link href="/privacy-policy">{chunks}</Link>
-              ),
-            })}
-          </div>
-          {status === "authenticated" && (
-            <div className="flex w-full flex-col gap-4">
-              <button
-                className="flex cursor-pointer items-center gap-1 text-sm text-slate-600 hover:text-slate-800 disabled:cursor-not-allowed disabled:text-slate-400 dark:text-slate-400 dark:hover:text-white dark:disabled:text-slate-500"
-                onClick={() => setMoreOptionsVisible(!moreOptionsVisible)}
-                disabled={isLoading || !!shortcut}
+        <div className="flex w-full flex-col items-center gap-4">
+          <Formik
+            enableReinitialize
+            initialValues={{ url: url || "", permanent: false }}
+            validationSchema={schema}
+            onSubmit={onCreate}
+          >
+            {(props) => (
+              <Form
+                onSubmit={props.handleSubmit}
+                validationBehavior="aria"
+                className="flex w-full flex-col items-center gap-4"
               >
-                {t("moreOptions")}
-                {moreOptionsVisible ? (
-                  <ChevronUp className="h-5 w-5" />
-                ) : (
-                  <ChevronDown className="h-5 w-5" />
-                )}
-              </button>
-              {moreOptionsVisible && (
-                <div className="flex-gap-2 flex rounded-md border border-slate-300 bg-slate-100 p-4 dark:border-slate-600 dark:bg-slate-800">
-                  <div className="flex gap-1">
-                    <Switch
-                      isSelected={permanentLink}
-                      isDisabled={isLoading || !!shortcut}
-                      onChange={(isPermanent) => setPermanentLink(isPermanent)}
-                    >
-                      {t("options.permanentLink")}
-                    </Switch>
-                  </div>
+                <div className="relative w-full">
+                  <input
+                    name="url"
+                    placeholder={t("placeholder")}
+                    className="w-full rounded-full border border-slate-300 bg-white/95 px-6 py-4 pr-32 text-slate-900 placeholder-slate-400 ring-0 transition outline-none focus:ring-4 focus:ring-white/40 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:focus:ring-white/20"
+                    value={props.values.url}
+                    onBlur={props.handleBlur}
+                    onChange={props.handleChange}
+                    disabled={isLoading || !!shortcut}
+                  />
+                  <button
+                    type="submit"
+                    disabled={
+                      !(props.isValid && props.dirty) || isLoading || !!shortcut
+                    }
+                    className="cursor-pointer rounded-full bg-orange-500 px-4 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-orange-600 focus:ring-2 focus:ring-orange-400 focus:outline-none disabled:cursor-not-allowed disabled:bg-orange-300 md:absolute md:top-1/2 md:right-2 md:-translate-y-1/2"
+                  >
+                    {t("cta")}
+                  </button>
                 </div>
-              )}
-            </div>
-          )}
+                <div className="max-w-full text-center text-xs md:max-w-2/3">
+                  {t.rich("termsNotice", {
+                    "terms-hyperlink": (chunks) => (
+                      <Link href="/terms-of-service">{chunks}</Link>
+                    ),
+                    "privacy-hyperlink": (chunks) => (
+                      <Link href="/privacy-policy">{chunks}</Link>
+                    ),
+                  })}
+                </div>
+                {status === "authenticated" && (
+                  <div className="flex w-full flex-col gap-4">
+                    <button
+                      className="flex cursor-pointer items-center gap-1 text-sm text-slate-600 hover:text-slate-800 disabled:cursor-not-allowed disabled:text-slate-400 dark:text-slate-400 dark:hover:text-white dark:disabled:text-slate-500"
+                      onClick={() => setMoreOptionsVisible(!moreOptionsVisible)}
+                      disabled={isLoading || !!shortcut}
+                    >
+                      {t("moreOptions")}
+                      {moreOptionsVisible ? (
+                        <ChevronUp className="h-5 w-5" />
+                      ) : (
+                        <ChevronDown className="h-5 w-5" />
+                      )}
+                    </button>
+                    {moreOptionsVisible && (
+                      <div className="flex-gap-2 flex rounded-md border border-slate-300 bg-slate-100 p-4 dark:border-slate-600 dark:bg-slate-800">
+                        <div className="flex gap-1">
+                          <Switch
+                            isSelected={props.values.permanent}
+                            isDisabled={isLoading || !!shortcut}
+                            onChange={(isPermanent) =>
+                              props.setFieldValue("permanent", isPermanent)
+                            }
+                          >
+                            {t("options.permanentLink")}
+                          </Switch>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </Form>
+            )}
+          </Formik>
           {isLoading && (
             <div className="flex justify-center">
               <Spinner size={32} />

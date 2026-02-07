@@ -370,6 +370,8 @@
     "title": "Create a shortlink",
     "termsNotice": "By creating the short link, you accept our <terms-hyperlink>Terms and Conditions</terms-hyperlink> and our <privacy-hyperlink>Privacy Settings</privacy-hyperlink>.",
     "moreOptions": "More options",
+    "placeholder": "Paste URL",
+    "cta": "Shorten URL",
     "options": {
       "permanentLink": "Create permanent shortlink"
     },

@@ -367,6 +367,8 @@
     "title": "Erstelle einen Kurzlink",
     "termsNotice": "Mit der Erstellung des Kurzlinks akzeptierst du unsere <terms-hyperlink>Allgemeinen Geschäftsbedingungen</terms-hyperlink> und unsere <privacy-hyperlink>Privatsphäre-Einstellungen</privacy-hyperlink>.",
     "moreOptions": "Weitere Optionen",
+    "placeholder": "URL einfügen",
+    "cta": "URL kürzen",
     "options": {
       "permanentLink": "Dauerhaften Kurzlink erstellen"
     },
