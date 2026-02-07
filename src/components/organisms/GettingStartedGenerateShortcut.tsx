@@ -288,6 +288,12 @@ export function GettingStartedGenerateShortcut({
             err.response.data.error === "PermanentShortcutLimitExceededError"
           ) {
             setError(err.response.data.message);
+          }
+          if (
+            err.response?.status === 403 &&
+            err.response.data.error === "ExpirableShortcutLimitExceededError"
+          ) {
+            setError(err.response.data.message);
           } else if (
             err.response?.status === 422 &&
             err.response.data.error === "ValidationError"
