@@ -27,11 +27,12 @@ import {
 } from "react-share";
 import { Switch } from "@/components/atoms/Switch";
 import { AxiosError } from "axios";
-import { Formik } from "formik";
+import { Formik, FormikHelpers } from "formik";
 import { Form } from "@/components/atoms/Form";
 import * as yup from "yup";
 import { DatePicker } from "../atoms/DatePicker";
 import { TimeField } from "../atoms/TimeField";
+import { DateValue, TimeValue } from "react-aria-components";
 
 interface ShareButtonProps {
   text: string;
@@ -202,13 +203,34 @@ export function GettingStartedGenerateShortcut({
   const validationT = useTranslations("ValidationMessages");
   const { status } = useSession();
 
-  const schema = yup.object().shape({
-    url: yup
-      .string()
-      .url(validationT("invalidUrl"))
-      .required(validationT("required")),
-    permanent: yup.boolean(),
-  });
+  const schema = yup
+    .object()
+    .shape({
+      url: yup
+        .string()
+        .url(validationT("invalidUrl"))
+        .required(validationT("required")),
+      permanent: yup.boolean(),
+      expirable: yup.boolean(),
+      expireDate: yup.mixed().when("expirable", {
+        is: true,
+        then: (schema) => schema.required(validationT("required")),
+        otherwise: (schema) => schema.nullable(),
+      }),
+      expireTime: yup.mixed().when("expirable", {
+        is: true,
+        then: (schema) => schema.required(validationT("required")),
+        otherwise: (schema) => schema.nullable(),
+      }),
+    })
+    .test(
+      "permanent-xor-expirable",
+      validationT("permanentAndExpirableExclusive"),
+      (values) => {
+        if (!values) return true;
+        return !(values.permanent && values.expirable);
+      },
+    );
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -216,14 +238,47 @@ export function GettingStartedGenerateShortcut({
   const [moreOptionsVisible, setMoreOptionsVisible] = useState(false);
 
   const onCreate = useCallback(
-    async (values: { url: string; permanent: boolean }) => {
+    async (
+      values: {
+        url: string;
+        permanent: boolean;
+        expirable: boolean;
+        expireDate: DateValue | null;
+        expireTime: TimeValue | null;
+      },
+      helpers: FormikHelpers<{
+        url: string;
+        permanent: boolean;
+        expirable: boolean;
+        expireDate: null;
+        expireTime: null;
+      }> | null,
+    ) => {
       setIsLoading(true);
       setError(null);
 
       try {
+        let expiresAt = null;
+
+        if (values.expirable && values.expireDate && values.expireTime) {
+          const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+          const date = values.expireDate.toDate(timeZone);
+          const time = values.expireTime;
+
+          date.setHours(
+            time.hour,
+            time.minute,
+            time.second ?? 0,
+            time.millisecond ?? 0,
+          );
+
+          expiresAt = date.toISOString();
+        }
+
         const res = await api.post<Shortcut>("/shortcuts", {
           url: values.url,
           permanent: values.permanent,
+          expiresAt: expiresAt,
         });
         setShortcut(res.data);
       } catch (err) {
@@ -233,6 +288,17 @@ export function GettingStartedGenerateShortcut({
             err.response.data.error === "PermanentShortcutLimitExceededError"
           ) {
             setError(err.response.data.message);
+          } else if (
+            err.response?.status === 422 &&
+            err.response.data.error === "ValidationError"
+          ) {
+            err.response.data.details?.forEach(
+              (detail: { field: string; message: string }) =>
+                helpers?.setFieldError(
+                  detail.field === "expiresAt" ? "expireDate" : detail.field,
+                  detail.message,
+                ),
+            );
           } else {
             setError(t("error.unknownError"));
           }
@@ -250,7 +316,16 @@ export function GettingStartedGenerateShortcut({
     const timeoutId = setTimeout(() => {
       if (url) {
         setIsLoading(true);
-        onCreate({ url, permanent: false });
+        onCreate(
+          {
+            url,
+            permanent: false,
+            expirable: false,
+            expireDate: null,
+            expireTime: null,
+          },
+          null,
+        );
       }
     }, 300);
 
@@ -287,6 +362,9 @@ export function GettingStartedGenerateShortcut({
             initialValues={{
               url: url || "",
               permanent: false,
+              expirable: false,
+              expireDate: null,
+              expireTime: null,
             }}
             validationSchema={schema}
             onSubmit={onCreate}
@@ -330,6 +408,7 @@ export function GettingStartedGenerateShortcut({
                 {status === "authenticated" && (
                   <div className="flex w-full flex-col gap-4">
                     <button
+                      type="button"
                       className="flex cursor-pointer items-center gap-1 text-sm text-slate-600 hover:text-slate-800 disabled:cursor-not-allowed disabled:text-slate-400 dark:text-slate-400 dark:hover:text-white dark:disabled:text-slate-500"
                       onClick={() => setMoreOptionsVisible(!moreOptionsVisible)}
                       disabled={isLoading || !!shortcut}
@@ -353,6 +432,41 @@ export function GettingStartedGenerateShortcut({
                           >
                             {t("options.permanentLink")}
                           </Switch>
+                        </div>
+                        <div className="flex flex-col gap-4">
+                          <Switch
+                            isSelected={props.values.expirable}
+                            isDisabled={
+                              isLoading || !!shortcut || props.values.permanent
+                            }
+                            onChange={(isExpirable) =>
+                              props.setFieldValue("expirable", isExpirable)
+                            }
+                          >
+                            {t("options.expirableLink")}
+                          </Switch>
+                          {props.values.expirable && (
+                            <div className="flex flex-wrap gap-4">
+                              <DatePicker
+                                value={props.values.expireDate}
+                                onChange={(date) =>
+                                  props.setFieldValue("expireDate", date)
+                                }
+                                isDisabled={isLoading || !!shortcut}
+                                isInvalid={!!props.errors.expireDate}
+                                errorMessage={props.errors.expireDate}
+                              />
+                              <TimeField
+                                value={props.values.expireTime}
+                                onChange={(time) =>
+                                  props.setFieldValue("expireTime", time)
+                                }
+                                isDisabled={isLoading || !!shortcut}
+                                isInvalid={!!props.errors.expireTime}
+                                errorMessage={props.errors.expireTime}
+                              />
+                            </div>
+                          )}
                         </div>
                       </div>
                     )}

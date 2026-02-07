@@ -370,7 +370,8 @@
     "placeholder": "URL einfügen",
     "cta": "URL kürzen",
     "options": {
-      "permanentLink": "Dauerhaften Kurzlink erstellen"
+      "permanentLink": "Dauerhaften Kurzlink erstellen",
+      "expirableLink": "Kurzlink mit Ablaufdatum erstellen"
     },
     "error": {
       "unknownError": "Ein unbekannter Fehler ist aufgetreten. Bitte versuche es erneut."
@@ -389,6 +390,7 @@
     "required": "Dieses Feld ist erforderlich.",
     "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
     "confirmPassword": "Die Passwörter stimmen nicht überein.",
-    "invalidUrl": "Bitte geben Sie eine gültige URL ein."
+    "invalidUrl": "Bitte geben Sie eine gültige URL ein.",
+    "permanentAndExpirableExclusive": "Ein Kurzlink kann entweder dauerhaft oder mit Ablaufdatum erstellt werden, aber nicht beides gleichzeitig."
   }
 }

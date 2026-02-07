@@ -373,7 +373,8 @@
     "placeholder": "Paste URL",
     "cta": "Shorten URL",
     "options": {
-      "permanentLink": "Create permanent shortlink"
+      "permanentLink": "Create permanent shortlink",
+      "expirableLink": "Create shortlink with expiration date"
     },
     "error": {
       "unknownError": "An unknown error occurred. Please try again."
@@ -392,6 +393,7 @@
     "required": "This field is required.",
     "invalidEmail": "Please enter a valid email address.",
     "confirmPassword": "Passwords do not match.",
-    "invalidUrl": "Please enter a valid URL."
+    "invalidUrl": "Please enter a valid URL.",
+    "permanentAndExpirableExclusive": "A shortlink can either be created as permanent or with an expiration date, but not both at the same time."
   }
 }
