@@ -27,6 +27,7 @@ import {
   WhatsappIcon,
 } from "react-share";
 import { Switch } from "@/components/atoms/Switch";
+import { AxiosError } from "axios";
 
 interface ShareButtonProps {
   text: string;
@@ -215,7 +216,18 @@ export function GettingStartedGenerateShortcut({
         });
         setShortcut(res.data);
       } catch (err) {
-        setError(t("error.unknownError"));
+        if (err instanceof AxiosError) {
+          if (
+            err.response?.status === 403 &&
+            err.response.data.error === "PermanentShortcutLimitExceededError"
+          ) {
+            setError(err.response.data.message);
+          } else {
+            setError(t("error.unknownError"));
+          }
+        } else {
+          setError(t("error.unknownError"));
+        }
       } finally {
         setIsLoading(false);
       }
@@ -311,7 +323,7 @@ export function GettingStartedGenerateShortcut({
             </div>
           )}
           {!isLoading && error && (
-            <div className="text-center text-red-600">{error}</div>
+            <div className="text-center text-sm text-red-600">{error}</div>
           )}
         </div>
       </div>

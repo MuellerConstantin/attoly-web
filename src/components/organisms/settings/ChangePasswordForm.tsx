@@ -95,8 +95,10 @@ export function ChangePasswordForm() {
     >
       {(props) => (
         <Form onSubmit={props.handleSubmit} validationBehavior="aria">
-          {error && <p className="text-red-500">{error}</p>}
-          {success && <p className="text-green-500">{t("successMessage")}</p>}
+          {error && <p className="text-sm text-red-500">{error}</p>}
+          {success && (
+            <p className="text-sm text-green-500">{t("successMessage")}</p>
+          )}
           <TextField
             type="password"
             className="grow"

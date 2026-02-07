@@ -113,7 +113,9 @@ export default function SignIn() {
             >
               {(props) => (
                 <Form onSubmit={props.handleSubmit} validationBehavior="aria">
-                  {error && <p className="text-center text-red-500">{error}</p>}
+                  {error && (
+                    <p className="text-center text-sm text-red-500">{error}</p>
+                  )}
                   {showVerificationNotice && (
                     <p className="text-center">
                       <Link href="/verify-user">{t("verificationNotice")}</Link>

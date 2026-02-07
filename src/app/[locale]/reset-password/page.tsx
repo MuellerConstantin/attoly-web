@@ -271,9 +271,11 @@ function ResetPasswordRequest() {
           >
             {(props) => (
               <Form onSubmit={props.handleSubmit} validationBehavior="aria">
-                {error && <p className="text-center text-red-500">{error}</p>}
+                {error && (
+                  <p className="text-center text-sm text-red-500">{error}</p>
+                )}
                 {success && (
-                  <p className="text-center text-green-500">
+                  <p className="text-center text-sm text-green-500">
                     {t("successMessage")}
                   </p>
                 )}

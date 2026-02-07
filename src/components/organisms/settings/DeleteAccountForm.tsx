@@ -53,7 +53,7 @@ export function DeleteAccountForm() {
       >
         <ConfirmAccountDeletionDialog onDelete={onDelete} />
       </AnimatedDialogModal>
-      {error && <p className="text-red-500">{error}</p>}
+      {error && <p className="text-sm text-red-500">{error}</p>}
     </div>
   );
 }
