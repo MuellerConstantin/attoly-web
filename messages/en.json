@@ -271,7 +271,8 @@
           "price": "2.99€",
           "cta": "Upgrade Now",
           "temporaryLinks": "Unlimited (up to 365 days validity)",
-          "permanentLinks": "Up to 100"
+          "permanentLinks": "Up to 100",
+          "expirableLinks": "Up to 50"
         }
       }
     }

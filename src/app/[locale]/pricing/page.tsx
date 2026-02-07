@@ -88,7 +88,20 @@ function FeatureSection() {
       {
         key: "expiryLinks",
         label: t("table.generalFeatures.expiryLinks"),
-        values: [false, false, true],
+        values: [false, false, t("plans.pro.expirableLinks")],
+        render: (value) => (
+          <span>
+            {typeof value === "boolean" ? (
+              value ? (
+                <Check className="mx-auto h-5 w-5 text-green-500" />
+              ) : (
+                <X className="mx-auto h-5 w-5 text-red-500" />
+              )
+            ) : (
+              value
+            )}
+          </span>
+        ),
       },
       {
         key: "oneTimeLinks",
