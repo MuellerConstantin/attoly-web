@@ -36,7 +36,7 @@ export default function PlanSettings() {
   }, [router]);
 
   const hasActiveSubscription = useMemo(() => {
-    return data?.customerId && data.plan === "PRO";
+    return data?.billing.status && data?.billing.status !== "CANCELED";
   }, [data]);
 
   return (
@@ -62,10 +62,6 @@ export default function PlanSettings() {
             <Button isDisabled className="w-fit">
               {t("managePlan")}
             </Button>
-            <hr className="border border-slate-200 dark:border-slate-700" />
-            <Link href="/pricing" className="w-fit">
-              {t("discoverPlans")}
-            </Link>
           </div>
         ) : error ? (
           <div className="flex flex-col gap-6 rounded-md border border-slate-200 bg-white p-4 text-slate-800 dark:border-slate-700 dark:bg-slate-900 dark:text-white">
@@ -78,10 +74,6 @@ export default function PlanSettings() {
             <Button isDisabled className="w-fit">
               {t("managePlan")}
             </Button>
-            <hr className="border border-slate-200 dark:border-slate-700" />
-            <Link href="/pricing" className="w-fit">
-              {t("discoverPlans")}
-            </Link>
           </div>
         ) : (
           <div className="flex flex-col gap-6 rounded-md border border-slate-200 bg-white p-4 text-slate-800 dark:border-slate-700 dark:bg-slate-900 dark:text-white">
@@ -106,10 +98,14 @@ export default function PlanSettings() {
             >
               {hasActiveSubscription ? t("managePlan") : t("upgradePlan")}
             </Button>
-            <hr className="border border-slate-200 dark:border-slate-700" />
-            <Link href="/pricing" className="w-fit">
-              {t("discoverPlans")}
-            </Link>
+            {!hasActiveSubscription && (
+              <>
+                <hr className="border border-slate-200 dark:border-slate-700" />
+                <Link href="/pricing" className="w-fit">
+                  {t("discoverPlans")}
+                </Link>
+              </>
+            )}
           </div>
         )}
       </div>
