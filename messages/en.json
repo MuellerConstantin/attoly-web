@@ -318,7 +318,7 @@
   "MyShortcutsList": {
     "createdAt": "Created at",
     "empty": "You haven't created any short links yet. Create your first short link <link>here</link>.",
-    "temporary": "Temporary"
+    "permanent": "Permanent"
   },
   "ChangePasswordForm": {
     "currentPasswordPlaceholder": "Current Password",
@@ -369,6 +369,10 @@
   "GettingStartedGenerateShortcut": {
     "title": "Create a shortlink",
     "termsNotice": "By creating the short link, you accept our <terms-hyperlink>Terms and Conditions</terms-hyperlink> and our <privacy-hyperlink>Privacy Settings</privacy-hyperlink>.",
+    "moreOptions": "More options",
+    "options": {
+      "permanentLink": "Create permanent shortlink"
+    },
     "error": {
       "unknownError": "An unknown error occurred. Please try again."
     },

@@ -5,7 +5,7 @@ import { Pagination } from "@/components/molecules/Pagination";
 import { useApi } from "@/hooks/useApi";
 import { Page } from "@/lib/types/pagination";
 import { ShortcutDetails } from "@/lib/types/shortcuts";
-import { Timer } from "lucide-react";
+import { Save } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useMemo, useState } from "react";
@@ -136,10 +136,10 @@ export function MyShortcutsList() {
                       {new Date(shortcut.createdAt).toLocaleString()}
                     </time>
                   </p>
-                  {!shortcut.permanent && (
-                    <div className="flex w-fit items-center gap-1 rounded-md bg-sky-500 px-1 py-0.5 text-xs text-white">
-                      <Timer className="h-3 w-3" />
-                      {t("temporary")}
+                  {shortcut.permanent && (
+                    <div className="flex w-fit items-center gap-1 rounded-md bg-green-600 px-1 py-0.5 text-xs text-white">
+                      <Save className="h-3 w-3" />
+                      {t("permanent")}
                     </div>
                   )}
                 </div>

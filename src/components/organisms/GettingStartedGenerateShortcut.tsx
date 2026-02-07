@@ -12,7 +12,7 @@ import { Spinner } from "@/components/atoms/Spinner";
 import { useRouter } from "next/navigation";
 import { TextField } from "@/components/atoms/TextField";
 import { Button } from "@/components/atoms/Button";
-import { Check, Copy, Share } from "lucide-react";
+import { Check, ChevronDown, ChevronUp, Copy, Share } from "lucide-react";
 import { ReactQRCode, ReactQRCodeRef } from "@lglab/react-qr-code";
 import {
   EmailShareButton,
@@ -26,7 +26,7 @@ import {
   WhatsappShareButton,
   WhatsappIcon,
 } from "react-share";
-import { AnonymousCreatorBadge } from "@/components/molecules/AnonymousCreatorBadge";
+import { Switch } from "@/components/atoms/Switch";
 
 interface ShareButtonProps {
   text: string;
@@ -194,10 +194,14 @@ export function GettingStartedGenerateShortcut({
   const router = useRouter();
   const api = useApi();
   const t = useTranslations("GettingStartedGenerateShortcut");
+  const { status } = useSession();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [shortcut, setShortcut] = useState<Shortcut | null>(null);
+
+  const [moreOptionsVisible, setMoreOptionsVisible] = useState(false);
+  const [permanentLink, setPermanentLink] = useState(false);
 
   const onCreate = useCallback(
     async (url: string) => {
@@ -205,7 +209,10 @@ export function GettingStartedGenerateShortcut({
       setError(null);
 
       try {
-        const res = await api.post<Shortcut>("/shortcuts", { url });
+        const res = await api.post<Shortcut>("/shortcuts", {
+          url,
+          permanent: permanentLink,
+        });
         setShortcut(res.data);
       } catch (err) {
         setError(t("error.unknownError"));
@@ -213,7 +220,7 @@ export function GettingStartedGenerateShortcut({
         setIsLoading(false);
       }
     },
-    [api, t, router],
+    [api, t, router, permanentLink],
   );
 
   useEffect(() => {
@@ -269,6 +276,35 @@ export function GettingStartedGenerateShortcut({
               ),
             })}
           </div>
+          {status === "authenticated" && (
+            <div className="flex w-full flex-col gap-4">
+              <button
+                className="flex cursor-pointer items-center gap-1 text-sm text-slate-600 hover:text-slate-800 disabled:cursor-not-allowed disabled:text-slate-400 dark:text-slate-400 dark:hover:text-white dark:disabled:text-slate-500"
+                onClick={() => setMoreOptionsVisible(!moreOptionsVisible)}
+                disabled={isLoading || !!shortcut}
+              >
+                {t("moreOptions")}
+                {moreOptionsVisible ? (
+                  <ChevronUp className="h-5 w-5" />
+                ) : (
+                  <ChevronDown className="h-5 w-5" />
+                )}
+              </button>
+              {moreOptionsVisible && (
+                <div className="flex-gap-2 flex rounded-md border border-slate-300 bg-slate-100 p-4 dark:border-slate-600 dark:bg-slate-800">
+                  <div className="flex gap-1">
+                    <Switch
+                      isSelected={permanentLink}
+                      isDisabled={isLoading || !!shortcut}
+                      onChange={(isPermanent) => setPermanentLink(isPermanent)}
+                    >
+                      {t("options.permanentLink")}
+                    </Switch>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
           {isLoading && (
             <div className="flex justify-center">
               <Spinner size={32} />
