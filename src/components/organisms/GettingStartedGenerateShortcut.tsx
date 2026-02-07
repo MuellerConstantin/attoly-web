@@ -30,6 +30,8 @@ import { AxiosError } from "axios";
 import { Formik } from "formik";
 import { Form } from "@/components/atoms/Form";
 import * as yup from "yup";
+import { DatePicker } from "../atoms/DatePicker";
+import { TimeField } from "../atoms/TimeField";
 
 interface ShareButtonProps {
   text: string;
@@ -282,7 +284,10 @@ export function GettingStartedGenerateShortcut({
         <div className="flex w-full flex-col items-center gap-4">
           <Formik
             enableReinitialize
-            initialValues={{ url: url || "", permanent: false }}
+            initialValues={{
+              url: url || "",
+              permanent: false,
+            }}
             validationSchema={schema}
             onSubmit={onCreate}
           >
@@ -292,7 +297,7 @@ export function GettingStartedGenerateShortcut({
                 validationBehavior="aria"
                 className="flex w-full flex-col items-center gap-4"
               >
-                <div className="relative w-full">
+                <div className="relative flex w-full flex-col gap-4">
                   <input
                     name="url"
                     placeholder={t("placeholder")}
@@ -337,7 +342,7 @@ export function GettingStartedGenerateShortcut({
                       )}
                     </button>
                     {moreOptionsVisible && (
-                      <div className="flex-gap-2 flex rounded-md border border-slate-300 bg-slate-100 p-4 dark:border-slate-600 dark:bg-slate-800">
+                      <div className="flex flex-col gap-4 rounded-md border border-slate-300 bg-slate-100 p-4 dark:border-slate-600 dark:bg-slate-800">
                         <div className="flex gap-1">
                           <Switch
                             isSelected={props.values.permanent}

@@ -32,7 +32,7 @@ export function TimeField<T extends TimeValue>({
         "flex flex-col gap-1 font-sans",
       )}
     >
-      <Label>{label}</Label>
+      {label && <Label>{label}</Label>}
       <DateInput />
       {description && <Description>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>
