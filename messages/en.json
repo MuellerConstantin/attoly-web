@@ -317,7 +317,8 @@
   },
   "MyShortcutsList": {
     "createdAt": "Created at",
-    "empty": "You haven't created any short links yet. Create your first short link <link>here</link>."
+    "empty": "You haven't created any short links yet. Create your first short link <link>here</link>.",
+    "temporary": "Temporary"
   },
   "ChangePasswordForm": {
     "currentPasswordPlaceholder": "Current Password",

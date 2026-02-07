@@ -4,7 +4,8 @@ import { Link } from "@/components/atoms/Link";
 import { Pagination } from "@/components/molecules/Pagination";
 import { useApi } from "@/hooks/useApi";
 import { Page } from "@/lib/types/pagination";
-import { Shortcut } from "@/lib/types/shortcuts";
+import { ShortcutDetails } from "@/lib/types/shortcuts";
+import { Timer } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useMemo, useState } from "react";
@@ -47,7 +48,7 @@ export function MyShortcutsList() {
   }, [page, perPage]);
 
   const { data, isLoading, error } = useSWR<
-    Page<Shortcut>,
+    Page<ShortcutDetails>,
     unknown,
     string | null
   >(url, (url) => api.get(url).then((res) => res.data));
@@ -128,13 +129,19 @@ export function MyShortcutsList() {
                     </p>
                   </div>
                 </div>
-                <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                  <p className="mt-1 text-xs/5 text-gray-500">
+                <div className="flex hidden shrink-0 flex-col gap-1 sm:flex sm:flex-col sm:items-end">
+                  <p className="text-xs/5 text-gray-500">
                     {t("createdAt")}{" "}
                     <time dateTime={shortcut.createdAt}>
                       {new Date(shortcut.createdAt).toLocaleString()}
                     </time>
                   </p>
+                  {!shortcut.permanent && (
+                    <div className="flex w-fit items-center gap-1 rounded-md bg-sky-500 px-1 py-0.5 text-xs text-white">
+                      <Timer className="h-3 w-3" />
+                      {t("temporary")}
+                    </div>
+                  )}
                 </div>
               </li>
             ))}
