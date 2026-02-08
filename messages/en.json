@@ -308,6 +308,12 @@
     "proPlan": {
       "title": "You have the Attoly Pro subscription",
       "description": "Thank you for being a Pro user! You have access to all features. You can manage your subscription or switch to another plan at any time."
+    },
+    "usage": {
+      "title": "Your current usage",
+      "description": "Here you can see how much of your subscription quota you have already used. Keep an eye on your usage to always stay in control of your short links.",
+      "permanentShortcuts": "Permanent Short Links",
+      "expirableShortcuts": "Short Links with Expiration Date"
     }
   },
   "ShortcutSettingsPage": {

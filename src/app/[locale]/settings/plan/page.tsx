@@ -2,14 +2,78 @@
 
 import { Button } from "@/components/atoms/Button";
 import { Link } from "@/components/atoms/Link";
+import { ProgressBar } from "@/components/atoms/ProgressBar";
 import { useApi } from "@/hooks/useApi";
 import { ApiError } from "@/lib/types/error";
+import { UsageInfo } from "@/lib/types/usage";
 import { Me } from "@/lib/types/users";
 import { AxiosError } from "axios";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
 import useSWR from "swr";
+
+function UsageStats() {
+  const api = useApi();
+  const t = useTranslations("PlanSettingsPage.usage");
+
+  const { data, isLoading, error } = useSWR<UsageInfo>(
+    "/user/me/usage",
+    (url) => api.get(url).then((res) => res.data),
+    {
+      refreshInterval: 300000, // 5 minutes
+    },
+  );
+
+  return (
+    <div className="flex flex-col gap-4 rounded-md border border-slate-200 bg-white p-4 text-slate-800 dark:border-slate-700 dark:bg-slate-900 dark:text-white">
+      <h4 className="text-xl font-semibold text-slate-800 dark:text-white">
+        {t("title")}
+      </h4>
+      <p>{t("description")}</p>
+      {isLoading ? (
+        <div className="flex flex-col gap-4">
+          {Array.from(Array(5).keys()).map((key) => (
+            <div key={key} className="w-full">
+              <div className="h-4 w-48 animate-pulse rounded bg-slate-200 dark:bg-slate-700" />
+              <div className="mt-2 h-4 w-2/3 animate-pulse rounded bg-slate-200 dark:bg-slate-700" />
+            </div>
+          ))}
+        </div>
+      ) : error ? (
+        <div className="flex flex-col gap-4">
+          {Array.from(Array(5).keys()).map((key) => (
+            <div key={key} className="w-full">
+              <div className="h-4 w-48 rounded bg-red-300 dark:bg-red-800" />
+              <div className="mt-2 h-4 w-2/3 rounded bg-red-300 dark:bg-red-800" />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-col gap-4">
+          <div className="w-full">
+            <h6 className="font-semibold">{t("permanentShortcuts")}</h6>
+            <ProgressBar
+              className="w-full max-w-sm"
+              label={`${data?.currentUsage.currentPermanentShortcuts ?? 0} / ${data?.usageLimits.maxPermanentShortcuts ?? 0}`}
+              value={data?.currentUsage.currentPermanentShortcuts ?? 0}
+              maxValue={data?.usageLimits.maxPermanentShortcuts ?? 0}
+            />
+          </div>
+          <div className="w-full">
+            <h6 className="font-semibold">{t("expirableShortcuts")}</h6>
+            <ProgressBar
+              className="w-full max-w-sm"
+              label={`${data?.currentUsage.currentExpirableShortcuts ?? 0} / ${data?.usageLimits.maxExpirableShortcuts ?? 0}`}
+              value={data?.currentUsage.currentExpirableShortcuts ?? 0}
+              maxValue={data?.usageLimits.maxExpirableShortcuts ?? 0}
+            />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function PlanSettings() {
   const api = useApi();
@@ -108,6 +172,7 @@ export default function PlanSettings() {
             )}
           </div>
         )}
+        <UsageStats />
       </div>
     </div>
   );

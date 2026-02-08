@@ -59,19 +59,19 @@ export function MyShortcutsList() {
         <div className="flex flex-col gap-4">
           <ul
             role="list"
-            className="divide-y divide-gray-100 dark:divide-gray-700"
+            className="divide-y divide-slate-100 dark:divide-slate-700"
           >
             {Array.from(Array(10).keys()).map((key) => (
               <li key={key} className="flex justify-between gap-x-6 p-2 py-5">
                 <div className="flex min-w-0 items-center gap-x-4">
-                  <div className="relative flex h-10 w-10 shrink-0 animate-pulse items-center justify-center overflow-hidden rounded-full border border-slate-100 bg-gray-200 dark:border-slate-700 dark:bg-gray-700" />
+                  <div className="relative flex h-10 w-10 shrink-0 animate-pulse items-center justify-center overflow-hidden rounded-full border border-slate-100 bg-slate-200 dark:border-slate-700 dark:bg-slate-700" />
                   <div className="min-w-0 flex-auto truncate">
-                    <div className="h-4 w-64 animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
-                    <div className="mt-1 h-3 w-3/4 animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
+                    <div className="h-4 w-64 animate-pulse rounded bg-slate-200 dark:bg-slate-700" />
+                    <div className="mt-1 h-3 w-3/4 animate-pulse rounded bg-slate-200 dark:bg-slate-700" />
                   </div>
                 </div>
                 <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                  <div className="h-3 w-32 animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
+                  <div className="h-3 w-32 animate-pulse rounded bg-slate-200 dark:bg-slate-700" />
                 </div>
               </li>
             ))}
@@ -81,7 +81,7 @@ export function MyShortcutsList() {
         <div className="flex flex-col gap-4">
           <ul
             role="list"
-            className="divide-y divide-gray-100 dark:divide-gray-700"
+            className="divide-y divide-slate-100 dark:divide-slate-700"
           >
             {Array.from(Array(10).keys()).map((key) => (
               <li key={key} className="flex justify-between gap-x-6 p-2 py-5">
@@ -109,12 +109,12 @@ export function MyShortcutsList() {
         <div className="flex flex-col gap-4">
           <ul
             role="list"
-            className="divide-y divide-gray-100 dark:divide-gray-700"
+            className="divide-y divide-slate-100 dark:divide-slate-700"
           >
             {data?.content.map((shortcut) => (
               <li
                 key={shortcut.id}
-                className="flex justify-between gap-x-6 p-2 py-5 hover:rounded-md hover:bg-gray-50 dark:hover:bg-gray-700"
+                className="flex justify-between gap-x-6 p-2 py-5 hover:rounded-md hover:bg-slate-50 dark:hover:bg-slate-700"
               >
                 <div className="flex min-w-0 items-center gap-x-4">
                   <div className="relative flex h-fit w-fit shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-100 bg-white p-2 dark:border-slate-700">
@@ -124,13 +124,13 @@ export function MyShortcutsList() {
                     <Link href={`${window.location.origin}/r/${shortcut!.tag}`}>
                       {`${window.location.origin}/r/${shortcut!.tag}`}
                     </Link>
-                    <p className="mt-1 truncate text-xs/5 text-gray-500">
+                    <p className="mt-1 truncate text-xs/5 text-slate-500">
                       {shortcut.url}
                     </p>
                   </div>
                 </div>
                 <div className="flex hidden shrink-0 flex-col gap-1 sm:flex sm:flex-col sm:items-end">
-                  <p className="text-xs/5 text-gray-500">
+                  <p className="text-xs/5 text-slate-500">
                     {t("createdAt")}{" "}
                     <time dateTime={shortcut.createdAt}>
                       {new Date(shortcut.createdAt).toLocaleString()}

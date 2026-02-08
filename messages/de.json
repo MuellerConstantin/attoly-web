@@ -305,6 +305,12 @@
     "proPlan": {
       "title": "Du hast das Attoly Pro Abonnement",
       "description": "Du genießt alle Vorteile unseres Pro-Plans. Vielen Dank für deine Unterstützung! Du kannst dein Abonnement jederzeit verwalten oder kündigen."
+    },
+    "usage": {
+      "title": "Dein aktueller Verbrauch",
+      "description": "Hier siehst du, wie stark du das mit deinem Abonnement verbundene Kontingent bereits genutzt hast. Behalte deinen Verbrauch im Blick, um jederzeit die Kontrolle über deine Kurzlinks zu behalten.",
+      "permanentShortcuts": "Dauerhafte Kurzlinks",
+      "expirableShortcuts": "Kurzlinks mit Ablaufdatum"
     }
   },
   "ShortcutSettingsPage": {
