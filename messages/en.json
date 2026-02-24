@@ -324,8 +324,10 @@
   },
   "MyShortcutsList": {
     "createdAt": "Created at",
+    "expiresAt": "Expires at",
     "empty": "You haven't created any short links yet. Create your first short link <link>here</link>.",
-    "permanent": "Permanent"
+    "permanent": "Permanent",
+    "expired": "Expired"
   },
   "ChangePasswordForm": {
     "currentPasswordPlaceholder": "Current Password",

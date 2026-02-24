@@ -5,10 +5,11 @@ import { Pagination } from "@/components/molecules/Pagination";
 import { useApi } from "@/hooks/useApi";
 import { Page } from "@/lib/types/pagination";
 import { ShortcutDetails } from "@/lib/types/shortcuts";
-import { Save } from "lucide-react";
+import { CalendarDays, Hourglass, Save } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import useSWR from "swr";
 
 function ShortcutIcon({ url }: { url: string }) {
@@ -29,12 +30,117 @@ function ShortcutIcon({ url }: { url: string }) {
   );
 }
 
+interface ListItemProps {
+  shortcut: ShortcutDetails;
+  selected: string | null;
+  onSelect: (key: string) => void;
+}
+
+function ListItem({ shortcut, selected, onSelect }: ListItemProps) {
+  const t = useTranslations("MyShortcutsList");
+
+  const isExpired =
+    !shortcut.permanent &&
+    shortcut.expiresAt &&
+    new Date(shortcut.expiresAt) < new Date();
+
+  return (
+    <li
+      key={shortcut.id}
+      className={`flex cursor-pointer flex-col gap-4 p-2 py-4 hover:rounded-md hover:bg-slate-50 dark:hover:bg-slate-700 ${
+        selected === `item-${shortcut.id}`
+          ? "rounded-md bg-slate-100 dark:bg-slate-900"
+          : ""
+      }`}
+      onClick={() => onSelect(`item-${shortcut.id}`)}
+    >
+      <div className="flex justify-between gap-x-6">
+        <div className="flex min-w-0 items-center gap-x-4">
+          <div className="relative flex h-fit w-fit shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-100 bg-white p-2 dark:border-slate-700">
+            <ShortcutIcon url={shortcut.url} />
+          </div>
+          <div className="min-w-0 flex-auto truncate">
+            <Link href={`${window.location.origin}/r/${shortcut!.tag}`}>
+              {`${window.location.origin}/r/${shortcut!.tag}`}
+            </Link>
+            <p className="mt-1 truncate text-xs/5 text-slate-500">
+              {shortcut.url}
+            </p>
+          </div>
+        </div>
+        <div className="flex hidden shrink-0 flex-col gap-1 sm:flex sm:flex-col sm:items-end">
+          {selected !== `item-${shortcut.id}` && (
+            <p className="text-xs/5 text-slate-500">
+              {t("createdAt")}{" "}
+              <time dateTime={shortcut.createdAt}>
+                {new Date(shortcut.createdAt).toLocaleString()}
+              </time>
+            </p>
+          )}
+        </div>
+      </div>
+      <AnimatePresence initial={false}>
+        {selected === `item-${shortcut.id}` && (
+          <motion.div
+            key="content"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            style={{ overflow: "hidden" }}
+            className="flex flex-col gap-4"
+          >
+            <hr className="border border-slate-200 dark:border-slate-700" />
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-x-4">
+                <div className="flex items-center gap-1 text-xs/5 text-slate-500">
+                  <CalendarDays className="inline-block h-3 w-3" />
+                  <div>
+                    {t("createdAt")}{" "}
+                    <time dateTime={shortcut.createdAt}>
+                      {new Date(shortcut.createdAt).toLocaleString()}
+                    </time>
+                  </div>
+                </div>
+                {shortcut.expiresAt && (
+                  <div className="flex items-center gap-1 text-xs/5 text-slate-500">
+                    <Hourglass className="inline-block h-3 w-3" />
+                    <div>
+                      {t("expiresAt")}{" "}
+                      <time dateTime={shortcut.expiresAt}>
+                        {new Date(shortcut.expiresAt).toLocaleString()}
+                      </time>
+                    </div>
+                  </div>
+                )}
+              </div>
+              {shortcut.permanent && (
+                <div className="flex w-fit items-center gap-1 rounded-md bg-green-500/20 px-2 py-0.5 font-mono text-xs font-medium text-green-500">
+                  <Save className="h-3 w-3" />
+                  {t("permanent")}
+                </div>
+              )}
+              {!shortcut.permanent && isExpired && (
+                <div className="flex w-fit items-center gap-1 rounded-md bg-red-500/20 px-2 py-0.5 font-mono text-xs font-medium text-red-500">
+                  <Hourglass className="h-3 w-3" />
+                  {t("expired")}
+                </div>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </li>
+  );
+}
+
 export function MyShortcutsList() {
   const t = useTranslations("MyShortcutsList");
   const api = useApi();
 
   const [page, setPage] = useState(1);
   const [perPage] = useState(25);
+  const [selected, setSelected] = useState<string | null>(null);
 
   const url = useMemo(() => {
     const apiPage = Math.max(page - 1, 0);
@@ -52,6 +158,10 @@ export function MyShortcutsList() {
     unknown,
     string | null
   >(url, (url) => api.get(url).then((res) => res.data));
+
+  const onSelect = useCallback((key: string) => {
+    setSelected((prev) => (prev === key ? null : key));
+  }, []);
 
   return (
     <div>
@@ -112,38 +222,12 @@ export function MyShortcutsList() {
             className="divide-y divide-slate-100 dark:divide-slate-700"
           >
             {data?.content.map((shortcut) => (
-              <li
+              <ListItem
                 key={shortcut.id}
-                className="flex justify-between gap-x-6 p-2 py-5 hover:rounded-md hover:bg-slate-50 dark:hover:bg-slate-700"
-              >
-                <div className="flex min-w-0 items-center gap-x-4">
-                  <div className="relative flex h-fit w-fit shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-100 bg-white p-2 dark:border-slate-700">
-                    <ShortcutIcon url={shortcut.url} />
-                  </div>
-                  <div className="min-w-0 flex-auto truncate">
-                    <Link href={`${window.location.origin}/r/${shortcut!.tag}`}>
-                      {`${window.location.origin}/r/${shortcut!.tag}`}
-                    </Link>
-                    <p className="mt-1 truncate text-xs/5 text-slate-500">
-                      {shortcut.url}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex hidden shrink-0 flex-col gap-1 sm:flex sm:flex-col sm:items-end">
-                  <p className="text-xs/5 text-slate-500">
-                    {t("createdAt")}{" "}
-                    <time dateTime={shortcut.createdAt}>
-                      {new Date(shortcut.createdAt).toLocaleString()}
-                    </time>
-                  </p>
-                  {shortcut.permanent && (
-                    <div className="flex w-fit items-center gap-1 rounded-md bg-green-600 px-1 py-0.5 text-xs text-white">
-                      <Save className="h-3 w-3" />
-                      {t("permanent")}
-                    </div>
-                  )}
-                </div>
-              </li>
+                shortcut={shortcut}
+                selected={selected}
+                onSelect={onSelect}
+              />
             ))}
           </ul>
           <Pagination

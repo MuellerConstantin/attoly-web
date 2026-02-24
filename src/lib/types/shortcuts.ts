@@ -14,4 +14,5 @@ export interface ShortcutDetails {
   createdAt: string;
   updatedAt: string;
   permanent: boolean;
+  expiresAt: string | null;
 }

@@ -141,7 +141,7 @@ export default function PlanSettings() {
           </div>
         ) : (
           <div className="flex flex-col gap-6 rounded-md border border-slate-200 bg-white p-4 text-slate-800 dark:border-slate-700 dark:bg-slate-900 dark:text-white">
-            <div className="w-fit rounded-md bg-orange-500/10 px-2 py-0.5 font-mono text-xs font-medium font-semibold text-orange-500">
+            <div className="w-fit rounded-md bg-orange-500/20 px-2 py-0.5 font-mono text-xs font-medium font-semibold text-orange-500">
               {data!.plan}
             </div>
             <div>
