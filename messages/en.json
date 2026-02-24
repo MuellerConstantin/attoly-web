@@ -327,7 +327,8 @@
     "expiresAt": "Expires at",
     "empty": "You haven't created any short links yet. Create your first short link <link>here</link>.",
     "permanent": "Permanent",
-    "expired": "Expired"
+    "expired": "Expired",
+    "deleteTooltip": "Delete short link"
   },
   "ChangePasswordForm": {
     "currentPasswordPlaceholder": "Current Password",
@@ -351,6 +352,12 @@
     "description": "Are you sure you want to delete your account? This action is permanent and cannot be undone.",
     "cancel": "Cancel",
     "delete": "Delete Account"
+  },
+  "ConfirmShortcutDeletionDialog": {
+    "title": "Delete Short Link",
+    "description": "Are you sure you want to delete this short link? This action is permanent and cannot be undone.",
+    "cancel": "Cancel",
+    "delete": "Delete Short Link"
   },
   "Footer": {
     "imprint": "Imprint",

@@ -5,12 +5,17 @@ import { Pagination } from "@/components/molecules/Pagination";
 import { useApi } from "@/hooks/useApi";
 import { Page } from "@/lib/types/pagination";
 import { ShortcutDetails } from "@/lib/types/shortcuts";
-import { CalendarDays, Hourglass, Save } from "lucide-react";
+import { CalendarDays, Hourglass, Save, Trash } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useCallback, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import useSWR from "swr";
+import useSWR, { useSWRConfig } from "swr";
+import { Button } from "@/components/atoms/Button";
+import { TooltipTrigger } from "react-aria-components";
+import { Tooltip } from "@/components/atoms/Tooltip";
+import { AnimatedDialogModal } from "@/components/molecules/AnimatedDialogModal";
+import { ConfirmShortcutDeletionDialog } from "@/components/molecules/settings/ConfirmShortcutDeletionDialog";
 
 function ShortcutIcon({ url }: { url: string }) {
   const [error, setError] = useState(false);
@@ -37,12 +42,25 @@ interface ListItemProps {
 }
 
 function ListItem({ shortcut, selected, onSelect }: ListItemProps) {
+  const api = useApi();
+  const { mutate } = useSWRConfig();
   const t = useTranslations("MyShortcutsList");
+
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   const isExpired =
     !shortcut.permanent &&
     shortcut.expiresAt &&
     new Date(shortcut.expiresAt) < new Date();
+
+  const onDelete = useCallback(async () => {
+    api.delete(`/user/me/shortcuts/${shortcut.tag}`).then(() => {
+      mutate(
+        (key) =>
+          typeof key === "string" && key.startsWith("/user/me/shortcuts"),
+      );
+    });
+  }, [api, shortcut.tag, t]);
 
   return (
     <li
@@ -126,7 +144,25 @@ function ListItem({ shortcut, selected, onSelect }: ListItemProps) {
                   {t("expired")}
                 </div>
               )}
+              <div className="flex w-full flex-wrap justify-end">
+                <TooltipTrigger>
+                  <Button
+                    variant="danger"
+                    className="rounded-full p-2"
+                    onClick={() => setShowDeleteDialog(true)}
+                  >
+                    <Trash className="h-4 w-4" />
+                  </Button>
+                  <Tooltip>{t("deleteTooltip")}</Tooltip>
+                </TooltipTrigger>
+              </div>
             </div>
+            <AnimatedDialogModal
+              isOpen={showDeleteDialog}
+              onOpenChange={setShowDeleteDialog}
+            >
+              <ConfirmShortcutDeletionDialog onDelete={onDelete} />
+            </AnimatedDialogModal>
           </motion.div>
         )}
       </AnimatePresence>
