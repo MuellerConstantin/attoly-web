@@ -386,7 +386,9 @@
     "cta": "URL kürzen",
     "options": {
       "permanentLink": "Dauerhaften Kurzlink erstellen",
-      "expirableLink": "Kurzlink mit Ablaufdatum erstellen"
+      "expirableLink": "Kurzlink mit Ablaufdatum erstellen",
+      "passwordProtectedLink": "Passwortgeschützten Kurzlink erstellen",
+      "passwordProtectedLinkPlaceholder": "Passwort eingeben"
     },
     "error": {
       "unknownError": "Ein unbekannter Fehler ist aufgetreten. Bitte versuche es erneut."

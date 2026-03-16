@@ -389,7 +389,9 @@
     "cta": "Shorten URL",
     "options": {
       "permanentLink": "Create permanent shortlink",
-      "expirableLink": "Create shortlink with expiration date"
+      "expirableLink": "Create shortlink with expiration date",
+      "passwordProtectedLink": "Create password-protected shortlink",
+      "passwordProtectedLinkPlaceholder": "Enter password"
     },
     "error": {
       "unknownError": "An unknown error occurred. Please try again."

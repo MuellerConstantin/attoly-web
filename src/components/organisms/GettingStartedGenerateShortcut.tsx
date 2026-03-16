@@ -222,6 +222,12 @@ export function GettingStartedGenerateShortcut({
         then: (schema) => schema.required(validationT("required")),
         otherwise: (schema) => schema.nullable(),
       }),
+      passwordProtected: yup.boolean(),
+      password: yup.string().when("passwordProtected", {
+        is: true,
+        then: (schema) => schema.required(validationT("required")),
+        otherwise: (schema) => schema.nullable(),
+      }),
     })
     .test(
       "permanent-xor-expirable",
@@ -245,13 +251,17 @@ export function GettingStartedGenerateShortcut({
         expirable: boolean;
         expireDate: DateValue | null;
         expireTime: TimeValue | null;
+        passwordProtected: boolean;
+        password: string;
       },
       helpers: FormikHelpers<{
         url: string;
         permanent: boolean;
         expirable: boolean;
-        expireDate: null;
-        expireTime: null;
+        expireDate: DateValue | null;
+        expireTime: TimeValue | null;
+        passwordProtected: boolean;
+        password: string;
       }> | null,
     ) => {
       setIsLoading(true);
@@ -279,6 +289,7 @@ export function GettingStartedGenerateShortcut({
           url: values.url,
           permanent: values.permanent,
           expiresAt: expiresAt,
+          password: values.passwordProtected ? values.password : undefined,
         });
         setShortcut(res.data);
       } catch (err) {
@@ -329,6 +340,8 @@ export function GettingStartedGenerateShortcut({
             expirable: false,
             expireDate: null,
             expireTime: null,
+            passwordProtected: false,
+            password: "",
           },
           null,
         );
@@ -363,7 +376,15 @@ export function GettingStartedGenerateShortcut({
           </h1>
         </div>
         <div className="flex w-full flex-col items-center gap-4">
-          <Formik
+          <Formik<{
+            url: string;
+            permanent: boolean;
+            expirable: boolean;
+            expireDate: DateValue | null;
+            expireTime: TimeValue | null;
+            passwordProtected: boolean;
+            password: string;
+          }>
             enableReinitialize
             initialValues={{
               url: url || "",
@@ -371,6 +392,8 @@ export function GettingStartedGenerateShortcut({
               expirable: false,
               expireDate: null,
               expireTime: null,
+              passwordProtected: false,
+              password: "",
             }}
             validationSchema={schema}
             onSubmit={onCreate}
@@ -470,6 +493,42 @@ export function GettingStartedGenerateShortcut({
                                 isDisabled={isLoading || !!shortcut}
                                 isInvalid={!!props.errors.expireTime}
                                 errorMessage={props.errors.expireTime}
+                              />
+                            </div>
+                          )}
+                        </div>
+                        <div className="flex flex-col gap-4">
+                          <Switch
+                            isSelected={props.values.passwordProtected}
+                            isDisabled={
+                              isLoading || !!shortcut || props.values.permanent
+                            }
+                            onChange={(isPasswordProtected) =>
+                              props.setFieldValue(
+                                "passwordProtected",
+                                isPasswordProtected,
+                              )
+                            }
+                          >
+                            {t("options.passwordProtectedLink")}
+                          </Switch>
+                          {props.values.passwordProtected && (
+                            <div className="flex flex-wrap gap-4">
+                              <TextField
+                                name="password"
+                                type="password"
+                                className="w-full"
+                                placeholder={t(
+                                  "options.passwordProtectedLinkPlaceholder",
+                                )}
+                                value={props.values.password}
+                                onBlur={props.handleBlur}
+                                onChange={(value) =>
+                                  props.setFieldValue("password", value)
+                                }
+                                errorMessage={props.errors.password}
+                                isInvalid={!!props.errors.password}
+                                isDisabled={isLoading || !!shortcut}
                               />
                             </div>
                           )}
