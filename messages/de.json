@@ -217,7 +217,7 @@
           "Bis zu 100 dauerhafte, persönliche Kurzlinks",
           "Detaillierte Statistiken zu Aufrufen",
           "Passwortschutz für Kurzlinks",
-          "Kurzlinks mit Ablaufdatum & Einmal-Links"
+          "Kurzlinks mit Ablaufdatum"
         ]
       }
     },
@@ -238,7 +238,6 @@
           "linkManagement": "Link-Verwaltung",
           "linkManagementTooltip": "Verwalte und organisiere deine Kurzlinks in einem Dashboard.",
           "expiryLinks": "Kurzlinks mit Ablaufdatum",
-          "oneTimeLinks": "Einmal-Links",
           "passwordProtection": "Passwortschutz für Kurzlinks",
           "passwordProtectionTooltip": "Schütze deine Kurzlinks mit einem Passwort, um den Zugriff zu kontrollieren. Deine Kurzlinks werden außerdem verschlüsselt gespeichert."
         },

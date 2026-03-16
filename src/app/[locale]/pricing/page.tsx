@@ -104,11 +104,6 @@ function FeatureSection() {
         ),
       },
       {
-        key: "oneTimeLinks",
-        label: t("table.generalFeatures.oneTimeLinks"),
-        values: [false, false, true],
-      },
-      {
         key: "passwordProtection",
         label: t("table.generalFeatures.passwordProtection"),
         tooltip: t("table.generalFeatures.passwordProtectionTooltip"),

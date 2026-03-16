@@ -220,7 +220,7 @@
           "Up to 100 permanent, personal short links",
           "Detailed view statistics",
           "Password protection for short links",
-          "Short links with expiration date & one-time links"
+          "Short links with expiration date"
         ]
       }
     },
@@ -241,7 +241,6 @@
           "linkManagement": "Link Management",
           "linkManagementTooltip": "Manage and organize your shortcut links in a dashboard.",
           "expiryLinks": "Short links with expiration date",
-          "oneTimeLinks": "One-time links",
           "passwordProtection": "Password protection for short links",
           "passwordProtectionTooltip": "Protect your short links with a password to restrict access. Your short links are also stored encrypted."
         },
