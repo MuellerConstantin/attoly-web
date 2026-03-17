@@ -310,7 +310,10 @@
       "title": "Dein aktueller Verbrauch",
       "description": "Hier siehst du, wie stark du das mit deinem Abonnement verbundene Kontingent bereits genutzt hast. Behalte deinen Verbrauch im Blick, um jederzeit die Kontrolle über deine Kurzlinks zu behalten.",
       "permanentShortcuts": "Dauerhafte Kurzlinks",
-      "expirableShortcuts": "Kurzlinks mit Ablaufdatum"
+      "expirableShortcuts": "Kurzlinks mit Ablaufdatum",
+      "canCreatePasswordProtectedShortcuts": "Passwortgeschützte Kurzlinks",
+      "available": "Diese Option ist in deinem aktuellen Abonnement uneingeschränkt verfügbar.",
+      "notAvailable": "In deinem aktuellen Abonnement nicht verfügbar."
     }
   },
   "ShortcutSettingsPage": {

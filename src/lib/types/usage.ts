@@ -3,6 +3,7 @@ export interface UsageInfo {
   usageLimits: {
     maxPermanentShortcuts: number;
     maxExpirableShortcuts: number;
+    canCreatePasswordProtectedShortcuts: boolean;
   };
   currentUsage: {
     currentPermanentShortcuts: number;

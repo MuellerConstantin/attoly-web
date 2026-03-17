@@ -8,6 +8,7 @@ import { ApiError } from "@/lib/types/error";
 import { UsageInfo } from "@/lib/types/usage";
 import { Me } from "@/lib/types/users";
 import { AxiosError } from "axios";
+import { Check, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
@@ -53,21 +54,51 @@ function UsageStats() {
         <div className="flex flex-col gap-4">
           <div className="w-full">
             <h6 className="font-semibold">{t("permanentShortcuts")}</h6>
-            <ProgressBar
-              className="w-full max-w-sm"
-              label={`${data?.currentUsage.currentPermanentShortcuts ?? 0} / ${data?.usageLimits.maxPermanentShortcuts ?? 0}`}
-              value={data?.currentUsage.currentPermanentShortcuts ?? 0}
-              maxValue={data?.usageLimits.maxPermanentShortcuts ?? 0}
-            />
+            {data?.usageLimits.maxPermanentShortcuts ? (
+              <ProgressBar
+                className="w-full max-w-sm"
+                label={`${data?.currentUsage.currentPermanentShortcuts ?? 0} / ${data?.usageLimits.maxPermanentShortcuts ?? 0}`}
+                value={data?.currentUsage.currentPermanentShortcuts ?? 0}
+                maxValue={data?.usageLimits.maxPermanentShortcuts ?? 0}
+              />
+            ) : (
+              <div className="flex items-center gap-1 text-sm text-slate-500 dark:text-slate-400">
+                <X className="inline-block h-4 w-4 text-red-500" />
+                {t("notAvailable")}
+              </div>
+            )}
           </div>
           <div className="w-full">
             <h6 className="font-semibold">{t("expirableShortcuts")}</h6>
-            <ProgressBar
-              className="w-full max-w-sm"
-              label={`${data?.currentUsage.currentExpirableShortcuts ?? 0} / ${data?.usageLimits.maxExpirableShortcuts ?? 0}`}
-              value={data?.currentUsage.currentExpirableShortcuts ?? 0}
-              maxValue={data?.usageLimits.maxExpirableShortcuts ?? 0}
-            />
+            {data?.usageLimits.maxExpirableShortcuts ? (
+              <ProgressBar
+                className="w-full max-w-sm"
+                label={`${data?.currentUsage.currentExpirableShortcuts ?? 0} / ${data?.usageLimits.maxExpirableShortcuts ?? 0}`}
+                value={data?.currentUsage.currentExpirableShortcuts ?? 0}
+                maxValue={data?.usageLimits.maxExpirableShortcuts ?? 0}
+              />
+            ) : (
+              <div className="flex items-center gap-1 text-sm text-slate-500 dark:text-slate-400">
+                <X className="inline-block h-4 w-4 text-red-500" />
+                {t("notAvailable")}
+              </div>
+            )}
+          </div>
+          <div className="w-full">
+            <h6 className="font-semibold">
+              {t("canCreatePasswordProtectedShortcuts")}
+            </h6>
+            {data?.usageLimits.canCreatePasswordProtectedShortcuts ? (
+              <div className="flex items-center gap-1 text-sm text-slate-500 dark:text-slate-400">
+                <Check className="inline-block h-4 w-4 text-green-500" />
+                {t("available")}
+              </div>
+            ) : (
+              <div className="flex items-center gap-1 text-sm text-slate-500 dark:text-slate-400">
+                <X className="inline-block h-4 w-4 text-red-500" />
+                {t("notAvailable")}
+              </div>
+            )}
           </div>
         </div>
       )}

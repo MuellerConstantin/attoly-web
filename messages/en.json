@@ -313,7 +313,10 @@
       "title": "Your current usage",
       "description": "Here you can see how much of your subscription quota you have already used. Keep an eye on your usage to always stay in control of your short links.",
       "permanentShortcuts": "Permanent Short Links",
-      "expirableShortcuts": "Short Links with Expiration Date"
+      "expirableShortcuts": "Short Links with Expiration Date",
+      "canCreatePasswordProtectedShortcuts": "Password Protected Short Links",
+      "available": "This option is fully available in your current subscription.",
+      "notAvailable": "Not available in your current subscription."
     }
   },
   "ShortcutSettingsPage": {
