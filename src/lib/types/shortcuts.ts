@@ -5,6 +5,7 @@ export interface Shortcut {
   createdAt: string;
   anonymous: boolean;
   permanent: boolean;
+  passwordProtected: boolean;
 }
 
 export interface ShortcutDetails {
@@ -15,4 +16,5 @@ export interface ShortcutDetails {
   updatedAt: string;
   permanent: boolean;
   expiresAt: string | null;
+  passwordProtected: boolean;
 }

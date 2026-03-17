@@ -324,6 +324,7 @@
     "empty": "Du hast noch keine Kurzlinks erstellt. Erstelle jetzt <link>hier</link> deinen ersten Kurzlink.",
     "permanent": "Dauerhaft",
     "expired": "Abgelaufen",
+    "passwordProtected": "Passwortgeschützt",
     "deleteTooltip": "Kurzlink löschen"
   },
   "ChangePasswordForm": {
@@ -402,6 +403,15 @@
   "AnonymousCreatorBadge": {
     "label": "Anonymer Ersteller",
     "anonymousNotice": "Melde dich jetzt an um deine Kurzlinks dauerhaft zu speichern und zu verwalten. Oder entdecke den für dich passenden <link>Premium-Plan</link>."
+  },
+  "ResolvePasswordProtectedShortcut": {
+    "title": "Weiterleitung mit Passwortschutz",
+    "description": "Dieser Kurzlink ist passwortgeschützt. Bitte gib das Passwort ein, um fortzufahren.",
+    "passwordPlaceholder": "Passwort eingeben",
+    "redirect": "Weiterleiten",
+    "error": {
+      "unknownError": "Ein unbekannter Fehler ist aufgetreten. Bitte versuche es erneut."
+    }
   },
   "ValidationMessages": {
     "required": "Dieses Feld ist erforderlich.",

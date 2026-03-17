@@ -1,3 +1,4 @@
+import { StackTemplate } from "@/components/templates/StackTemplate";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
@@ -19,5 +20,5 @@ export default function RedirectLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return children;
+  return <StackTemplate>{children}</StackTemplate>;
 }

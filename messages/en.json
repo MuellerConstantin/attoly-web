@@ -327,6 +327,7 @@
     "empty": "You haven't created any short links yet. Create your first short link <link>here</link>.",
     "permanent": "Permanent",
     "expired": "Expired",
+    "passwordProtected": "Password Protected",
     "deleteTooltip": "Delete short link"
   },
   "ChangePasswordForm": {
@@ -402,9 +403,18 @@
       "qrCode": "QR Code"
     }
   },
+  "ResolvePasswordProtectedShortcut": {
+    "title": "Redirect with password protection",
+    "description": "This short link is password protected. Please enter the password to proceed.",
+    "passwordPlaceholder": "Enter password",
+    "redirect": "Redirect",
+    "error": {
+      "unknownError": "An unknown error occurred. Please try again."
+    }
+  },
   "AnonymousCreatorBadge": {
     "label": "Anonymous Creator",
-    "anonymousNotice": "Sign up now to permanently save and manage your short links. Or discover the <link>Premium plan</link> that’s right for you."
+    "anonymousNotice": "Sign up now to permanently save and manage your short links. Or discover the <link>Premium plan</link> that's right for you."
   },
   "ValidationMessages": {
     "required": "This field is required.",

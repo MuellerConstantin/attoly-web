@@ -5,7 +5,7 @@ import { Pagination } from "@/components/molecules/Pagination";
 import { useApi } from "@/hooks/useApi";
 import { Page } from "@/lib/types/pagination";
 import { ShortcutDetails } from "@/lib/types/shortcuts";
-import { CalendarDays, Hourglass, Save, Trash } from "lucide-react";
+import { CalendarDays, Hourglass, Lock, Save, Trash } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useCallback, useMemo, useState } from "react";
@@ -142,6 +142,12 @@ function ListItem({ shortcut, selected, onSelect }: ListItemProps) {
                 <div className="flex w-fit items-center gap-1 rounded-md bg-red-500/20 px-2 py-0.5 font-mono text-xs font-medium text-red-500">
                   <Hourglass className="h-3 w-3" />
                   {t("expired")}
+                </div>
+              )}
+              {shortcut.passwordProtected && (
+                <div className="flex w-fit items-center gap-1 rounded-md bg-slate-500/20 px-2 py-0.5 font-mono text-xs font-medium text-slate-500">
+                  <Lock className="h-3 w-3" />
+                  {t("passwordProtected")}
                 </div>
               )}
               <div className="flex w-full flex-wrap justify-end">
