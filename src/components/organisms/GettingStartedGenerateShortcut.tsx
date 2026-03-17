@@ -500,9 +500,7 @@ export function GettingStartedGenerateShortcut({
                         <div className="flex flex-col gap-4">
                           <Switch
                             isSelected={props.values.passwordProtected}
-                            isDisabled={
-                              isLoading || !!shortcut || props.values.permanent
-                            }
+                            isDisabled={isLoading || !!shortcut}
                             onChange={(isPasswordProtected) =>
                               props.setFieldValue(
                                 "passwordProtected",
