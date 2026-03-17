@@ -9,6 +9,7 @@ import { Trash } from "lucide-react";
 import { useApi } from "@/hooks/useApi";
 import { Spinner } from "@/components/atoms/Spinner";
 import { signOut } from "next-auth/react";
+import { AxiosError } from "axios";
 
 export function DeleteAccountForm() {
   const api = useApi();
@@ -27,7 +28,19 @@ export function DeleteAccountForm() {
       await api.delete("/user/me");
       signOut({ callbackUrl: "/signin" });
     } catch (err) {
-      setError(t("error.unknownError"));
+      if (err instanceof AxiosError) {
+        if (
+          err.response?.status === 409 &&
+          err.response.data.error ===
+            "UserDeletionBlockedByActiveSubscriptionError"
+        ) {
+          setError(err.response.data.message);
+        } else {
+          setError(t("error.unknownError"));
+        }
+      } else {
+        setError(t("error.unknownError"));
+      }
     } finally {
       setIsLoading(false);
     }
