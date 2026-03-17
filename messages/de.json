@@ -297,6 +297,7 @@
     "managePlan": "Abonnement verwalten",
     "upgradePlan": "Abonnement upgraden",
     "discoverPlans": "Andere Abonnements entdecken",
+    "currentSubscriptionEnd": "Dein aktuelles Abonnement endet am {date}. Eine Verlängerung erfolgt nur, wenn keine Kündigung vorliegt.",
     "freePlan": {
       "title": "Du hast das kostenlose Attoly Abonnement",
       "description": "Dir stehen die grundlegenden Funktionen kostenlos zur Verfügung. Du kannst jederzeit auf einen Premium-Plan upgraden, um erweiterte Funktionen zu nutzen."

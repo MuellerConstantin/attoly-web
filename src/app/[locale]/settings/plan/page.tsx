@@ -156,6 +156,15 @@ export default function PlanSettings() {
                   : t(`freePlan.description`)}
               </p>
             </div>
+            {data!.plan === "PRO" && (
+              <div>
+                {t("currentSubscriptionEnd", {
+                  date: new Date(
+                    data!.billing.currentPeriodEnd!,
+                  ).toLocaleDateString(),
+                })}
+              </div>
+            )}
             <Button
               onPress={hasActiveSubscription ? onManagePlan : onUpgradePlan}
               className="w-fit"

@@ -300,6 +300,7 @@
     "managePlan": "Manage Plan",
     "upgradePlan": "Upgrade Plan",
     "discoverPlans": "Discover other Plans",
+    "currentSubscriptionEnd": "Your current subscription will end on {date}. A renewal will only occur if there is no cancellation.",
     "freePlan": {
       "title": "You have the free Attoly subscription",
       "description": "The basic features are available to you for free. You can upgrade to a premium plan at any time to access advanced features."
